@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PartnerRequest extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'organisation', 'nom_responsable', 'email', 'telephone',
+        'pays', 'type_partenariat', 'message', 'status',
+    ];
+}
