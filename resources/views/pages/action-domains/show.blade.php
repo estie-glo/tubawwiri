@@ -13,16 +13,22 @@
         </p>
 
         @foreach ([
-            'enjeux_fr' => 'Enjeux',
-            'objectifs_fr' => 'Objectifs',
-            'actions_fr' => 'Actions',
-            'publics_cibles_fr' => 'Publics cibles',
-            'resultats_attendus_fr' => 'Résultats attendus',
+            'enjeux' => 'Enjeux',
+            'objectifs' => 'Objectifs',
+            'actions' => 'Actions',
+            'publics_cibles' => 'Publics cibles',
+            'resultats_attendus' => 'Résultats attendus',
+            'appel_partenariat' => 'Appel à partenariat',
         ] as $field => $label)
-            @if ($actionDomain->$field)
+            @php
+                $fieldEn = $field . '_en';
+                $fieldFr = $field . '_fr';
+                $value = app()->getLocale() === 'en' && $actionDomain->$fieldEn ? $actionDomain->$fieldEn : $actionDomain->$fieldFr;
+            @endphp
+            @if ($value)
                 <div class="mb-8 border-t border-[#e5ddc8] pt-6">
                     <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-2">{{ $label }}</p>
-                    <div class="prose max-w-none text-[#4a453c]">{!! $actionDomain->$field !!}</div>
+                    <div class="prose max-w-none text-[#4a453c]">{!! $value !!}</div>
                 </div>
             @endif
         @endforeach

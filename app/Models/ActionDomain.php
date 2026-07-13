@@ -9,13 +9,17 @@ class ActionDomain extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'slug', 'title_fr', 'title_en', 'icon',
-        'summary_fr', 'summary_en',
-        'enjeux_fr', 'objectifs_fr', 'actions_fr',
-        'publics_cibles_fr', 'resultats_attendus_fr',
-        'cover_image', 'order', 'is_published',
-    ];
+protected $fillable = [
+    'slug', 'title_fr', 'title_en', 'icon',
+    'summary_fr', 'summary_en',
+    'enjeux_fr', 'enjeux_en',
+    'objectifs_fr', 'objectifs_en',
+    'actions_fr', 'actions_en',
+    'publics_cibles_fr', 'publics_cibles_en',
+    'resultats_attendus_fr', 'resultats_attendus_en',
+    'appel_partenariat_fr', 'appel_partenariat_en',
+    'cover_image', 'order', 'is_published',
+];
 
     protected $casts = [
         'is_published' => 'boolean',
