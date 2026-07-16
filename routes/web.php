@@ -52,7 +52,7 @@ Route::prefix('{locale}')
 
         // 6. Observatoire Africain de la Résilience
         Route::get('/observatoire', [ObservatoryController::class, 'index'])->name('observatory.index');
-        Route::get('/observatoire/{report}', [ObservatoryController::class, 'show'])->name('observatory.show');
+        Route::get('/observatoire/{observatoryPost}', [ObservatoryController::class, 'show'])->name('observatory.show');
 
         // 7. TBW Consulting
         Route::get('/tbw-consulting', [ConsultingController::class, 'index'])->name('consulting.index');
