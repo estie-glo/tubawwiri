@@ -13,10 +13,16 @@
                 <a href="{{ route('programs.show', [app()->getLocale(), $program->slug]) }}"
                    class="bg-white p-8 group hover:bg-[#F6F1E4] transition">
                     @if ($program->actionDomain)
-                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ $program->actionDomain->title_fr }}</p>
+                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">
+                            {{ app()->getLocale() === 'en' && $program->actionDomain->title_en ? $program->actionDomain->title_en : $program->actionDomain->title_fr }}
+                        </p>
                     @endif
-                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ $program->title_fr }}</h2>
-                    <p class="text-sm text-[#8a8372] mt-2">{{ $program->summary_fr }}</p>
+                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">
+                        {{ app()->getLocale() === 'en' && $program->title_en ? $program->title_en : $program->title_fr }}
+                    </h2>
+                    <p class="text-sm text-[#8a8372] mt-2">
+                        {{ app()->getLocale() === 'en' && $program->summary_en ? $program->summary_en : $program->summary_fr }}
+                    </p>
                 </a>
             @endforeach
         </div>

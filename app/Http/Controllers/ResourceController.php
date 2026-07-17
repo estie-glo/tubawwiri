@@ -2,22 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
+use App\Models\Resource;
 use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
-    // Guides, publications, rapports, outils pratiques, podcasts, vidéos, infographies
     public function index(Request $request)
     {
-        $query = Report::where('is_published', true);
+        $query = Resource::where('is_published', true);
 
-        if ($request->filled('q')) {
-            $query->where('title_fr', 'like', '%' . $request->q . '%');
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
         }
 
-        $resources = $query->orderByDesc('published_on')->paginate(12);
+        if ($request->filled('q')) {
+            $search = $request->input('q');
+            $query->where(function ($q) use ($search) {
+                $q->where('title_fr', 'like', "%{$search}%")
+                  ->orWhere('title_en', 'like', "%{$search}%")
+                  ->orWhere('description_fr', 'like', "%{$search}%")
+                  ->orWhere('description_en', 'like', "%{$search}%");
+            });
+        }
 
-        return view('pages.resources.index', compact('resources'));
+        $resources = $query->orderByDesc('created_at')->get();
+
+        $categories = [
+            'guide' => 'Guide',
+            'rapport' => 'Rapport',
+            'outil' => 'Outil pratique',
+            'podcast' => 'Podcast',
+            'video' => 'Vidéo',
+            'infographie' => 'Infographie',
+            'document' => 'Document',
+        ];
+
+        return view('pages.resources.index', compact('resources', 'categories'));
     }
 }

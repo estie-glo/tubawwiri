@@ -11,8 +11,13 @@ class Program extends Model
 
     protected $fillable = [
         'action_domain_id', 'slug', 'title_fr', 'title_en',
-        'summary_fr', 'objectifs_fr', 'activites_fr', 'duree',
-        'beneficiaires_fr', 'indicateurs_fr', 'partenaires_souhaites_fr',
+        'summary_fr', 'summary_en',
+        'objectifs_fr', 'objectifs_en',
+        'activites_fr', 'activites_en',
+        'duree',
+        'beneficiaires_fr', 'beneficiaires_en',
+        'indicateurs_fr', 'indicateurs_en',
+        'partenaires_souhaites_fr', 'partenaires_souhaites_en',
         'cover_image', 'is_published',
     ];
 
