@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FormSubmissionNotification;
 use App\Models\JoinRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class JoinController extends Controller
 {
@@ -24,6 +27,22 @@ class JoinController extends Controller
         ]);
 
         JoinRequest::create($validated);
+
+        try {
+            Mail::to(config('tubawwiri.mail_to.join'))->send(new FormSubmissionNotification(
+                'Nouvelle demande — Nous rejoindre (' . $validated['profil'] . ')',
+                [
+                    'Nom' => $validated['nom'],
+                    'Email' => $validated['email'],
+                    'Téléphone' => $validated['telephone'] ?? null,
+                    'Pays' => $validated['pays'] ?? null,
+                    'Profil demandé' => $validated['profil'],
+                    'Motivation' => $validated['motivation'] ?? null,
+                ]
+            ));
+        } catch (\Throwable $e) {
+            Log::warning('Échec envoi email notification [join]: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.');
     }

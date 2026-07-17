@@ -9,38 +9,59 @@
         <p class="text-[#4a453c] mb-10 leading-relaxed">Ensemble, faisons grandir la lumière. Votre don soutient nos programmes de santé mentale communautaire et de résilience humaine.</p>
 
         @if ($errors->any())
-            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-4">
+            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
                 @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach
             </div>
         @endif
 
-        <form method="POST" action="{{ route('donation.store', app()->getLocale()) }}" class="bg-white p-8 border border-[#e5ddc8] space-y-4">
+        <form method="POST" action="{{ route('donation.store', app()->getLocale()) }}" class="space-y-8">
             @csrf
-            <input type="text" name="nom" placeholder="Nom (optionnel)" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">
-            <input type="email" name="email" placeholder="Email (optionnel)" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">
-            <input type="text" name="telephone" placeholder="Téléphone (optionnel)" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">
-            <input type="number" name="montant" placeholder="Montant (FCFA)" required min="500" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">
-
-            <div>
-                <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-3">Moyen de paiement</p>
-                <div class="grid grid-cols-2 gap-3 text-sm">
-                    <label class="border border-[#e5ddc8] px-3 py-2.5 flex items-center gap-2"><input type="radio" name="moyen_paiement" value="mtn_momo" required> MTN MoMo</label>
-                    <label class="border border-[#e5ddc8] px-3 py-2.5 flex items-center gap-2"><input type="radio" name="moyen_paiement" value="orange_money"> Orange Money</label>
-                    <label class="border border-[#e5ddc8] px-3 py-2.5 flex items-center gap-2"><input type="radio" name="moyen_paiement" value="carte"> Carte bancaire</label>
-                    <label class="border border-[#e5ddc8] px-3 py-2.5 flex items-center gap-2"><input type="radio" name="moyen_paiement" value="virement"> Virement</label>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Nom (optionnel)</label>
+                    <input type="text" name="nom" class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Email (optionnel)</label>
+                    <input type="email" name="email" class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Téléphone (optionnel)</label>
+                    <input type="text" name="telephone" class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Montant (FCFA) <span class="text-[#C99A3E]">*</span></label>
+                    <input type="number" name="montant" required min="500" placeholder="ex: 10 000"
+                           class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
                 </div>
             </div>
 
             <div>
-                <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-3">Type de don</p>
-                <select name="type_don" required class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">
-                    <option value="ponctuel">Don ponctuel</option>
-                    <option value="mensuel">Don mensuel</option>
-                    <option value="parrainage">Parrainage</option>
-                    <option value="entreprise">Soutien d'entreprise</option>
-                </select>
+                <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-3">Moyen de paiement <span class="text-[#C99A3E]">*</span></label>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    @foreach (['mtn_momo' => 'MTN MoMo', 'orange_money' => 'Orange Money', 'carte' => 'Carte bancaire', 'virement' => 'Virement'] as $val => $label)
+                        <label class="relative block cursor-pointer">
+                            <input type="radio" name="moyen_paiement" value="{{ $val }}" required class="peer sr-only">
+                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-3">Type de don <span class="text-[#C99A3E]">*</span></label>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    @foreach (['ponctuel' => 'Ponctuel', 'mensuel' => 'Mensuel', 'parrainage' => 'Parrainage', 'entreprise' => 'Entreprise'] as $val => $label)
+                        <label class="relative block cursor-pointer">
+                            <input type="radio" name="type_don" value="{{ $val }}" required {{ $val === 'ponctuel' ? 'checked' : '' }} class="peer sr-only">
+                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
+                        </label>
+                    @endforeach
+                </div>
             </div>
 
             <button type="submit" class="w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5 transition">
@@ -48,7 +69,7 @@
             </button>
         </form>
 
-        <p class="text-xs text-[#8a8372] mt-4">
+        <p class="text-xs text-[#8a8372] mt-6">
             * Intégration des paiements MTN MoMo / Orange Money à finaliser côté développeur selon les API disponibles pour le Cameroun.
         </p>
     </section>

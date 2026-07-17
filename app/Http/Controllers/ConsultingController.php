@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FormSubmissionNotification;
 use App\Models\QuoteRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class ConsultingController extends Controller
 {
@@ -27,6 +30,25 @@ class ConsultingController extends Controller
         ]);
 
         QuoteRequest::create($validated);
+
+        try {
+            Mail::to(config('tubawwiri.mail_to.consulting'))->send(new FormSubmissionNotification(
+                'Nouvelle demande de devis — TBW Consulting',
+                [
+                    'Nom' => $validated['nom'],
+                    'Organisation' => $validated['organisation'] ?? null,
+                    'Email' => $validated['email'],
+                    'Téléphone' => $validated['telephone'] ?? null,
+                    'Pays' => $validated['pays'] ?? null,
+                    'Service souhaité' => $validated['service_souhaite'] ?? null,
+                    'Budget estimatif' => $validated['budget_estimatif'] ?? null,
+                    'Délai' => $validated['delai'] ?? null,
+                    'Besoin' => $validated['description_besoin'],
+                ]
+            ));
+        } catch (\Throwable $e) {
+            Log::warning('Échec envoi email notification [consulting]: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Votre demande de devis a bien été envoyée. Notre équipe vous contactera rapidement.');
     }

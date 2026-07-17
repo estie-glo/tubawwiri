@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FormSubmissionNotification;
 use App\Models\Training;
 use App\Models\TrainingEnrollment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class AcademyController extends Controller
 {
@@ -34,7 +37,24 @@ class AcademyController extends Controller
             'mode' => 'nullable|in:presentiel,en_ligne',
         ]);
 
-        TrainingEnrollment::create($validated);
+        $enrollment = TrainingEnrollment::create($validated);
+
+        try {
+            Mail::to(config('tubawwiri.mail_to.academy'))->send(new FormSubmissionNotification(
+                'Nouvelle inscription — TBW Academy',
+                [
+                    'Formation' => $enrollment->training?->title_fr,
+                    'Nom' => $validated['nom'],
+                    'Email' => $validated['email'],
+                    'Téléphone' => $validated['telephone'] ?? null,
+                    'Pays' => $validated['pays'] ?? null,
+                    'Niveau' => $validated['niveau'] ?? null,
+                    'Mode' => $validated['mode'] ?? null,
+                ]
+            ));
+        } catch (\Throwable $e) {
+            Log::warning('Échec envoi email notification [academy]: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Votre inscription a bien été enregistrée. Vous recevrez un email de confirmation.');
     }

@@ -18,28 +18,71 @@
             </ul>
         </div>
 
-        <div class="bg-white p-8 border border-[#e5ddc8]">
+        <div>
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">Demander un devis</p>
 
             @if ($errors->any())
-                <div class="border-l-2 border-[#6B2A28] bg-[#F6F1E4] text-[#6B2A28] text-sm p-3 mb-4">
+                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('consulting.quote.store', app()->getLocale()) }}" class="space-y-4">
+            <form method="POST" action="{{ route('consulting.quote.store', app()->getLocale()) }}" class="space-y-6">
                 @csrf
-                <input type="text" name="nom" placeholder="Nom" required class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('nom') }}">
-                <input type="text" name="organisation" placeholder="Organisation" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('organisation') }}">
-                <input type="email" name="email" placeholder="Email" required class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('email') }}">
-                <input type="text" name="telephone" placeholder="Téléphone" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('telephone') }}">
-                <input type="text" name="pays" placeholder="Pays" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('pays') }}">
-                <input type="text" name="service_souhaite" placeholder="Service souhaité" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('service_souhaite') }}">
-                <input type="text" name="budget_estimatif" placeholder="Budget estimatif" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('budget_estimatif') }}">
-                <input type="text" name="delai" placeholder="Délai souhaité" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]" value="{{ old('delai') }}">
-                <textarea name="description_besoin" placeholder="Description du besoin" required rows="4" class="w-full border border-[#e5ddc8] px-3 py-2.5 text-sm focus:outline-none focus:border-[#123D2E]">{{ old('description_besoin') }}</textarea>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Nom <span class="text-[#C99A3E]">*</span></label>
+                        <input type="text" name="nom" required value="{{ old('nom') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Organisation</label>
+                        <input type="text" name="organisation" value="{{ old('organisation') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Email <span class="text-[#C99A3E]">*</span></label>
+                        <input type="email" name="email" required value="{{ old('email') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Téléphone</label>
+                        <input type="text" name="telephone" value="{{ old('telephone') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Pays</label>
+                        <input type="text" name="pays" value="{{ old('pays') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Service souhaité</label>
+                        <input type="text" name="service_souhaite" value="{{ old('service_souhaite') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Budget estimatif</label>
+                        <input type="text" name="budget_estimatif" value="{{ old('budget_estimatif') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Délai souhaité</label>
+                        <input type="text" name="delai" value="{{ old('delai') }}"
+                               class="w-full bg-transparent border-b border-[#d8cfb8] focus:border-[#123D2E] outline-none py-2 text-sm transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">Description du besoin <span class="text-[#C99A3E]">*</span></label>
+                    <textarea name="description_besoin" required rows="4" class="w-full border border-[#d8cfb8] focus:border-[#123D2E] outline-none p-3 text-sm transition">{{ old('description_besoin') }}</textarea>
+                </div>
 
                 <button type="submit" class="w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5 transition">
                     Envoyer la demande
