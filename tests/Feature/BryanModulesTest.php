@@ -3,9 +3,12 @@
 namespace Tests\Feature;
 
 use App\Models\ActionDomain;
+use App\Models\ImpactStat;
+use App\Models\MediaItem;
 use App\Models\Program;
 use App\Models\Report;
 use App\Models\Resource;
+use App\Models\Testimonial;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -102,5 +105,27 @@ class BryanModulesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Un guide');
         $response->assertDontSee('Une vidéo');
+    }
+
+    public function test_impacts_index_fonctionne(): void
+    {
+        ImpactStat::create(['label_fr' => 'Personnes accompagnées', 'value' => 15000, 'order' => 1]);
+        Testimonial::create(['nom' => 'Aminata K.', 'role' => 'Bénéficiaire', 'content_fr' => 'TUBAWWIRI a changé ma vie.', 'is_published' => true]);
+
+        $response = $this->get('/fr/nos-impacts');
+
+        $response->assertStatus(200);
+        $response->assertSee('15000');
+        $response->assertSee('Aminata K.');
+    }
+
+    public function test_medias_index_fonctionne(): void
+    {
+        MediaItem::create(['title' => 'Photo atelier', 'type' => 'photo', 'file_path' => 'test.jpg', 'order' => 1]);
+
+        $response = $this->get('/fr/medias');
+
+        $response->assertStatus(200);
+        $response->assertSee('Photo atelier');
     }
 }
