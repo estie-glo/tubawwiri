@@ -25,6 +25,11 @@ class JoinRequestResource extends Resource
         return false;
     }
 
+    public static function canDelete($record): bool
+{
+    return auth()->user()?->role === 'admin';
+}
+
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -44,22 +49,22 @@ class JoinRequestResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nom'),
-                Tables\Columns\TextColumn::make('profil')->badge(),
-                Tables\Columns\TextColumn::make('pays'),
-                Tables\Columns\TextColumn::make('status')->badge(),
-                Tables\Columns\TextColumn::make('created_at')->label('Reçu le')->dateTime('d/m/Y H:i'),
+Tables\Columns\TextColumn::make('nom'),
+Tables\Columns\TextColumn::make('email'),
+Tables\Columns\TextColumn::make('sujet'),
+Tables\Columns\TextColumn::make('created_at')->label('Reçu le')->dateTime('d/m/Y H:i'),
+Tables\Columns\IconColumn::make('is_read')->boolean()->label('Traité'),
             ])
             ->defaultSort('created_at', 'desc')
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+Tables\Actions\ViewAction::make(),
+Tables\Actions\EditAction::make(),
+Tables\Actions\DeleteAction::make()
+    ->visible(fn () => auth()->user()?->role === 'admin'),
             ]);
     }
-
     public static function getPages(): array
     {
         return [

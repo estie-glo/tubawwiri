@@ -25,6 +25,12 @@ class TrainingEnrollmentResource extends Resource
         return false;
     }
 
+
+
+    public static function canDelete($record): bool
+{
+    return auth()->user()?->role === 'admin';
+}
     public static function form(Form $form): Form
     {
         return $form->schema([
