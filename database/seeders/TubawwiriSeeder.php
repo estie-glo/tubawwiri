@@ -68,5 +68,48 @@ class TubawwiriSeeder extends Seeder
         foreach ($stats as $stat) {
             ImpactStat::updateOrCreate(['label_fr' => $stat['label_fr']], $stat);
         }
+
+// ===== Formations TBW Academy =====
+$trainings = [
+    [
+        'slug' => 'sante-mentale-communautaire',
+        'title_fr' => 'Santé mentale communautaire',
+        'description_fr' => 'Module d\'introduction aux fondamentaux de la santé mentale communautaire : repérage, écoute, orientation.',
+        'level' => 'debutant',
+        'mode' => 'en_ligne',
+        'duree' => '4 semaines',
+        'price' => 15000,
+    ],
+    [
+        'slug' => 'parentalite-positive-academy',
+        'title_fr' => 'Parentalité positive',
+        'description_fr' => 'Techniques et postures pour accompagner les parents vers une éducation bienveillante et structurante.',
+        'level' => 'debutant',
+        'mode' => 'presentiel',
+        'duree' => '3 semaines',
+        'price' => 12000,
+    ],
+    [
+        'slug' => 'leadership-feminin-academy',
+        'title_fr' => 'Leadership féminin',
+        'description_fr' => 'Renforcement des capacités de leadership pour les femmes engagées dans le développement communautaire.',
+        'level' => 'intermediaire',
+        'mode' => 'en_ligne',
+        'duree' => '6 semaines',
+        'price' => 20000,
+    ],
+];
+
+foreach ($trainings as $training) {
+    \App\Models\Training::updateOrCreate(['slug' => $training['slug']], $training + ['is_published' => true]);
+}
+
+
+
     }
+
+
+
+
+
 }
