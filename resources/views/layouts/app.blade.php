@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Fondation TUBAWWIRI (TBW)')</title>
     <meta name="description" content="@yield('meta_description', 'La Fondation TUBAWWIRI (TBW) œuvre pour la promotion de la santé mentale communautaire et de la résilience humaine.')">
-
+    @include('layouts.seo-head')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

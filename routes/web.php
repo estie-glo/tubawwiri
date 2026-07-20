@@ -14,6 +14,7 @@ use App\Http\Controllers\ObservatoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/fr');
-
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::prefix('{locale}')
     ->where(['locale' => 'fr|en'])
     ->middleware('setlocale')
