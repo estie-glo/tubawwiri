@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('icons/bootstrap-icons.css') }}">
     <style>
         a { text-decoration: none; }
         .font-display { font-family: 'Fraunces', serif; }
@@ -115,11 +116,14 @@
             <div>
                 <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">{{ __('site.footer.follow_us') }}</p>
                 <div class="flex gap-3 text-sm">
-                    <a href="#" class="hover:text-[#C99A3E]">Facebook</a>
-                    <a href="#" class="hover:text-[#C99A3E]">Instagram</a>
-                    <a href="#" class="hover:text-[#C99A3E]">LinkedIn</a>
+                        <a href="https://www.facebook.com/share/1BDyqZc56h/" class="tbw-social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbBM0v78vd1S72nzO43C" class="tbw-social-icon"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/fondation_tubawwiri?igsh=MWFyZG9uZjJodzNpcA==" class="tbw-social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="tbw-social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@fondationtubawwiri" class="tbw-social-icon"><i class="bi bi-youtube"></i></a>
+                        <a href="https://tiktok.com/@tubawwiri" class="tbw-social-icon"><i class="bi bi-tiktok"></i></a>
                 </div>
-                <a href="https://wa.me/000000000" class="mt-4 inline-block text-sm text-[#C99A3E] font-semibold">WhatsApp →</a>
+                <!-- <a href="https://wa.me/000000000" class="mt-4 inline-block text-sm text-[#C99A3E] font-semibold">WhatsApp →</a> -->
             </div>
             <div>
                 <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">Contact</p>
@@ -134,7 +138,7 @@
 
     <a href="https://wa.me/000000000" target="_blank"
        class="fixed bottom-5 right-5 bg-[#25D366] hover:brightness-95 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg z-50">
-        <span class="text-2xl">💬</span>
+        <span class="text-2xl"><i class="bi bi-whatsapp"></i></span>
     </a>
 
 </body>

@@ -15,6 +15,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/fr');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
 Route::prefix('{locale}')
     ->where(['locale' => 'fr|en'])
     ->middleware('setlocale')
