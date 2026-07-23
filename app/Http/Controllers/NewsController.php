@@ -9,8 +9,8 @@ class NewsController extends Controller
 {
     public function index(string $locale, ?string $categorySlug = null)
     {
-        $query = Article::published();
-
+        // $query = Article::published();
+        $query = Article::where('is_published', true);
         $categories = Category::all();
         $activeCategory = null;
 
