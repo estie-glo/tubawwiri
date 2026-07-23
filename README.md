@@ -76,6 +76,18 @@ Pour activer les modifications
 php artisan migrate:fresh --seed
 ```
 
+# TESTS 
+```bash
+cp .env.example .env.testing
+php artisan key:generate
+php artisan migate --env=testing
+php artisan db:seed --class=TestDataseeder
+
+#lancer les test
+php artisan test  #tous les tests
+php artisan test --testsuite=Feature #uniquement les tests feature
+php artisan test --coverage #avec rapport de couverture
+
 
 
 
