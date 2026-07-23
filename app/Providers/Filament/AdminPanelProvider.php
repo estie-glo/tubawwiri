@@ -27,6 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('Fondation Tubawwiri (TBW)')
+            ->brandLogo(asset('images/logo-tbw.jpg'))
             ->colors([
                 'primary' => Color::Amber,
             ])
