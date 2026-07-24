@@ -10,8 +10,9 @@ class MediaController extends Controller
     {
         $photos = MediaItem::where('type', 'photo')->orderBy('order')->get();
         $videos = MediaItem::where('type', 'video')->orderBy('order')->get();
-        $press = MediaItem::whereIn('type', ['communique', 'presse'])->orderByDesc('created_at')->get();
+        $communiques = MediaItem::where('type', 'communique')->orderBy('order')->get();
+        $presse = MediaItem::where('type', 'presse')->orderBy('order')->get();
 
-        return view('pages.media.index', compact('photos', 'videos', 'press'));
+        return view('pages.media.index', compact('photos', 'videos', 'communiques', 'presse'));
     }
 }
