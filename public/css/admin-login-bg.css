@@ -1,0 +1,55 @@
+/* Fond animé aux couleurs TUBAWWIRI pour la page de connexion admin.
+   Fichier CSS séparé, chargé uniquement sur les pages Filament. */
+
+body.fi-simple-layout {
+    position: relative;
+    overflow: hidden;
+    background: #F6F1E4;
+}
+
+body.fi-simple-layout::before,
+body.fi-simple-layout::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.25;
+    z-index: 0;
+    animation: tbw-float 20s ease-in-out infinite;
+}
+
+body.fi-simple-layout::before {
+    width: 500px;
+    height: 500px;
+    background: #123D2E;
+    top: -150px;
+    left: -120px;
+}
+
+body.fi-simple-layout::after {
+    width: 420px;
+    height: 420px;
+    background: #C99A3E;
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -10s;
+}
+
+.fi-simple-layout .fi-simple-main {
+    position: relative;
+    z-index: 1;
+    border-top: 3px solid;
+    border-image: linear-gradient(to right, #6B2A28, #C99A3E, #3B2560) 1;
+}
+
+@keyframes tbw-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -30px) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.fi-simple-layout::before,
+    body.fi-simple-layout::after {
+        animation: none;
+    }
+}

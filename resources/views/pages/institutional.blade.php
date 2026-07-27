@@ -4,7 +4,7 @@
 @section('meta_description', $page->meta_description_fr)
 
 @section('content')
-    <section class="max-w-3xl mx-auto px-4 py-20">
+    <section class="max-w-3xl mx-auto px-4 py-20 reveal">
         @if ($page->cover_image)
             <img src="{{ asset('storage/' . $page->cover_image) }}" alt="{{ $page->title_fr }}" class="mb-10 w-full">
         @endif

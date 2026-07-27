@@ -1,21 +1,25 @@
 @extends('layouts.app')
 
-@section('title', $post->title_fr . ' — Fondation TUBAWWIRI (TBW)')
+@section('title', $report->title_fr . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-3xl mx-auto px-4 py-20">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ ucfirst($post->type) }}</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ $post->title_fr }}</h1>
-        @if ($post->published_on)
-            <p class="text-xs text-[#8a8372] mb-8">{{ $post->published_on->format('d/m/Y') }}</p>
+    <section class="max-w-3xl mx-auto px-4 py-20 reveal">
+        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ $report->type }}</p>
+        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-3">{{ $report->title_fr }}</h1>
+        @if ($report->published_on)
+            <p class="text-xs text-[#8a8372] mb-8">{{ $report->published_on->format('d/m/Y') }}</p>
         @endif
 
-        <p class="text-[#4a453c] leading-relaxed">{{ $post->summary_fr }}</p>
+        @if ($report->cover_image)
+            <img src="{{ asset('storage/' . $report->cover_image) }}" class="mb-8 w-full">
+        @endif
 
-        @if ($post->file_path)
-            <a href="{{ asset('storage/' . $post->file_path) }}" target="_blank"
-               class="inline-block mt-10 bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition">
-                Télécharger le rapport (PDF)
+        <p class="text-[#4a453c] mb-10 leading-relaxed">{{ $report->summary_fr }}</p>
+
+        @if ($report->file_path)
+            <a href="{{ asset('storage/' . $report->file_path) }}" target="_blank"
+               class="inline-block bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition">
+                {{ __('pages.download') }} (PDF)
             </a>
         @endif
     </section>

@@ -17,6 +17,7 @@ class ResourceController extends Controller
 
         if ($request->filled('q')) {
             $search = $request->input('q');
+
             $query->where(function ($q) use ($search) {
                 $q->where('title_fr', 'like', "%{$search}%")
                   ->orWhere('title_en', 'like', "%{$search}%")
@@ -25,7 +26,10 @@ class ResourceController extends Controller
             });
         }
 
-        $resources = $query->orderByDesc('created_at')->get();
+        $resources = $query
+            ->orderByDesc('created_at')
+            ->paginate(9)
+            ->withQueryString();
 
         $categories = [
             'guide' => 'Guide',

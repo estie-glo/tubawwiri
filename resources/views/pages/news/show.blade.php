@@ -3,7 +3,7 @@
 @section('title', $article->title_fr . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <article class="max-w-3xl mx-auto px-4 py-20">
+    <article class="max-w-3xl mx-auto px-4 py-20 reveal">
         @if ($article->category)
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ $article->category->name_fr }}</p>
         @endif
@@ -22,7 +22,7 @@
         </div>
 
         <div class="mt-12 pt-6 border-t border-[#e5ddc8] flex gap-4 text-xs font-semibold uppercase tracking-wider text-[#8a8372]">
-            Partager :
+            {{ __('pages.share') }} :
             <a href="#" class="hover:text-[#C99A3E]">Facebook</a>
             <a href="#" class="hover:text-[#C99A3E]">LinkedIn</a>
             <a href="#" class="hover:text-[#C99A3E]">WhatsApp</a>

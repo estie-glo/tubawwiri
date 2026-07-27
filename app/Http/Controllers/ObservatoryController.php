@@ -8,17 +8,17 @@ class ObservatoryController extends Controller
 {
     public function index()
     {
-        $posts = Report::where('is_published', true)
+        $reports = Report::where('is_published', true)
             ->orderByDesc('published_on')
-            ->get();
+            ->paginate(9);
 
-        return view('pages.observatory.index', compact('posts'));
+        return view('pages.observatory.index', compact('reports'));
     }
 
     public function show(string $locale, string $observatoryPost)
     {
-        $post = Report::where('slug', $observatoryPost)->firstOrFail();
+        $report = Report::where('slug', $observatoryPost)->firstOrFail();
 
-        return view('pages.observatory.show', compact('post'));
+        return view('pages.observatory.show', compact('report'));
     }
 }

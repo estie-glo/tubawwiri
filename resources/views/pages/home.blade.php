@@ -6,7 +6,12 @@
 @section('content')
 
     {{-- ===== HERO ===== --}}
-    <section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-5 gap-12 items-center">
+   <section class="relative overflow-hidden max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-5 gap-12 items-center reveal">
+    <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
         <div class="md:col-span-3 border-l-2 border-[#6B2A28] pl-8">
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
 
@@ -45,7 +50,7 @@
     </section>
 
     {{-- ===== DOMAINES D'ACTION ===== --}}
-    <section class="bg-white py-20 border-t border-b border-[#e5ddc8]">
+    <section class="bg-white py-20 border-t border-b border-[#e5ddc8] reveal">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
                 <h2 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E]">{{ __('site.home.domains_title') }}</h2>
@@ -55,11 +60,13 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-px bg-[#e5ddc8]">
                 @foreach ($actionDomains as $domain)
                     <a href="{{ route('action-domains.show', [app()->getLocale(), $domain->slug]) }}"
-                       class="bg-white p-5 group hover:bg-[#F6F1E4] transition flex flex-col justify-between min-h-[140px]">
+                       class="bg-white p-5 group hover:bg-[#F6F1E4] hover-lift transition flex flex-col justify-between min-h-[140px]">
                         <span class="font-display text-2xl text-[#C99A3E] group-hover:text-[#6B2A28] transition">
                             {{ mb_substr($domain->title_fr, 0, 1) }}
                         </span>
-                        <p class="text-xs font-semibold text-[#123D2E] leading-snug mt-4">{{ app()->getLocale() === 'en' && $domain->title_en ? $domain->title_en : $domain->title_fr }}</p>
+                        <p class="text-xs font-semibold text-[#123D2E] leading-snug mt-4">
+                            {{ app()->getLocale() === 'en' && $domain->title_en ? $domain->title_en : $domain->title_fr }}
+                        </p>
                     </a>
                 @endforeach
             </div>
@@ -67,7 +74,7 @@
     </section>
 
     {{-- ===== CAVAMIS + 3T ===== --}}
-    <section class="bg-[#123D2E] text-white py-20">
+    <section class="bg-[#123D2E] text-white py-20 reveal">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16">
             <div>
                 <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Méthodologie</p>
@@ -112,7 +119,7 @@
     </section>
 
     {{-- ===== ACTUALITÉS + IMPACT + REJOINDRE ===== --}}
-    <section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-3 gap-12">
+    <section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-3 gap-12 reveal">
 
         <div class="md:col-span-1">
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em] mb-4">{{ __('site.home.news_title') }}</p>
@@ -123,7 +130,7 @@
                         <p class="text-xs text-[#8a8372] mt-1">{{ $article->excerpt_fr }}</p>
                     </a>
                 @empty
-                    <p class="text-sm text-[#8a8372]">Aucune actualité publiée pour le moment.</p>
+                    <p class="text-sm text-[#8a8372]">{{ __('pages.no_news') }}</p>
                 @endforelse
             </div>
         </div>

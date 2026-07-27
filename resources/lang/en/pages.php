@@ -1,0 +1,49 @@
+<?php
+
+return [
+    'domains_intro' => "Community mental health, human resilience, positive parenting, child protection, female leadership, community development.",
+    'programs_intro' => 'Resilient Families, Resilient Schools, Resilient Communities, TESIMAMA Challenge, TOLAMUKE Challenge, TELUMIERE Challenge, TBW Parents...',
+    'observatory_intro' => 'Analyses, notes, reports, statistics, barometers and research on human resilience in Africa.',
+    'resources_intro' => 'Guides, publications, reports, practical tools, podcasts, videos, infographics and downloadable documents.',
+    'search_resources' => 'Search for a resource...',
+    'no_resources' => 'No resources found.',
+    'no_news' => 'No articles published yet.',
+    'no_reports' => 'No reports published yet.',
+    'download' => 'Download',
+    'all' => 'All',
+    'share' => 'Share',
+    'read_more' => 'Read more',
+    'linked_programs' => 'Related programs',
+
+    'consulting_intro' => "Professional services: strategic advice, studies, evaluations, research, training, coaching, institutional support and project management.",
+    'consulting_services' => [
+        'Strategic advice', 'Studies & evaluations', 'Applied research',
+        'Training & coaching', 'Institutional support', 'Project management',
+    ],
+
+    'academy_intro' => 'Training catalog, enrollments, certificates, webinars, virtual classes and digital library.',
+
+    'gallery_photos' => 'Photo gallery',
+    'gallery_videos' => 'Video gallery',
+    'press_releases' => 'Press releases',
+    'no_photos' => 'No photos yet.',
+    'no_videos' => 'No videos yet.',
+    'no_press' => 'No press releases yet.',
+
+    'field_enjeux' => 'Key issues',
+    'field_objectifs' => 'Objectives',
+    'field_actions' => 'Actions',
+    'field_publics_cibles' => 'Target audiences',
+    'field_resultats_attendus' => 'Expected results',
+    'field_activites' => 'Activities',
+    'field_beneficiaires' => 'Beneficiaries',
+    'field_indicateurs' => 'Indicators',
+    'field_partenaires_souhaites' => 'Desired partners',
+    'field_duree' => 'Duration',
+    'field_domaine' => 'Area',
+
+    'become_partner_domain' => 'Become a partner for this area',
+    'become_partner_program' => 'Become a partner for this program',
+
+    'testimonials' => 'Testimonials',
+];

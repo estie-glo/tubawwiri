@@ -20,6 +20,59 @@
             background-image: radial-gradient(circle, #C99A3E 1.5px, transparent 1.5px);
             background-size: 8px 8px;
         }
+
+        /* Animations légères pour un rendu moins statique */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-lift {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-3px);
+        }
+
+ .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.18;
+        animation: float 18s ease-in-out infinite;
+    }
+    .blob-1 {
+        width: 420px; height: 420px;
+        background: #123D2E;
+        top: -100px; left: -80px;
+        animation-delay: 0s;
+    }
+    .blob-2 {
+        width: 360px; height: 360px;
+        background: #C99A3E;
+        top: 40%; right: -100px;
+        animation-delay: -6s;
+    }
+    .blob-3 {
+        width: 300px; height: 300px;
+        background: #6B2A28;
+        bottom: -80px; left: 30%;
+        animation-delay: -12s;
+    }
+    @keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -40px) scale(1.08); }
+        66% { transform: translate(-25px, 25px) scale(0.95); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .blob { animation: none; }
+    }
+
+
     </style>
 
     <link rel="icon" href="{{ asset('images/logo-tbw.jpg') }}">
@@ -78,11 +131,16 @@
         </div>
     </header>
 
-    {{-- ================= FLASH MESSAGES ================= --}}
+       {{-- ================= FLASH MESSAGES ================= --}}
     @if (session('success'))
-        <div class="max-w-4xl mx-auto mt-6 px-4">
-            <div class="border-l-2 border-[#123D2E] bg-white px-4 py-3 text-sm text-[#123D2E]">
-                {{ session('success') }}
+        <div id="flash-message" class="max-w-4xl mx-auto mt-6 px-4 fade-in">
+            <div class="flex items-start gap-4 bg-white border-l-2 border-[#123D2E] px-5 py-4 shadow-sm">
+                <div class="shrink-0 w-8 h-8 rounded-full bg-[#123D2E] text-white flex items-center justify-center text-sm font-bold mt-0.5">✓</div>
+                <div class="flex-1">
+                    <p class="text-xs font-bold text-[#123D2E] uppercase tracking-widest">Message envoyé</p>
+                    <p class="text-sm text-[#4a453c] mt-1">{{ session('success') }}</p>
+                </div>
+                <button onclick="document.getElementById('flash-message').remove()" class="text-[#8a8372] hover:text-[#123D2E] text-sm">✕</button>
             </div>
         </div>
     @endif
@@ -136,6 +194,10 @@
        class="fixed bottom-5 right-5 bg-[#25D366] hover:brightness-95 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg z-50">
         <span class="text-2xl">💬</span>
     </a>
+
+<script src="{{ asset('js/reveal.js') }}"></script>
+
+
 
 </body>
 </html>
