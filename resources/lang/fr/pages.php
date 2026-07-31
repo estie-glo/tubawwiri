@@ -23,12 +23,19 @@ return [
 
     'academy_intro' => 'Catalogue de formations, inscriptions, certificats, webinaires, classes virtuelles et bibliothèque numérique.',
 
+    'impact_intro' => "Bénéficiaires, formations, partenaires, projets et communautés accompagnées à travers l'Afrique.",
+    'media_intro' => 'Galerie photo, galerie vidéo, communiqués et dossier de presse.',
+    'testimonials_subtitle' => "Ce qu'ils disent de nous",
+
     'gallery_photos' => 'Galerie photo',
     'gallery_videos' => 'Galerie vidéo',
     'press_releases' => 'Communiqués & presse',
+    'communiques' => 'Communiqués',
+    'press_kit' => 'Dossier de presse',
     'no_photos' => 'Aucune photo pour le moment.',
     'no_videos' => 'Aucune vidéo pour le moment.',
     'no_press' => 'Aucun communiqué pour le moment.',
+    'no_press_kit' => 'Aucun dossier de presse pour le moment.',
 
     'field_enjeux' => 'Enjeux',
     'field_objectifs' => 'Objectifs',

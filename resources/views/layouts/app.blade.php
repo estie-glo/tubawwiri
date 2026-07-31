@@ -172,12 +172,14 @@
             </div>
             <div>
                 <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">{{ __('site.footer.follow_us') }}</p>
-                <div class="flex gap-3 text-sm">
-                    <a href="#" class="hover:text-[#C99A3E]">Facebook</a>
-                    <a href="#" class="hover:text-[#C99A3E]">Instagram</a>
+                <div class="flex flex-wrap gap-3 text-sm">
+                    <a href="https://www.facebook.com/share/1BDyqZc56h/" target="_blank" rel="noopener noreferrer" class="hover:text-[#C99A3E]">Facebook</a>
+                    <a href="https://www.instagram.com/fondation_tubawwiri" target="_blank" rel="noopener noreferrer" class="hover:text-[#C99A3E]">Instagram</a>
+                    <a href="https://www.youtube.com/@fondationtubawwiri" target="_blank" rel="noopener noreferrer" class="hover:text-[#C99A3E]">YouTube</a>
+                    <a href="https://tiktok.com/@tubawwiri" target="_blank" rel="noopener noreferrer" class="hover:text-[#C99A3E]">TikTok</a>
                     <a href="#" class="hover:text-[#C99A3E]">LinkedIn</a>
                 </div>
-                <a href="https://wa.me/000000000" class="mt-4 inline-block text-sm text-[#C99A3E] font-semibold">WhatsApp →</a>
+                <a href="https://whatsapp.com/channel/0029VbBM0v78vd1S72nzO43C" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-sm text-[#C99A3E] font-semibold">WhatsApp →</a>
             </div>
             <div>
                 <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">Contact</p>

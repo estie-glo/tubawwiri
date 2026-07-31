@@ -23,12 +23,19 @@ return [
 
     'academy_intro' => 'Training catalog, enrollments, certificates, webinars, virtual classes and digital library.',
 
+    'impact_intro' => 'Beneficiaries, trainings, partners, projects and communities supported across Africa.',
+    'media_intro' => 'Photo gallery, video gallery, press releases and press kit.',
+    'testimonials_subtitle' => 'What they say about us',
+
     'gallery_photos' => 'Photo gallery',
     'gallery_videos' => 'Video gallery',
     'press_releases' => 'Press releases',
+    'communiques' => 'Press releases',
+    'press_kit' => 'Press kit',
     'no_photos' => 'No photos yet.',
     'no_videos' => 'No videos yet.',
     'no_press' => 'No press releases yet.',
+    'no_press_kit' => 'No press kit yet.',
 
     'field_enjeux' => 'Key issues',
     'field_objectifs' => 'Objectives',
