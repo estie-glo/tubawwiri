@@ -20,6 +20,7 @@ return [
         'media' => 'Médias',
         'contact' => 'Contact',
         'donate' => 'Faire un don',
+        'more' => 'Plus',
     ],
 
     'home' => [
@@ -33,6 +34,9 @@ return [
         'method_title' => 'La méthode CAVAMIS',
         'method_subtitle' => "Une méthodologie d'accompagnement et de transformation humaine",
         'doctrine_title' => 'La doctrine des 3T',
+        'tesimama' => 'Nos racines — identité, valeurs, ressources.',
+        'tolamuke' => "Notre éveil — conscience, compétences, pouvoir d'agir.",
+        'telumiere' => 'Notre lumière — au service de soi et de la société.',
         'news_title' => 'Actualités',
         'impact_title' => 'Notre impact',
         'join_title' => 'Rejoignez le mouvement',

@@ -3,39 +3,22 @@
 @section('title', __('site.nav.donate') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    @php
-        $instructions = $paymentInstructions ?? config('tubawwiri.donations');
-        $method = session('donation_method');
-        $amount = session('donation_amount');
-    @endphp
-
     <section class="max-w-2xl mx-auto px-4 py-20 reveal">
         <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
         <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.donate') }}</h1>
-        <p class="text-[#4a453c] mb-10 leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
+        <p class="text-[#4a453c] mb-8 leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
 
-        @if ($method)
-            <div class="bg-white border border-[#e5ddc8] p-6 mb-10">
-                <p class="text-xs font-bold uppercase tracking-widest text-[#123D2E] mb-3">{{ __('forms.donation_instructions_title') }}</p>
-                <p class="text-sm text-[#4a453c] mb-4">{{ __('forms.donation_instructions_intro', ['amount' => number_format((float) $amount, 0, ',', ' ')]) }}</p>
-                <ul class="space-y-2 text-sm text-[#123D2E]">
-                    @if ($method === 'mtn_momo' && !empty($instructions['mtn_momo']))
-                        <li><span class="font-semibold">MTN MoMo :</span> {{ $instructions['mtn_momo'] }}</li>
-                    @elseif ($method === 'orange_money' && !empty($instructions['orange_money']))
-                        <li><span class="font-semibold">Orange Money :</span> {{ $instructions['orange_money'] }}</li>
-                    @elseif ($method === 'virement' && (!empty($instructions['bank_iban']) || !empty($instructions['bank_name'])))
-                        <li><span class="font-semibold">{{ __('forms.paiement_virement') }} :</span>
-                            {{ $instructions['account_name'] }}
-                            @if (!empty($instructions['bank_name'])) — {{ $instructions['bank_name'] }} @endif
-                            @if (!empty($instructions['bank_iban'])) — {{ $instructions['bank_iban'] }} @endif
-                        </li>
-                    @else
-                        <li>{{ __('forms.donation_instructions_fallback') }}</li>
-                    @endif
-                </ul>
-                <p class="text-xs text-[#8a8372] mt-4">{{ __('forms.donation_instructions_note') }}</p>
+        {{-- Rappel des numéros Mobile Money --}}
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+            <div class="border-l-2 border-[#C99A3E] bg-white p-4">
+                <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">MTN Mobile Money</p>
+                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+237 676 869 191</p>
             </div>
-        @endif
+            <div class="border-l-2 border-[#C99A3E] bg-white p-4">
+                <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">Orange Money</p>
+                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+237 656 116 762</p>
+            </div>
+        </div>
 
         @if ($errors->any())
             <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
@@ -47,11 +30,6 @@
 
         <form method="POST" action="{{ route('donation.store', app()->getLocale()) }}" class="space-y-8">
             @csrf
-            {{-- Honeypot anti-spam --}}
-            <div class="absolute left-[-9999px]" aria-hidden="true">
-                <label for="website">Website</label>
-                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-            </div>
             <div class="grid sm:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">{{ __('forms.nom_optionnel') }}</label>
@@ -114,7 +92,7 @@
         </form>
 
         <p class="text-xs text-[#8a8372] mt-6">
-            {{ __('forms.donation_manual_note') }}
+            Après votre don par Mobile Money, vous recevrez une confirmation. Pour toute question, contactez-nous directement via WhatsApp au +237 676 869 191.
         </p>
     </section>
 @endsection

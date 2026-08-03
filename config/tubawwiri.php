@@ -46,6 +46,7 @@ return [
         'tiktok' => env('TBW_TIKTOK', 'https://tiktok.com/@tubawwiri'),
         'linkedin' => env('TBW_LINKEDIN', ''),
         'whatsapp_channel' => env('TBW_WHATSAPP_CHANNEL', 'https://whatsapp.com/channel/0029VbBM0v78vd1S72nzO43C'),
+        'threads' => env('TBW_THREADS', ''),
     ],
 
     /*

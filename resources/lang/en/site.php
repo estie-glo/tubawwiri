@@ -20,6 +20,7 @@ return [
         'media' => 'Media',
         'contact' => 'Contact',
         'donate' => 'Donate',
+        'more' => 'More',
     ],
 
     'home' => [
@@ -33,6 +34,9 @@ return [
         'method_title' => 'The CAVAMIS method',
         'method_subtitle' => 'A methodology for support and human transformation',
         'doctrine_title' => 'The 3T doctrine',
+        'tesimama' => 'Our roots — identity, values, resources.',
+        'tolamuke' => 'Our awakening — awareness, skills, agency.',
+        'telumiere' => 'Our light — in service of self and society.',
         'news_title' => 'News',
         'impact_title' => 'Our impact',
         'join_title' => 'Join the movement',

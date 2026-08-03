@@ -31,39 +31,117 @@ class TubawwiriSeeder extends Seeder
 
     private function seedPages(): void
     {
-        Page::updateOrCreate(['slug' => 'qui-sommes-nous'], [
-            'title_fr' => 'Qui sommes-nous',
-            'title_en' => 'About us',
-            'content_fr' => '<p>La Fondation TUBAWWIRI (TBW) œuvre pour la promotion de la santé mentale communautaire et de la résilience humaine.</p>
-<p><strong>Mission :</strong> Promouvoir la santé mentale communautaire, renforcer la résilience humaine et accompagner les familles, les enfants, les femmes et les communautés vers un développement durable.</p>
-<p><strong>Valeurs :</strong> sagesse, dignité, solidarité, résilience, intégrité, innovation, enracinement culturel.</p>
-<p><em>To Be Wise · To Be Whole · To Be Worthy</em></p>',
-            'content_en' => '<p>The TUBAWWIRI Foundation (TBW) promotes community mental health and human resilience.</p>
-<p><strong>Mission:</strong> To promote community mental health, strengthen human resilience and support families, children, women and communities toward sustainable development.</p>
-<p><strong>Values:</strong> wisdom, dignity, solidarity, resilience, integrity, innovation, cultural rootedness.</p>
-<p><em>To Be Wise · To Be Whole · To Be Worthy</em></p>',
-            'meta_title_fr' => 'Qui sommes-nous — Fondation TUBAWWIRI',
-            'meta_title_en' => 'About us — TUBAWWIRI Foundation',
-            'meta_description_fr' => 'Découvrez la mission, la vision et les valeurs de la Fondation TUBAWWIRI (TBW).',
-            'meta_description_en' => 'Discover the mission, vision and values of the TUBAWWIRI Foundation (TBW).',
-            'is_published' => true,
-        ]);
+Page::updateOrCreate(['slug' => 'qui-sommes-nous'], [
+    'title_fr' => 'Qui sommes-nous',
+    'title_en' => 'About us',
+    'content_fr' => <<<'HTML'
+<p><em>Toute forêt commence par une graine. Toute transformation humaine commence par une idée.</em></p>
+<p>En mars 2017, une graine a été semée. Cette graine s'appelait CAVAMIS : Conseils – Astuces de Vie pour Amis. Au départ, elle était discrète : ni institution, ni mouvement, simplement une conviction — chaque être humain peut grandir lorsqu'il reçoit une écoute sincère, des conseils adaptés et une main tendue.</p>
+<p>Les années ont passé. La graine a développé des racines, nourrie par les expériences, les rencontres et les réalités du terrain. Puis est venu le temps de grandir : la graine est devenue un arbre. Cet arbre porte aujourd'hui un nom — <strong>Fondation TUBAWWIRI (TBW)</strong>.</p>
+<p>Mais un arbre n'oublie jamais sa graine. La méthode CAVAMIS reste le cœur de son accompagnement, la doctrine des 3T en est les racines, et sa mission est de faire grandir des personnes, des familles et des communautés.</p>
 
-        Page::updateOrCreate(['slug' => 'notre-approche'], [
-            'title_fr' => 'Notre approche',
-            'title_en' => 'Our approach',
-            'content_fr' => '<p>La méthode <strong>CAVAMIS</strong> est une approche de conseils, astuces de vie, accompagnement communautaire, prévention et éducation sociale.</p>
-<h3>TESIMAMA — Nos racines</h3><p>Reconnecter les personnes à leur identité, leurs valeurs, leurs ressources et leur dignité.</p>
-<h3>TOLAMUKE — Notre éveil</h3><p>Développer la conscience, les compétences, la responsabilité et le leadership.</p>
-<h3>TELUMIERE — Notre lumière</h3><p>Mettre les capacités au service de soi, de la famille, de la communauté et du bien commun.</p>',
-            'content_en' => '<p>The <strong>CAVAMIS</strong> method combines life guidance, community support, prevention and social education.</p>
-<h3>TESIMAMA — Our roots</h3><p>Reconnecting people to their identity, values, resources and dignity.</p>
-<h3>TOLAMUKE — Our awakening</h3><p>Developing awareness, skills, responsibility and leadership.</p>
-<h3>TELUMIERE — Our light</h3><p>Putting abilities at the service of oneself, family, community and the common good.</p>',
-            'meta_title_fr' => 'Notre approche CAVAMIS & 3T',
-            'meta_title_en' => 'Our CAVAMIS & 3T approach',
-            'is_published' => true,
-        ]);
+<h3>Notre mission</h3>
+<p>Promouvoir la santé mentale communautaire, renforcer la résilience humaine et accompagner les familles, les enfants, les femmes et les communautés vers un développement durable.</p>
+
+<h3>Notre vision</h3>
+<p>Être la référence africaine en santé mentale communautaire et en résilience humaine.</p>
+
+<h3>Nos valeurs</h3>
+<p>Sagesse, dignité, solidarité, résilience, intégrité, innovation, enracinement culturel.</p>
+
+<h3>Notre fondatrice</h3>
+<p><strong>Nana Fadimatou Ngapout</strong> — Fondatrice &amp; Directrice Exécutive (CEO), Juriste, Ingénieure éducative, Conseillère d'orientation scolaire, universitaire et professionnelle.</p>
+<p>Professionnelle camerounaise engagée dans les domaines de l'éducation, des sciences humaines et du développement communautaire, elle associe le droit, les sciences de l'éducation et l'accompagnement humain, avec une conviction profonde : chaque personne possède en elle les ressources nécessaires pour se relever, grandir et contribuer au bien commun.</p>
+<p>Maître en Droit pénal et Sciences criminelles, Ingénieure éducative en Intervention, Orientation et Éducation extrascolaire, titulaire d'un Master Professionnel en Guidance Counseling, elle occupe également des fonctions de responsabilité à l'Université d'Ebolowa.</p>
+<p>Elle est à l'origine de la Méthode CAVAMIS et de la Doctrine des 3T — TESIMAMA, TOLAMUKE, TELUMIÈRE.</p>
+<blockquote>
+<p>« Ma passion est de voir les personnes et les communautés retrouver leurs racines, s'éveiller à leur potentiel et faire rayonner leur lumière. À travers la Fondation TUBAWWIRI, je souhaite contribuer à un monde où chacun peut grandir dans la dignité, renforcer sa résilience et transmettre un héritage positif aux générations futures. »</p>
+<p><strong>— Nana Fadimatou Ngapout, Fondatrice</strong></p>
+</blockquote>
+HTML,
+    'content_en' => <<<'HTML'
+<p><em>Every forest begins with a seed. Every human transformation begins with an idea.</em></p>
+<p>In March 2017, a seed was planted. That seed was called CAVAMIS: Life Advice and Tips for Friends. At first it was discreet — neither an institution nor a movement, simply a conviction: every human being can grow when given sincere listening, sound advice and a helping hand.</p>
+<p>Years passed. The seed grew roots, nourished by experience, encounters and realities on the ground. Then came the time to grow: the seed became a tree. That tree now bears a name — <strong>TUBAWWIRI Foundation (TBW)</strong>.</p>
+<p>But a tree never forgets its seed. The CAVAMIS method remains at the heart of its support, the 3T doctrine forms its roots, and its mission is to help people, families and communities grow.</p>
+
+<h3>Our mission</h3>
+<p>To promote community mental health, strengthen human resilience and support families, children, women and communities toward sustainable development.</p>
+
+<h3>Our vision</h3>
+<p>To become Africa's leading organization for community mental health and human resilience.</p>
+
+<h3>Our values</h3>
+<p>Wisdom, dignity, solidarity, resilience, integrity, innovation, cultural rootedness.</p>
+
+<h3>Our founder</h3>
+<p><strong>Nana Fadimatou Ngapout</strong> — Founder &amp; CEO, Lawyer, Educational Engineer, Academic and Career Guidance Counselor.</p>
+<p>A Cameroonian professional engaged in education, human sciences and community development, she combines law, education sciences and human support with a deep conviction: every person holds within themselves the resources needed to rise, grow and contribute to the common good.</p>
+<p>She holds a Master's in Criminal Law and Criminal Sciences, is an Educational Engineer in Intervention, Guidance and Extracurricular Education, and holds a Professional Master's in Guidance Counseling. She also holds a position of responsibility at the University of Ebolowa.</p>
+<p>She originated the CAVAMIS Method and the 3T Doctrine — TESIMAMA, TOLAMUKE, TELUMIERE.</p>
+<blockquote>
+<p>"My passion is to see people and communities reconnect with their roots, awaken their potential and let their light shine. Through the TUBAWWIRI Foundation, I want to contribute to a world where everyone can grow in dignity, build resilience and pass on a positive legacy to future generations."</p>
+<p><strong>— Nana Fadimatou Ngapout, Founder</strong></p>
+</blockquote>
+HTML,
+    'is_published' => true,
+]);
+
+Page::updateOrCreate(['slug' => 'notre-approche'], [
+    'title_fr' => 'Notre approche',
+    'title_en' => 'Our approach',
+    'content_fr' => <<<'HTML'
+<h3>La Méthode CAVAMIS</h3>
+<p>CAVAMIS signifie <em>Conseils – Astuces de Vie pour Amis</em>. Créée en mars 2017, elle constitue la graine historique, pédagogique et humaine ayant donné naissance à TUBAWWIRI. Elle repose sur sept piliers :</p>
+<ul>
+<li>L'écoute</li>
+<li>Le conseil</li>
+<li>La sensibilisation</li>
+<li>L'éveil des consciences</li>
+<li>La motivation</li>
+<li>La transmission de connaissances utiles</li>
+<li>Le passage à l'action</li>
+</ul>
+
+<h3>La Doctrine des 3T</h3>
+<p>La Doctrine des 3T s'inspire directement de la Méthode CAVAMIS et structure le parcours de transformation : <strong>TESIMAMA → TOLAMUKE → TELUMIÈRE</strong> — se reconnecter, s'éveiller, agir et rayonner.</p>
+
+<h4>TESIMAMA — Nos racines</h4>
+<p>Se reconnecter à son identité, à son histoire, à ses valeurs, à sa famille, à sa culture et à ses ressources intérieures.</p>
+
+<h4>TOLAMUKE — Notre éveil</h4>
+<p>Développer sa conscience, ses connaissances, ses compétences, son discernement et son pouvoir d'agir.</p>
+
+<h4>TELUMIÈRE — Notre lumière</h4>
+<p>Mettre ses capacités, son expérience et ses talents au service de soi-même, de sa famille et de la communauté.</p>
+HTML,
+    'content_en' => <<<'HTML'
+<h3>The CAVAMIS Method</h3>
+<p>CAVAMIS stands for <em>Life Advice and Tips for Friends</em>. Created in March 2017, it is the historical, educational and human seed that gave birth to TUBAWWIRI. It rests on seven pillars:</p>
+<ul>
+<li>Listening</li>
+<li>Advice</li>
+<li>Awareness-raising</li>
+<li>Awakening of consciousness</li>
+<li>Motivation</li>
+<li>Transmission of useful knowledge</li>
+<li>Moving into action</li>
+</ul>
+
+<h3>The 3T Doctrine</h3>
+<p>The 3T Doctrine is directly inspired by the CAVAMIS Method and structures the transformation journey: <strong>TESIMAMA → TOLAMUKE → TELUMIERE</strong> — reconnect, awaken, act and shine.</p>
+
+<h4>TESIMAMA — Our roots</h4>
+<p>Reconnecting with one's identity, history, values, family, culture and inner resources.</p>
+
+<h4>TOLAMUKE — Our awakening</h4>
+<p>Developing awareness, knowledge, skills, discernment and the power to act.</p>
+
+<h4>TELUMIERE — Our light</h4>
+<p>Putting one's abilities, experience and talents at the service of oneself, one's family and the community.</p>
+HTML,
+    'is_published' => true,
+]);
     }
 
     private function seedDomainsAndPrograms(): void
