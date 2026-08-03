@@ -51,4 +51,19 @@ return [
     'become_partner_program' => 'Devenir partenaire de ce programme',
 
     'testimonials' => 'Témoignages',
+
+    'engagement_title' => "Le Parcours d'engagement dans la Tribu",
+    'engagement_subtitle' => "Six façons de s'engager aux côtés de TUBAWWIRI, selon votre disponibilité et vos talents.",
+    'role_benevole_label' => 'Bénévole TUBAWWIRI',
+    'role_benevole_desc' => 'Participe ponctuellement ou régulièrement aux activités.',
+    'role_membre_label' => 'Membre de la Tribu',
+    'role_membre_desc' => 'Adhère aux valeurs et prend part à la vie de la communauté.',
+    'role_gardien_label' => 'Gardien TUBAWWIRI',
+    'role_gardien_desc' => "Contribue à protéger les enfants, soutenir les familles et promouvoir les valeurs de la Fondation.",
+    'role_ambassadeur_label' => 'Ambassadeur TUBAWWIRI',
+    'role_ambassadeur_desc' => 'Représente la Fondation, fait connaître sa mission et mobilise les partenaires.',
+    'role_formateur_label' => 'Formateur CAVAMIS',
+    'role_formateur_desc' => 'Anime des formations fondées sur la Méthode CAVAMIS et la Doctrine des 3T.',
+    'role_mentor_label' => 'Mentor TUBAWWIRI',
+    'role_mentor_desc' => "Accompagne des personnes, des jeunes, des familles ou des porteurs d'initiatives.",
 ];
