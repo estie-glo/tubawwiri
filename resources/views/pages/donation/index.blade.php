@@ -12,11 +12,11 @@
         <div class="grid sm:grid-cols-2 gap-4 mb-10">
             <div class="border-l-2 border-[#C99A3E] bg-white p-4">
                 <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">MTN Mobile Money</p>
-                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+237 676 869 191</p>
+                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+{{ config('tubawwiri.donations.mtn_momo') }}</p>
             </div>
             <div class="border-l-2 border-[#C99A3E] bg-white p-4">
                 <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">Orange Money</p>
-                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+237 656 116 762</p>
+                <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+{{ config('tubawwiri.donations.orange_money') }}</p>
             </div>
         </div>
 
