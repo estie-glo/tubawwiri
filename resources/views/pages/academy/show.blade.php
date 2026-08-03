@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', $training->title_fr . ' — TBW Academy')
+@section('title', localized($training, 'title') . ' — ' . __('site.nav.academy'))
 
 @section('content')
     <section class="max-w-5xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 reveal">
         <div>
-            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">TBW Academy</p>
-            <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-6">{{ $training->title_fr }}</h1>
-            <p class="text-[#4a453c] mb-8 leading-relaxed">{{ $training->description_fr }}</p>
+            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('site.nav.academy') }}</p>
+            <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-6">{{ localized($training, 'title') }}</h1>
+            <p class="text-[#4a453c] mb-8 leading-relaxed">{{ localized($training, 'description') }}</p>
 
             <div class="grid grid-cols-2 gap-6 text-sm">
                 <div class="border-l-2 border-[#6B2A28] pl-3">
@@ -19,7 +19,7 @@
                     <p class="font-display font-semibold text-[#123D2E]">{{ ucfirst($training->level ?? '—') }}</p>
                 </div>
                 <div class="border-l-2 border-[#6B2A28] pl-3">
-                    <p class="text-xs text-[#8a8372] uppercase tracking-widest">Durée</p>
+                    <p class="text-xs text-[#8a8372] uppercase tracking-widest">{{ __('pages.field_duree') }}</p>
                     <p class="font-display font-semibold text-[#123D2E]">{{ $training->duree ?? '—' }}</p>
                 </div>
                 @if ($training->price)

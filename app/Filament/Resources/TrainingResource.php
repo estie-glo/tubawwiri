@@ -21,10 +21,12 @@ class TrainingResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('title_fr')->label('Titre')->required()->live(onBlur: true)
+            Forms\Components\TextInput::make('title_fr')->label('Titre FR')->required()->live(onBlur: true)
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+            Forms\Components\TextInput::make('title_en')->label('Titre EN'),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\Textarea::make('description_fr')->label('Description')->rows(4),
+            Forms\Components\Textarea::make('description_fr')->label('Description FR')->rows(4),
+            Forms\Components\Textarea::make('description_en')->label('Description EN')->rows(4),
             Forms\Components\Select::make('level')->label('Niveau')->options([
                 'debutant' => 'Débutant',
                 'intermediaire' => 'Intermédiaire',

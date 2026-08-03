@@ -13,8 +13,8 @@
                 <a href="{{ route('observatory.show', [app()->getLocale(), $report->slug]) }}"
                    class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
                     <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ $report->type }}</p>
-                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ $report->title_fr }}</h2>
-                    <p class="text-sm text-[#8a8372] mt-2">{{ $report->summary_fr }}</p>
+                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ localized($report, 'title') }}</h2>
+                    <p class="text-sm text-[#8a8372] mt-2">{{ localized($report, 'summary') }}</p>
                     @if ($report->published_on)
                         <p class="text-xs text-[#8a8372] mt-3">{{ $report->published_on->format('d/m/Y') }}</p>
                     @endif

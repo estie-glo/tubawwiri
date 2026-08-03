@@ -74,4 +74,7 @@ return [
     'donation_instructions_fallback' => 'Notre équipe vous contactera avec les instructions de paiement (carte / Mobile Money).',
     'donation_instructions_note' => 'Après paiement, conservez votre référence de transaction. Nous confirmerons dès réception.',
     'donation_manual_note' => 'Les dons se finalisent pour l’instant via Mobile Money ou virement. L’intégration API automatique arrivera ensuite.',
+    'join_success' => 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.',
+    'quote_success' => 'Votre demande de devis a bien été envoyée. Notre équipe vous contactera rapidement.',
+    'enrollment_success' => 'Votre inscription a bien été enregistrée. Vous recevrez un email de confirmation.',
 ];

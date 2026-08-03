@@ -31,7 +31,7 @@ class AcademyController extends Controller
     public function storeEnrollment(Request $request)
     {
         if ($this->isHoneypotFilled($request)) {
-            return back()->with('success', 'Votre inscription a bien été enregistrée. Vous recevrez un email de confirmation.');
+            return back()->with('success', __('forms.enrollment_success'));
         }
 
         $validated = $request->validate([
@@ -63,6 +63,6 @@ class AcademyController extends Controller
             Log::warning('Échec envoi email notification [academy]: ' . $e->getMessage());
         }
 
-        return back()->with('success', 'Votre inscription a bien été enregistrée. Vous recevrez un email de confirmation.');
+        return back()->with('success', __('forms.enrollment_success'));
     }
 }

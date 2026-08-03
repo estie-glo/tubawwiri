@@ -13,10 +13,10 @@
                 <a href="{{ route('programs.show', [app()->getLocale(), $program->slug]) }}"
                    class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
                     @if ($program->actionDomain)
-                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ $program->actionDomain->title_fr }}</p>
+                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ localized($program->actionDomain, 'title') }}</p>
                     @endif
-                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ $program->title_fr }}</h2>
-                    <p class="text-sm text-[#8a8372] mt-2">{{ $program->summary_fr }}</p>
+                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ localized($program, 'title') }}</h2>
+                    <p class="text-sm text-[#8a8372] mt-2">{{ localized($program, 'summary') }}</p>
                 </a>
             @endforeach
         </div>

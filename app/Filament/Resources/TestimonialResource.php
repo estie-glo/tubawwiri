@@ -23,7 +23,8 @@ class TestimonialResource extends Resource
         return $form->schema([
             Forms\Components\TextInput::make('nom')->required(),
             Forms\Components\TextInput::make('role')->label('Rôle / statut'),
-            Forms\Components\Textarea::make('content_fr')->label('Témoignage')->required()->rows(4),
+            Forms\Components\Textarea::make('content_fr')->label('Témoignage FR')->required()->rows(4),
+            Forms\Components\Textarea::make('content_en')->label('Témoignage EN')->rows(4),
             Forms\Components\FileUpload::make('photo')->image()->directory('testimonials'),
             Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
         ]);

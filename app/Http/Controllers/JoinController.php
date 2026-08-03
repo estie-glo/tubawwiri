@@ -21,7 +21,7 @@ class JoinController extends Controller
     public function store(Request $request)
     {
         if ($this->isHoneypotFilled($request)) {
-            return back()->with('success', 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.');
+            return back()->with('success', __('forms.join_success'));
         }
 
         $validated = $request->validate([
@@ -51,6 +51,6 @@ class JoinController extends Controller
             Log::warning('Échec envoi email notification [join]: ' . $e->getMessage());
         }
 
-        return back()->with('success', 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.');
+        return back()->with('success', __('forms.join_success'));
     }
 }

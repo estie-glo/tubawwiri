@@ -58,12 +58,16 @@ Route::prefix('{locale}')
 
         // 7. TBW Consulting
         Route::get('/tbw-consulting', [ConsultingController::class, 'index'])->name('consulting.index');
-        Route::post('/tbw-consulting/devis', [ConsultingController::class, 'storeQuote'])->name('consulting.quote.store');
+        Route::post('/tbw-consulting/devis', [ConsultingController::class, 'storeQuote'])
+            ->middleware('throttle:8,1')
+            ->name('consulting.quote.store');
 
         // 8. TBW Academy
         Route::get('/tbw-academy', [AcademyController::class, 'index'])->name('academy.index');
         Route::get('/tbw-academy/{training}', [AcademyController::class, 'show'])->name('academy.show');
-        Route::post('/tbw-academy/inscription', [AcademyController::class, 'storeEnrollment'])->name('academy.enroll.store');
+        Route::post('/tbw-academy/inscription', [AcademyController::class, 'storeEnrollment'])
+            ->middleware('throttle:8,1')
+            ->name('academy.enroll.store');
 
         // 9. Centre de ressources
         Route::get('/ressources', [ResourceController::class, 'index'])->name('resources.index');
@@ -78,22 +82,32 @@ Route::prefix('{locale}')
 
         // 12. Faire un don
         Route::get('/faire-un-don', [DonationController::class, 'index'])->name('donation.index');
-        Route::post('/faire-un-don', [DonationController::class, 'store'])->name('donation.store');
+        Route::post('/faire-un-don', [DonationController::class, 'store'])
+            ->middleware('throttle:5,1')
+            ->name('donation.store');
 
         // 13. Nous rejoindre
         Route::get('/nous-rejoindre', [JoinController::class, 'index'])->name('join.index');
-        Route::post('/nous-rejoindre', [JoinController::class, 'store'])->name('join.store');
+        Route::post('/nous-rejoindre', [JoinController::class, 'store'])
+            ->middleware('throttle:8,1')
+            ->name('join.store');
 
         // 14. Médias
         Route::get('/medias', [MediaController::class, 'index'])->name('media.index');
 
         // 16. Contact
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-        Route::post('/devenir-partenaire', [ContactController::class, 'storePartner'])->name('partner.store');
+        Route::post('/contact', [ContactController::class, 'store'])
+            ->middleware('throttle:8,1')
+            ->name('contact.store');
+        Route::post('/devenir-partenaire', [ContactController::class, 'storePartner'])
+            ->middleware('throttle:8,1')
+            ->name('partner.store');
 
         // Newsletter
-        Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
+        Route::post('/newsletter', [NewsletterController::class, 'store'])
+            ->middleware('throttle:5,1')
+            ->name('newsletter.store');
     });
 
 // 15. Boutique TBW (phase 2) - route réservée, à activer plus tard

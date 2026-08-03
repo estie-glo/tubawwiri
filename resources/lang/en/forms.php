@@ -74,4 +74,7 @@ return [
     'donation_instructions_fallback' => 'Our team will contact you with payment instructions (card / Mobile Money).',
     'donation_instructions_note' => 'After payment, keep your transaction reference. We will confirm upon receipt.',
     'donation_manual_note' => 'Donations are currently completed via Mobile Money or bank transfer. Automatic API integration will follow.',
+    'join_success' => 'Thank you! Your request has been sent. The TUBAWWIRI Tribe will contact you soon.',
+    'quote_success' => 'Your quote request has been sent. Our team will contact you shortly.',
+    'enrollment_success' => 'Your enrollment has been recorded. You will receive a confirmation email.',
 ];

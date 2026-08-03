@@ -10,7 +10,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = [
-        'slug', 'title_fr', 'type', 'summary_fr',
+        'slug', 'title_fr', 'title_en', 'type', 'summary_fr', 'summary_en',
         'file_path', 'cover_image', 'published_on', 'is_published',
     ];
 

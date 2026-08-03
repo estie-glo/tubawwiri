@@ -13,7 +13,7 @@
                 <div class="bg-white p-8 text-center">
                     <p class="font-display text-4xl font-semibold text-[#123D2E]">+{{ number_format($stat->value, 0, ',', ' ') }}</p>
                     <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mt-2">
-                        {{ app()->getLocale() === 'en' && $stat->label_en ? $stat->label_en : $stat->label_fr }}
+                        {{ localized($stat, 'label') }}
                     </p>
                 </div>
             @endforeach
@@ -30,7 +30,7 @@
                             @if ($testimonial->photo)
                                 <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="{{ $testimonial->nom }}" class="w-16 h-16 rounded-full object-cover mb-4">
                             @endif
-                            <p class="text-[#4a453c] leading-relaxed italic">« {{ $testimonial->content_fr }} »</p>
+                            <p class="text-[#4a453c] leading-relaxed italic">« {{ localized($testimonial, 'content') }} »</p>
                             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mt-4">{{ $testimonial->nom }}</p>
                             @if ($testimonial->role)
                                 <p class="text-xs text-[#8a8372]">{{ $testimonial->role }}</p>

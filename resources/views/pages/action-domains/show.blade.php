@@ -1,28 +1,28 @@
 @extends('layouts.app')
 
-@section('title', $actionDomain->title_fr . ' — Fondation TUBAWWIRI (TBW)')
+@section('title', localized($actionDomain, 'title') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
     <section class="max-w-3xl mx-auto px-4 py-20 reveal">
         <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('site.home.domains_title') }}</p>
         <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">
-            {{ app()->getLocale() === 'en' && $actionDomain->title_en ? $actionDomain->title_en : $actionDomain->title_fr }}
+            {{ localized($actionDomain, 'title') }}
         </h1>
         <p class="text-[#4a453c] mb-10 leading-relaxed">
-            {{ app()->getLocale() === 'en' && $actionDomain->summary_en ? $actionDomain->summary_en : $actionDomain->summary_fr }}
+            {{ localized($actionDomain, 'summary') }}
         </p>
 
         @foreach ([
-            'enjeux_fr' => __('pages.field_enjeux'),
-            'objectifs_fr' => __('pages.field_objectifs'),
-            'actions_fr' => __('pages.field_actions'),
-            'publics_cibles_fr' => __('pages.field_publics_cibles'),
-            'resultats_attendus_fr' => __('pages.field_resultats_attendus'),
+            'enjeux' => __('pages.field_enjeux'),
+            'objectifs' => __('pages.field_objectifs'),
+            'actions' => __('pages.field_actions'),
+            'publics_cibles' => __('pages.field_publics_cibles'),
+            'resultats_attendus' => __('pages.field_resultats_attendus'),
         ] as $field => $label)
-            @if ($actionDomain->$field)
+            @if (localized($actionDomain, $field))
                 <div class="mb-8 border-t border-[#e5ddc8] pt-6">
                     <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-2">{{ $label }}</p>
-                    <div class="prose max-w-none text-[#4a453c]">{!! $actionDomain->$field !!}</div>
+                    <div class="prose max-w-none text-[#4a453c]">{!! localized($actionDomain, $field) !!}</div>
                 </div>
             @endif
         @endforeach
@@ -34,7 +34,7 @@
                     @foreach ($actionDomain->programs as $program)
                         <li>
                             <a href="{{ route('programs.show', [app()->getLocale(), $program->slug]) }}" class="text-[#123D2E] hover:text-[#C99A3E] font-medium">
-                                {{ $program->title_fr }} →
+                                {{ localized($program, 'title') }} →
                             </a>
                         </li>
                     @endforeach

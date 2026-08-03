@@ -62,10 +62,10 @@
                     <a href="{{ route('action-domains.show', [app()->getLocale(), $domain->slug]) }}"
                        class="bg-white p-5 group hover:bg-[#F6F1E4] hover-lift transition flex flex-col justify-between min-h-[140px]">
                         <span class="font-display text-2xl text-[#C99A3E] group-hover:text-[#6B2A28] transition">
-                            {{ mb_substr($domain->title_fr, 0, 1) }}
+                            {{ mb_substr(localized($domain, 'title'), 0, 1) }}
                         </span>
                         <p class="text-xs font-semibold text-[#123D2E] leading-snug mt-4">
-                            {{ app()->getLocale() === 'en' && $domain->title_en ? $domain->title_en : $domain->title_fr }}
+                            {{ localized($domain, 'title') }}
                         </p>
                     </a>
                 @endforeach
@@ -126,8 +126,8 @@
             <div class="space-y-5">
                 @forelse ($latestArticles as $article)
                     <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}" class="block group border-b border-[#e5ddc8] pb-4">
-                        <p class="text-sm font-semibold text-[#123D2E] group-hover:text-[#6B2A28]">{{ $article->title_fr }}</p>
-                        <p class="text-xs text-[#8a8372] mt-1">{{ $article->excerpt_fr }}</p>
+                        <p class="text-sm font-semibold text-[#123D2E] group-hover:text-[#6B2A28]">{{ localized($article, 'title') }}</p>
+                        <p class="text-xs text-[#8a8372] mt-1">{{ localized($article, 'excerpt') }}</p>
                     </a>
                 @empty
                     <p class="text-sm text-[#8a8372]">{{ __('pages.no_news') }}</p>
@@ -141,7 +141,7 @@
                 @foreach ($impactStats as $stat)
                     <div class="border-l-2 border-[#6B2A28] pl-3">
                         <p class="font-display text-2xl font-semibold text-[#123D2E]">+{{ number_format($stat->value, 0, ',', ' ') }}</p>
-                        <p class="text-xs text-[#8a8372] mt-1">{{ app()->getLocale() === 'en' && $stat->label_en ? $stat->label_en : $stat->label_fr }}</p>
+                        <p class="text-xs text-[#8a8372] mt-1">{{ localized($stat, 'label') }}</p>
                     </div>
                 @endforeach
             </div>

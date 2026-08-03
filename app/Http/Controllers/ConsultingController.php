@@ -21,7 +21,7 @@ class ConsultingController extends Controller
     public function storeQuote(Request $request)
     {
         if ($this->isHoneypotFilled($request)) {
-            return back()->with('success', 'Votre demande de devis a bien été envoyée. Notre équipe vous contactera rapidement.');
+            return back()->with('success', __('forms.quote_success'));
         }
 
         $validated = $request->validate([
@@ -57,6 +57,6 @@ class ConsultingController extends Controller
             Log::warning('Échec envoi email notification [consulting]: ' . $e->getMessage());
         }
 
-        return back()->with('success', 'Votre demande de devis a bien été envoyée. Notre équipe vous contactera rapidement.');
+        return back()->with('success', __('forms.quote_success'));
     }
 }

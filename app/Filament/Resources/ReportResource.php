@@ -23,8 +23,9 @@ class ReportResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('title_fr')->label('Titre')->required()->live(onBlur: true)
+            Forms\Components\TextInput::make('title_fr')->label('Titre FR')->required()->live(onBlur: true)
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+            Forms\Components\TextInput::make('title_en')->label('Titre EN'),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
             Forms\Components\Select::make('type')->options([
                 'analyse' => 'Analyse',
@@ -32,7 +33,8 @@ class ReportResource extends Resource
                 'rapport' => 'Rapport',
                 'barometre' => 'Baromètre',
             ])->required(),
-            Forms\Components\Textarea::make('summary_fr')->label('Résumé')->rows(3),
+            Forms\Components\Textarea::make('summary_fr')->label('Résumé FR')->rows(3),
+            Forms\Components\Textarea::make('summary_en')->label('Résumé EN')->rows(3),
             Forms\Components\FileUpload::make('file_path')->label('Document PDF')->directory('reports')->acceptedFileTypes(['application/pdf']),
             Forms\Components\FileUpload::make('cover_image')->image()->directory('reports-covers'),
             Forms\Components\DatePicker::make('published_on')->label('Date de publication'),

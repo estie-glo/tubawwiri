@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', $report->title_fr . ' — Fondation TUBAWWIRI (TBW)')
+@section('title', localized($report, 'title') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
     <section class="max-w-3xl mx-auto px-4 py-20 reveal">
         <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ $report->type }}</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-3">{{ $report->title_fr }}</h1>
+        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-3">{{ localized($report, 'title') }}</h1>
         @if ($report->published_on)
             <p class="text-xs text-[#8a8372] mb-8">{{ $report->published_on->format('d/m/Y') }}</p>
         @endif
@@ -14,7 +14,7 @@
             <img src="{{ asset('storage/' . $report->cover_image) }}" class="mb-8 w-full">
         @endif
 
-        <p class="text-[#4a453c] mb-10 leading-relaxed">{{ $report->summary_fr }}</p>
+        <p class="text-[#4a453c] mb-10 leading-relaxed">{{ localized($report, 'summary') }}</p>
 
         @if ($report->file_path)
             <a href="{{ asset('storage/' . $report->file_path) }}" target="_blank"
