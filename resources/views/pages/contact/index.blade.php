@@ -3,6 +3,11 @@
 @section('title', __('site.nav.contact') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
+    @php
+        $c = $contact ?? config('tubawwiri.contact');
+        $mapsQuery = urlencode($c['maps_query'] ?? 'Cameroun');
+    @endphp
+
     <section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 reveal">
 
         <div>
@@ -10,19 +15,31 @@
             <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-8">{{ __('site.nav.contact') }}</h1>
 
             <div class="space-y-2 text-sm text-[#4a453c] mb-10">
-                <p>contact@tubawwiri.org</p>
-                <p>+237 ...</p>
-                <p>WhatsApp : +237 ...</p>
-                <p>www.tubawwiri.org</p>
+                <p>{{ $c['email'] }}</p>
+                @if (!empty($c['phone']))
+                    <p>{{ $c['phone'] }}</p>
+                @endif
+                @if (!empty($c['whatsapp']))
+                    <p>WhatsApp :
+                        <a href="https://wa.me/{{ preg_replace('/\D+/', '', $c['whatsapp']) }}" target="_blank" rel="noopener noreferrer" class="text-[#123D2E] font-semibold hover:text-[#C99A3E]">
+                            {{ $c['whatsapp'] }}
+                        </a>
+                    </p>
+                @endif
+                <p>{{ $c['website'] }}</p>
             </div>
 
             <div class="aspect-video">
-                <iframe src="https://www.google.com/maps?q=Cameroun&output=embed" class="w-full h-full" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps?q={{ $mapsQuery }}&output=embed" class="w-full h-full" loading="lazy"></iframe>
             </div>
 
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mt-12 mb-6">{{ __('forms.devenir_partenaire') }}</p>
-            <form method="POST" action="{{ route('partner.store', app()->getLocale()) }}" class="space-y-6">
+            <form method="POST" action="{{ route('partner.store', app()->getLocale()) }}" class="space-y-6 relative">
                 @csrf
+                <div class="absolute left-[-9999px]" aria-hidden="true">
+                    <label for="website_partner">Website</label>
+                    <input type="text" name="website" id="website_partner" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">{{ __('forms.organisation') }} <span class="text-[#C99A3E]">*</span></label>
@@ -74,8 +91,12 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('contact.store', app()->getLocale()) }}" class="space-y-6">
+            <form method="POST" action="{{ route('contact.store', app()->getLocale()) }}" class="space-y-6 relative">
                 @csrf
+                <div class="absolute left-[-9999px]" aria-hidden="true">
+                    <label for="website_contact">Website</label>
+                    <input type="text" name="website" id="website_contact" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">{{ __('forms.nom') }} <span class="text-[#C99A3E]">*</span></label>

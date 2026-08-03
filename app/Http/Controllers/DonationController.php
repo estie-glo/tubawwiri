@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\RejectsHoneypot;
 use App\Mail\FormSubmissionNotification;
 use App\Models\Donation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class DonationController extends Controller
 {
+    use RejectsHoneypot;
+
     public function index()
     {
-        return view('pages.donation.index');
+        return view('pages.donation.index', [
+            'paymentInstructions' => config('tubawwiri.donations'),
+        ]);
     }
 
     public function store(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return redirect()
+                ->route('donation.index', app()->getLocale())
+                ->with('success', __('forms.donation_success'));
+        }
+
         $validated = $request->validate([
             'nom' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
@@ -26,8 +37,8 @@ class DonationController extends Controller
             'type_don' => 'required|in:ponctuel,mensuel,parrainage,entreprise',
         ]);
 
-        // NOTE pour le développeur : brancher ici l'API MTN MoMo / Orange Money
-        // selon le moyen_paiement choisi, puis mettre à jour provider_reference et status.
+        // Mode livrable : intention enregistrée + instructions manuelles affichées.
+        // Brancher ici l'API MTN MoMo / Orange Money plus tard (provider_reference / status).
         $donation = Donation::create($validated + ['status' => 'en_attente']);
 
         try {
@@ -48,6 +59,8 @@ class DonationController extends Controller
 
         return redirect()
             ->route('donation.index', app()->getLocale())
-            ->with('success', 'Merci pour votre générosité ! Vous allez recevoir les instructions de paiement.');
+            ->with('success', __('forms.donation_success'))
+            ->with('donation_method', $validated['moyen_paiement'])
+            ->with('donation_amount', $validated['montant']);
     }
 }

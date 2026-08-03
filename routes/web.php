@@ -10,6 +10,7 @@ use App\Http\Controllers\ImpactController;
 use App\Http\Controllers\JoinController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ObservatoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
@@ -90,6 +91,9 @@ Route::prefix('{locale}')
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
         Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
         Route::post('/devenir-partenaire', [ContactController::class, 'storePartner'])->name('partner.store');
+
+        // Newsletter
+        Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
     });
 
 // 15. Boutique TBW (phase 2) - route réservée, à activer plus tard

@@ -9,9 +9,9 @@ class ImpactController extends Controller
 {
     public function index()
     {
-        $impactStats = ImpactStat::orderBy('order')->get();
+        $stats = ImpactStat::orderBy('order')->get();
         $testimonials = Testimonial::where('is_published', true)->get();
 
-        return view('pages.impact.index', compact('impactStats', 'testimonials'));
+        return view('pages.impact.index', compact('stats', 'testimonials'));
     }
 }

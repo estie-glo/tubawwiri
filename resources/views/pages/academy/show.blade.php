@@ -42,8 +42,12 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('academy.enroll.store', app()->getLocale()) }}" class="space-y-6">
+            <form method="POST" action="{{ route('academy.enroll.store', app()->getLocale()) }}" class="space-y-6 relative">
                 @csrf
+                <div class="absolute left-[-9999px]" aria-hidden="true">
+                    <label for="website_enroll">Website</label>
+                    <input type="text" name="website" id="website_enroll" tabindex="-1" autocomplete="off">
+                </div>
                 <input type="hidden" name="training_id" value="{{ $training->id }}">
 
                 <div class="grid sm:grid-cols-2 gap-6">
