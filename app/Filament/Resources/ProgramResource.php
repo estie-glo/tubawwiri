@@ -32,19 +32,27 @@ class ProgramResource extends Resource
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
             Forms\Components\TextInput::make('title_en')->label('Titre (EN)'),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\Textarea::make('summary_fr')->label('Résumé (FR)')->rows(2),
-            Forms\Components\Textarea::make('summary_en')->label('Résumé (EN)')->rows(2),
-            Forms\Components\RichEditor::make('objectifs_fr')->label('Objectifs (FR)'),
-            Forms\Components\RichEditor::make('objectifs_en')->label('Objectifs (EN)'),
-            Forms\Components\RichEditor::make('activites_fr')->label('Activités (FR)'),
-            Forms\Components\RichEditor::make('activites_en')->label('Activités (EN)'),
+            Forms\Components\Textarea::make('summary_fr')->label('Résumé')->rows(2),
+
+            Forms\Components\Fieldset::make('Structure du programme')->schema([
+                Forms\Components\Textarea::make('probleme_fr')->label('Problème identifié')->rows(3)
+                    ->helperText("Quel problème concret ce programme cherche-t-il à résoudre ?"),
+                Forms\Components\Textarea::make('public_concerne_fr')->label('Public concerné')->rows(2),
+                Forms\Components\RichEditor::make('objectifs_fr')->label('Objectifs'),
+                Forms\Components\RichEditor::make('activites_fr')->label('Activités'),
+                Forms\Components\Textarea::make('resultats_attendus_fr')->label('Résultats attendus')->rows(3),
+                Forms\Components\Textarea::make('indicateurs_fr')->label('Indicateurs')->rows(2),
+                Forms\Components\CheckboxList::make('defis_3t')->label('Défis des 3T associés')
+                    ->options([
+                        'tesimama' => 'TESIMAMA — Se reconnecter',
+                        'tolamuke' => 'TOLAMUKE — Prendre conscience et apprendre',
+                        'telumiere' => 'TELUMIÈRE — Agir et faire rayonner',
+                    ]),
+            ])->columns(1),
+
             Forms\Components\TextInput::make('duree')->label('Durée'),
-            Forms\Components\Textarea::make('beneficiaires_fr')->label('Bénéficiaires (FR)'),
-            Forms\Components\Textarea::make('beneficiaires_en')->label('Bénéficiaires (EN)'),
-            Forms\Components\Textarea::make('indicateurs_fr')->label('Indicateurs (FR)'),
-            Forms\Components\Textarea::make('indicateurs_en')->label('Indicateurs (EN)'),
-            Forms\Components\Textarea::make('partenaires_souhaites_fr')->label('Partenaires souhaités (FR)'),
-            Forms\Components\Textarea::make('partenaires_souhaites_en')->label('Partenaires souhaités (EN)'),
+            Forms\Components\Textarea::make('beneficiaires_fr')->label('Bénéficiaires')->rows(2),
+            Forms\Components\Textarea::make('partenaires_souhaites_fr')->label('Partenaires souhaités')->rows(2),
             Forms\Components\FileUpload::make('cover_image')->image()->directory('programs'),
             Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
         ]);

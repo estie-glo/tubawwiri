@@ -11,18 +11,16 @@ class Program extends Model
 
     protected $fillable = [
         'action_domain_id', 'slug', 'title_fr', 'title_en',
-        'summary_fr', 'summary_en',
-        'objectifs_fr', 'objectifs_en',
-        'activites_fr', 'activites_en',
-        'duree',
-        'beneficiaires_fr', 'beneficiaires_en',
-        'indicateurs_fr', 'indicateurs_en',
-        'partenaires_souhaites_fr', 'partenaires_souhaites_en',
+        'summary_fr', 'probleme_fr', 'public_concerne_fr',
+        'objectifs_fr', 'activites_fr', 'duree',
+        'beneficiaires_fr', 'indicateurs_fr', 'resultats_attendus_fr',
+        'defis_3t', 'partenaires_souhaites_fr',
         'cover_image', 'is_published',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
+        'defis_3t' => 'array',
     ];
 
     public function getRouteKeyName(): string
@@ -33,5 +31,19 @@ class Program extends Model
     public function actionDomain()
     {
         return $this->belongsTo(ActionDomain::class);
+    }
+
+    // Libellés d'affichage pour les Défis 3T cochés (ex: TESIMAMA — Se reconnecter)
+    public function defis3tLabels(): array
+    {
+        $labels = [
+            'tesimama' => 'TESIMAMA — Se reconnecter',
+            'tolamuke' => 'TOLAMUKE — Prendre conscience et apprendre',
+            'telumiere' => 'TELUMIÈRE — Agir et faire rayonner',
+        ];
+
+        return collect($this->defis_3t ?? [])
+            ->map(fn ($key) => $labels[$key] ?? $key)
+            ->all();
     }
 }
