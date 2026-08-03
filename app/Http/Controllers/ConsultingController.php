@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\RejectsHoneypot;
 use App\Mail\FormSubmissionNotification;
 use App\Models\QuoteRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ConsultingController extends Controller
 {
+    use RejectsHoneypot;
+
     public function index()
     {
         return view('pages.consulting.index');
@@ -17,6 +20,10 @@ class ConsultingController extends Controller
 
     public function storeQuote(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', 'Votre demande de devis a bien été envoyée. Notre équipe vous contactera rapidement.');
+        }
+
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'organisation' => 'nullable|string|max:255',

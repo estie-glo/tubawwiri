@@ -60,4 +60,18 @@ return [
     'btn_envoyer_ma_demande' => 'Send my request',
     'btn_confirmer_inscription' => 'Confirm my enrollment',
     'btn_continuer_don' => 'Continue my donation',
+
+    'flash_title' => 'Message sent',
+    'contact_success' => 'Your message has been sent. Thank you for contacting us.',
+    'partner_success' => 'Thank you for your interest! Our partnerships team will contact you soon.',
+    'donation_success' => 'Thank you for your generosity! Here are the instructions to complete your donation.',
+    'newsletter_title' => 'Newsletter',
+    'newsletter_subtitle' => 'Receive our news and analyses.',
+    'newsletter_submit' => 'Subscribe',
+    'newsletter_success' => 'Thank you! Your newsletter subscription is confirmed.',
+    'donation_instructions_title' => 'Complete your donation',
+    'donation_instructions_intro' => 'Amount indicated: :amount FCFA. Use the details below for your chosen method.',
+    'donation_instructions_fallback' => 'Our team will contact you with payment instructions (card / Mobile Money).',
+    'donation_instructions_note' => 'After payment, keep your transaction reference. We will confirm upon receipt.',
+    'donation_manual_note' => 'Donations are currently completed via Mobile Money or bank transfer. Automatic API integration will follow.',
 ];

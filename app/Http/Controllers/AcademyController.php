@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\RejectsHoneypot;
 use App\Mail\FormSubmissionNotification;
 use App\Models\Training;
 use App\Models\TrainingEnrollment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AcademyController extends Controller
 {
+    use RejectsHoneypot;
+
     public function index()
     {
         $trainings = Training::where('is_published', true)->get();
@@ -27,6 +30,10 @@ class AcademyController extends Controller
 
     public function storeEnrollment(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', 'Votre inscription a bien été enregistrée. Vous recevrez un email de confirmation.');
+        }
+
         $validated = $request->validate([
             'training_id' => 'required|exists:trainings,id',
             'nom' => 'required|string|max:255',

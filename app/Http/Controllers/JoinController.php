@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\RejectsHoneypot;
 use App\Mail\FormSubmissionNotification;
 use App\Models\JoinRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class JoinController extends Controller
 {
+    use RejectsHoneypot;
+
     public function index()
     {
         return view('pages.join.index');
@@ -17,6 +20,10 @@ class JoinController extends Controller
 
     public function store(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.');
+        }
+
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'email' => 'required|email|max:255',

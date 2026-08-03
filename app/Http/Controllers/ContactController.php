@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\RejectsHoneypot;
 use App\Mail\FormSubmissionNotification;
 use App\Models\ContactMessage;
 use App\Models\PartnerRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+    use RejectsHoneypot;
+
     public function index()
     {
-        return view('pages.contact.index');
+        return view('pages.contact.index', [
+            'contact' => config('tubawwiri.contact'),
+        ]);
     }
 
     public function store(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', __('forms.contact_success'));
+        }
+
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -38,11 +47,15 @@ class ContactController extends Controller
             'Message' => $validated['message'],
         ]);
 
-        return back()->with('success', 'Votre message a bien été envoyé. Merci de nous avoir contactés.');
+        return back()->with('success', __('forms.contact_success'));
     }
 
     public function storePartner(Request $request)
     {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', __('forms.partner_success'));
+        }
+
         $validated = $request->validate([
             'organisation' => 'required|string|max:255',
             'nom_responsable' => 'required|string|max:255',
@@ -65,7 +78,7 @@ class ContactController extends Controller
             'Message' => $validated['message'] ?? null,
         ]);
 
-        return back()->with('success', 'Merci pour votre intérêt ! Notre équipe partenariats vous contactera rapidement.');
+        return back()->with('success', __('forms.partner_success'));
     }
 
     /**

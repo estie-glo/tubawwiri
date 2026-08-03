@@ -60,4 +60,18 @@ return [
     'btn_envoyer_ma_demande' => 'Envoyer ma demande',
     'btn_confirmer_inscription' => 'Confirmer mon inscription',
     'btn_continuer_don' => 'Continuer mon don',
+
+    'flash_title' => 'Message envoyé',
+    'contact_success' => 'Votre message a bien été envoyé. Merci de nous avoir contactés.',
+    'partner_success' => 'Merci pour votre intérêt ! Notre équipe partenariats vous contactera rapidement.',
+    'donation_success' => 'Merci pour votre générosité ! Voici les instructions pour finaliser votre don.',
+    'newsletter_title' => 'Newsletter',
+    'newsletter_subtitle' => 'Recevez nos actualités et analyses.',
+    'newsletter_submit' => "S'inscrire",
+    'newsletter_success' => 'Merci ! Votre inscription à la newsletter est confirmée.',
+    'donation_instructions_title' => 'Finaliser votre don',
+    'donation_instructions_intro' => 'Montant indiqué : :amount FCFA. Utilisez les coordonnées ci-dessous selon le moyen choisi.',
+    'donation_instructions_fallback' => 'Notre équipe vous contactera avec les instructions de paiement (carte / Mobile Money).',
+    'donation_instructions_note' => 'Après paiement, conservez votre référence de transaction. Nous confirmerons dès réception.',
+    'donation_manual_note' => 'Les dons se finalisent pour l’instant via Mobile Money ou virement. L’intégration API automatique arrivera ensuite.',
 ];
