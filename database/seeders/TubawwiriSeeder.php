@@ -256,17 +256,56 @@ HTML,
 
     private function seedCategoriesAndArticles(): void
     {
-        $categories = [
-            ['name_fr' => 'Afrique', 'name_en' => 'Africa'],
-            ['name_fr' => 'Cameroun', 'name_en' => 'Cameroon'],
-            ['name_fr' => 'Monde', 'name_en' => 'World'],
-            ['name_fr' => 'Santé mentale', 'name_en' => 'Mental health'],
-            ['name_fr' => 'Parentalité', 'name_en' => 'Parenting'],
-            ['name_fr' => "Protection de l'enfant", 'name_en' => 'Child protection'],
-            ['name_fr' => 'Leadership féminin', 'name_en' => 'Female leadership'],
-            ['name_fr' => 'Citations africaines', 'name_en' => 'African quotes'],
-            ['name_fr' => 'Vie de la Fondation', 'name_en' => 'Foundation life'],
-        ];
+    
+$categories = [
+    [
+        'name_fr' => 'Santé mentale communautaire',
+        'name_en' => 'Community Mental Health',
+    ],
+    [
+        'name_fr' => 'Allô Parentalité Écoute',
+        'name_en' => 'Hello Parenting Helpline',
+    ],
+    [
+        'name_fr' => "La Voix de l'Enfant",
+        'name_en' => "The Child's Voice",
+    ],
+    [
+        'name_fr' => 'TUBAWWIRI au Féminin',
+        'name_en' => 'TUBAWWIRI Women',
+    ],
+    [
+        'name_fr' => 'TUBAWWIRI au Masculin',
+        'name_en' => 'TUBAWWIRI Men',
+    ],
+    [
+        'name_fr' => 'Les Chroniques de la Mémoire',
+        'name_en' => 'Memory Chronicles',
+    ],
+    [
+        'name_fr' => 'Le Message TUBAWWIRI',
+        'name_en' => 'The TUBAWWIRI Message',
+    ],
+    [
+        'name_fr' => 'La Question TUBAWWIRI',
+        'name_en' => 'The TUBAWWIRI Question',
+    ],
+    [
+        'name_fr' => 'Les Campagnes TUBAWWIRI',
+        'name_en' => 'TUBAWWIRI Campaigns',
+    ],
+    [
+        'name_fr' => 'TUBAWWIRI Africa Watch',
+        'name_en' => 'TUBAWWIRI Africa Watch',
+    ],
+];
+
+foreach ($categories as $name) {
+    Category::updateOrCreate(
+        ['slug' => \Illuminate\Support\Str::slug($name['name_fr'])],
+        ['name_fr' => $name['name_fr'], 'name_en' => $name['name_en']]
+    );
+}
 
         foreach ($categories as $category) {
             Category::updateOrCreate(

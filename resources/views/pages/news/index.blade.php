@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('site.nav.news') . ' — Fondation TUBAWWIRI (TBW)')
+@section('title', 'Actualités — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
     <section class="max-w-7xl mx-auto px-4 py-20 reveal">
@@ -15,7 +15,7 @@
             @foreach ($categories as $category)
                 <a href="{{ route('news.category', [app()->getLocale(), $category->slug]) }}"
                    class="{{ $activeCategory?->id === $category->id ? 'text-[#C99A3E]' : 'text-[#123D2E] hover:text-[#C99A3E]' }}">
-                    {{ localized($category, 'name') }}
+                    {{ app()->getLocale() === 'en' && $category->name_en ? $category->name_en : $category->name_fr }}
                 </a>
             @endforeach
         </div>
@@ -25,10 +25,12 @@
                 <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}"
                    class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
                     @if ($article->category)
-                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ localized($article->category, 'name') }}</p>
+                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">
+                            {{ app()->getLocale() === 'en' && $article->category->name_en ? $article->category->name_en : $article->category->name_fr }}
+                        </p>
                     @endif
-                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ localized($article, 'title') }}</h2>
-                    <p class="text-sm text-[#8a8372] mt-2 line-clamp-2">{{ localized($article, 'excerpt') }}</p>
+                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ $article->title_fr }}</h2>
+                    <p class="text-sm text-[#8a8372] mt-2 line-clamp-2">{{ $article->excerpt_fr }}</p>
                     <p class="text-xs text-[#8a8372] mt-3">{{ optional($article->published_at)->format('d/m/Y') }}</p>
                 </a>
             @empty
