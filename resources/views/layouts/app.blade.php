@@ -78,6 +78,22 @@
             .hero-kenburns { animation: none; }
             .reveal { opacity: 1; transform: none; }
         }
+    .tbw-bg-photo {
+        position: absolute;
+        inset: 0;
+        background-image: url("/images/bg-tubawwiri.png");
+        background-size: cover;
+        background-position: center;
+        z-index: -20;
+    }
+    .tbw-bg-logo-badge {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        width: 90px;
+        opacity: 0.9;
+        z-index: -10;
+    }
     </style>
 
     <link rel="icon" href="{{ asset('images/logo-mark.png') }}">

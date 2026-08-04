@@ -7,33 +7,6 @@ body.fi-simple-layout {
     background: #F6F1E4;
 }
 
-body.fi-simple-layout::before,
-body.fi-simple-layout::after {
-    content: '';
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.25;
-    z-index: 0;
-    animation: tbw-float 20s ease-in-out infinite;
-}
-
-body.fi-simple-layout::before {
-    width: 500px;
-    height: 500px;
-    background: #123D2E;
-    top: -150px;
-    left: -120px;
-}
-
-body.fi-simple-layout::after {
-    width: 420px;
-    height: 420px;
-    background: #C99A3E;
-    bottom: -150px;
-    right: -100px;
-    animation-delay: -10s;
-}
 
 .fi-simple-layout .fi-simple-main {
     position: relative;
@@ -41,15 +14,61 @@ body.fi-simple-layout::after {
     border-top: 3px solid;
     border-image: linear-gradient(to right, #6B2A28, #C99A3E, #3B2560) 1;
 }
-
-@keyframes tbw-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(40px, -30px) scale(1.1); }
+.tbw-admin-photo-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/images/bg-tubawwiri.png');
+    background-size: cover;
+    background-position: center;
+}
+.tbw-admin-photo-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(11,38,28,0.92), rgba(18,61,46,0.78), rgba(18,61,46,0.35));
+}
+.tbw-admin-logo-emblem {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: 70px;
+    z-index: 1;
+    opacity: 0.95;
+}
+.fi-simple-layout, .fi-simple-main, .fi-simple-header {
+    position: relative;
+    z-index: 2;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    body.fi-simple-layout::before,
-    body.fi-simple-layout::after {
-        animation: none;
-    }
+/* Forcer une carte de connexion claire et lisible, peu importe le mode sombre */
+.fi-simple-layout {
+    color-scheme: light;
+}
+.fi-simple-card,
+.fi-simple-main {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35) !important;
+}
+.fi-simple-card *,
+.fi-simple-main * {
+    color: #1C1914 !important;
+}
+.fi-simple-card label,
+.fi-simple-main label {
+    color: #1C1914 !important;
+    font-weight: 600 !important;
+}
+.fi-simple-card input,
+.fi-simple-main input {
+    background-color: #ffffff !important;
+    border: 1px solid #d8cfb8 !important;
+    color: #1C1914 !important;
+}
+.fi-simple-card button[type="submit"],
+.fi-simple-main button[type="submit"] {
+    background-color: #123D2E !important;
+    color: #ffffff !important;
 }
