@@ -136,16 +136,40 @@ body {
 }
 
 /* Poignée de redimensionnement à la souris (en plus du bouton plier/déplier
-   à deux états) : on peut glisser le bord de la sidebar pour ajuster sa
-   largeur librement, comme une poignée de sélection, plutôt qu'un seul
-   réglage fixe. Fonctionnalité native du navigateur (pas de JS), désactivée
-   sur mobile où la sidebar est un panneau plein écran, pas une colonne. */
+   à deux états), voir resources/js/filament/admin/sidebar-resize.js.
+   ATTENTION : ne pas remplacer par `resize: horizontal` natif du navigateur —
+   déjà essayé, ça casse la navigation. Filament positionne la sidebar en
+   `position: fixed` et décale le contenu principal via la variable CSS
+   --sidebar-width, fixée une fois au chargement. Le `resize` natif ne change
+   que la largeur visuelle de la sidebar, jamais cette variable : la sidebar
+   élargie finit par recouvrir (et bloquer les clics sur) la topbar et le
+   contenu — plus moyen de naviguer ni de se déconnecter. La poignée ci-dessous
+   met donc à jour --sidebar-width elle-même en JS, ce qui garde sidebar et
+   contenu synchronisés (ils lisent tous les deux cette même variable). */
+.tbw-sidebar-resize-handle {
+    display: none;
+}
 @media (min-width: 1024px) {
-    .fi-sidebar {
-        resize: horizontal;
-        overflow: hidden;
-        min-width: 14rem;
-        max-width: 26rem;
+    .tbw-sidebar-resize-handle {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -3px;
+        width: 6px;
+        cursor: ew-resize;
+        z-index: 31;
+        background: transparent;
+        transition: background-color 0.15s ease;
+    }
+    .tbw-sidebar-resize-handle:hover,
+    .tbw-sidebar-resize-handle.tbw-resizing {
+        background-color: var(--tbw-gold);
+        opacity: 0.6;
+    }
+    .tbw-sidebar-resize-handle:focus-visible {
+        outline: 2px solid var(--tbw-gold);
+        outline-offset: -2px;
     }
 }
 

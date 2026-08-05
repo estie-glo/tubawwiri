@@ -31,11 +31,15 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('Fondation TUBAWWIRI (TBW)')
             ->favicon(asset('images/logo-tbw.jpg'))
             ->sidebarCollapsibleOnDesktop()
-            // Thème dédié (resources/css/filament/admin/theme.css), chargé via Vite
-            // plutôt qu'un bloc <style> inline — voir le fichier pour le détail.
+            // Thème + script dédiés, chargés via Vite plutôt qu'un bloc <style>/<script>
+            // inline — voir resources/css/filament/admin/theme.css et
+            // resources/js/filament/admin/sidebar-resize.js pour le détail.
             ->renderHook(
                 PanelsRenderHook::HEAD_END,
-                fn (): string => app(Vite::class)('resources/css/filament/admin/theme.css')->toHtml(),
+                fn (): string => app(Vite::class)([
+                    'resources/css/filament/admin/theme.css',
+                    'resources/js/filament/admin/sidebar-resize.js',
+                ])->toHtml(),
             )
             ->login()
             // Le mode sombre automatique de Filament peut rendre le texte illisible
