@@ -293,41 +293,62 @@ body {
     }
 }
 
-/* ---------- Page de connexion : logo en arrière-plan sur fond crème ----------
-   Le logo (public/images/logo-horizontal-tbw.jpg) porte son propre fond blanc :
-   on ne l'utilise donc jamais comme ->brandLogo() du panel (ça l'aurait aussi
-   affiché, mal, dans l'en-tête de sidebar sur fond vert). Il est ici purement
-   décoratif, en arrière-plan de cette page uniquement, via .fi-simple-layout. */
+/* ---------- Page de connexion : même traitement que le hero de l'accueil ----------
+   Photo plein écran (public/images/banner-tubawwiri.jpeg) + dégradé sombre +
+   zoom lent, comme resources/views/pages/home.blade.php (section hero). Deux
+   pseudo-éléments plutôt qu'un <img> réel : on ne peut pas modifier le blade
+   de login de Filament (vendor) sans casser aux prochaines mises à jour, et
+   .fi-simple-main (la carte) est un DESCENDANT réel de .fi-simple-layout — si
+   on animait le scale sur un ancêtre commun, la carte zoomerait aussi. Un
+   ::before séparé isole l'animation de la carte. */
 .fi-simple-layout {
-    --tbw-login-logo-size: clamp(200px, 24vw, 340px);
-    --tbw-login-logo-top: 2.5rem;
-    background-color: var(--tbw-sand);
-    background-image: url('/images/logo-horizontal-tbw.jpg');
-    background-repeat: no-repeat;
-    background-position: center var(--tbw-login-logo-top);
-    background-size: var(--tbw-login-logo-size) auto;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--tbw-forest-dark);
 }
-/* .fi-simple-main-ctn centre la carte verticalement (flex + items-center) dans
-   sa propre boîte : sur un écran de hauteur normale, cette carte centrée finit
-   pile là où le logo était positionné (~12% du haut), et son fond blanc opaque
-   le recouvre presque entièrement — d'où le "il n'y a pas de logo" alors que
-   la règle CSS est bien là. On réserve donc l'espace du logo avec un
-   padding-top, ce qui repousse la zone de centrage de la carte en dessous. */
+.fi-simple-layout::before,
+.fi-simple-layout::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.fi-simple-layout::before {
+    background-image: url('/images/banner-tubawwiri.jpeg');
+    background-size: cover;
+    background-position: center;
+    animation: tbw-hero-kenburns 22s ease-in-out infinite alternate;
+}
+.fi-simple-layout::after {
+    background:
+        linear-gradient(to right, rgba(11, 38, 28, 0.92), rgba(18, 61, 46, 0.78), rgba(18, 61, 46, 0.35)),
+        linear-gradient(to top, rgba(11, 38, 28, 0.75), transparent 60%);
+}
+@keyframes tbw-hero-kenburns {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fi-simple-layout::before {
+        animation: none;
+    }
+}
 .fi-simple-main-ctn {
+    position: relative;
+    z-index: 1;
     width: 100%;
     min-height: 100vh;
-    padding-top: calc(var(--tbw-login-logo-top) + var(--tbw-login-logo-size) + 2rem);
-    box-sizing: border-box;
 }
 .fi-simple-main {
+    position: relative;
+    z-index: 1;
     background-color: #ffffff;
     border: 1px solid var(--tbw-border);
-    box-shadow: 0 20px 45px rgba(18, 61, 46, 0.16);
-}
-/* Le logo porte déjà la mention "Fondation TUBAWWIRI (TBW)" : pas besoin de
-   la répéter en texte dans l'en-tête de la carte, en double avec le fond. */
-.fi-simple-header .fi-logo {
-    display: none;
+    box-shadow: 0 24px 60px rgba(11, 38, 28, 0.35);
 }
 .fi-simple-main * {
     color: var(--tbw-ink);
