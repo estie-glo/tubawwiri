@@ -50,19 +50,17 @@ class AdminPanelProvider extends PanelProvider
                 'info' => Color::hex('#3B2560'),
                 'gray' => Color::Stone,
             ])
+            // Chaque ressource porte déjà sa propre icône ($navigationIcon) : Filament
+            // interdit qu'un groupe ait aussi une icône dans ce cas (l'un ou l'autre,
+            // pas les deux). On garde l'icône par ressource, plus précise dans une
+            // sidebar dense, et on ne configure les groupes que pour l'ordre/le repli.
             ->navigationGroups([
-                NavigationGroup::make('Contenu du site')
-                    ->icon('heroicon-o-rectangle-stack'),
-                NavigationGroup::make('Actualités')
-                    ->icon('heroicon-o-newspaper'),
-                NavigationGroup::make('TBW Academy')
-                    ->icon('heroicon-o-academic-cap'),
-                NavigationGroup::make('Observatoire & Ressources')
-                    ->icon('heroicon-o-magnifying-glass'),
-                NavigationGroup::make('Médias')
-                    ->icon('heroicon-o-photo'),
+                NavigationGroup::make('Contenu du site'),
+                NavigationGroup::make('Actualités'),
+                NavigationGroup::make('TBW Academy'),
+                NavigationGroup::make('Observatoire & Ressources'),
+                NavigationGroup::make('Médias'),
                 NavigationGroup::make('Formulaires reçus')
-                    ->icon('heroicon-o-inbox-arrow-down')
                     ->collapsed(),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
