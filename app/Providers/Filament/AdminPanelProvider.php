@@ -30,6 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->brandName('Fondation TUBAWWIRI (TBW)')
             ->favicon(asset('images/logo-tbw.jpg'))
+            ->sidebarCollapsibleOnDesktop()
             // Thème dédié (resources/css/filament/admin/theme.css), chargé via Vite
             // plutôt qu'un bloc <style> inline — voir le fichier pour le détail.
             ->renderHook(

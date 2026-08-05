@@ -119,8 +119,34 @@ body {
 .fi-sidebar-group-collapse-button svg {
     color: #cfead9;
 }
+
+/* Bouton plier/déplier la sidebar (->sidebarCollapsibleOnDesktop()) : gris par
+   défaut, illisible sur le fond vert forêt de l'en-tête. */
+.fi-sidebar-header .fi-icon-btn-icon {
+    color: #cfead9;
+}
+.fi-sidebar-header .fi-icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.fi-sidebar-header .fi-icon-btn:hover .fi-icon-btn-icon {
+    color: #ffffff;
+}
 .fi-sidebar-nav-groups {
     row-gap: 1.25rem;
+}
+
+/* Poignée de redimensionnement à la souris (en plus du bouton plier/déplier
+   à deux états) : on peut glisser le bord de la sidebar pour ajuster sa
+   largeur librement, comme une poignée de sélection, plutôt qu'un seul
+   réglage fixe. Fonctionnalité native du navigateur (pas de JS), désactivée
+   sur mobile où la sidebar est un panneau plein écran, pas une colonne. */
+@media (min-width: 1024px) {
+    .fi-sidebar {
+        resize: horizontal;
+        overflow: hidden;
+        min-width: 14rem;
+        max-width: 26rem;
+    }
 }
 
 /* ---------- Topbar ---------- */
@@ -243,30 +269,31 @@ body {
     }
 }
 
-/* ---------- Page de connexion (fond photo TBW) ---------- */
+/* ---------- Page de connexion : logo en arrière-plan sur fond crème ----------
+   Le logo (public/images/logo-horizontal-tbw.jpg) porte son propre fond blanc :
+   on ne l'utilise donc jamais comme ->brandLogo() du panel (ça l'aurait aussi
+   affiché, mal, dans l'en-tête de sidebar sur fond vert). Il est ici purement
+   décoratif, en arrière-plan de cette page uniquement, via .fi-simple-layout. */
 .fi-simple-layout {
-    background-color: var(--tbw-forest-dark);
+    background-color: var(--tbw-sand);
+    background-image: url('/images/logo-horizontal-tbw.jpg');
+    background-repeat: no-repeat;
+    background-position: center 12%;
+    background-size: clamp(260px, 42vw, 560px) auto;
 }
 .fi-simple-main-ctn {
-    position: relative;
-    background-image: url('/images/bg-tubawwiri.png');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
     width: 100%;
-}
-.fi-simple-main-ctn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(11, 38, 28, 0.6), rgba(18, 61, 46, 0.28));
+    min-height: 100vh;
 }
 .fi-simple-main {
-    position: relative;
-    z-index: 1;
     background-color: #ffffff;
     border: 1px solid var(--tbw-border);
-    box-shadow: 0 24px 60px rgba(11, 38, 28, 0.28);
+    box-shadow: 0 20px 45px rgba(18, 61, 46, 0.16);
+}
+/* Le logo porte déjà la mention "Fondation TUBAWWIRI (TBW)" : pas besoin de
+   la répéter en texte dans l'en-tête de la carte, en double avec le fond. */
+.fi-simple-header .fi-logo {
+    display: none;
 }
 .fi-simple-main * {
     color: var(--tbw-ink);
