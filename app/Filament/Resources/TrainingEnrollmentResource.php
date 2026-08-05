@@ -49,7 +49,12 @@ class TrainingEnrollmentResource extends Resource
                 Tables\Columns\TextColumn::make('nom'),
                 Tables\Columns\TextColumn::make('training.title_fr')->label('Formation'),
                 Tables\Columns\TextColumn::make('mode')->badge(),
-                Tables\Columns\TextColumn::make('status')->badge(),
+                Tables\Columns\TextColumn::make('status')->badge()->color(fn (string $state): string => match ($state) {
+                    'nouveau' => 'info',
+                    'confirme' => 'success',
+                    'annule' => 'danger',
+                    default => 'gray',
+                }),
                 Tables\Columns\TextColumn::make('created_at')->label('Inscrit le')->dateTime('d/m/Y H:i'),
             ])
             ->defaultSort('created_at', 'desc')

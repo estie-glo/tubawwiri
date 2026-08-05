@@ -50,7 +50,12 @@ class PartnerRequestResource extends Resource
                 Tables\Columns\TextColumn::make('organisation'),
                 Tables\Columns\TextColumn::make('nom_responsable')->label('Responsable'),
                 Tables\Columns\TextColumn::make('type_partenariat')->label('Type'),
-                Tables\Columns\TextColumn::make('status')->badge(),
+                Tables\Columns\TextColumn::make('status')->badge()->color(fn (string $state): string => match ($state) {
+                    'nouveau' => 'info',
+                    'en_cours' => 'warning',
+                    'traite' => 'success',
+                    default => 'gray',
+                }),
                 Tables\Columns\TextColumn::make('created_at')->label('Reçu le')->dateTime('d/m/Y H:i'),
             ])
             ->defaultSort('created_at', 'desc')

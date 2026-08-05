@@ -52,7 +52,12 @@ class QuoteRequestResource extends Resource
                 Tables\Columns\TextColumn::make('nom'),
                 Tables\Columns\TextColumn::make('organisation'),
                 Tables\Columns\TextColumn::make('service_souhaite')->label('Service'),
-                Tables\Columns\TextColumn::make('status')->badge(),
+                Tables\Columns\TextColumn::make('status')->badge()->color(fn (string $state): string => match ($state) {
+                    'nouveau' => 'info',
+                    'en_cours' => 'warning',
+                    'traite' => 'success',
+                    default => 'gray',
+                }),
                 Tables\Columns\TextColumn::make('created_at')->label('Reçu le')->dateTime('d/m/Y H:i'),
             ])
             ->defaultSort('created_at', 'desc')

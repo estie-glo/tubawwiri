@@ -51,7 +51,12 @@ class DonationResource extends Resource
                 Tables\Columns\TextColumn::make('montant')->label('Montant')->money('XAF'),
                 Tables\Columns\TextColumn::make('moyen_paiement')->label('Moyen')->badge(),
                 Tables\Columns\TextColumn::make('type_don')->label('Type')->badge(),
-                Tables\Columns\TextColumn::make('status')->badge(),
+                Tables\Columns\TextColumn::make('status')->badge()->color(fn (string $state): string => match ($state) {
+                    'en_attente' => 'warning',
+                    'confirme' => 'success',
+                    'echoue' => 'danger',
+                    default => 'gray',
+                }),
                 Tables\Columns\TextColumn::make('created_at')->label('Date')->dateTime('d/m/Y H:i'),
             ])
             ->defaultSort('created_at', 'desc')
