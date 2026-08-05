@@ -1,0 +1,237 @@
+/*
+ * Thème admin Filament — Fondation TUBAWWIRI (TBW)
+ *
+ * Fichier CSS dédié, chargé via Vite (voir AdminPanelProvider::panel()).
+ * Remplace l'ancien renderHook <style> inline, devenu fragile à mesure
+ * qu'on l'étoffait. Filament 3.x ne recompile pas Tailwind v4 pour un thème
+ * custom (->viteTheme() attend un bundle qui remplace entièrement le CSS
+ * par défaut de Filament) : on garde donc le thème par défaut de Filament
+ * et on vient le surcharger avec ce fichier CSS "plain", ciblant les
+ * classes .fi-* du framework. Aucune classe utilitaire Tailwind n'est
+ * utilisée ici — uniquement du CSS classique.
+ *
+ * Palette et typographie alignées sur le design system du site public
+ * (voir CLAUDE.md section 2).
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --tbw-forest: #123D2E;
+    --tbw-forest-dark: #0b261c;
+    --tbw-forest-soft: #1a5540;
+    --tbw-gold: #C99A3E;
+    --tbw-gold-soft: #e4c88a;
+    --tbw-wine: #6B2A28;
+    --tbw-violet: #3B2560;
+    --tbw-sand: #F6F1E4;
+    --tbw-ink: #211D16;
+    --tbw-ink-soft: #4a453c;
+    --tbw-border: #e5ddc8;
+    --tbw-border-soft: #d8cfb8;
+
+    /* Empêche le navigateur d'assombrir les champs/scrollbars via le thème
+       système, indépendamment de la config Filament (->darkMode(false)) —
+       c'est ce qui avait rendu le texte illisible sur le fond du login. */
+    color-scheme: light only;
+}
+
+body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-color: var(--tbw-sand);
+}
+
+/* ---------- Typographie : titres en Fraunces ---------- */
+.fi-header-heading,
+.fi-modal-heading,
+.fi-section-header-heading,
+.fi-simple-layout .fi-logo,
+.fi-sidebar-header .fi-logo,
+.fi-topbar-open-database-notifications-btn + div .fi-dropdown-header-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+}
+
+/* ---------- Barre d'accent en haut de page (clin d'œil au site public) ---------- */
+.fi-body {
+    position: relative;
+}
+.fi-body::before {
+    content: '';
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--tbw-wine), var(--tbw-gold), var(--tbw-violet));
+    z-index: 40;
+}
+
+/* ---------- Sidebar ---------- */
+.fi-sidebar {
+    background-color: var(--tbw-forest);
+    border-right: none;
+}
+.fi-sidebar-header {
+    background-color: var(--tbw-forest-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.fi-sidebar-header .fi-logo {
+    color: #fdfaf3;
+}
+.fi-sidebar-group-label {
+    color: var(--tbw-gold-soft);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+}
+.fi-sidebar-item-button {
+    color: #e9e4d6;
+    border-radius: 0.375rem;
+}
+.fi-sidebar-item-button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+.fi-sidebar-item-active .fi-sidebar-item-button {
+    background-color: var(--tbw-forest-soft);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: inset 2px 0 0 var(--tbw-gold);
+}
+.fi-sidebar-item-icon {
+    color: #cfead9;
+}
+.fi-sidebar-item-active .fi-sidebar-item-icon {
+    color: var(--tbw-gold-soft);
+}
+.fi-sidebar-nav-groups {
+    row-gap: 1.25rem;
+}
+
+/* ---------- Topbar ---------- */
+.fi-topbar nav {
+    background-color: #fffdf8;
+    border-bottom: 1px solid var(--tbw-border);
+    box-shadow: none;
+}
+
+/* ---------- Fond de la zone de contenu ---------- */
+.fi-main-ctn,
+.fi-main {
+    background-color: var(--tbw-sand);
+}
+
+/* ---------- Cartes / sections : bordures fines plutôt que grosses ombres ---------- */
+.fi-section {
+    border: 1px solid var(--tbw-border);
+    box-shadow: 0 1px 2px rgba(18, 61, 46, 0.04);
+}
+.fi-section-header {
+    border-color: var(--tbw-border);
+}
+
+/* ---------- Boutons ---------- */
+.fi-btn-color-primary,
+.fi-ac-btn-action.fi-color-primary {
+    background-color: var(--tbw-forest);
+}
+.fi-btn-color-primary:hover {
+    background-color: var(--tbw-forest-dark);
+}
+
+/* ---------- Badges : coins moins arrondis, lettres espacées, cohérent avec le site ---------- */
+.fi-badge {
+    border-radius: 0.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Tableaux ---------- */
+.fi-ta-header-cell {
+    background-color: #fbf8f0;
+}
+.fi-ta-row:hover {
+    background-color: #fbf8f0;
+}
+
+/* ---------- Page de connexion (fond photo TBW) ---------- */
+.fi-simple-layout {
+    background-color: var(--tbw-forest-dark);
+}
+.fi-simple-main-ctn {
+    position: relative;
+    background-image: url('/images/bg-tubawwiri.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+}
+.fi-simple-main-ctn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(11, 38, 28, 0.6), rgba(18, 61, 46, 0.28));
+}
+.fi-simple-main {
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 1px solid var(--tbw-border);
+    box-shadow: 0 24px 60px rgba(11, 38, 28, 0.28);
+}
+.fi-simple-main * {
+    color: var(--tbw-ink);
+}
+.fi-simple-main label {
+    font-weight: 600;
+}
+.fi-simple-main input {
+    background-color: #ffffff;
+    border: 1px solid var(--tbw-border-soft);
+    color: var(--tbw-ink);
+}
+.fi-simple-main button[type='submit'] {
+    background-color: var(--tbw-forest);
+    color: #ffffff;
+}
+.fi-simple-main button[type='submit']:hover {
+    background-color: var(--tbw-forest-dark);
+}
+
+/* ---------- Bandeau de bienvenue du dashboard (widget WelcomeBanner) ---------- */
+.tbw-welcome-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: var(--tbw-forest);
+    background-image:
+        linear-gradient(to right, rgba(11, 38, 28, 0.82), rgba(18, 61, 46, 0.55)),
+        url('/images/bg-tubawwiri.png');
+    background-size: cover;
+    background-position: center;
+    color: #fdfaf3;
+    padding: 2rem 2rem;
+    border: 1px solid var(--tbw-forest-dark);
+}
+.tbw-welcome-banner h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 0 0 0.35rem 0;
+}
+.tbw-welcome-banner p {
+    color: #e9e4d6;
+    font-size: 0.9rem;
+    max-width: 42rem;
+    margin: 0;
+}
+.tbw-welcome-banner .tbw-welcome-tag {
+    display: inline-block;
+    color: var(--tbw-gold-soft);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}

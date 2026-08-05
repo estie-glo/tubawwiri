@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Providers\Filament;
+
 use Filament\Support\Colors\Color;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Foundation\Vite;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -27,45 +31,40 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->brandName('Fondation TUBAWWIRI (TBW)')
             ->favicon(asset('images/logo-tbw.jpg'))
+            // Thème dédié (resources/css/filament/admin/theme.css), chargé via Vite
+            // plutôt qu'un bloc <style> inline — voir le fichier pour le détail.
             ->renderHook(
-                 \Filament\View\PanelsRenderHook::HEAD_END,
-                  fn () => '<style>
-                    .fi-simple-layout { background: #123D2E; }
-                    .fi-simple-main-ctn {
-                        position: relative;
-                        background-image: url(\'' . asset('images/bg-tubawwiri.png') . '\');
-                        background-size: cover;
-                        background-position: center;
-                        min-height: 100vh;
-                        width: 100%;
-                    }
-                    .fi-simple-main-ctn::before {
-                        content: \'\';
-                        position: absolute;
-                        inset: 0;
-                        background: linear-gradient(to right, rgba(11,38,28,0.55), rgba(18,61,46,0.25));
-                    }
-                    .fi-simple-main {
-                        position: relative;
-                        z-index: 1;
-                        background-color: #ffffff !important;
-                    }
-                    .fi-simple-main * { color: #1C1914 !important; }
-                    .fi-simple-main label { font-weight: 600 !important; }
-                    .fi-simple-main input {
-                        background-color: #ffffff !important;
-                        border: 1px solid #d8cfb8 !important;
-                    }
-                    .fi-simple-main button[type="submit"] {
-                        background-color: #123D2E !important;
-                        color: #ffffff !important;
-                    }
-                  </style>'
+                PanelsRenderHook::HEAD_END,
+                fn (): string => app(Vite::class)('resources/css/filament/admin/theme.css')->toHtml(),
             )
             ->login()
+            // Le mode sombre automatique de Filament peut rendre le texte illisible
+            // sur les fonds personnalisés (voir login) : on le désactive plutôt que
+            // de rattraper le problème par-dessus avec du CSS.
+            ->darkMode(false)
             ->colors([
-               'primary' => Color::hex('#123D2E'),
-        ])
+                'primary' => Color::hex('#123D2E'),
+                'danger' => Color::hex('#6B2A28'),
+                'warning' => Color::hex('#C99A3E'),
+                'success' => Color::hex('#1a5540'),
+                'info' => Color::hex('#3B2560'),
+                'gray' => Color::Stone,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make('Contenu du site')
+                    ->icon('heroicon-o-rectangle-stack'),
+                NavigationGroup::make('Actualités')
+                    ->icon('heroicon-o-newspaper'),
+                NavigationGroup::make('TBW Academy')
+                    ->icon('heroicon-o-academic-cap'),
+                NavigationGroup::make('Observatoire & Ressources')
+                    ->icon('heroicon-o-magnifying-glass'),
+                NavigationGroup::make('Médias')
+                    ->icon('heroicon-o-photo'),
+                NavigationGroup::make('Formulaires reçus')
+                    ->icon('heroicon-o-inbox-arrow-down')
+                    ->collapsed(),
+            ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
