@@ -30,21 +30,30 @@ public static function form(Form $form): Form
         Forms\Components\TextInput::make('icon')->label('Icône (classe ou chemin)'),
         Forms\Components\Textarea::make('summary_fr')->label('Résumé (FR)')->rows(2),
         Forms\Components\Textarea::make('summary_en')->label('Résumé (EN)')->rows(2),
-        Forms\Components\RichEditor::make('enjeux_fr')->label('Enjeux (FR)'),
-        Forms\Components\RichEditor::make('enjeux_en')->label('Enjeux (EN)'),
-        Forms\Components\RichEditor::make('objectifs_fr')->label('Objectifs (FR)'),
-        Forms\Components\RichEditor::make('objectifs_en')->label('Objectifs (EN)'),
-        Forms\Components\RichEditor::make('actions_fr')->label('Actions (FR)'),
-        Forms\Components\RichEditor::make('actions_en')->label('Actions (EN)'),
-        Forms\Components\RichEditor::make('publics_cibles_fr')->label('Publics cibles (FR)'),
-        Forms\Components\RichEditor::make('publics_cibles_en')->label('Publics cibles (EN)'),
-        Forms\Components\RichEditor::make('resultats_attendus_fr')->label('Résultats attendus (FR)'),
-        Forms\Components\RichEditor::make('resultats_attendus_en')->label('Résultats attendus (EN)'),
-        Forms\Components\RichEditor::make('appel_partenariat_fr')->label('Appel à partenariat (FR)'),
-        Forms\Components\RichEditor::make('appel_partenariat_en')->label('Appel à partenariat (EN)'),
-        Forms\Components\FileUpload::make('cover_image')->label('Image de couverture')->image()->directory('action-domains'),
-        Forms\Components\TextInput::make('order')->numeric()->default(0)->label('Ordre affichage'),
-        Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+
+        Forms\Components\Fieldset::make('Contenu (FR)')->schema([
+            Forms\Components\RichEditor::make('enjeux_fr')->label('Enjeux'),
+            Forms\Components\RichEditor::make('objectifs_fr')->label('Objectifs'),
+            Forms\Components\RichEditor::make('actions_fr')->label('Actions'),
+            Forms\Components\RichEditor::make('publics_cibles_fr')->label('Publics cibles'),
+            Forms\Components\RichEditor::make('resultats_attendus_fr')->label('Résultats attendus'),
+            Forms\Components\RichEditor::make('appel_partenariat_fr')->label('Appel à partenariat'),
+        ])->columns(1),
+
+        Forms\Components\Fieldset::make('Contenu (EN)')->schema([
+            Forms\Components\RichEditor::make('enjeux_en')->label('Enjeux'),
+            Forms\Components\RichEditor::make('objectifs_en')->label('Objectifs'),
+            Forms\Components\RichEditor::make('actions_en')->label('Actions'),
+            Forms\Components\RichEditor::make('publics_cibles_en')->label('Publics cibles'),
+            Forms\Components\RichEditor::make('resultats_attendus_en')->label('Résultats attendus'),
+            Forms\Components\RichEditor::make('appel_partenariat_en')->label('Appel à partenariat'),
+        ])->columns(1),
+
+        Forms\Components\Fieldset::make('Publication')->schema([
+            Forms\Components\FileUpload::make('cover_image')->label('Image de couverture')->image()->directory('action-domains'),
+            Forms\Components\TextInput::make('order')->numeric()->default(0)->label('Ordre affichage'),
+            Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+        ]),
     ]);
 }
 

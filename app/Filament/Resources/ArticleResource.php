@@ -28,14 +28,20 @@ class ArticleResource extends Resource
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
             Forms\Components\TextInput::make('title_en')->label('Titre (EN)'),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\Textarea::make('excerpt_fr')->label('Résumé (FR)')->rows(2),
-            Forms\Components\Textarea::make('excerpt_en')->label('Résumé (EN)')->rows(2),
-            Forms\Components\RichEditor::make('content_fr')->label('Contenu (FR)'),
-            Forms\Components\RichEditor::make('content_en')->label('Contenu (EN)'),
-            Forms\Components\FileUpload::make('cover_image')->image()->directory('articles'),
-            Forms\Components\TextInput::make('author')->label('Auteur'),
-            Forms\Components\DateTimePicker::make('published_at')->label('Date de publication'),
-            Forms\Components\Toggle::make('is_published')->label('Publié')->default(false),
+
+            Forms\Components\Fieldset::make('Contenu')->schema([
+                Forms\Components\Textarea::make('excerpt_fr')->label('Résumé (FR)')->rows(2),
+                Forms\Components\Textarea::make('excerpt_en')->label('Résumé (EN)')->rows(2),
+                Forms\Components\RichEditor::make('content_fr')->label('Contenu (FR)'),
+                Forms\Components\RichEditor::make('content_en')->label('Contenu (EN)'),
+            ])->columns(1),
+
+            Forms\Components\Fieldset::make('Publication')->schema([
+                Forms\Components\FileUpload::make('cover_image')->label('Image de couverture')->image()->directory('articles'),
+                Forms\Components\TextInput::make('author')->label('Auteur'),
+                Forms\Components\DateTimePicker::make('published_at')->label('Date de publication'),
+                Forms\Components\Toggle::make('is_published')->label('Publié')->default(false),
+            ]),
         ]);
     }
 
