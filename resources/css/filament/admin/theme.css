@@ -299,15 +299,25 @@ body {
    affiché, mal, dans l'en-tête de sidebar sur fond vert). Il est ici purement
    décoratif, en arrière-plan de cette page uniquement, via .fi-simple-layout. */
 .fi-simple-layout {
+    --tbw-login-logo-size: clamp(200px, 24vw, 340px);
+    --tbw-login-logo-top: 2.5rem;
     background-color: var(--tbw-sand);
     background-image: url('/images/logo-horizontal-tbw.jpg');
     background-repeat: no-repeat;
-    background-position: center 12%;
-    background-size: clamp(260px, 42vw, 560px) auto;
+    background-position: center var(--tbw-login-logo-top);
+    background-size: var(--tbw-login-logo-size) auto;
 }
+/* .fi-simple-main-ctn centre la carte verticalement (flex + items-center) dans
+   sa propre boîte : sur un écran de hauteur normale, cette carte centrée finit
+   pile là où le logo était positionné (~12% du haut), et son fond blanc opaque
+   le recouvre presque entièrement — d'où le "il n'y a pas de logo" alors que
+   la règle CSS est bien là. On réserve donc l'espace du logo avec un
+   padding-top, ce qui repousse la zone de centrage de la carte en dessous. */
 .fi-simple-main-ctn {
     width: 100%;
     min-height: 100vh;
+    padding-top: calc(var(--tbw-login-logo-top) + var(--tbw-login-logo-size) + 2rem);
+    box-sizing: border-box;
 }
 .fi-simple-main {
     background-color: #ffffff;
