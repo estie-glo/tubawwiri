@@ -125,10 +125,14 @@ aller au bout du bilinguisme).
       `ResourceItemResource` (`app/Filament/Resources/ResourceItemResource.php`,
       ajoutée dans le commit `720d7a1`). CRUD complet, catégorie en badge,
       formulaire regroupé en sections (voir section 3).
-- [ ] **Rôles/permissions** : vérifier que la restriction de suppression
-      (admin uniquement) posée sur les 6 ressources "Formulaires reçus" est
-      toujours active après les refontes de Cursor — retester avec un compte
-      `role = editor`.
+- [x] **Rôles/permissions** : fait — retesté avec un compte `role = editor`,
+      la restriction était toujours active côté UI (bouton Supprimer caché
+      sur les 6 ressources) mais reposait uniquement sur `->visible()`, sans
+      barrière serveur réelle. Ajout de vraies Policies Laravel
+      (`app/Policies/{ContactMessage,Donation,JoinRequest,PartnerRequest,
+      QuoteRequest,Subscriber}Policy.php`) + `->authorize()` sur chaque
+      `DeleteAction` : `delete`/`deleteAny` réservés à `role = admin`,
+      view/update/viewAny inchangés pour les editors.
 - [ ] **Newsletter** : vérifier l'état d'avancement (un commit Cursor mentionne
       "finaliser le bloc livraison (newsletter, mobile, anti-spam)" — auditer
       ce qui existe vraiment : formulaire d'inscription, table `subscribers`,
