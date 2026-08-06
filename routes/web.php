@@ -108,6 +108,11 @@ Route::prefix('{locale}')
         Route::post('/newsletter', [NewsletterController::class, 'store'])
             ->middleware('throttle:5,1')
             ->name('newsletter.store');
+        Route::get('/newsletter/desabonnement', [NewsletterController::class, 'unsubscribeForm'])
+            ->name('newsletter.unsubscribe.form');
+        Route::post('/newsletter/desabonnement', [NewsletterController::class, 'unsubscribe'])
+            ->middleware('throttle:5,1')
+            ->name('newsletter.unsubscribe');
     });
 
 // 15. Boutique TBW (phase 2) - route réservée, à activer plus tard

@@ -68,4 +68,9 @@ return [
     'newsletter_subtitle' => 'Get our news and calls to action.',
     'newsletter_submit' => 'Subscribe',
     'newsletter_success' => 'Thank you! Your newsletter subscription is confirmed.',
+    'newsletter_unsubscribe_link' => 'Unsubscribe',
+    'newsletter_unsubscribe_title' => 'Newsletter unsubscribe',
+    'newsletter_unsubscribe_intro' => 'Enter your email address to stop receiving our news.',
+    'newsletter_unsubscribe_submit' => 'Unsubscribe',
+    'newsletter_unsubscribed' => 'If this address was subscribed, it has now been unsubscribed.',
 ];

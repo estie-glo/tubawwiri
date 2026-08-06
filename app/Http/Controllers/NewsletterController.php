@@ -31,4 +31,27 @@ class NewsletterController extends Controller
 
         return back()->with('success', __('forms.newsletter_success'));
     }
+
+    public function unsubscribeForm()
+    {
+        return view('pages.newsletter.unsubscribe');
+    }
+
+    public function unsubscribe(Request $request)
+    {
+        if ($this->isHoneypotFilled($request)) {
+            return back()->with('success', __('forms.newsletter_unsubscribed'));
+        }
+
+        $validated = $request->validate([
+            'email' => 'required|email|max:255',
+        ]);
+
+        Subscriber::where('email', strtolower($validated['email']))->update([
+            'is_active' => false,
+        ]);
+
+        // Message générique : ne confirme jamais si l'email était réellement inscrit.
+        return back()->with('success', __('forms.newsletter_unsubscribed'));
+    }
 }

@@ -68,4 +68,9 @@ return [
     'newsletter_subtitle' => 'Recevez nos actualités et nos appels à mobilisation.',
     'newsletter_submit' => 'S\'inscrire',
     'newsletter_success' => 'Merci ! Votre inscription à la newsletter est confirmée.',
+    'newsletter_unsubscribe_link' => 'Se désabonner',
+    'newsletter_unsubscribe_title' => 'Désabonnement newsletter',
+    'newsletter_unsubscribe_intro' => 'Indiquez votre adresse email pour ne plus recevoir nos actualités.',
+    'newsletter_unsubscribe_submit' => 'Se désabonner',
+    'newsletter_unsubscribed' => 'Si cette adresse était inscrite, elle a bien été désabonnée.',
 ];

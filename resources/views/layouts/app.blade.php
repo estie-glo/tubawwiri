@@ -258,6 +258,7 @@
                         {{ __('forms.newsletter_submit') }}
                     </button>
                 </form>
+                <a href="{{ route('newsletter.unsubscribe.form', $locale) }}" class="text-xs text-[#8fae9d] hover:text-[#C99A3E] mt-3 inline-block">{{ __('forms.newsletter_unsubscribe_link') }}</a>
                 <p class="text-sm text-[#cfe0d5] mt-6">{{ $contact['email'] }}</p>
                 <p class="text-sm text-[#cfe0d5]">{{ $contact['website'] }}</p>
             </div>
