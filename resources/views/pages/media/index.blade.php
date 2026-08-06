@@ -12,7 +12,9 @@
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('pages.gallery_photos') }}</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                 @forelse ($photos as $photo)
-                    <img src="{{ asset('storage/' . $photo->file_path) }}" alt="{{ $photo->title }}" class="w-full h-40 object-cover hover-lift">
+                    @if ($photo->file_path)
+                        <img src="{{ asset('storage/' . $photo->file_path) }}" alt="{{ $photo->title }}" class="w-full h-40 object-cover hover-lift">
+                    @endif
                 @empty
                     <p class="text-[#8a8372] text-sm col-span-full">{{ __('pages.no_photos') }}</p>
                 @endforelse
@@ -42,10 +44,14 @@
             <ul class="space-y-2">
                 @forelse ($communiques as $communique)
                     <li>
-                        <a href="{{ asset('storage/' . $communique->file_path) }}" target="_blank"
-                           class="text-[#123D2E] hover:text-[#C99A3E] text-sm font-medium">
-                            {{ $communique->title }} →
-                        </a>
+                        @if ($communique->file_path)
+                            <a href="{{ asset('storage/' . $communique->file_path) }}" target="_blank"
+                               class="text-[#123D2E] hover:text-[#C99A3E] text-sm font-medium">
+                                {{ $communique->title }} →
+                            </a>
+                        @else
+                            <span class="text-[#8a8372] text-sm font-medium">{{ $communique->title }}</span>
+                        @endif
                     </li>
                 @empty
                     <p class="text-[#8a8372] text-sm">{{ __('pages.no_press') }}</p>
@@ -58,10 +64,14 @@
             <ul class="space-y-2">
                 @forelse ($presse as $item)
                     <li>
-                        <a href="{{ asset('storage/' . $item->file_path) }}" target="_blank"
-                           class="text-[#123D2E] hover:text-[#C99A3E] text-sm font-medium">
-                            {{ $item->title }} →
-                        </a>
+                        @if ($item->file_path)
+                            <a href="{{ asset('storage/' . $item->file_path) }}" target="_blank"
+                               class="text-[#123D2E] hover:text-[#C99A3E] text-sm font-medium">
+                                {{ $item->title }} →
+                            </a>
+                        @else
+                            <span class="text-[#8a8372] text-sm font-medium">{{ $item->title }}</span>
+                        @endif
                     </li>
                 @empty
                     <p class="text-[#8a8372] text-sm">{{ __('pages.no_press_kit') }}</p>
