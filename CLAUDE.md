@@ -208,9 +208,16 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       - Reste du contenu (Programmes, Articles, Rapports, Formations,
         pages institutionnelles) vérifié : rédigé et distinct, pas de
         gabarit détecté ailleurs.
-- [ ] **QA formulaires bout-en-bout** : soumettre chaque formulaire (Contact,
-      Partenariat, Devis, Inscription Academy, Nous rejoindre, Don), vérifier
-      l'email de notification ET l'enregistrement en base à chaque fois.
+- [x] **QA formulaires bout-en-bout** : les 6 formulaires soumis avec des
+      données de test (supprimées ensuite), chacun vérifié en base
+      (`ContactMessage`, `PartnerRequest`, `QuoteRequest`,
+      `TrainingEnrollment`, `JoinRequest`, `Donation` — un enregistrement
+      créé à chaque fois) et côté email : SMTP réellement configuré (Gmail,
+      voir `.env`), test d'envoi direct réussi, et aucune des 6 soumissions
+      n'a déclenché le `Log::warning` d'échec d'envoi que chaque contrôleur
+      pose autour de `Mail::send()`. Six emails de notification "[QA]"
+      envoyés à `estellewandji67@gmail.com` pendant ce test, à nettoyer
+      manuellement dans la boîte mail.
 - [ ] **Liens morts / 404** : parcourir les 16 pages en FR et EN, cliquer sur
       tous les liens internes, vérifier qu'aucun ne casse.
 - [ ] **Checklist de recette du CDC** (déjà largement remplie, revérifier
