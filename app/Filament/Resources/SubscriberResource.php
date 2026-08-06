@@ -48,7 +48,7 @@ class SubscriberResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-                    ->visible(fn () => auth()->user()?->role === 'admin'),
+                    ->authorize(fn ($record) => auth()->user()?->can('delete', $record) ?? false),
             ]);
     }
 

@@ -53,7 +53,7 @@ class ContactMessageResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-    ->visible(fn () => auth()->user()?->role === 'admin'),
+    ->authorize(fn ($record) => auth()->user()?->can('delete', $record) ?? false),
             ]);
     }
 
