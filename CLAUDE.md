@@ -198,6 +198,13 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
         objectifs, actions, publics cibles, résultats attendus, appel à
         partenariat), pas le contenu rédigé — impossible de le reconstituer
         depuis `docs-source/`, il faut le vrai contenu de la Fondatrice.
+      - **`BROUILLON_domaines_action.md`** (racine du projet) : brouillon de
+        contenu réel pour les 7 fiches, rédigé à partir du contexte déjà
+        validé sur le site (slogan, 3T, CAVAMIS, ton des Programmes déjà en
+        place). Explicitement **non appliqué en base** — à faire relire et
+        valider par la Fondatrice avant de le copier dans `ActionDomain`
+        via l'admin. Ne traite pas l'écart de liste de domaines ci-dessus,
+        volontairement laissé à sa décision.
       - Reste du contenu (Programmes, Articles, Rapports, Formations,
         pages institutionnelles) vérifié : rédigé et distinct, pas de
         gabarit détecté ailleurs.
