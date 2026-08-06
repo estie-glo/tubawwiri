@@ -64,6 +64,13 @@ return [
 
     'flash_title' => 'Succès',
 
+    'contact_success' => 'Merci ! Votre message a bien été envoyé, nous vous répondrons rapidement.',
+    'partner_success' => 'Merci ! Votre demande de partenariat a bien été envoyée.',
+    'quote_success' => 'Merci ! Votre demande de devis a bien été envoyée, notre équipe TBW Consulting vous recontactera.',
+    'enrollment_success' => 'Merci ! Votre inscription a bien été enregistrée.',
+    'donation_success' => 'Merci pour votre générosité ! Votre intention de don a été enregistrée — suivez les instructions de paiement ci-dessous pour la finaliser.',
+    'join_success' => 'Merci ! Votre demande a bien été envoyée, la Tribu TUBAWWIRI vous recontactera bientôt.',
+
     'newsletter_title' => 'Newsletter',
     'newsletter_subtitle' => 'Recevez nos actualités et nos appels à mobilisation.',
     'newsletter_submit' => 'S\'inscrire',

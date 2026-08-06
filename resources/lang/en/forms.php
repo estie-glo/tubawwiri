@@ -64,6 +64,13 @@ return [
 
     'flash_title' => 'Success',
 
+    'contact_success' => 'Thank you! Your message has been sent, we will get back to you shortly.',
+    'partner_success' => 'Thank you! Your partnership request has been sent.',
+    'quote_success' => 'Thank you! Your quote request has been sent, our TBW Consulting team will get back to you.',
+    'enrollment_success' => 'Thank you! Your enrollment has been recorded.',
+    'donation_success' => 'Thank you for your generosity! Your donation intent has been recorded — follow the payment instructions below to complete it.',
+    'join_success' => 'Thank you! Your request has been sent, the TUBAWWIRI Tribe will get back to you soon.',
+
     'newsletter_title' => 'Newsletter',
     'newsletter_subtitle' => 'Get our news and calls to action.',
     'newsletter_submit' => 'Subscribe',

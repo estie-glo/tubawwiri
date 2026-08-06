@@ -28,8 +28,12 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('donation.store', app()->getLocale()) }}" class="space-y-8">
+        <form method="POST" action="{{ route('donation.store', app()->getLocale()) }}" class="space-y-8 relative">
             @csrf
+            <div class="absolute left-[-9999px]" aria-hidden="true">
+                <label for="website_donation">Website</label>
+                <input type="text" name="website" id="website_donation" tabindex="-1" autocomplete="off">
+            </div>
             <div class="grid sm:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-2">{{ __('forms.nom_optionnel') }}</label>
