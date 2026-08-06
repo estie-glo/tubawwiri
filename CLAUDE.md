@@ -108,14 +108,28 @@ afficher avec :
 {{ app()->getLocale() === 'en' && $model->champ_en ? $model->champ_en : $model->champ_fr }}
 ```
 
-**Limitation connue, à corriger si le temps le permet** : `ImpactStat`,
-`Testimonial`, `MediaItem`, `Resource` (Centre de ressources) n'ont pas de
-colonnes `_en`. Idem pour les champs longs `enjeux_fr`, `objectifs_fr`,
-`actions_fr`, `publics_cibles_fr`, `resultats_attendus_fr` sur `ActionDomain`,
-et plusieurs champs longs sur `Program` (sauf ceux ajoutés récemment :
-`probleme_fr`, `public_concerne_fr`, `resultats_attendus_fr`, `defis_3t` —
-ceux-là aussi n'ont que du français, à équiper de colonnes `_en` si on veut
-aller au bout du bilinguisme).
+**Limitation connue, à corriger si le temps le permet** — mise à jour après
+vérification en base (2026-08-06), cette note était partiellement obsolète :
+- `ImpactStat` et `Testimonial` **ont déjà** leurs colonnes `_en`, remplies
+  avec du vrai contenu traduit (vérifié en base + à l'écran en FR et EN) —
+  ne sont donc plus concernés par cette limitation.
+- `Resource` (Centre de ressources) **a déjà** `title_en`/`description_en`,
+  remplies elles aussi — plus concerné non plus.
+- `MediaItem` reste bien mono-langue (`title` sans `_en`) — limitation
+  toujours réelle sur ce modèle.
+- Les champs longs `enjeux_fr`, `objectifs_fr`, `actions_fr`,
+  `publics_cibles_fr`, `resultats_attendus_fr`, `appel_partenariat_fr` sur
+  `ActionDomain` restent mono-langue — mais avant d'ajouter des colonnes
+  `_en`, voir le point "Audit contenu placeholder" de la section 5 : le
+  contenu FR actuel de ces champs est lui-même à refaire (texte gabarit,
+  pas de vrai contenu), ajouter la traduction anglaise n'aurait pas de sens
+  tant que le FR n'est pas le vrai contenu.
+- Plusieurs champs longs sur `Program` restent mono-langue aussi (sauf
+  `title_fr`/`title_en`) : `probleme_fr`, `public_concerne_fr`,
+  `objectifs_fr`, `activites_fr`, `beneficiaires_fr`, `indicateurs_fr`,
+  `resultats_attendus_fr`, `partenaires_souhaites_fr` — contenu FR ici
+  vérifié réel et distinct par programme (pas de gabarit), donc équiper de
+  colonnes `_en` serait pertinent si on veut aller au bout du bilinguisme.
 
 ## 5. RESTE À FAIRE POUR LIVRER (hors déploiement, voir section 6)
 
@@ -160,9 +174,33 @@ aller au bout du bilinguisme).
       correctement, formulaires lisibles, menu hamburger fonctionnel en
       dessous de 1280px). Aucun bug réel trouvé — pas seulement l'accueil,
       comme le craignait le commit Cursor.
-- [ ] **Audit contenu placeholder** : repérer tout texte de test encore présent
-      (ex: descriptions génériques, `Lorem ipsum` éventuel) et le signaler
-      plutôt que le publier tel quel.
+- [x] **Audit contenu placeholder** : audité — pas de `Lorem ipsum` trouvé,
+      mais **`ActionDomain` (les 7 pages "Domaines d'action") contient du
+      texte gabarit non remplacé**, à traiter avec la Fondatrice avant
+      publication :
+      - `objectifs_fr` et `actions_fr` sont **mot pour mot identiques** sur
+        les 7 domaines ("Sensibiliser, former et accompagner les acteurs
+        locaux." / "Ateliers, groupes de parole, campagnes et
+        partenariats.").
+      - `enjeux_fr`, `publics_cibles_fr`, `resultats_attendus_fr`,
+        `appel_partenariat_fr` suivent le même patron générique avec juste
+        le nom du domaine inséré ("Renforcer les réponses communautaires
+        face aux défis liés à {domaine}.").
+      - Champs `_en` correspondants : NULL sur les 7 (à la différence
+        d'`ImpactStat`/`Testimonial`/`Resource`, voir section 4 corrigée
+        ci-dessous).
+      - La liste des domaines ne correspond pas non plus au CDC
+        (`docs-source/Dossier_Complet_Site_Web_TUBAWWIRI-20.pdf`, page
+        "Domaines d'action") : le CDC prévoit 8 domaines dont *Jeunesse* et
+        *Recherche et innovation sociale*, absents de la base ; la base a
+        en plus *Formation & renforcement des capacités*, absent du CDC.
+      - Le CDC ne fournit que la structure attendue par page (enjeux,
+        objectifs, actions, publics cibles, résultats attendus, appel à
+        partenariat), pas le contenu rédigé — impossible de le reconstituer
+        depuis `docs-source/`, il faut le vrai contenu de la Fondatrice.
+      - Reste du contenu (Programmes, Articles, Rapports, Formations,
+        pages institutionnelles) vérifié : rédigé et distinct, pas de
+        gabarit détecté ailleurs.
 - [ ] **QA formulaires bout-en-bout** : soumettre chaque formulaire (Contact,
       Partenariat, Devis, Inscription Academy, Nous rejoindre, Don), vérifier
       l'email de notification ET l'enregistrement en base à chaque fois.
