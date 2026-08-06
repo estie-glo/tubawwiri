@@ -224,8 +224,45 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       de presse TUBAWWIRI" sur `/medias` pointaient vers `/storage` (404,
       `file_path` NULL en base, vue non gardée par `@if`) — voir commit
       `2f2ae5e`. Après correction : 0 lien cassé sur les 96.
-- [ ] **Checklist de recette du CDC** (déjà largement remplie, revérifier
-      point par point) — voir `PLAN_EQUIPE_TUBAWWIRI` pour la liste complète.
+- [x] **Checklist de recette du CDC** — repassée point par point
+      (`docs-source/PLAN_EQUIPE_TUBAWWIRI.pdf`, section 5) :
+      - [x] Site correct sur mobile/tablette/ordinateur — voir responsive
+            ci-dessus
+      - [x] Toutes les pages du menu existent — couvert par le crawl liens
+            morts ci-dessus (header, menu mobile, footer inclus)
+      - [x] Versions FR/EN fonctionnent — testé tout au long de cette session
+      - [x] Formulaires envoient à la bonne adresse — `mail_to` dans
+            `config/tubawwiri.php` route bien chaque formulaire vers sa
+            propre clé `.env` (`MAIL_TO_CONTACT`, `_PARTNERSHIP`, `_ACADEMY`,
+            `_CONSULTING`, `_DONATIONS`, `_JOIN`, `_NEWSLETTER`) — toutes
+            pointent vers la même adresse pour l'instant (normal, emails
+            pro pas encore créés, voir section 6)
+      - [x] Bouton WhatsApp fonctionne — `href` vérifié (`wa.me/237676869191`)
+      - [x] Images pas floues — visuels de marque (`public/images/`) en
+            bonne résolution (1000-1900px) ; aucune image de contenu
+            utilisateur encore uploadée (`storage/app/public` vide) donc
+            rien d'autre à vérifier pour l'instant, symlink storage OK
+      - [ ] Certificat SSL actif — **N/A pour l'instant**, pas d'hébergement
+            réel (section 6)
+      - [ ] Sauvegardes actives — **N/A pour l'instant**, pas d'hébergement
+            réel (section 6)
+      - [x] Un admin peut publier seul un article — testé de bout en bout
+            via l'interface (création → publication → visible sur
+            `/actualites` et sa page dédiée)
+      - [x] Liens réseaux sociaux fonctionnent — les 7 liens (Facebook,
+            Instagram, YouTube, TikTok, LinkedIn, Threads, chaîne WhatsApp)
+            bien formés vers de vrais comptes ; profils externes non
+            vérifiés un par un
+      - [x] Pages don/devis/inscription opérationnelles — couvert par la QA
+            formulaires bout-en-bout ci-dessus
+
+      **Effet de bord repéré, à corriger à l'occasion (pas bloquant)** :
+      `.env` contient des clés dupliquées (`TBW_LINKEDIN`, `TBW_TIKTOK`,
+      `TBW_THREADS`, `TBW_WHATSAPP` apparaissent deux fois, une fois vides
+      puis une fois avec la vraie valeur). Ça fonctionne aujourd'hui (la
+      dernière occurrence gagne), mais c'est fragile si quelqu'un modifie
+      la mauvaise occurrence plus tard — à nettoyer en gardant une seule
+      ligne par clé.
 
 ## 6. Ordre de priorité
 
