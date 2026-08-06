@@ -153,9 +153,13 @@ aller au bout du bilinguisme).
       Newsletter étaient déjà correctement protégés (champ caché +
       `RejectsHoneypot`). Testé en soumettant avec le champ honeypot
       rempli : rejet silencieux confirmé, aucun enregistrement créé.
-- [ ] **Responsive mobile/tablette** : tester réellement sur petits écrans
-      (CDC l'exige explicitement) — un commit Cursor mentionne du travail sur
-      "mobile" mais à valider partout, pas juste sur l'accueil.
+- [x] **Responsive mobile/tablette** : testé sur les 15 pages publiques
+      (routes `GET {locale}/...` de premier niveau) à 375px (mobile) et
+      768px (tablette) : aucun débordement horizontal détecté
+      automatiquement, et vérifié visuellement (grilles qui s'empilent
+      correctement, formulaires lisibles, menu hamburger fonctionnel en
+      dessous de 1280px). Aucun bug réel trouvé — pas seulement l'accueil,
+      comme le craignait le commit Cursor.
 - [ ] **Audit contenu placeholder** : repérer tout texte de test encore présent
       (ex: descriptions génériques, `Lorem ipsum` éventuel) et le signaler
       plutôt que le publier tel quel.
