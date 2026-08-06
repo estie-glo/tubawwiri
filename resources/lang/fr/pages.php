@@ -6,6 +6,9 @@ return [
     'observatory_intro' => 'Analyses, notes, rapports, statistiques, baromètres et recherches sur la résilience humaine en Afrique.',
     'resources_intro' => 'Guides, publications, rapports, outils pratiques, podcasts, vidéos, infographies et documents téléchargeables.',
     'search_resources' => 'Rechercher une ressource...',
+    'all_categories' => 'Toutes les catégories',
+    'filter' => 'Filtrer',
+    'open_link' => 'Voir le lien',
     'no_resources' => 'Aucune ressource trouvée.',
     'no_news' => 'Aucun article publié pour le moment.',
     'no_reports' => 'Aucun rapport publié pour le moment.',
@@ -14,6 +17,9 @@ return [
     'share' => 'Partager',
     'read_more' => 'En savoir plus',
     'linked_programs' => 'Programmes liés',
+
+    'impact_intro' => 'Les résultats concrets de notre action sur le terrain, mesurés année après année.',
+    'testimonials_subtitle' => 'Ce que disent les personnes et communautés accompagnées par TUBAWWIRI.',
 
     'consulting_intro' => "TBW Consulting est le pôle de conseil, d'expertise et d'accompagnement organisationnel de l'écosystème TUBAWWIRI. Il conseille les organisations, accompagne les institutions et les entreprises, et propose des solutions adaptées aux réalités locales.",
     'consulting_services' => [
@@ -28,12 +34,16 @@ return [
 
     'academy_intro' => "TBW Academy est le pôle de formation, de transmission et de développement des compétences de l'écosystème TUBAWWIRI. Elle forme les personnes et les organisations, diffuse la Méthode CAVAMIS, et forme bénévoles, mentors, ambassadeurs et formateurs — en présentiel comme à distance.",
 
+    'media_intro' => 'Photos, vidéos, communiqués et ressources presse de la Fondation TUBAWWIRI.',
     'gallery_photos' => 'Galerie photo',
     'gallery_videos' => 'Galerie vidéo',
     'press_releases' => 'Communiqués & presse',
+    'communiques' => 'Communiqués',
+    'press_kit' => 'Kit presse',
     'no_photos' => 'Aucune photo pour le moment.',
     'no_videos' => 'Aucune vidéo pour le moment.',
     'no_press' => 'Aucun communiqué pour le moment.',
+    'no_press_kit' => 'Aucun document de presse disponible pour le moment.',
 
     'field_enjeux' => 'Enjeux',
     'field_objectifs' => 'Objectifs',

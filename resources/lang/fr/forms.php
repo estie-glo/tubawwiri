@@ -61,4 +61,11 @@ return [
     'btn_envoyer_ma_demande' => 'Envoyer ma demande',
     'btn_confirmer_inscription' => 'Confirmer mon inscription',
     'btn_continuer_don' => 'Continuer mon don',
+
+    'flash_title' => 'Succès',
+
+    'newsletter_title' => 'Newsletter',
+    'newsletter_subtitle' => 'Recevez nos actualités et nos appels à mobilisation.',
+    'newsletter_submit' => 'S\'inscrire',
+    'newsletter_success' => 'Merci ! Votre inscription à la newsletter est confirmée.',
 ];

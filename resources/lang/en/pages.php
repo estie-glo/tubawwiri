@@ -6,6 +6,9 @@ return [
     'observatory_intro' => 'Analyses, notes, reports, statistics, barometers and research on human resilience in Africa.',
     'resources_intro' => 'Guides, publications, reports, practical tools, podcasts, videos, infographics and downloadable documents.',
     'search_resources' => 'Search for a resource...',
+    'all_categories' => 'All categories',
+    'filter' => 'Filter',
+    'open_link' => 'Open link',
     'no_resources' => 'No resources found.',
     'no_news' => 'No articles published yet.',
     'no_reports' => 'No reports published yet.',
@@ -14,6 +17,9 @@ return [
     'share' => 'Share',
     'read_more' => 'Read more',
     'linked_programs' => 'Related programs',
+
+    'impact_intro' => 'The concrete results of our work in the field, measured year after year.',
+    'testimonials_subtitle' => 'What the people and communities supported by TUBAWWIRI have to say.',
 
     'consulting_intro' => "TBW Consulting is the consulting, expertise and organizational support arm of the TUBAWWIRI ecosystem. It advises organizations, supports institutions and businesses, and offers solutions adapted to local realities.",
     'consulting_services' => [
@@ -28,12 +34,16 @@ return [
 
     'academy_intro' => "TBW Academy is the training, knowledge-transfer and skills-development arm of the TUBAWWIRI ecosystem. It trains individuals and organizations, spreads the CAVAMIS Method, and trains volunteers, mentors, ambassadors and trainers — both in person and remotely.",
 
+    'media_intro' => 'Photos, videos, press releases and press resources from the TUBAWWIRI Foundation.',
     'gallery_photos' => 'Photo gallery',
     'gallery_videos' => 'Video gallery',
     'press_releases' => 'Press releases',
+    'communiques' => 'Press releases',
+    'press_kit' => 'Press kit',
     'no_photos' => 'No photos yet.',
     'no_videos' => 'No videos yet.',
     'no_press' => 'No press releases yet.',
+    'no_press_kit' => 'No press kit documents available yet.',
 
     'field_enjeux' => 'Key issues',
     'field_objectifs' => 'Objectives',

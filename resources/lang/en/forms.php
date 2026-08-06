@@ -61,4 +61,11 @@ return [
     'btn_envoyer_ma_demande' => 'Send my request',
     'btn_confirmer_inscription' => 'Confirm my enrollment',
     'btn_continuer_don' => 'Continue my donation',
+
+    'flash_title' => 'Success',
+
+    'newsletter_title' => 'Newsletter',
+    'newsletter_subtitle' => 'Get our news and calls to action.',
+    'newsletter_submit' => 'Subscribe',
+    'newsletter_success' => 'Thank you! Your newsletter subscription is confirmed.',
 ];
