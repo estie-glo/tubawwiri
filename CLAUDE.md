@@ -218,8 +218,12 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       pose autour de `Mail::send()`. Six emails de notification "[QA]"
       envoyés à `estellewandji67@gmail.com` pendant ce test, à nettoyer
       manuellement dans la boîte mail.
-- [ ] **Liens morts / 404** : parcourir les 16 pages en FR et EN, cliquer sur
-      tous les liens internes, vérifier qu'aucun ne casse.
+- [x] **Liens morts / 404** : crawl automatisé des 15 pages publiques en FR
+      et EN + tous leurs liens internes (96 liens uniques découverts). Un
+      lien cassé trouvé et corrigé : "Communiqué de lancement" et "Dossier
+      de presse TUBAWWIRI" sur `/medias` pointaient vers `/storage` (404,
+      `file_path` NULL en base, vue non gardée par `@if`) — voir commit
+      `2f2ae5e`. Après correction : 0 lien cassé sur les 96.
 - [ ] **Checklist de recette du CDC** (déjà largement remplie, revérifier
       point par point) — voir `PLAN_EQUIPE_TUBAWWIRI` pour la liste complète.
 
