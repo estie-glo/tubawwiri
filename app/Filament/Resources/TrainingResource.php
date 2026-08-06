@@ -25,21 +25,30 @@ class TrainingResource extends Resource
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
             Forms\Components\TextInput::make('title_en')->label('Titre EN'),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            Forms\Components\Textarea::make('description_fr')->label('Description FR')->rows(4),
-            Forms\Components\Textarea::make('description_en')->label('Description EN')->rows(4),
-            Forms\Components\Select::make('level')->label('Niveau')->options([
-                'debutant' => 'Débutant',
-                'intermediaire' => 'Intermédiaire',
-                'avance' => 'Avancé',
+
+            Forms\Components\Fieldset::make('Contenu')->schema([
+                Forms\Components\Textarea::make('description_fr')->label('Description FR')->rows(4),
+                Forms\Components\Textarea::make('description_en')->label('Description EN')->rows(4),
+            ])->columns(1),
+
+            Forms\Components\Fieldset::make('Modalités')->schema([
+                Forms\Components\Select::make('level')->label('Niveau')->options([
+                    'debutant' => 'Débutant',
+                    'intermediaire' => 'Intermédiaire',
+                    'avance' => 'Avancé',
+                ]),
+                Forms\Components\Select::make('mode')->options([
+                    'presentiel' => 'Présentiel',
+                    'en_ligne' => 'En ligne',
+                ])->required(),
+                Forms\Components\TextInput::make('duree')->label('Durée'),
+                Forms\Components\TextInput::make('price')->label('Prix (FCFA)')->numeric(),
             ]),
-            Forms\Components\Select::make('mode')->options([
-                'presentiel' => 'Présentiel',
-                'en_ligne' => 'En ligne',
-            ])->required(),
-            Forms\Components\TextInput::make('duree')->label('Durée'),
-            Forms\Components\TextInput::make('price')->label('Prix (FCFA)')->numeric(),
-            Forms\Components\FileUpload::make('cover_image')->image()->directory('trainings'),
-            Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+
+            Forms\Components\Fieldset::make('Publication')->schema([
+                Forms\Components\FileUpload::make('cover_image')->image()->directory('trainings'),
+                Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+            ]),
         ]);
     }
 

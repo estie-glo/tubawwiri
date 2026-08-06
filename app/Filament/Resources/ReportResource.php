@@ -33,12 +33,18 @@ class ReportResource extends Resource
                 'rapport' => 'Rapport',
                 'barometre' => 'Baromètre',
             ])->required(),
-            Forms\Components\Textarea::make('summary_fr')->label('Résumé FR')->rows(3),
-            Forms\Components\Textarea::make('summary_en')->label('Résumé EN')->rows(3),
-            Forms\Components\FileUpload::make('file_path')->label('Document PDF')->directory('reports')->acceptedFileTypes(['application/pdf']),
-            Forms\Components\FileUpload::make('cover_image')->image()->directory('reports-covers'),
-            Forms\Components\DatePicker::make('published_on')->label('Date de publication'),
-            Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+
+            Forms\Components\Fieldset::make('Contenu')->schema([
+                Forms\Components\Textarea::make('summary_fr')->label('Résumé FR')->rows(3),
+                Forms\Components\Textarea::make('summary_en')->label('Résumé EN')->rows(3),
+            ])->columns(1),
+
+            Forms\Components\Fieldset::make('Publication')->schema([
+                Forms\Components\FileUpload::make('file_path')->label('Document PDF')->directory('reports')->acceptedFileTypes(['application/pdf']),
+                Forms\Components\FileUpload::make('cover_image')->image()->directory('reports-covers'),
+                Forms\Components\DatePicker::make('published_on')->label('Date de publication'),
+                Forms\Components\Toggle::make('is_published')->label('Publié')->default(true),
+            ]),
         ]);
     }
 

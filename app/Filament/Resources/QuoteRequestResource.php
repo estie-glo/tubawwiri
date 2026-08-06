@@ -28,15 +28,21 @@ class QuoteRequestResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('nom')->disabled(),
-            Forms\Components\TextInput::make('organisation')->disabled(),
-            Forms\Components\TextInput::make('email')->disabled(),
-            Forms\Components\TextInput::make('telephone')->disabled(),
-            Forms\Components\TextInput::make('pays')->disabled(),
-            Forms\Components\TextInput::make('service_souhaite')->label('Service souhaité')->disabled(),
-            Forms\Components\TextInput::make('budget_estimatif')->label('Budget estimatif')->disabled(),
-            Forms\Components\TextInput::make('delai')->disabled(),
-            Forms\Components\Textarea::make('description_besoin')->label('Besoin')->disabled()->rows(4),
+            Forms\Components\Fieldset::make('Contact')->schema([
+                Forms\Components\TextInput::make('nom')->disabled(),
+                Forms\Components\TextInput::make('organisation')->disabled(),
+                Forms\Components\TextInput::make('email')->disabled(),
+                Forms\Components\TextInput::make('telephone')->disabled(),
+                Forms\Components\TextInput::make('pays')->disabled(),
+            ]),
+
+            Forms\Components\Fieldset::make('Détails de la demande')->schema([
+                Forms\Components\TextInput::make('service_souhaite')->label('Service souhaité')->disabled(),
+                Forms\Components\TextInput::make('budget_estimatif')->label('Budget estimatif')->disabled(),
+                Forms\Components\TextInput::make('delai')->disabled(),
+                Forms\Components\Textarea::make('description_besoin')->label('Besoin')->disabled()->rows(4),
+            ])->columns(1),
+
             Forms\Components\Select::make('status')->label('Statut')->options([
                 'nouveau' => 'Nouveau',
                 'en_cours' => 'En cours',
