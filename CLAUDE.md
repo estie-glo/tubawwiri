@@ -133,10 +133,17 @@ aller au bout du bilinguisme).
       QuoteRequest,Subscriber}Policy.php`) + `->authorize()` sur chaque
       `DeleteAction` : `delete`/`deleteAny` réservés à `role = admin`,
       view/update/viewAny inchangés pour les editors.
-- [ ] **Newsletter** : vérifier l'état d'avancement (un commit Cursor mentionne
-      "finaliser le bloc livraison (newsletter, mobile, anti-spam)" — auditer
-      ce qui existe vraiment : formulaire d'inscription, table `subscribers`,
-      gestion des abonnés côté admin).
+- [x] **Newsletter** : audité — le cœur (formulaire footer, route/contrôleur,
+      anti-doublon, migration, honeypot, `SubscriberResource`) était déjà
+      solide, contrairement à ce que laissait penser le commit Cursor. Deux
+      manques réels corrigés : (1) 13 clés de traduction absentes cassaient
+      l'affichage du bloc newsletter et de plusieurs pages (Médias,
+      Ressources, Impacts) en FR et EN — la clé brute s'affichait en prod ;
+      (2) aucune désinscription n'existait — ajoutée
+      (`/{locale}/newsletter/desabonnement`, désactive `is_active`, lien
+      dans le footer). Reste mineur, non bloquant : pas de filtres/actions
+      groupées sur `SubscriberResource`, pas d'email de confirmation à
+      l'inscription.
 - [ ] **Anti-spam formulaires** : vérifier la même chose (honeypot ou
       équivalent) sur les 6 formulaires publics.
 - [ ] **Responsive mobile/tablette** : tester réellement sur petits écrans
