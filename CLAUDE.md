@@ -144,8 +144,15 @@ aller au bout du bilinguisme).
       dans le footer). Reste mineur, non bloquant : pas de filtres/actions
       groupées sur `SubscriberResource`, pas d'email de confirmation à
       l'inscription.
-- [ ] **Anti-spam formulaires** : vérifier la même chose (honeypot ou
-      équivalent) sur les 6 formulaires publics.
+- [x] **Anti-spam formulaires** : vérifié sur les 6 formulaires publics +
+      newsletter. Deux trous trouvés et corrigés : "Nous rejoindre"
+      n'avait aucun honeypot (ni champ, ni vérification côté contrôleur) ;
+      "Faire un don" vérifiait le honeypot côté contrôleur mais le champ
+      n'existait pas dans la vue, donc la vérification ne se déclenchait
+      jamais. Contact, Partenariat, Devis, Inscription Academy et
+      Newsletter étaient déjà correctement protégés (champ caché +
+      `RejectsHoneypot`). Testé en soumettant avec le champ honeypot
+      rempli : rejet silencieux confirmé, aucun enregistrement créé.
 - [ ] **Responsive mobile/tablette** : tester réellement sur petits écrans
       (CDC l'exige explicitement) — un commit Cursor mentionne du travail sur
       "mobile" mais à valider partout, pas juste sur l'accueil.
