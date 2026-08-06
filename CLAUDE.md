@@ -120,10 +120,11 @@ aller au bout du bilinguisme).
 ## 5. RESTE À FAIRE POUR LIVRER (hors déploiement, voir section 6)
 
 - [ ] **Admin Filament : refonte visuelle** (voir section 3, priorité n°1)
-- [ ] **`ResourceResource`** : le modèle `Resource` (Centre de ressources) n'a
-      toujours pas de ressource Filament admin — impossible d'ajouter du contenu
-      autrement qu'en base directement. À créer sur le modèle des autres
-      ressources (`ReportResource`, etc.)
+- [x] **`ResourceResource`** : fait — la ressource Filament pour le modèle
+      `Resource` (Centre de ressources) existe déjà sous le nom
+      `ResourceItemResource` (`app/Filament/Resources/ResourceItemResource.php`,
+      ajoutée dans le commit `720d7a1`). CRUD complet, catégorie en badge,
+      formulaire regroupé en sections (voir section 3).
 - [ ] **Rôles/permissions** : vérifier que la restriction de suppression
       (admin uniquement) posée sur les 6 ressources "Formulaires reçus" est
       toujours active après les refontes de Cursor — retester avec un compte
