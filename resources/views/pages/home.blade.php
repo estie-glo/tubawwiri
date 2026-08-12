@@ -27,11 +27,11 @@
 
             <div class="mt-9 flex flex-wrap items-center gap-4">
                 <a href="{{ route('about', app()->getLocale()) }}"
-                   class="bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] px-7 py-3.5 text-xs font-bold uppercase tracking-wider transition">
+                   class="btn-tbw bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] px-7 py-3.5 text-xs font-bold uppercase tracking-wider">
                     {{ __('site.home.cta_discover') }}
                 </a>
                 <a href="{{ route('donation.index', app()->getLocale()) }}"
-                   class="border border-white/70 text-white hover:bg-white hover:text-[#123D2E] px-7 py-3.5 text-xs font-bold uppercase tracking-wider transition">
+                   class="btn-tbw border border-white/70 text-white hover:bg-white hover:text-[#123D2E] px-7 py-3.5 text-xs font-bold uppercase tracking-wider">
                     {{ __('site.home.cta_donate') }}
                 </a>
             </div>
@@ -87,7 +87,7 @@
                     @endforeach
                 </div>
                 <a href="{{ route('approach', app()->getLocale()) }}"
-                   class="inline-flex mt-10 border border-[#C99A3E] text-[#C99A3E] hover:bg-[#C99A3E] hover:text-[#123D2E] px-6 py-3 text-xs font-bold uppercase tracking-wider transition">
+                   class="btn-tbw inline-flex mt-10 border border-[#C99A3E] text-[#C99A3E] hover:bg-[#C99A3E] hover:text-[#123D2E] px-6 py-3 text-xs font-bold uppercase tracking-wider">
                     {{ __('site.nav.approach') }}
                 </a>
             </div>
@@ -148,7 +148,7 @@
             <div class="relative mt-8 space-y-3 text-sm">
                 <a href="{{ route('join.index', app()->getLocale()) }}" class="block border-b border-white/15 pb-2 hover:text-[#C99A3E] transition">{{ __('site.nav.join') }} →</a>
                 <a href="{{ route('contact.index', app()->getLocale()) }}" class="block border-b border-white/15 pb-2 hover:text-[#C99A3E] transition">{{ __('site.home.cta_partner') }} →</a>
-                <a href="{{ route('donation.index', app()->getLocale()) }}" class="inline-flex mt-4 bg-[#C99A3E] text-[#123D2E] px-5 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-[#b3872f] transition">
+                <a href="{{ route('donation.index', app()->getLocale()) }}" class="btn-tbw inline-flex mt-4 bg-[#C99A3E] text-[#123D2E] px-5 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-[#b3872f]">
                     {{ __('site.home.cta_donate') }}
                 </a>
             </div>

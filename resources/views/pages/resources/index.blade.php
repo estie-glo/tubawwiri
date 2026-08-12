@@ -17,7 +17,7 @@
                     <option value="{{ $key }}" @selected(request('category') === $key)>{{ $label }}</option>
                 @endforeach
             </select>
-            <button type="submit" class="bg-[#123D2E] text-white text-xs font-bold uppercase tracking-wider px-5 py-3">
+            <button type="submit" class="btn-tbw bg-[#123D2E] text-white text-xs font-bold uppercase tracking-wider px-5 py-3">
                 {{ __('pages.filter') }}
             </button>
         </form>

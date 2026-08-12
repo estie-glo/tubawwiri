@@ -18,7 +18,7 @@
 
         @if ($report->file_path)
             <a href="{{ asset('storage/' . $report->file_path) }}" target="_blank"
-               class="inline-block bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition">
+               class="btn-tbw inline-block bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider">
                 {{ __('pages.download') }} (PDF)
             </a>
         @endif

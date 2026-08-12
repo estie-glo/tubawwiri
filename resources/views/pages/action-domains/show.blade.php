@@ -43,7 +43,7 @@
         @endif
 
         <a href="{{ route('contact.index', app()->getLocale()) }}"
-           class="inline-block mt-12 bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition">
+           class="btn-tbw inline-block mt-12 bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider">
             {{ __('pages.become_partner_domain') }}
         </a>
     </section>

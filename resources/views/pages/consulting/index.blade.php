@@ -77,7 +77,7 @@
                     <textarea name="description_besoin" required rows="4" class="w-full border border-[#d8cfb8] focus:border-[#123D2E] outline-none p-3 text-sm transition">{{ old('description_besoin') }}</textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5 transition">
+                <button type="submit" class="btn-tbw w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5">
                     {{ __('forms.btn_envoyer_demande') }}
                 </button>
             </form>
