@@ -91,9 +91,27 @@
             from { transform: scale(1); }
             to { transform: scale(1.08); }
         }
+        .marquee-viewport {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll var(--marquee-duration, 42s) linear infinite;
+        }
+        .marquee-viewport:hover .marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
         @media (prefers-reduced-motion: reduce) {
             .hero-kenburns { animation: none; }
             .reveal { opacity: 1; transform: none; }
+            .marquee-track { animation: none; }
         }
     .tbw-bg-photo {
         position: absolute;
