@@ -294,7 +294,7 @@ body {
 }
 
 /* ---------- Page de connexion : même traitement que le hero de l'accueil ----------
-   Photo plein écran (public/images/banner-tubawwiri.jpeg) + dégradé sombre +
+   Photo plein écran (public/images/banner-tubawwiri-corrige.png) + dégradé sombre +
    zoom lent, comme resources/views/pages/home.blade.php (section hero). Deux
    pseudo-éléments plutôt qu'un <img> réel : on ne peut pas modifier le blade
    de login de Filament (vendor) sans casser aux prochaines mises à jour, et
@@ -314,7 +314,7 @@ body {
     z-index: 0;
 }
 .fi-simple-layout::before {
-    background-image: url('/images/banner-tubawwiri.jpeg');
+    background-image: url('/images/banner-tubawwiri-corrige.png');
     background-size: cover;
     background-position: center;
     animation: tbw-hero-kenburns 22s ease-in-out infinite alternate;

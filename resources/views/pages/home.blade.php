@@ -7,7 +7,7 @@
 
     {{-- ===== HERO FULL-BLEED ===== --}}
     <section class="relative min-h-[88vh] flex items-end overflow-hidden">
-        <img src="{{ asset('images/banner-tubawwiri.jpeg') }}"
+        <img src="{{ asset('images/banner-tubawwiri-corrige.png') }}"
              alt="Fondation TUBAWWIRI"
              class="absolute inset-0 w-full h-full object-cover hero-kenburns">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0b261c]/92 via-[#123D2E]/78 to-[#123D2E]/35"></div>
@@ -182,7 +182,7 @@
         </div>
 
         <div class="lg:col-span-1 relative overflow-hidden p-8 min-h-[280px] flex flex-col justify-end hover-lift">
-            <img src="{{ asset('images/community/statue.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover">
+            <img src="{{ asset('images/community/femme-lance.png') }}" alt="" class="absolute inset-0 w-full h-full object-cover object-top">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/70 to-[#123D2E]/30"></div>
             <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('site.home.join_title') }}</p>
             <p class="relative font-display italic text-2xl mt-3 text-white">{{ __('site.home.join_subtitle') }}</p>
