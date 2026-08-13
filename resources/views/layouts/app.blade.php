@@ -113,6 +113,39 @@
             .reveal { opacity: 1; transform: none; }
             .marquee-track { animation: none; }
         }
+        .content-scroll-viewport {
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            scrollbar-width: thin;
+            scrollbar-color: #C99A3E transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+        .content-scroll-viewport::-webkit-scrollbar {
+            height: 6px;
+        }
+        .content-scroll-viewport::-webkit-scrollbar-thumb {
+            background: #C99A3E;
+        }
+        .content-scroll-track {
+            display: flex;
+        }
+        .content-card {
+            scroll-snap-align: start;
+        }
+        .scroll-arrow-btn {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .scroll-arrow-btn:hover {
+            transform: translateX(3px);
+            background-color: #b3872f;
+        }
+        .prose :where(p) { margin: 0.55em 0; }
+        .prose :where(p:first-child) { margin-top: 0; }
+        .prose :where(p:last-child) { margin-bottom: 0; }
+        .prose :where(ul) { margin: 0.55em 0; padding-left: 1.15em; list-style: disc; }
+        .prose :where(li) { margin: 0.2em 0; }
+        .prose :where(blockquote) { border-left: 2px solid currentColor; padding-left: 0.9em; font-style: italic; margin: 0.65em 0; }
+        .prose :where(strong) { font-weight: 700; }
     .tbw-bg-photo {
         position: absolute;
         inset: 0;

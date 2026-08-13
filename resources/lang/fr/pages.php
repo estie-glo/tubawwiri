@@ -16,6 +16,7 @@ return [
     'all' => 'Toutes',
     'share' => 'Partager',
     'read_more' => 'En savoir plus',
+    'scroll_next' => 'Paragraphe suivant',
     'linked_programs' => 'Programmes liés',
 
     'impact_intro' => 'Les résultats concrets de notre action sur le terrain, mesurés année après année.',

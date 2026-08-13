@@ -16,6 +16,7 @@ return [
     'all' => 'All',
     'share' => 'Share',
     'read_more' => 'Read more',
+    'scroll_next' => 'Next paragraph',
     'linked_programs' => 'Related programs',
 
     'impact_intro' => 'The concrete results of our work in the field, measured year after year.',
