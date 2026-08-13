@@ -19,21 +19,27 @@
             @endforeach
         </div>
 
-        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8]">
-            @forelse ($articles as $article)
+        @php $bgPhotos = ['village.jpg', 'family.jpg', 'statue.jpg', 'sunset.jpg']; @endphp
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            @forelse ($articles as $i => $article)
                 <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}"
-                   class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
-                    @if ($article->category)
-                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">
-                            {{ app()->getLocale() === 'en' && $article->category->name_en ? $article->category->name_en : $article->category->name_fr }}
-                        </p>
-                    @endif
-                    <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ $article->title_fr }}</h2>
-                    <p class="text-sm text-[#8a8372] mt-2 line-clamp-2">{{ $article->excerpt_fr }}</p>
-                    <p class="text-xs text-[#8a8372] mt-3">{{ optional($article->published_at)->format('d/m/Y') }}</p>
+                   class="group relative min-h-[300px] overflow-hidden hover-lift">
+                    <img src="{{ $article->cover_image ? asset('storage/' . $article->cover_image) : asset('images/community/' . $bgPhotos[$i % count($bgPhotos)]) }}"
+                         alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/94 via-[#123D2E]/65 to-[#123D2E]/20"></div>
+                    <div class="relative z-10 flex flex-col justify-end h-full p-6">
+                        @if ($article->category)
+                            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">
+                                {{ app()->getLocale() === 'en' && $article->category->name_en ? $article->category->name_en : $article->category->name_fr }}
+                            </p>
+                        @endif
+                        <h2 class="font-display text-lg font-semibold text-white mt-2">{{ $article->title_fr }}</h2>
+                        <p class="text-sm text-white/80 mt-2 line-clamp-2">{{ $article->excerpt_fr }}</p>
+                        <p class="text-xs text-white/60 mt-3">{{ optional($article->published_at)->format('d/m/Y') }}</p>
+                    </div>
                 </a>
             @empty
-                <p class="text-[#8a8372] text-sm p-8 bg-white">{{ __('pages.no_news') }}</p>
+                <p class="text-[#8a8372] text-sm p-8 bg-white sm:col-span-2 lg:col-span-3">{{ __('pages.no_news') }}</p>
             @endforelse
         </div>
 
