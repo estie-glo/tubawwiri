@@ -3,12 +3,10 @@
 @section('title', __('site.nav.resources') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.resources') }}</h1>
-        <p class="text-[#4a453c] mt-4 max-w-2xl leading-relaxed">{{ __('pages.resources_intro') }}</p>
+    <x-page-hero image="community/family.jpg" :title="__('site.nav.resources')" :intro="__('pages.resources_intro')" />
 
-        <form method="GET" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-2xl">
+    <section class="max-w-7xl mx-auto px-4 py-16 reveal">
+        <form method="GET" class="flex flex-col sm:flex-row gap-3 max-w-2xl">
             <input type="text" name="q" value="{{ request('q') }}" placeholder="{{ __('pages.search_resources') }}"
                    class="flex-1 border border-[#e5ddc8] px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E]">
             <select name="category" class="border border-[#e5ddc8] px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E] bg-white">

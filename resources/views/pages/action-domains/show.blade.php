@@ -3,29 +3,26 @@
 @section('title', localized($actionDomain, 'title') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-3xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('site.home.domains_title') }}</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">
-            {{ localized($actionDomain, 'title') }}
-        </h1>
-        <p class="text-[#4a453c] mb-10 leading-relaxed">
-            {{ localized($actionDomain, 'summary') }}
-        </p>
+    <x-page-hero image="community/village.jpg" :kicker="__('site.home.domains_title')"
+                 :title="localized($actionDomain, 'title')" :intro="localized($actionDomain, 'summary')" />
 
-        @foreach ([
-            'enjeux' => __('pages.field_enjeux'),
-            'objectifs' => __('pages.field_objectifs'),
-            'actions' => __('pages.field_actions'),
-            'publics_cibles' => __('pages.field_publics_cibles'),
-            'resultats_attendus' => __('pages.field_resultats_attendus'),
-        ] as $field => $label)
-            @if (localized($actionDomain, $field))
-                <div class="mb-8 border-t border-[#e5ddc8] pt-6">
-                    <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-2">{{ $label }}</p>
-                    <div class="prose max-w-none text-[#4a453c]">{!! localized($actionDomain, $field) !!}</div>
-                </div>
-            @endif
-        @endforeach
+    <section class="max-w-5xl mx-auto px-4 py-16 reveal">
+        @php
+            $domainFields = [];
+            foreach ([
+                'enjeux' => __('pages.field_enjeux'),
+                'objectifs' => __('pages.field_objectifs'),
+                'actions' => __('pages.field_actions'),
+                'publics_cibles' => __('pages.field_publics_cibles'),
+                'resultats_attendus' => __('pages.field_resultats_attendus'),
+            ] as $field => $label) {
+                if (localized($actionDomain, $field)) {
+                    $domainFields[] = ['label' => $label, 'html' => localized($actionDomain, $field)];
+                }
+            }
+        @endphp
+
+        <x-field-cards :fields="$domainFields" />
 
         @if ($actionDomain->programs->isNotEmpty())
             <div class="mt-10 border-t border-[#e5ddc8] pt-6">

@@ -3,11 +3,10 @@
 @section('title', 'TBW Consulting — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 reveal">
+    <x-page-hero image="community/statue.jpg" title="TBW Consulting" :intro="__('pages.consulting_intro')" />
+
+    <section class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-16 reveal">
         <div>
-            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-            <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-6">TBW Consulting</h1>
-            <p class="text-[#4a453c] mb-8 leading-relaxed">{{ __('pages.consulting_intro') }}</p>
             <ul class="space-y-3 text-sm">
                 @foreach (__('pages.consulting_services') as $item)
                     <li class="border-b border-[#e5ddc8] pb-3 text-[#123D2E] font-medium">{{ $item }}</li>

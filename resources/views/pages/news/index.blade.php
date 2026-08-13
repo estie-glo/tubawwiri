@@ -3,10 +3,9 @@
 @section('title', 'Actualités — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-8">{{ __('site.nav.news') }}</h1>
+    <x-page-hero image="community/sunset.jpg" :title="__('site.nav.news')" />
 
+    <section class="max-w-7xl mx-auto px-4 py-16 reveal">
         <div class="flex flex-wrap gap-4 mb-12 text-xs font-semibold uppercase tracking-wider">
             <a href="{{ route('news.index', app()->getLocale()) }}"
                class="{{ !$activeCategory ? 'text-[#C99A3E]' : 'text-[#123D2E] hover:text-[#C99A3E]' }}">

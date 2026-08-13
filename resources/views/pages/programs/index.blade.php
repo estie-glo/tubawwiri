@@ -3,12 +3,10 @@
 @section('title', 'Programmes — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.programs') }}</h1>
-        <p class="text-[#4a453c] mt-4 max-w-2xl leading-relaxed">{{ __('pages.programs_intro') }}</p>
+    <x-page-hero image="community/village.jpg" :title="__('site.nav.programs')" :intro="__('pages.programs_intro')" />
 
-        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8] mt-12">
+    <section class="max-w-7xl mx-auto px-4 py-16 reveal">
+        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8]">
             @foreach ($programs as $program)
                 <a href="{{ route('programs.show', [app()->getLocale(), $program->slug]) }}"
                    class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">

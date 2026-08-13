@@ -3,12 +3,10 @@
 @section('title', 'Médias — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.media') }}</h1>
-        <p class="text-[#4a453c] mt-4 max-w-2xl leading-relaxed">{{ __('pages.media_intro') }}</p>
+    <x-page-hero image="community/village.jpg" :title="__('site.nav.media')" :intro="__('pages.media_intro')" />
 
-        <div class="mt-16">
+    <section class="max-w-7xl mx-auto px-4 py-16 reveal">
+        <div class="mt-4">
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('pages.gallery_photos') }}</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                 @forelse ($photos as $photo)
