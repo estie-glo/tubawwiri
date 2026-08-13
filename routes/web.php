@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActionDomainController;
 use App\Http\Controllers\AcademyController;
+use App\Http\Controllers\ArchitectureController;
 use App\Http\Controllers\ConsultingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
@@ -49,6 +50,8 @@ Route::prefix('{locale}')
         Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
 
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
+
+        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'index'])->name('architecture.index');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');
