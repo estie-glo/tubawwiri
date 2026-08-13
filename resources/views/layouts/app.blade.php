@@ -184,6 +184,7 @@
         ];
         $moreNav = [
             ['route' => 'rubriques.index', 'label' => __('rubriques.title')],
+            ['route' => 'founder.index', 'label' => __('founder.title')],
             ['route' => 'observatory.index', 'label' => __('site.nav.observatory')],
             ['route' => 'resources.index', 'label' => __('site.nav.resources')],
             ['route' => 'news.index', 'label' => __('site.nav.news')],

@@ -5,6 +5,7 @@ use App\Http\Controllers\AcademyController;
 use App\Http\Controllers\ConsultingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\FounderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImpactController;
 use App\Http\Controllers\JoinController;
@@ -46,6 +47,8 @@ Route::prefix('{locale}')
             ->defaults('slug', 'notre-approche')->name('approach');
 
         Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
+
+        Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');
