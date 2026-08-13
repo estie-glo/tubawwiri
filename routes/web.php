@@ -15,6 +15,7 @@ use App\Http\Controllers\ObservatoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\RubriqueController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,8 @@ Route::prefix('{locale}')
 
         Route::get('/notre-approche', [PageController::class, 'show'])
             ->defaults('slug', 'notre-approche')->name('approach');
+
+        Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');

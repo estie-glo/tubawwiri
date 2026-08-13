@@ -183,6 +183,7 @@
             ['route' => 'contact.index', 'label' => __('site.nav.contact')],
         ];
         $moreNav = [
+            ['route' => 'rubriques.index', 'label' => __('rubriques.title')],
             ['route' => 'observatory.index', 'label' => __('site.nav.observatory')],
             ['route' => 'resources.index', 'label' => __('site.nav.resources')],
             ['route' => 'news.index', 'label' => __('site.nav.news')],
