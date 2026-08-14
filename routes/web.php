@@ -41,11 +41,17 @@ Route::prefix('{locale}')
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
         // 2. Qui sommes-nous / 3. Notre approche -> pages institutionnelles génériques
+        // Chaque paragraphe/cadre est une vraie page (1 cadre = 1 URL), avec
+        // navigation précédent/suivant — voir CLAUDE.md 3.12.5.
         Route::get('/qui-sommes-nous', [PageController::class, 'show'])
             ->defaults('slug', 'qui-sommes-nous')->name('about');
+        Route::get('/qui-sommes-nous/{position}', [PageController::class, 'show'])
+            ->defaults('slug', 'qui-sommes-nous')->whereNumber('position')->name('about.show');
 
         Route::get('/notre-approche', [PageController::class, 'show'])
             ->defaults('slug', 'notre-approche')->name('approach');
+        Route::get('/notre-approche/{position}', [PageController::class, 'show'])
+            ->defaults('slug', 'notre-approche')->whereNumber('position')->name('approach.show');
 
         Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
 
