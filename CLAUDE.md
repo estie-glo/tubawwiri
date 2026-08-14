@@ -375,6 +375,34 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       - Reste du contenu (Programmes, Articles, Rapports, Formations,
         pages institutionnelles) vérifié : rédigé et distinct, pas de
         gabarit détecté ailleurs.
+- [x] **Revue Actualités vs CDC** (section 3.10) : comparé au CDC
+      (`docs-source/Dossier_Complet_Site_Web_TUBAWWIRI-20.pdf`, section
+      Actualités). Écarts trouvés, laissés en l'état (décision Fondatrice) :
+      - **Catégories inventées, ne correspondent pas au CDC** : les 10
+        catégories en base (`Category`) reprennent les 10 rubriques
+        officielles (Santé mentale communautaire, Allô Parentalité
+        Écoute, etc.), alors que le CDC prévoit une liste différente
+        pour Actualités : *Afrique, Cameroun, Monde, Santé mentale,
+        Parentalité, Protection de l'enfant, Leadership féminin,
+        Citations africaines, Vie de la Fondation* (section 8 du CDC)
+        / *Afrique, Monde, Santé mentale, Parentalité, Droits de
+        l'enfant, Leadership féminin, Citations africaines,
+        Interviews* (section 3). Aucune des deux ne correspond aux
+        catégories actuelles — à trancher avec la Fondatrice (garder
+        les rubriques comme catégories, ou aligner sur le CDC).
+      - **Seulement 2 articles en base** ("Lancer la Tribu TUBAWWIRI",
+        "La méthode CAVAMIS en action"), tous deux sans catégorie
+        assignée (le seeder référence des slugs de catégorie qui
+        n'existent pas). Le CDC recommande un rythme éditorial (1
+        analyse/semaine, 3-5 posts courts/semaine, 1 rapport tous les
+        2-3 mois) — volume actuel très en dessous, contenu réel à
+        produire par la Fondatrice, pas inventé ici.
+      - **Types de contenu absents** : "Citations africaines" et
+        "Interviews", prévus par le CDC, n'existent pas comme type de
+        contenu dans le modèle `Article` actuel.
+      - Champ `cover_image` : présent sur `Article` mais vide sur les 2
+        articles existants — les nouvelles cartes (voir commit visuel
+        3.10) utilisent une photo de secours en attendant.
 - [x] **QA formulaires bout-en-bout** : les 6 formulaires soumis avec des
       données de test (supprimées ensuite), chacun vérifié en base
       (`ContactMessage`, `PartnerRequest`, `QuoteRequest`,

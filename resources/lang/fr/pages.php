@@ -16,6 +16,7 @@ return [
     'all' => 'Toutes',
     'share' => 'Partager',
     'read_more' => 'En savoir plus',
+    'scroll_next' => 'Paragraphe suivant',
     'linked_programs' => 'Programmes liés',
 
     'impact_intro' => 'Les résultats concrets de notre action sur le terrain, mesurés année après année.',
@@ -36,10 +37,14 @@ return [
 
     'media_intro' => 'Photos, vidéos, communiqués et ressources presse de la Fondation TUBAWWIRI.',
     'gallery_photos' => 'Galerie photo',
+    'gallery_photos_desc' => "Photos des événements, ateliers et actions de terrain de la Fondation.",
     'gallery_videos' => 'Galerie vidéo',
+    'gallery_videos_desc' => 'Reportages, témoignages filmés et prises de parole de la Fondation.',
     'press_releases' => 'Communiqués & presse',
     'communiques' => 'Communiqués',
+    'communiques_desc' => 'Annonces officielles et prises de position publiques de la Fondation.',
     'press_kit' => 'Kit presse',
+    'press_kit_desc' => 'Dossier de presse et ressources téléchargeables pour les journalistes.',
     'no_photos' => 'Aucune photo pour le moment.',
     'no_videos' => 'Aucune vidéo pour le moment.',
     'no_press' => 'Aucun communiqué pour le moment.',

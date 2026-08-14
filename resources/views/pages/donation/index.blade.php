@@ -3,11 +3,9 @@
 @section('title', __('site.nav.donate') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-2xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.donate') }}</h1>
-        <p class="text-[#4a453c] mb-8 leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
+    <x-page-hero image="community/sunset.jpg" :title="__('site.nav.donate')" :intro="__('site.home.join_subtitle')" />
 
+    <section class="max-w-2xl mx-auto px-4 py-16 reveal">
         {{-- Rappel des numéros Mobile Money --}}
         <div class="grid sm:grid-cols-2 gap-4 mb-10">
             <div class="border-l-2 border-[#C99A3E] bg-white p-4">
@@ -90,7 +88,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5 transition">
+            <button type="submit" class="btn-tbw w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] font-bold uppercase tracking-wider text-xs py-3.5">
                 {{ __('forms.btn_continuer_don') }}
             </button>
         </form>

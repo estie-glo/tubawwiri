@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ActionDomainController;
 use App\Http\Controllers\AcademyController;
+use App\Http\Controllers\ArchitectureController;
 use App\Http\Controllers\ConsultingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\FounderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImpactController;
 use App\Http\Controllers\JoinController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\ObservatoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\RubriqueController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +46,12 @@ Route::prefix('{locale}')
 
         Route::get('/notre-approche', [PageController::class, 'show'])
             ->defaults('slug', 'notre-approche')->name('approach');
+
+        Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
+
+        Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
+
+        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'index'])->name('architecture.index');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');
