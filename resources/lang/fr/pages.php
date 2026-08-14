@@ -19,6 +19,7 @@ return [
     'scroll_next' => 'Paragraphe suivant',
     'previous' => 'Précédent',
     'next' => 'Suivant',
+    'volet' => 'Volet',
     'linked_programs' => 'Programmes liés',
 
     'impact_intro' => 'Les résultats concrets de notre action sur le terrain, mesurés année après année.',

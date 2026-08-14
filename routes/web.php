@@ -57,7 +57,9 @@ Route::prefix('{locale}')
 
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
 
-        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'index'])->name('architecture.index');
+        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'show'])->name('architecture.index');
+        Route::get('/architecture-ecosysteme/{position}', [ArchitectureController::class, 'show'])
+            ->whereNumber('position')->name('architecture.show');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');

@@ -19,6 +19,7 @@ return [
     'scroll_next' => 'Next paragraph',
     'previous' => 'Previous',
     'next' => 'Next',
+    'volet' => 'Part',
     'linked_programs' => 'Related programs',
 
     'impact_intro' => 'The concrete results of our work in the field, measured year after year.',
