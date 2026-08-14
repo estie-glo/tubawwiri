@@ -51,7 +51,9 @@ return [
     'telephone_optionnel' => 'Téléphone (optionnel)',
 
     'nous_ecrire' => 'Nous écrire',
+    'nous_ecrire_desc' => 'Une question, une suggestion ou un message ? Nous sommes à votre écoute.',
     'devenir_partenaire' => 'Devenir partenaire',
+    'devenir_partenaire_desc' => 'Vous souhaitez collaborer avec nous ? Remplissez ce formulaire, nous vous répondrons rapidement.',
     'demander_devis' => 'Demander un devis',
     'sinscrire_formation' => 'S\'inscrire à cette formation',
 

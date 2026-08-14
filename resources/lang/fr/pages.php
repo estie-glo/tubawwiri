@@ -77,6 +77,7 @@ return [
 
     'engagement_title' => "Le Parcours d'engagement dans la Tribu",
     'engagement_subtitle' => "Six façons de s'engager aux côtés de TUBAWWIRI, selon votre disponibilité et vos talents.",
+    'votre_demande' => 'Votre demande',
     'role_benevole_label' => 'Bénévole TUBAWWIRI',
     'role_benevole_desc' => 'Participe ponctuellement ou régulièrement aux activités.',
     'role_membre_label' => 'Membre de la Tribu',

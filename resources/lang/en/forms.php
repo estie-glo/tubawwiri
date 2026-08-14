@@ -51,7 +51,9 @@ return [
     'telephone_optionnel' => 'Phone (optional)',
 
     'nous_ecrire' => 'Write to us',
+    'nous_ecrire_desc' => 'A question, a suggestion or a message? We are listening.',
     'devenir_partenaire' => 'Become a partner',
+    'devenir_partenaire_desc' => 'Want to collaborate with us? Fill in this form and we will get back to you quickly.',
     'demander_devis' => 'Request a quote',
     'sinscrire_formation' => 'Enroll in this training',
 
