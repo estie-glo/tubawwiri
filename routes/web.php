@@ -54,6 +54,8 @@ Route::prefix('{locale}')
             ->defaults('slug', 'notre-approche')->whereNumber('position')->name('approach.show');
 
         Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
+        Route::get('/rubriques/{position}', [RubriqueController::class, 'show'])
+            ->whereNumber('position')->name('rubriques.show');
 
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
 

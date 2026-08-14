@@ -14,25 +14,24 @@
                 {{ __('rubriques.intro') }}
             </p>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-12">
                 @foreach (__('rubriques.items') as $i => $item)
-                    <div class="reveal group relative min-h-[360px] overflow-hidden rounded-3xl hover-lift" style="transition-delay: {{ ($i % 3) * 90 }}ms">
-                        <img src="{{ asset('images/rubriques/' . $item['image']) }}" alt=""
-                             class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/68 to-[#123D2E]/25"></div>
-                        <div class="relative z-10 flex flex-col justify-end h-full p-6">
-                            <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">0{{ $i + 1 }}</p>
-                            <h2 class="font-display text-xl font-semibold text-white mt-3 leading-snug">
-                                {{ $item['name'] }}
-                            </h2>
-                            @if (!empty($item['subtitle']))
-                                <p class="text-xs italic text-[#C99A3E] mt-1">{{ $item['subtitle'] }}</p>
-                            @endif
-                            <p class="text-sm text-white/80 mt-3 leading-relaxed">
-                                {{ $item['pitch'] }}
-                            </p>
+                    <a href="{{ route('rubriques.show', [app()->getLocale(), $i + 1]) }}"
+                       class="reveal group bg-white border border-[#eadfca] rounded-2xl overflow-hidden hover-lift flex flex-col" style="transition-delay: {{ ($i % 5) * 80 }}ms">
+                        <div class="relative h-32 overflow-hidden">
+                            <img src="{{ asset('images/rubriques/' . $item['image']) }}" alt=""
+                                 class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/80 via-[#123D2E]/10 to-transparent"></div>
+                            <p class="absolute top-3 left-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</p>
                         </div>
-                    </div>
+                        <div class="p-5 flex flex-col flex-1">
+                            <h2 class="font-display font-semibold text-[#123D2E] leading-snug">{{ $item['name'] }}</h2>
+                            <p class="text-sm text-[#6F6759] mt-2 leading-relaxed flex-1 line-clamp-4">{{ $item['pitch'] }}</p>
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#C99A3E] mt-4 group-hover:text-[#6B2A28] transition">
+                                {{ __('pages.read_more') }} →
+                            </span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
