@@ -5,7 +5,7 @@
 
 <div class="grid sm:grid-cols-2 gap-5">
     @foreach ($fields as $i => $field)
-        <div class="bg-white border border-[#eadfca] overflow-hidden hover-lift">
+        <div class="bg-white border border-[#eadfca] overflow-hidden rounded-2xl hover-lift">
             <div class="relative h-28 overflow-hidden">
                 <img src="{{ asset('images/community/' . $photos[$i % count($photos)]) }}" alt=""
                      class="absolute inset-0 w-full h-full object-cover">

@@ -44,7 +44,7 @@
         }
         .btn-tbw {
             position: relative;
-            clip-path: polygon(13px 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%, 0 13px);
+            border-radius: 999px;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
         }
         .btn-tbw:hover {
@@ -59,6 +59,7 @@
             width: 100%;
             background: #fff;
             border: 1px solid #e2d8c4;
+            border-radius: 1.25rem;
             padding: 0.7rem 0.9rem;
             font-size: 0.9rem;
             outline: none;
@@ -131,6 +132,8 @@
         }
         .content-card {
             scroll-snap-align: start;
+            border-radius: 1.5rem;
+            overflow: hidden;
         }
         .scroll-arrow-btn {
             transition: transform 0.2s ease, background-color 0.2s ease;
@@ -230,12 +233,12 @@
                         {{ __('site.nav.more') }}
                         <svg class="nav-chevron w-3 h-3 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="nav-panel absolute right-0 top-full mt-3 w-60 bg-[#F3EDE0] border border-[#e4dac6] shadow-xl p-2 z-50">
+                    <div class="nav-panel absolute right-0 top-full mt-3 w-60 bg-[#F3EDE0] border border-[#e4dac6] shadow-xl rounded-3xl p-2 z-50">
                         <p class="px-3 pt-1.5 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">{{ __('site.nav.more') }}</p>
                         @foreach ($moreNav as $link)
                             @php $isActive = request()->routeIs($link['route']); @endphp
                             <a href="{{ route($link['route'], $locale) }}"
-                               class="block px-3 py-2.5 text-[11px] border-l-2 transition {{ $isActive ? 'border-[#C99A3E] bg-white text-[#6B2A28]' : 'border-transparent hover:bg-white hover:text-[#C99A3E] hover:border-[#C99A3E]' }}">
+                               class="block px-3 py-2.5 text-[11px] rounded-xl border-l-2 transition {{ $isActive ? 'border-[#C99A3E] bg-white text-[#6B2A28]' : 'border-transparent hover:bg-white hover:text-[#C99A3E] hover:border-[#C99A3E]' }}">
                                 {{ $link['label'] }}
                             </a>
                         @endforeach
@@ -283,7 +286,7 @@
 
     @if (session('success'))
         <div id="flash-message" class="max-w-4xl mx-auto mt-6 px-4">
-            <div class="flex items-start gap-4 bg-white border-l-[3px] border-[#123D2E] px-5 py-4 shadow-sm">
+            <div class="flex items-start gap-4 bg-white border-l-[3px] border-[#123D2E] rounded-2xl px-5 py-4 shadow-sm">
                 <div class="shrink-0 w-8 h-8 rounded-full bg-[#123D2E] text-white flex items-center justify-center text-sm font-bold mt-0.5">✓</div>
                 <div class="flex-1">
                     <p class="text-xs font-bold text-[#123D2E] uppercase tracking-widest">{{ __('forms.flash_title') }}</p>
@@ -365,7 +368,7 @@
                     </a>
                 </div>
             </div>
-            <div class="border border-white/15 p-5">
+            <div class="border border-white/15 rounded-3xl p-5">
                 <div class="flex items-center gap-2 mb-3">
                     <svg class="w-4 h-4 text-[#C99A3E]" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 7 8.5 6 8.5-6"/></svg>
                     <p class="font-semibold text-white text-xs uppercase tracking-wider">{{ __('forms.newsletter_title') }}</p>
@@ -378,7 +381,7 @@
                         <input type="text" name="website" id="website_newsletter" tabindex="-1" autocomplete="off">
                     </div>
                     <input type="email" name="email" required placeholder="email@exemple.com"
-                           class="w-full bg-[#0f3226] border border-[#1c4d3a] focus:border-[#C99A3E] outline-none px-3 py-2.5 text-sm text-white placeholder:text-[#8fae9d]">
+                           class="w-full bg-[#0f3226] border border-[#1c4d3a] focus:border-[#C99A3E] outline-none rounded-full px-4 py-2.5 text-sm text-white placeholder:text-[#8fae9d]">
                     <button type="submit" class="btn-tbw w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] text-xs font-bold uppercase tracking-wider py-2.5">
                         {{ __('forms.newsletter_submit') }}
                     </button>

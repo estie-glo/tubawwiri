@@ -35,7 +35,7 @@
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('forms.sinscrire_formation') }}</p>
 
             @if ($errors->any())
-                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
+                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm rounded-xl p-3 mb-6">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach
@@ -81,7 +81,7 @@
                         ] as $val => $label)
                             <label class="relative block cursor-pointer">
                                 <input type="radio" name="niveau" value="{{ $val }}" class="peer sr-only">
-                                <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
+                                <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
                             </label>
                         @endforeach
                     </div>
@@ -92,11 +92,11 @@
                     <div class="grid grid-cols-2 gap-3 text-sm">
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="mode" value="en_ligne" checked class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_en_ligne') }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_en_ligne') }}</span>
                         </label>
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="mode" value="presentiel" class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_presentiel') }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_presentiel') }}</span>
                         </label>
                     </div>
                 </div>

@@ -6,10 +6,10 @@
     <x-page-hero image="community/village.jpg" :title="__('site.nav.programs')" :intro="__('pages.programs_intro')" />
 
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
-        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8]">
+        <div class="grid md:grid-cols-3 gap-5">
             @foreach ($programs as $program)
                 <a href="{{ route('programs.show', [app()->getLocale(), $program->slug]) }}"
-                   class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
+                   class="bg-white border border-[#eadfca] rounded-2xl p-8 group hover:bg-[#F6F1E4] hover-lift transition">
                     @if ($program->actionDomain)
                         <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ localized($program->actionDomain, 'title') }}</p>
                     @endif

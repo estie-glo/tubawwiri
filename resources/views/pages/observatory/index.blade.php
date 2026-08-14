@@ -6,10 +6,10 @@
     <x-page-hero image="community/village.jpg" title="Observatoire Africain de la Résilience" :intro="__('pages.observatory_intro')" />
 
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
-        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8]">
+        <div class="grid md:grid-cols-3 gap-5">
             @forelse ($reports as $report)
                 <a href="{{ route('observatory.show', [app()->getLocale(), $report->slug]) }}"
-                   class="bg-white p-8 group hover:bg-[#F6F1E4] hover-lift transition">
+                   class="bg-white border border-[#eadfca] rounded-2xl p-8 group hover:bg-[#F6F1E4] hover-lift transition">
                     <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-widest">{{ $report->type }}</p>
                     <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ localized($report, 'title') }}</h2>
                     <p class="text-sm text-[#8a8372] mt-2">{{ localized($report, 'summary') }}</p>
@@ -18,7 +18,7 @@
                     @endif
                 </a>
             @empty
-                <p class="text-[#8a8372] text-sm p-8 bg-white">{{ __('pages.no_reports') }}</p>
+                <p class="text-[#8a8372] text-sm p-8 bg-white rounded-2xl border border-[#eadfca]">{{ __('pages.no_reports') }}</p>
             @endforelse
         </div>
 

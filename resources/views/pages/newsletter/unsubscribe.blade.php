@@ -9,7 +9,7 @@
         <p class="text-[#4a453c] mb-10 leading-relaxed">{{ __('forms.newsletter_unsubscribe_intro') }}</p>
 
         @if ($errors->any())
-            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
+            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm rounded-xl p-3 mb-6">
                 @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach

@@ -23,7 +23,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @forelse ($articles as $i => $article)
                 <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}"
-                   class="group relative min-h-[300px] overflow-hidden hover-lift">
+                   class="group relative min-h-[300px] overflow-hidden rounded-3xl hover-lift">
                     <img src="{{ $article->cover_image ? asset('storage/' . $article->cover_image) : asset('images/community/' . $bgPhotos[$i % count($bgPhotos)]) }}"
                          alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/94 via-[#123D2E]/65 to-[#123D2E]/20"></div>

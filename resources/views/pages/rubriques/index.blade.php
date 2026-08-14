@@ -16,7 +16,7 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
                 @foreach (__('rubriques.items') as $i => $item)
-                    <div class="reveal group relative min-h-[360px] overflow-hidden hover-lift" style="transition-delay: {{ ($i % 3) * 90 }}ms">
+                    <div class="reveal group relative min-h-[360px] overflow-hidden rounded-3xl hover-lift" style="transition-delay: {{ ($i % 3) * 90 }}ms">
                         <img src="{{ asset('images/rubriques/' . $item['image']) }}" alt=""
                              class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/68 to-[#123D2E]/25"></div>

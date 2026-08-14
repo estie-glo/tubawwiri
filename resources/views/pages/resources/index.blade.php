@@ -21,8 +21,8 @@
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
         <form method="GET" class="flex flex-col sm:flex-row gap-3 max-w-2xl">
             <input type="text" name="q" value="{{ request('q') }}" placeholder="{{ __('pages.search_resources') }}"
-                   class="flex-1 border border-[#e5ddc8] px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E]">
-            <select name="category" class="border border-[#e5ddc8] px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E] bg-white">
+                   class="flex-1 border border-[#e5ddc8] rounded-full px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E]">
+            <select name="category" class="border border-[#e5ddc8] rounded-full px-4 py-3 text-sm focus:outline-none focus:border-[#123D2E] bg-white">
                 <option value="">{{ __('pages.all_categories') }}</option>
                 @foreach ($categories as $key => $label)
                     <option value="{{ $key }}" @selected(request('category') === $key)>{{ $label }}</option>
@@ -35,7 +35,7 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
             @forelse ($resources as $resource)
-                <div class="bg-white border border-[#eadfca] p-6 hover-lift flex flex-col">
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-6 hover-lift flex flex-col">
                     <div class="w-11 h-11 rounded-full bg-[#F3EDE0] flex items-center justify-center">
                         <svg class="w-5 h-5 text-[#6B2A28]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                             {!! $categoryIcons[$resource->category] ?? $defaultIcon !!}

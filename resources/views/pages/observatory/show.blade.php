@@ -14,7 +14,7 @@
             <img src="{{ asset('storage/' . $report->cover_image) }}" class="mb-8 w-full">
         @endif
 
-        <div class="bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] p-6 mb-10">
+        <div class="bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] rounded-2xl p-6 mb-10">
             <p class="text-[#4a453c] leading-relaxed">{{ localized($report, 'summary') }}</p>
         </div>
 

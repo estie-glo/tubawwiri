@@ -10,7 +10,7 @@
 
         <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-8">{{ __('pages.engagement_title') }}</p>
 
-        <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8] mb-16">
+        <div class="grid md:grid-cols-3 gap-5 mb-16">
             @foreach ([
                 ['label' => __('pages.role_benevole_label'), 'desc' => __('pages.role_benevole_desc')],
                 ['label' => __('pages.role_membre_label'), 'desc' => __('pages.role_membre_desc')],
@@ -19,7 +19,7 @@
                 ['label' => __('pages.role_formateur_label'), 'desc' => __('pages.role_formateur_desc')],
                 ['label' => __('pages.role_mentor_label'), 'desc' => __('pages.role_mentor_desc')],
             ] as $role)
-                <div class="bg-white p-6 hover-lift">
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-6 hover-lift">
                     <p class="font-display font-semibold text-[#123D2E]">{{ $role['label'] }}</p>
                     <p class="text-sm text-[#8a8372] mt-2">{{ $role['desc'] }}</p>
                 </div>
@@ -28,7 +28,7 @@
 
         <div class="max-w-2xl">
             @if ($errors->any())
-                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
+                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm rounded-xl p-3 mb-6">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach
@@ -75,7 +75,7 @@
                         ] as $val => $label)
                             <label class="relative block cursor-pointer">
                                 <input type="radio" name="profil" value="{{ $val }}" required class="peer sr-only">
-                                <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
+                                <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
                             </label>
                         @endforeach
                     </div>

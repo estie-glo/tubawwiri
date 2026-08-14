@@ -8,18 +8,18 @@
     <section class="max-w-2xl mx-auto px-4 py-16 reveal">
         {{-- Rappel des numéros Mobile Money --}}
         <div class="grid sm:grid-cols-2 gap-4 mb-10">
-            <div class="border-l-2 border-[#C99A3E] bg-white p-4">
+            <div class="border-l-2 border-[#C99A3E] bg-white rounded-2xl p-4">
                 <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">MTN Mobile Money</p>
                 <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+{{ config('tubawwiri.donations.mtn_momo') }}</p>
             </div>
-            <div class="border-l-2 border-[#C99A3E] bg-white p-4">
+            <div class="border-l-2 border-[#C99A3E] bg-white rounded-2xl p-4">
                 <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest">Orange Money</p>
                 <p class="font-display text-xl font-semibold text-[#123D2E] mt-1">+{{ config('tubawwiri.donations.orange_money') }}</p>
             </div>
         </div>
 
         @if ($errors->any())
-            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
+            <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm rounded-xl p-3 mb-6">
                 @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach
@@ -65,7 +65,7 @@
                     ] as $val => $label)
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="moyen_paiement" value="{{ $val }}" required class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
                         </label>
                     @endforeach
                 </div>
@@ -82,7 +82,7 @@
                     ] as $val => $label)
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="type_don" value="{{ $val }}" required {{ $val === 'ponctuel' ? 'checked' : '' }} class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-4 py-3 text-center transition">{{ $label }}</span>
                         </label>
                     @endforeach
                 </div>

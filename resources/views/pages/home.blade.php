@@ -61,7 +61,7 @@
                 @foreach ([1, 2] as $pass)
                     @foreach ($domainList as $domain)
                         <a href="{{ route('action-domains.show', [app()->getLocale(), $domain->slug]) }}"
-                           class="group relative w-[300px] h-[380px] shrink-0 overflow-hidden hover-lift"
+                           class="group relative w-[300px] h-[380px] shrink-0 overflow-hidden rounded-3xl hover-lift"
                            @if ($pass === 2) aria-hidden="true" tabindex="-1" @endif>
                             <img src="{{ asset('images/community/' . $domainPhotos[$loop->index % count($domainPhotos)]) }}" alt=""
                                  class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
@@ -107,7 +107,7 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
                 @foreach ($cavamisPillars as $pillar)
-                    <div class="hover-lift border border-white/15 bg-white/[0.03] p-5">
+                    <div class="hover-lift border border-white/15 bg-white/[0.03] rounded-2xl p-5">
                         <svg class="w-6 h-6 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $pillar['icon'] !!}</svg>
                         <p class="text-sm font-semibold text-white mt-3 leading-snug">{{ __('site.home.' . $pillar['key']) }}</p>
                     </div>
@@ -136,7 +136,7 @@
                     ];
                 @endphp
                 @foreach ($doctrineSteps as $step)
-                    <div class="group relative h-[480px] overflow-hidden hover-lift">
+                    <div class="group relative h-[480px] overflow-hidden rounded-3xl hover-lift">
                         <img src="{{ asset('images/doctrine/' . $step['photo']) }}" alt=""
                              class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/92 via-[#123D2E]/45 to-transparent"></div>
@@ -158,7 +158,7 @@
             <div class="space-y-4">
                 @forelse ($latestArticles as $article)
                     <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}"
-                       class="block group bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] p-5 hover-lift">
+                       class="block group bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] rounded-2xl p-5 hover-lift">
                         <p class="text-sm font-semibold text-[#123D2E] group-hover:text-[#6B2A28]">{{ localized($article, 'title') }}</p>
                         <p class="text-xs text-[#6F6759] mt-2 line-clamp-2">{{ localized($article, 'excerpt') }}</p>
                     </a>
@@ -172,7 +172,7 @@
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em] mb-5">{{ __('site.home.impact_title') }}</p>
             <div class="grid grid-cols-2 gap-4">
                 @foreach ($impactStats as $stat)
-                    <div class="bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] p-5 hover-lift">
+                    <div class="bg-white border-t-2 border-[#C99A3E] border-x border-b border-x-[#eadfca] border-b-[#eadfca] rounded-2xl p-5 hover-lift">
                         <svg class="w-5 h-5 text-[#6B2A28]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
                         <p class="font-display text-3xl font-semibold text-[#123D2E] mt-2">+{{ number_format($stat->value, 0, ',', ' ') }}</p>
                         <p class="text-xs text-[#6F6759] mt-2 leading-snug">{{ localized($stat, 'label') }}</p>
@@ -181,7 +181,7 @@
             </div>
         </div>
 
-        <div class="lg:col-span-1 relative overflow-hidden p-8 min-h-[280px] flex flex-col justify-end hover-lift">
+        <div class="lg:col-span-1 relative overflow-hidden rounded-3xl p-8 min-h-[280px] flex flex-col justify-end hover-lift">
             <img src="{{ asset('images/community/femme-lance.png') }}" alt="" class="absolute inset-0 w-full h-full object-cover object-top">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/70 to-[#123D2E]/30"></div>
             <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('site.home.join_title') }}</p>

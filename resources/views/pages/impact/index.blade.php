@@ -6,9 +6,9 @@
     <x-page-hero image="community/statue.jpg" :title="__('site.home.impact_title')" :intro="__('pages.impact_intro')" />
 
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
-        <div class="grid md:grid-cols-4 gap-px bg-[#e5ddc8]">
+        <div class="grid md:grid-cols-4 gap-5">
             @foreach ($stats as $stat)
-                <div class="bg-white p-8 text-center">
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-8 text-center">
                     <p class="font-display text-4xl font-semibold text-[#123D2E]">+{{ number_format($stat->value, 0, ',', ' ') }}</p>
                     <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mt-2">
                         {{ localized($stat, 'label') }}
@@ -22,9 +22,9 @@
                 <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('pages.testimonials') }}</p>
                 <h2 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E] mt-2 mb-10">{{ __('pages.testimonials_subtitle') }}</h2>
 
-                <div class="grid md:grid-cols-3 gap-px bg-[#e5ddc8]">
+                <div class="grid md:grid-cols-3 gap-5">
                     @foreach ($testimonials as $testimonial)
-                        <div class="bg-white p-8">
+                        <div class="bg-white border border-[#eadfca] rounded-2xl p-8">
                             @if ($testimonial->photo)
                                 <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="{{ $testimonial->nom }}" class="w-16 h-16 rounded-full object-cover mb-4">
                             @endif
