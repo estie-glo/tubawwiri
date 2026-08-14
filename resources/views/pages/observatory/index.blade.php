@@ -14,7 +14,10 @@
                     <h2 class="font-display font-semibold text-[#123D2E] mt-2">{{ localized($report, 'title') }}</h2>
                     <p class="text-sm text-[#8a8372] mt-2">{{ localized($report, 'summary') }}</p>
                     @if ($report->published_on)
-                        <p class="text-xs text-[#8a8372] mt-3">{{ $report->published_on->format('d/m/Y') }}</p>
+                        <p class="flex items-center gap-1.5 text-xs text-[#8a8372] mt-3">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path stroke-linecap="round" d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+                            {{ $report->published_on->format('d/m/Y') }}
+                        </p>
                     @endif
                 </a>
             @empty
