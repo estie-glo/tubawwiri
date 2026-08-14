@@ -27,6 +27,7 @@ return [
     'testimonials_subtitle' => 'What the people and communities supported by TUBAWWIRI have to say.',
 
     'consulting_intro' => "TBW Consulting is the consulting, expertise and organizational support arm of the TUBAWWIRI ecosystem. It advises organizations, supports institutions and businesses, and offers solutions adapted to local realities.",
+    'consulting_services_title' => 'Our services',
     'consulting_services' => [
         'Organizational diagnostics',
         'Advisory for institutions and businesses',

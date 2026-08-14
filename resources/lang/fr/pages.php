@@ -27,6 +27,7 @@ return [
     'testimonials_subtitle' => 'Ce que disent les personnes et communautés accompagnées par TUBAWWIRI.',
 
     'consulting_intro' => "TBW Consulting est le pôle de conseil, d'expertise et d'accompagnement organisationnel de l'écosystème TUBAWWIRI. Il conseille les organisations, accompagne les institutions et les entreprises, et propose des solutions adaptées aux réalités locales.",
+    'consulting_services_title' => 'Nos services',
     'consulting_services' => [
         'Diagnostics organisationnels',
         'Conseil aux institutions et entreprises',

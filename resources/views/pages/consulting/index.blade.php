@@ -5,16 +5,22 @@
 @section('content')
     <x-page-hero image="community/statue.jpg" title="TBW Consulting" :intro="__('pages.consulting_intro')" />
 
-    <section class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-16 reveal">
-        <div>
-            <ul class="space-y-3 text-sm">
+    <section class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 reveal">
+        <div class="bg-white border border-[#eadfca] rounded-3xl p-8">
+            <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('pages.consulting_services_title') }}</p>
+            <ul class="space-y-1 text-sm">
                 @foreach (__('pages.consulting_services') as $item)
-                    <li class="border-b border-[#e5ddc8] pb-3 text-[#123D2E] font-medium">{{ $item }}</li>
+                    <li class="flex items-center gap-3 border-b border-[#e5ddc8] py-3 last:border-b-0">
+                        <span class="w-8 h-8 rounded-lg border border-[#C99A3E]/40 flex items-center justify-center shrink-0">
+                            <svg class="w-4 h-4 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="17" height="13" rx="1.2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="text-[#123D2E] font-medium">{{ $item }}</span>
+                    </li>
                 @endforeach
             </ul>
         </div>
 
-        <div>
+        <div class="bg-white border border-[#eadfca] rounded-3xl p-8">
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('forms.demander_devis') }}</p>
 
             @if ($errors->any())
