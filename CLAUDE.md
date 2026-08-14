@@ -1,8 +1,24 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer : section 3 (refonte visuelle du site public — remarques de
-la Fondatrice, 11/08/2026), rien d'autre avant. Ensuite seulement, section 4
-(admin Filament), puis section 6, puis section 7.**
+**Par où commencer, session en cours (14/08/2026)** : la section 3 (3.1 à
+3.11 — refonte visuelle du site public) est **terminée et fusionnée sur
+`develop`**. La suite du travail porte sur la section **3.12**
+(deuxième vague de remarques de la Fondatrice, 13-14/08/2026), qui contient
+à la fois :
+- des **règles globales** (forme des boutons, forme des cadres, couleur
+  violette remplacée par du beige crème clair) à appliquer **rétroactivement**
+  sur tout ce qui a déjà été fait en 3.1–3.11, pas seulement sur ce qui reste ;
+- des **corrections précises** sur des pages déjà livrées (Architecture de
+  l'écosystème et Médias notamment, actuellement en défilement horizontal
+  dans une seule page — à refaire en vraies pages séparées avec navigation
+  précédent/suivant, voir 3.12.5) ;
+- des **images de référence "à copier conformément"** pour la plupart des
+  pages du site (voir 3.12.4).
+
+Lire la section 3.12 en entier avant de commencer, repérer ce qui doit être
+corrigé sur l'existant vs. ce qui reste à faire, puis travailler par petits
+commits séparés sur une branche dédiée à cette nouvelle vague de corrections.
+Ensuite seulement, section 4 (admin Filament), puis section 6, puis section 7.
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -84,12 +100,15 @@ visuelles précises. Source complète : `remarquesprisesdetubawwiri/Remarques_Si
 Ci-dessous, ces remarques sont regroupées par thème et traduites en tâches concrètes.
 
 ### 3.1 Corrections transverses (tout le site)
-- **Logo** : sur l'image utilisée en page d'accueil, le logo affiche un
-  demi-cercle de couleur or qui ne fait pas partie du logo officiel — le
-  retirer (recadrer/retoucher l'asset, ou utiliser le logo officiel propre :
-  voir le rendu correct dans `imagestubawwiri/lesdixrubriques.jpeg` ou
-  `imagestubawwiri/Symbole de la Fondation.jpeg`, coin haut-gauche — logo TBW
-  sans cercle parasite).
+- [x] **Logo** — **fait, remplacer directement** : l'anneau doré plein qui
+  entourait l'arbre sur la bannière d'accueil a été retiré (rayons fins,
+  arbre, racines et texte conservés intacts, aucun autre défaut). Nouveau
+  fichier prêt à l'emploi : `imagestubawwiri/banner-tubawwiri-corrige.png`
+  (à copier vers `public/images/banner-tubawwiri.jpeg`, en adaptant le nom/
+  format si besoin — vérifier que `hero-kenburns` et le reste du CSS
+  s'appliquent toujours correctement après le remplacement). Si le même
+  anneau existe sur d'autres occurrences du logo ailleurs sur le site,
+  vérifier au cas par cas et appliquer le même correctif.
 - **Boutons** : la forme rectangulaire à coins arrondis actuelle "ne convient
   pas" — proposer une forme plus travaillée (ex. coins coupés/chanfreinés,
   liseré or, ou pilule asymétrique) cohérente avec le style organique du reste
@@ -126,11 +145,15 @@ Ci-dessous, ces remarques sont regroupées par thème et traduites en tâches co
   en base, juste le rendu à refaire).
 
 ### 3.4 Nouvelle section "Rubriques" (10 rubriques)
-- Créer une section (page ou bloc dédié, à décider selon l'architecture du
-  site) présentant les 10 rubriques officielles, même principe que 3.3 :
-  chaque rubrique dans son cadre, avec une image adaptée — **préférence
-  explicite de la Fondatrice pour une image en fond plutôt qu'à côté**,
-  accompagnée d'animations.
+- Créer une page d'index présentant les 10 rubriques officielles en cartes
+  d'aperçu avec bouton "LIRE LA SUITE →", **chaque rubrique ayant sa propre
+  page complète dédiée** (confirmé explicitement le 14/08 : "même les
+  rubriques c'est pareil" — même principe que 3.12.5, pas une simple grille
+  statique), avec une image en fond — **préférence explicite de la
+  Fondatrice pour une image en fond plutôt qu'à côté**, accompagnée
+  d'animations, et navigation précédent/suivant entre les 10 pages détail.
+  Voir `imagestubawwiri/exempleinterfacenosrubriques.png` pour la référence
+  visuelle du bloc d'aperçu sur la page d'accueil/index (section 3.12.4).
 - Contenu texte déjà prêt : `docs-source/rubriques TUBAWWIRI.docx` (nom + pitch
   de chacune des 10 rubriques).
 - Références visuelles disponibles par rubrique dans `imagestubawwiri/`
@@ -218,6 +241,219 @@ Ci-dessous, ces remarques sont regroupées par thème et traduites en tâches co
   interface/cadre** expliquant ce que montrent les images/vidéos affichées.
 - Système de **défilement horizontal** pour passer de la galerie photo à la
   galerie vidéo (et suivants).
+
+### 3.12 Deuxième vague de remarques de la Fondatrice (13/08/2026)
+
+Après un premier passage sur le site, la Fondatrice a envoyé une nouvelle série
+de retours, certains globaux (à appliquer partout, y compris rétroactivement
+sur 3.1–3.3), d'autres précis page par page avec des **images de référence
+"à copier conformément"**. Source manuscrite complète :
+`remarquesprisesdetubawwiri` n'est plus le seul dossier de remarques — voir
+aussi `remarquestreizeaouT2026/` (5 fichiers : 2 pages collées + 3 photos
+WhatsApp) pour le texte original si un doute d'interprétation se présente ici.
+
+#### 3.12.1 Règles globales (à appliquer partout, y compris sur le travail déjà fait en 3.1–3.3)
+
+- **Forme des boutons** : la forme actuelle ne convient toujours pas.
+  Référence exacte donnée par la Fondatrice : `imagestubawwiri/formesdesboutons.png`
+  (capture d'écran ChatGPT où elle a entouré en rouge la barre de saisie du
+  bas — "Répondre à ChatGPT") : un bouton en **pilule très arrondie**
+  (`border-radius` proche de la moitié de la hauteur), pas le rectangle à
+  coins légèrement arrondis actuel. Appliquer à tous les boutons du site
+  (CTA "Faire un don", "S'inscrire" newsletter, boutons de formulaire, etc.).
+- **Forme des cadres** : référence exacte donnée : `imagestubawwiri/formescadres.png`
+  (même capture ChatGPT, cette fois le bloc gris arrondi contenant la liste
+  de fichiers est entouré en vert) : un cadre à **coins très arrondis**
+  (beaucoup plus que le style "séparateurs fins" actuellement en place en
+  section 2 du présent fichier — la Fondatrice priorise sa préférence
+  visuelle explicite ici sur la règle plus sobre écrite en section 2).
+  **Tous les cadres du site doivent reprendre ce style** : cadres des
+  domaines d'action, cadres de la doctrine des 3T, cadre "Rejoindre le
+  mouvement", cadre des liens Facebook, cadre newsletter, et plus
+  généralement tous les cadres de toutes les pages.
+- **Couleur violette** : la couleur violette de fond actuellement utilisée
+  quelque part sur le site (`#3B2560` de la section 2, ou une teinte dérivée)
+  "fait trop vieux" selon la Fondatrice. **Remplacement confirmé (14/08)** :
+  un **beige crème très clair** — reprendre la couleur crème déjà présente
+  dans le design system (`#F6F1E4`, section 2) ou une variante encore plus
+  claire si besoin de contraste avec le fond existant, plutôt qu'inventer une
+  teinte non validée. Le violet `#3B2560` reste tel quel comme accent ponctuel
+  rare (section 2) — c'est son usage en aplat de fond qui pose problème,
+  pas la couleur en tant que touche d'accent.
+
+#### 3.12.2 Correction confirmée
+
+- [x] **Bannière d'accueil** : Estelle a déjà remplacé
+  `public/images/banner-tubawwiri.jpeg` par la version sans anneau doré
+  (confirmé fonctionnel de son côté) — ne pas revenir dessus, sauf si la
+  forme des boutons/cadres ci-dessus s'applique aussi à des éléments
+  superposés à la bannière (CTA, badges).
+
+#### 3.12.3 Sources d'images officielles par domaine d'action et par doctrine 3T
+
+La Fondatrice a fourni de meilleures images, **une par élément, nommée
+exactement d'après l'élément concerné**, dans `imagestubawwiri/` :
+- Domaines d'action : `santementalecommunautaire.jpeg`, `resiliencehumaine.jpeg`,
+  `parentalitepositive.jpeg`, `protectiondel'enfant.jpeg` (apostrophe dans le
+  nom de fichier, attention en shell), `leadershipfeminin.jpeg`,
+  `developpementcommunautaire.jpeg`, `jeunesse.jpeg`,
+  `rechercheetinovationsociale.jpeg`, `communauteresilientes.jpeg`,
+  `ecolesresilientes.jpeg`, `famillesresilientes.jpeg` — à faire correspondre
+  au bon domaine d'action par le nom (couvre aussi l'écart de liste de
+  domaines déjà noté en section 6 "Audit contenu placeholder" : Jeunesse et
+  Recherche/innovation sociale ont maintenant leur image, donc probablement
+  à créer comme vrais domaines si la Fondatrice les valide).
+- Doctrine des 3T : deux jeux d'images fournis —
+  `symboletelumiere.jpeg`, `symboletolamuke.png`, `symboletesimama.jpeg`
+  (à essayer en premier) et, si le rendu ne convient pas dans les cadres,
+  `telumiere.jpeg`, `tolamuke.jpeg`, `tesimama.jpeg` (deuxième choix).
+- Carte "Faire un don" / "Nous rejoindre" / "Devenir partenaire" : utiliser
+  `imagestubawwiri/femmeaveclance.png` (statue en bronze d'une femme guerrière
+  avec une lance, déjà présente en fond sur `Qui sommes nous?.jpeg` — la
+  Fondatrice la préfère à l'image actuellement utilisée sur ces trois cartes).
+- Page Bibliographie de la Fondatrice : photo de fond dédiée
+  `imagestubawwiri/photodelafondatrice.jpeg` (différente du portrait avec
+  citation `bibliographie.jpg` déjà utilisé en section 3.6 — utiliser
+  `photodelafondatrice.jpeg` en arrière-plan de bandeau/hero, et
+  `bibliographie.jpg` peut rester pour un bloc citation dans la page).
+
+#### 3.12.4 Pages avec un exemple visuel "à copier conformément"
+
+**Consigne de la Fondatrice, à prendre au pied de la lettre** : "je veux que
+chaque page soit la copie conforme de son exemple." Ces images sont des
+mockups qu'elle a validés — prendre la structure, la mise en page, le
+placement des éléments (pas nécessairement chaque pixel de couleur/police, qui
+restent ceux du design system en section 2) comme cible exacte :
+
+- **Qui sommes-nous** (`imagestubawwiri/exemplequisommesnous.jpeg`) et
+  **Notre approche** (`exemplenotreapprochepageun.jpeg` et
+  `exemplenotreapproche.jpeg`) : confirment et précisent 3.3 —
+  carrousel de cartes numérotées ("01/05" etc.), icône ronde à gauche du
+  titre, titre + court texte, photo en fond à droite (Qui sommes-nous) ou en
+  filigrane (Notre approche), flèches précédent/suivant de chaque côté,
+  points de pagination en bas. Nombre de cartes = nombre de paragraphes
+  répartis (voir 3.12.5 sur le nombre exact de cadres/pages).
+- **Bibliographie de la Fondatrice** (`exemplepagebibliographie.png`) : bandeau
+  hero avec photo (voir 3.12.3), titre "Bibliographie de la Fondatrice",
+  sous-titre fonction, bandeau de 3 qualifications avec icônes, puis corps de
+  texte en deux colonnes (texte + photo/logo), puis citation en encadré doré
+  en bas. **Attention** : cet exemple montre un rendu en une seule page
+  scrollable, alors que la remarque manuscrite (3.12.5) demande explicitement
+  un découpage en plusieurs vraies pages avec navigation précédent/suivant —
+  les deux ne sont pas forcément contradictoires (l'exemple peut illustrer le
+  style visuel des cadres/couleurs à reprendre pour la page d'aperçu et pour
+  chaque page détail, tandis que 3.12.5 prime pour la structure de
+  navigation). Nombre de pages à déterminer en comptant les paragraphes
+  réels du contenu source (`docs-source/Biographie_Ngapout_Nana_Fadimatou_TUBAWWIRI-3.docx`),
+  pas en supposant un nombre fixe (voir 3.12.5).
+- **Architecture de l'écosystème TBW** (`interfacearchitecturedelecosystemetbw.png`) :
+  confirme et précise 3.7 — exactement **12 cartes/pages**, une par élément
+  (Identité centrale, Fondement conceptuel/CAVAMIS, Les trois composantes,
+  Principe des 10 rubriques, Fondation TUBAWWIRI, TBW Academy, TBW Consulting,
+  Communication, Campagnes, Ressources, Observatoire Africain de la
+  Résilience, + 1 élément supplémentaire à confirmer dans le document source
+  pour arriver à 12), numérotées "Volet 0X/12", flèches précédent/suivant,
+  photo ou schéma en fond selon la carte. Contenu texte détaillé :
+  `docs-source/architecture TUBAWWIRI (TBW).docx` (déjà référencé en 3.7).
+- **Pied de page** (`exemplepieddepage.jpeg`) : confirme et précise le point
+  footer de 3.1 — 4 colonnes (logo+description+citation, liens rapides avec
+  icônes et chevrons, réseaux sociaux en icônes rondes + contact, carte
+  newsletter avec champ email et bouton pilule doré "S'INSCRIRE").
+- **Pages avec exemple direct, une image = une page, à reproduire fidèlement** :
+  `exempleinterfaceactualites.jpeg` (Actualités), `exempleinterfacecontact.jpeg`
+  (Contact, précise 3.8), `exempleinterfacefaireundon.jpeg` (Faire un don),
+  `exempleinterfacemedias.jpeg` (Médias, précise 3.11 — remplace la photo de
+  fond jugée moche, voir 3.12.6), `exempleinterfacenosdomainesactionsurpagedaccueil.png`
+  (bloc Domaines d'action sur l'accueil, précise 3.2),
+  `exempleinterfacenosrubriques.png` (section 10 Rubriques, précise 3.4),
+  `exempleinterfacenotreimpact.jpeg` (section Impact, précise 3.2),
+  `exempleinterfacenousrejoindre.jpeg` (Nous rejoindre),
+  `exempleinterfaceobservatoire.jpeg` (Observatoire), `exempleinterfaceprogramme.png`
+  (grille Programmes, précise 3.5), `exempleinterfaceressources.jpeg`
+  (Centre de ressources, précise 3.9), `exempleinterfacetbwacademy.png` et
+  `exempleinterfacetbwacademysantementalecommunautaire.jpeg` (TBW Academy,
+  page liste + page détail d'un module), `exempleinterfacetbwconsulting.jpeg`
+  (TBW Consulting), `exempleinteracedomaineaction.png` (page Domaines
+  d'action, précise 3.5).
+- **Pages de détail génériques** (fiches individuelles accessibles depuis les
+  listes) : `exemplepagedesliensdestypesdeprogrammes.png` (fiche détail d'un
+  programme) et `exemplespagesdesliensdestypesdedomainesdaction.png` (fiche
+  détail d'un domaine d'action) — structure de référence pour les pages liées
+  depuis Programmes et Domaines d'action (voir aussi 3.12.6 sur les cadres
+  enjeux/objectifs/actions/cibles/résultats attendus).
+
+#### 3.12.5 Principe du découpage en cadres/pages avec navigation (précise 3.3, 3.4, 3.6, 3.7)
+
+**Précision importante confirmée le 14/08 par la Fondatrice, corrige la
+lecture initiale ci-dessous** : ce n'est pas un simple carrousel JS qui fait
+défiler du contenu à l'intérieur d'une seule URL. Le principe est **1 cadre =
+1 vraie page indépendante** (sa propre route/URL), avec :
+- Une **page principale/index** qui affiche les cadres en aperçu, comme des
+  cartes de résumé, chacune avec un bouton **"LIRE LA SUITE →"**.
+- Cliquer sur une carte mène à sa **page détaillée complète**, avec le même
+  en-tête et le même style TBW que le reste du site, un grand bandeau, le
+  contenu détaillé, et une **navigation "précédent / suivant"** entre les
+  pages de la série (pas seulement entre l'aperçu et le détail — on doit
+  pouvoir aller de la page détail 3 à la page détail 4 directement).
+- C'est exactement le principe déjà implémenté sur **"Qui sommes-nous"**
+  (référence confirmée par la Fondatrice) — reproduire la même mécanique de
+  routes/navigation sur toutes les séries de cadres du site, notamment :
+  **Notre approche**, **Bibliographie de la Fondatrice**, **Architecture de
+  l'écosystème TBW** (12 pages, voir 3.12.4), et **les 10 Rubriques**
+  ("même les rubriques c'est pareil" — confirmé explicitement) — chaque
+  rubrique a sa propre page complète, pas juste une carte sur une grille.
+- Repose la question pour les pages "liens" (santé mentale communautaire, et
+  chaque page de lien similaire pour Programmes, Nous rejoindre…) où chaque
+  élément (enjeux, objectifs, actions, cibles, résultats attendus) doit
+  suivre le même principe : vraie page dédiée + navigation précédent/suivant,
+  pas un scroll interne à un seul cadre.
+- **Important, sur le nombre de pages** : dans une remarque précédente, la
+  Fondatrice avait donné "8 cadres → 8 pages" comme illustration du principe,
+  **pas comme un nombre fixe à appliquer partout** — elle l'a explicitement
+  corrigé le 14/08 ("où je parlais de 8 pages c'était un exemple, il faut
+  vérifier avant d'appliquer"). **Pour chaque section, compter le nombre réel
+  de paragraphes/idées distincts dans le contenu source
+  (`docs-source/`, contenu déjà en base, ou l'exemple visuel fourni) plutôt
+  que de supposer un nombre.** Par exemple pour l'Architecture de
+  l'écosystème, le nombre confirmé par l'exemple visuel et la Fondatrice est
+  bien 12 (voir 3.12.4) — mais ce chiffre est spécifique à cette section, pas
+  une règle générale.
+- **Sur les images d'exemple qui montrent plusieurs pages à la fois**
+  (ex. `interfacearchitecturedelecosystemetbw.png`, qui contient 12
+  miniatures de pages différentes dans une seule image) : chaque miniature
+  représente **sa propre page complète et indépendante**, pas une carte
+  parmi d'autres sur une seule page qui défile. Regarder chaque miniature
+  individuellement (zoomer si besoin) pour identifier précisément à quelle
+  page/quel contenu elle correspond avant de coder — ne pas supposer la
+  correspondance à l'aveugle.
+
+#### 3.12.6 Autres corrections précises
+
+- **Page Médias** : la photo utilisée en fond est jugée moche par la
+  Fondatrice — remplacer par une image plus adaptée (voir
+  `exempleinterfacemedias.jpeg` pour la référence attendue, section 3.12.4).
+- **Toutes les interfaces / images de fond en général** : la Fondatrice
+  signale que les images de fond ne conviennent pas sur plusieurs interfaces
+  au-delà de celles déjà citées — **consigne explicite : demander l'image à
+  utiliser plutôt que d'en choisir une au hasard**, page par page, si aucun
+  exemple ni aucune image nommée dans `imagestubawwiri/` ne couvre déjà le cas.
+- **Liens de la rubrique Actualités** : chaque lien doit mener vers une page
+  listant les publications correspondant au thème du lien (pas une page
+  vide/statique) — confirme et précise 3.10.
+
+#### 3.12.7 Preuve visuelle de l'écart actuel sur "Notre approche"
+
+Capture d'écran réelle du site local fournie par la Fondatrice (pas un
+mockup) : `imagestubawwiri/WhatsApp Image 2026-08-13 at 13.26.17 (1).jpeg`
+(URL visible dans la capture : `127.0.0.1:8000/fr/notre-approche`). Elle
+montre l'état actuel de la page "Notre approche" : les 5 cartes (Méthode
+CAVAMIS, Doctrine des 3T, TESIMAMA, TOLAMUKE, TELUMIÈRE) s'affichent **toutes
+côte à côte simultanément** sur une grille, avec une seule flèche
+précédent/suivant globale en bord d'écran — ce qui ne correspond pas au
+rendu attendu (`exemplenotreapprochepageun.jpeg`, section 3.12.4) où une
+seule carte occupe toute la largeur à la fois, agrandie et détaillée, avec
+navigation entre elles. À corriger selon 3.12.5 (vraies pages/vues
+indépendantes, une par carte).
 
 ### Note générale sur 3.5/3.10
 La Fondatrice signale "plusieurs manques" identifiés sur les pages Programmes
@@ -375,34 +611,6 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       - Reste du contenu (Programmes, Articles, Rapports, Formations,
         pages institutionnelles) vérifié : rédigé et distinct, pas de
         gabarit détecté ailleurs.
-- [x] **Revue Actualités vs CDC** (section 3.10) : comparé au CDC
-      (`docs-source/Dossier_Complet_Site_Web_TUBAWWIRI-20.pdf`, section
-      Actualités). Écarts trouvés, laissés en l'état (décision Fondatrice) :
-      - **Catégories inventées, ne correspondent pas au CDC** : les 10
-        catégories en base (`Category`) reprennent les 10 rubriques
-        officielles (Santé mentale communautaire, Allô Parentalité
-        Écoute, etc.), alors que le CDC prévoit une liste différente
-        pour Actualités : *Afrique, Cameroun, Monde, Santé mentale,
-        Parentalité, Protection de l'enfant, Leadership féminin,
-        Citations africaines, Vie de la Fondation* (section 8 du CDC)
-        / *Afrique, Monde, Santé mentale, Parentalité, Droits de
-        l'enfant, Leadership féminin, Citations africaines,
-        Interviews* (section 3). Aucune des deux ne correspond aux
-        catégories actuelles — à trancher avec la Fondatrice (garder
-        les rubriques comme catégories, ou aligner sur le CDC).
-      - **Seulement 2 articles en base** ("Lancer la Tribu TUBAWWIRI",
-        "La méthode CAVAMIS en action"), tous deux sans catégorie
-        assignée (le seeder référence des slugs de catégorie qui
-        n'existent pas). Le CDC recommande un rythme éditorial (1
-        analyse/semaine, 3-5 posts courts/semaine, 1 rapport tous les
-        2-3 mois) — volume actuel très en dessous, contenu réel à
-        produire par la Fondatrice, pas inventé ici.
-      - **Types de contenu absents** : "Citations africaines" et
-        "Interviews", prévus par le CDC, n'existent pas comme type de
-        contenu dans le modèle `Article` actuel.
-      - Champ `cover_image` : présent sur `Article` mais vide sur les 2
-        articles existants — les nouvelles cartes (voir commit visuel
-        3.10) utilisent une photo de secours en attendant.
 - [x] **QA formulaires bout-en-bout** : les 6 formulaires soumis avec des
       données de test (supprimées ensuite), chacun vérifié en base
       (`ContactMessage`, `PartnerRequest`, `QuoteRequest`,
@@ -459,10 +667,13 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       la mauvaise occurrence plus tard — à nettoyer en gardant une seule
       ligne par clé.
 
-## 7. Ordre de priorité (mis à jour 12/08/2026)
+## 7. Ordre de priorité (mis à jour 14/08/2026)
 
 1. **Section 3** — Refonte visuelle du site public (remarques Fondatrice) —
-   priorité absolue, à traiter en premier.
+   priorité absolue. **3.1 à 3.11 sont terminées et fusionnées sur `develop`.
+   Il reste 3.12** (deuxième vague de remarques, règles globales à appliquer
+   rétroactivement + corrections précises + nouvelles pages, voir tête de
+   fichier).
 2. **Section 4** — Admin Filament (refonte visuelle) — chantier déjà en cours,
    à reprendre juste après la section 3.
 3. **Section 6** — Reste de la liste "à faire pour livrer".
