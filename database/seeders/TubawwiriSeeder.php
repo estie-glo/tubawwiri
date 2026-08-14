@@ -127,13 +127,13 @@ HTML,
     private function seedDomainsAndPrograms(): void
     {
         $domains = [
-            ['slug' => 'sante-mentale-communautaire', 'title_fr' => 'Santé mentale communautaire', 'title_en' => 'Community mental health', 'order' => 1],
-            ['slug' => 'resilience-humaine', 'title_fr' => 'Résilience humaine', 'title_en' => 'Human resilience', 'order' => 2],
-            ['slug' => 'parentalite-positive', 'title_fr' => 'Parentalité positive', 'title_en' => 'Positive parenting', 'order' => 3],
-            ['slug' => 'protection-de-lenfant', 'title_fr' => "Protection de l'enfant", 'title_en' => 'Child protection', 'order' => 4],
-            ['slug' => 'leadership-feminin', 'title_fr' => 'Leadership féminin', 'title_en' => 'Female leadership', 'order' => 5],
+            ['slug' => 'sante-mentale-communautaire', 'title_fr' => 'Santé mentale communautaire', 'title_en' => 'Community mental health', 'order' => 1, 'cover_image' => 'domains/sante-mentale-communautaire.jpg'],
+            ['slug' => 'resilience-humaine', 'title_fr' => 'Résilience humaine', 'title_en' => 'Human resilience', 'order' => 2, 'cover_image' => 'domains/resilience-humaine.jpg'],
+            ['slug' => 'parentalite-positive', 'title_fr' => 'Parentalité positive', 'title_en' => 'Positive parenting', 'order' => 3, 'cover_image' => 'domains/parentalite-positive.jpg'],
+            ['slug' => 'protection-de-lenfant', 'title_fr' => "Protection de l'enfant", 'title_en' => 'Child protection', 'order' => 4, 'cover_image' => 'domains/protection-de-lenfant.jpg'],
+            ['slug' => 'leadership-feminin', 'title_fr' => 'Leadership féminin', 'title_en' => 'Female leadership', 'order' => 5, 'cover_image' => 'domains/leadership-feminin.jpg'],
             ['slug' => 'formation-renforcement-capacites', 'title_fr' => 'Formation & renforcement des capacités', 'title_en' => 'Training & capacity building', 'order' => 6],
-            ['slug' => 'developpement-communautaire', 'title_fr' => 'Développement communautaire', 'title_en' => 'Community development', 'order' => 7],
+            ['slug' => 'developpement-communautaire', 'title_fr' => 'Développement communautaire', 'title_en' => 'Community development', 'order' => 7, 'cover_image' => 'domains/developpement-communautaire.jpg'],
         ];
 
         foreach ($domains as $domain) {
@@ -176,6 +176,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke'],
         'partenaires_souhaites_fr' => "Structures sociales locales, écoles, associations de quartier.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/familles-resilientes.jpg',
     ],
     [
         'slug' => 'ecoles-resilientes',
@@ -192,6 +193,7 @@ $programs = [
         'defis_3t' => ['tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Établissements scolaires, ministères de l'éducation, associations de parents d'élèves.",
         'duree' => 'Année scolaire',
+        'cover_image' => 'programs/ecoles-resilientes.jpg',
     ],
     [
         'slug' => 'communautes-resilientes',
@@ -208,6 +210,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Autorités locales, chefferies traditionnelles, ONG locales.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/communautes-resilientes.jpg',
     ],
     [
         'slug' => 'defi-tesimama',

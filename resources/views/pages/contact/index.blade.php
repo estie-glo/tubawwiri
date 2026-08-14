@@ -8,7 +8,7 @@
         $mapsQuery = urlencode($c['maps_query'] ?? 'Cameroun');
     @endphp
 
-    <x-page-hero image="community/statue.jpg" :title="__('site.nav.contact')" />
+    <x-page-hero image="community/femme-lance.png" image-position="top" :title="__('site.nav.contact')" />
 
     {{-- ===== COORDONNÉES ===== --}}
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">

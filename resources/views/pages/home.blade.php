@@ -63,7 +63,7 @@
                         <a href="{{ route('action-domains.show', [app()->getLocale(), $domain->slug]) }}"
                            class="group relative w-[300px] h-[380px] shrink-0 overflow-hidden rounded-3xl hover-lift"
                            @if ($pass === 2) aria-hidden="true" tabindex="-1" @endif>
-                            <img src="{{ asset('images/community/' . $domainPhotos[$loop->index % count($domainPhotos)]) }}" alt=""
+                            <img src="{{ $domain->cover_image ? asset('storage/' . $domain->cover_image) : asset('images/community/' . $domainPhotos[$loop->index % count($domainPhotos)]) }}" alt=""
                                  class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/55 to-[#123D2E]/10"></div>
                             <div class="relative z-10 flex flex-col justify-end h-full p-6">

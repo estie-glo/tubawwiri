@@ -4,6 +4,7 @@
 
 @section('content')
     <x-page-hero image="community/family.jpg"
+                 :image-url="$program->cover_image ? asset('storage/' . $program->cover_image) : null"
                  :kicker="$program->actionDomain ? $program->actionDomain->title_fr : 'Fondation TUBAWWIRI (TBW)'"
                  :title="$program->title_fr" :intro="$program->summary_fr" />
 

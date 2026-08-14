@@ -3,11 +3,9 @@
 @section('title', __('site.nav.join') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-5xl mx-auto px-4 py-20 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.join') }}</h1>
-        <p class="text-[#4a453c] mb-14 leading-relaxed max-w-2xl">{{ __('pages.engagement_subtitle') }}</p>
+    <x-page-hero image="community/femme-lance.png" image-position="top" :title="__('site.nav.join')" :intro="__('pages.engagement_subtitle')" />
 
+    <section class="max-w-5xl mx-auto px-4 py-20 reveal">
         <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-8">{{ __('pages.engagement_title') }}</p>
 
         <div class="grid md:grid-cols-3 gap-5 mb-16">

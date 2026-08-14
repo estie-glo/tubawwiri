@@ -3,7 +3,7 @@
 @section('title', __('site.nav.donate') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <x-page-hero image="community/sunset.jpg" :title="__('site.nav.donate')" :intro="__('site.home.join_subtitle')" />
+    <x-page-hero image="community/femme-lance.png" image-position="top" :title="__('site.nav.donate')" :intro="__('site.home.join_subtitle')" />
 
     <section class="max-w-2xl mx-auto px-4 py-16 reveal">
         {{-- Rappel des numéros Mobile Money --}}

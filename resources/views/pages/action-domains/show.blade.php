@@ -3,7 +3,9 @@
 @section('title', localized($actionDomain, 'title') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <x-page-hero image="community/village.jpg" :kicker="__('site.home.domains_title')"
+    <x-page-hero image="community/village.jpg"
+                 :image-url="$actionDomain->cover_image ? asset('storage/' . $actionDomain->cover_image) : null"
+                 :kicker="__('site.home.domains_title')"
                  :title="localized($actionDomain, 'title')" :intro="localized($actionDomain, 'summary')" />
 
     <section class="max-w-5xl mx-auto px-4 py-16 reveal">
