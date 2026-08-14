@@ -68,6 +68,8 @@ Route::prefix('{locale}')
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');
         Route::get('/domaines-action/{actionDomain}', [ActionDomainController::class, 'show'])->name('action-domains.show');
+        Route::get('/domaines-action/{actionDomain}/{position}', [ActionDomainController::class, 'show'])
+            ->whereNumber('position')->name('action-domains.show.field');
 
         // 5. Programmes
         Route::get('/programmes', [ProgramController::class, 'index'])->name('programs.index');

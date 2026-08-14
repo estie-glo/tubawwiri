@@ -40,7 +40,6 @@
 
     {{-- ===== DOMAINES ===== --}}
     @php
-        $domainPhotos = ['statue.jpg', 'village.jpg', 'family.jpg', 'sunset.jpg'];
         $domainList = $actionDomains instanceof \Illuminate\Support\Collection ? $actionDomains : collect($actionDomains);
     @endphp
     <section class="bg-[#F3EDE0] py-20 reveal">
@@ -54,30 +53,24 @@
                     {{ __('pages.read_more') }} →
                 </a>
             </div>
-        </div>
 
-        <div class="marquee-viewport" style="--marquee-duration: 48s;">
-            <div class="marquee-track gap-5 px-4">
-                @foreach ([1, 2] as $pass)
-                    @foreach ($domainList as $domain)
-                        <a href="{{ route('action-domains.show', [app()->getLocale(), $domain->slug]) }}"
-                           class="group relative w-[300px] h-[380px] shrink-0 overflow-hidden rounded-3xl hover-lift"
-                           @if ($pass === 2) aria-hidden="true" tabindex="-1" @endif>
-                            <img src="{{ $domain->cover_image ? asset('storage/' . $domain->cover_image) : asset('images/community/' . $domainPhotos[$loop->index % count($domainPhotos)]) }}" alt=""
-                                 class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/95 via-[#123D2E]/55 to-[#123D2E]/10"></div>
-                            <div class="relative z-10 flex flex-col justify-end h-full p-6">
-                                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">0{{ $loop->index + 1 }}</p>
-                                <h3 class="font-display text-xl font-semibold text-white mt-3 leading-snug">
-                                    {{ localized($domain, 'title') }}
-                                </h3>
-                                <p class="text-sm text-white/80 mt-2 line-clamp-2">
-                                    {{ localized($domain, 'summary') }}
-                                </p>
+            <div class="relative">
+                <div id="scroll-domains" class="content-scroll-viewport">
+                    <div class="content-scroll-track gap-5">
+                        @foreach ($domainList as $i => $domain)
+                            <div class="w-[230px] shrink-0">
+                                <x-domain-card :domain="$domain" :index="$i" :highlighted="$i === 0" />
                             </div>
-                        </a>
-                    @endforeach
-                @endforeach
+                        @endforeach
+                    </div>
+                </div>
+                <button type="button" aria-label="{{ __('pages.scroll_next') }}"
+                        onclick="document.getElementById('scroll-domains').scrollBy({left: 260, behavior: 'smooth'})"
+                        class="scroll-arrow-btn hidden md:flex absolute -right-4 top-[45%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#C99A3E] text-[#123D2E] items-center justify-center shadow-lg z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
