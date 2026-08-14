@@ -74,6 +74,8 @@ Route::prefix('{locale}')
         // 5. Programmes
         Route::get('/programmes', [ProgramController::class, 'index'])->name('programs.index');
         Route::get('/programmes/{program}', [ProgramController::class, 'show'])->name('programs.show');
+        Route::get('/programmes/{program}/{position}', [ProgramController::class, 'show'])
+            ->whereNumber('position')->name('programs.show.field');
 
         // 6. Observatoire Africain de la Résilience
         Route::get('/observatoire', [ObservatoryController::class, 'index'])->name('observatory.index');

@@ -64,6 +64,9 @@ return [
     'field_indicateurs' => 'Indicateurs',
     'field_partenaires_souhaites' => 'Partenaires souhaités',
     'field_duree' => 'Durée',
+    'field_probleme' => 'Problème identifié',
+    'field_public_concerne' => 'Public concerné',
+    'become_partner_program_question' => 'Vous souhaitez devenir partenaire de ce programme ?',
     'field_domaine' => 'Domaine',
 
     'become_partner_domain' => 'Devenir partenaire de ce domaine',
