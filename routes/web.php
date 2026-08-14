@@ -58,6 +58,8 @@ Route::prefix('{locale}')
             ->whereNumber('position')->name('rubriques.show');
 
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
+        Route::get('/bibliographie-fondatrice/{position}', [FounderController::class, 'index'])
+            ->whereNumber('position')->name('founder.show');
 
         Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'show'])->name('architecture.index');
         Route::get('/architecture-ecosysteme/{position}', [ArchitectureController::class, 'show'])
