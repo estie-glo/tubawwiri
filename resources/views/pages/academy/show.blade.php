@@ -9,22 +9,34 @@
             <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-6">{{ localized($training, 'title') }}</h1>
             <p class="text-[#4a453c] mb-8 leading-relaxed">{{ localized($training, 'description') }}</p>
 
-            <div class="grid grid-cols-2 gap-6 text-sm">
-                <div class="border-l-2 border-[#6B2A28] pl-3">
-                    <p class="text-xs text-[#8a8372] uppercase tracking-widest">{{ __('forms.mode') }}</p>
+            @php
+                $metaIcons = [
+                    'mode' => '<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path stroke-linecap="round" d="M4 12h16M12 3.5c2.2 2.4 3.4 5.4 3.4 8.5s-1.2 6.1-3.4 8.5c-2.2-2.4-3.4-5.4-3.4-8.5S9.8 5.9 12 3.5Z"/>',
+                    'niveau' => '<path d="M4 20V10M10 20V4M16 20v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+                    'duree' => '<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" stroke-width="1.6" d="M12 7.5V12l3 2"/>',
+                    'prix' => '<path d="M4 8.5h13.5a2.5 2.5 0 0 1 0 5H8a2.5 2.5 0 0 0 0 5H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 5v3M9 16v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+                ];
+            @endphp
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-4">
+                    <svg class="w-5 h-5 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $metaIcons['mode'] !!}</svg>
+                    <p class="text-xs text-[#8a8372] uppercase tracking-widest mt-2">{{ __('forms.mode') }}</p>
                     <p class="font-display font-semibold text-[#123D2E]">{{ ucfirst(str_replace('_', ' ', $training->mode)) }}</p>
                 </div>
-                <div class="border-l-2 border-[#6B2A28] pl-3">
-                    <p class="text-xs text-[#8a8372] uppercase tracking-widest">{{ __('forms.niveau') }}</p>
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-4">
+                    <svg class="w-5 h-5 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $metaIcons['niveau'] !!}</svg>
+                    <p class="text-xs text-[#8a8372] uppercase tracking-widest mt-2">{{ __('forms.niveau') }}</p>
                     <p class="font-display font-semibold text-[#123D2E]">{{ ucfirst($training->level ?? '—') }}</p>
                 </div>
-                <div class="border-l-2 border-[#6B2A28] pl-3">
-                    <p class="text-xs text-[#8a8372] uppercase tracking-widest">{{ __('pages.field_duree') }}</p>
+                <div class="bg-white border border-[#eadfca] rounded-2xl p-4">
+                    <svg class="w-5 h-5 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $metaIcons['duree'] !!}</svg>
+                    <p class="text-xs text-[#8a8372] uppercase tracking-widest mt-2">{{ __('pages.field_duree') }}</p>
                     <p class="font-display font-semibold text-[#123D2E]">{{ $training->duree ?? '—' }}</p>
                 </div>
                 @if ($training->price)
-                    <div class="border-l-2 border-[#6B2A28] pl-3">
-                        <p class="text-xs text-[#8a8372] uppercase tracking-widest">Prix</p>
+                    <div class="bg-white border border-[#eadfca] rounded-2xl p-4">
+                        <svg class="w-5 h-5 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $metaIcons['prix'] !!}</svg>
+                        <p class="text-xs text-[#8a8372] uppercase tracking-widest mt-2">Prix</p>
                         <p class="font-display font-semibold text-[#123D2E]">{{ number_format($training->price, 0, ',', ' ') }} FCFA</p>
                     </div>
                 @endif
@@ -35,7 +47,7 @@
             <p class="text-xs font-bold text-[#6B2A28] uppercase tracking-widest mb-6">{{ __('forms.sinscrire_formation') }}</p>
 
             @if ($errors->any())
-                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm p-3 mb-6">
+                <div class="border-l-2 border-[#6B2A28] bg-white text-[#6B2A28] text-sm rounded-xl p-3 mb-6">
                     @foreach ($errors->all() as $error)
                         <p>{{ $error }}</p>
                     @endforeach
@@ -81,7 +93,7 @@
                         ] as $val => $label)
                             <label class="relative block cursor-pointer">
                                 <input type="radio" name="niveau" value="{{ $val }}" class="peer sr-only">
-                                <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
+                                <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ $label }}</span>
                             </label>
                         @endforeach
                     </div>
@@ -92,11 +104,11 @@
                     <div class="grid grid-cols-2 gap-3 text-sm">
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="mode" value="en_ligne" checked class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_en_ligne') }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_en_ligne') }}</span>
                         </label>
                         <label class="relative block cursor-pointer">
                             <input type="radio" name="mode" value="presentiel" class="peer sr-only">
-                            <span class="block border border-[#d8cfb8] peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_presentiel') }}</span>
+                            <span class="block border border-[#d8cfb8] rounded-full peer-checked:border-[#123D2E] peer-checked:bg-[#123D2E] peer-checked:text-white px-3 py-2.5 text-center transition">{{ __('forms.mode_presentiel') }}</span>
                         </label>
                     </div>
                 </div>

@@ -48,16 +48,6 @@ Page::updateOrCreate(['slug' => 'qui-sommes-nous'], [
 
 <h3>Nos valeurs</h3>
 <p>Sagesse, dignité, solidarité, résilience, intégrité, innovation, enracinement culturel.</p>
-
-<h3>Notre fondatrice</h3>
-<p><strong>Nana Fadimatou Ngapout</strong> — Fondatrice &amp; Directrice Exécutive (CEO), Juriste, Ingénieure éducative, Conseillère d'orientation scolaire, universitaire et professionnelle.</p>
-<p>Professionnelle camerounaise engagée dans les domaines de l'éducation, des sciences humaines et du développement communautaire, elle associe le droit, les sciences de l'éducation et l'accompagnement humain, avec une conviction profonde : chaque personne possède en elle les ressources nécessaires pour se relever, grandir et contribuer au bien commun.</p>
-<p>Maître en Droit pénal et Sciences criminelles, Ingénieure éducative en Intervention, Orientation et Éducation extrascolaire, titulaire d'un Master Professionnel en Guidance Counseling, elle occupe également des fonctions de responsabilité à l'Université d'Ebolowa.</p>
-<p>Elle est à l'origine de la Méthode CAVAMIS et de la Doctrine des 3T — TESIMAMA, TOLAMUKE, TELUMIÈRE.</p>
-<blockquote>
-<p>« Ma passion est de voir les personnes et les communautés retrouver leurs racines, s'éveiller à leur potentiel et faire rayonner leur lumière. À travers la Fondation TUBAWWIRI, je souhaite contribuer à un monde où chacun peut grandir dans la dignité, renforcer sa résilience et transmettre un héritage positif aux générations futures. »</p>
-<p><strong>— Nana Fadimatou Ngapout, Fondatrice</strong></p>
-</blockquote>
 HTML,
     'content_en' => <<<'HTML'
 <p><em>Every forest begins with a seed. Every human transformation begins with an idea.</em></p>
@@ -73,16 +63,6 @@ HTML,
 
 <h3>Our values</h3>
 <p>Wisdom, dignity, solidarity, resilience, integrity, innovation, cultural rootedness.</p>
-
-<h3>Our founder</h3>
-<p><strong>Nana Fadimatou Ngapout</strong> — Founder &amp; CEO, Lawyer, Educational Engineer, Academic and Career Guidance Counselor.</p>
-<p>A Cameroonian professional engaged in education, human sciences and community development, she combines law, education sciences and human support with a deep conviction: every person holds within themselves the resources needed to rise, grow and contribute to the common good.</p>
-<p>She holds a Master's in Criminal Law and Criminal Sciences, is an Educational Engineer in Intervention, Guidance and Extracurricular Education, and holds a Professional Master's in Guidance Counseling. She also holds a position of responsibility at the University of Ebolowa.</p>
-<p>She originated the CAVAMIS Method and the 3T Doctrine — TESIMAMA, TOLAMUKE, TELUMIERE.</p>
-<blockquote>
-<p>"My passion is to see people and communities reconnect with their roots, awaken their potential and let their light shine. Through the TUBAWWIRI Foundation, I want to contribute to a world where everyone can grow in dignity, build resilience and pass on a positive legacy to future generations."</p>
-<p><strong>— Nana Fadimatou Ngapout, Founder</strong></p>
-</blockquote>
 HTML,
     'is_published' => true,
 ]);
@@ -147,13 +127,13 @@ HTML,
     private function seedDomainsAndPrograms(): void
     {
         $domains = [
-            ['slug' => 'sante-mentale-communautaire', 'title_fr' => 'Santé mentale communautaire', 'title_en' => 'Community mental health', 'order' => 1],
-            ['slug' => 'resilience-humaine', 'title_fr' => 'Résilience humaine', 'title_en' => 'Human resilience', 'order' => 2],
-            ['slug' => 'parentalite-positive', 'title_fr' => 'Parentalité positive', 'title_en' => 'Positive parenting', 'order' => 3],
-            ['slug' => 'protection-de-lenfant', 'title_fr' => "Protection de l'enfant", 'title_en' => 'Child protection', 'order' => 4],
-            ['slug' => 'leadership-feminin', 'title_fr' => 'Leadership féminin', 'title_en' => 'Female leadership', 'order' => 5],
+            ['slug' => 'sante-mentale-communautaire', 'title_fr' => 'Santé mentale communautaire', 'title_en' => 'Community mental health', 'order' => 1, 'cover_image' => 'domains/sante-mentale-communautaire.jpg'],
+            ['slug' => 'resilience-humaine', 'title_fr' => 'Résilience humaine', 'title_en' => 'Human resilience', 'order' => 2, 'cover_image' => 'domains/resilience-humaine.jpg'],
+            ['slug' => 'parentalite-positive', 'title_fr' => 'Parentalité positive', 'title_en' => 'Positive parenting', 'order' => 3, 'cover_image' => 'domains/parentalite-positive.jpg'],
+            ['slug' => 'protection-de-lenfant', 'title_fr' => "Protection de l'enfant", 'title_en' => 'Child protection', 'order' => 4, 'cover_image' => 'domains/protection-de-lenfant.jpg'],
+            ['slug' => 'leadership-feminin', 'title_fr' => 'Leadership féminin', 'title_en' => 'Female leadership', 'order' => 5, 'cover_image' => 'domains/leadership-feminin.jpg'],
             ['slug' => 'formation-renforcement-capacites', 'title_fr' => 'Formation & renforcement des capacités', 'title_en' => 'Training & capacity building', 'order' => 6],
-            ['slug' => 'developpement-communautaire', 'title_fr' => 'Développement communautaire', 'title_en' => 'Community development', 'order' => 7],
+            ['slug' => 'developpement-communautaire', 'title_fr' => 'Développement communautaire', 'title_en' => 'Community development', 'order' => 7, 'cover_image' => 'domains/developpement-communautaire.jpg'],
         ];
 
         foreach ($domains as $domain) {
@@ -196,6 +176,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke'],
         'partenaires_souhaites_fr' => "Structures sociales locales, écoles, associations de quartier.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/familles-resilientes.jpg',
     ],
     [
         'slug' => 'ecoles-resilientes',
@@ -212,6 +193,7 @@ $programs = [
         'defis_3t' => ['tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Établissements scolaires, ministères de l'éducation, associations de parents d'élèves.",
         'duree' => 'Année scolaire',
+        'cover_image' => 'programs/ecoles-resilientes.jpg',
     ],
     [
         'slug' => 'communautes-resilientes',
@@ -228,6 +210,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Autorités locales, chefferies traditionnelles, ONG locales.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/communautes-resilientes.jpg',
     ],
     [
         'slug' => 'defi-tesimama',

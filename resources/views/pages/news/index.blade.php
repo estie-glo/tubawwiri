@@ -6,14 +6,14 @@
     <x-page-hero image="community/sunset.jpg" :title="__('site.nav.news')" />
 
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
-        <div class="flex flex-wrap gap-4 mb-12 text-xs font-semibold uppercase tracking-wider">
+        <div class="flex flex-wrap gap-2.5 mb-12 text-xs font-semibold uppercase tracking-wider">
             <a href="{{ route('news.index', app()->getLocale()) }}"
-               class="{{ !$activeCategory ? 'text-[#C99A3E]' : 'text-[#123D2E] hover:text-[#C99A3E]' }}">
+               class="rounded-full border px-4 py-2 transition {{ !$activeCategory ? 'bg-[#123D2E] border-[#123D2E] text-white' : 'border-[#d8cfb8] text-[#123D2E] hover:border-[#C99A3E] hover:text-[#C99A3E]' }}">
                 {{ __('pages.all') }}
             </a>
             @foreach ($categories as $category)
                 <a href="{{ route('news.category', [app()->getLocale(), $category->slug]) }}"
-                   class="{{ $activeCategory?->id === $category->id ? 'text-[#C99A3E]' : 'text-[#123D2E] hover:text-[#C99A3E]' }}">
+                   class="rounded-full border px-4 py-2 transition {{ $activeCategory?->id === $category->id ? 'bg-[#123D2E] border-[#123D2E] text-white' : 'border-[#d8cfb8] text-[#123D2E] hover:border-[#C99A3E] hover:text-[#C99A3E]' }}">
                     {{ app()->getLocale() === 'en' && $category->name_en ? $category->name_en : $category->name_fr }}
                 </a>
             @endforeach
@@ -23,7 +23,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @forelse ($articles as $i => $article)
                 <a href="{{ route('news.show', [app()->getLocale(), $article->slug]) }}"
-                   class="group relative min-h-[300px] overflow-hidden hover-lift">
+                   class="group relative min-h-[300px] overflow-hidden rounded-3xl hover-lift">
                     <img src="{{ $article->cover_image ? asset('storage/' . $article->cover_image) : asset('images/community/' . $bgPhotos[$i % count($bgPhotos)]) }}"
                          alt="" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/94 via-[#123D2E]/65 to-[#123D2E]/20"></div>
@@ -35,7 +35,10 @@
                         @endif
                         <h2 class="font-display text-lg font-semibold text-white mt-2">{{ $article->title_fr }}</h2>
                         <p class="text-sm text-white/80 mt-2 line-clamp-2">{{ $article->excerpt_fr }}</p>
-                        <p class="text-xs text-white/60 mt-3">{{ optional($article->published_at)->format('d/m/Y') }}</p>
+                        <p class="flex items-center gap-1.5 text-xs text-white/60 mt-3">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path stroke-linecap="round" d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+                            {{ optional($article->published_at)->format('d/m/Y') }}
+                        </p>
                     </div>
                 </a>
             @empty

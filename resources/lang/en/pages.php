@@ -17,12 +17,17 @@ return [
     'share' => 'Share',
     'read_more' => 'Read more',
     'scroll_next' => 'Next paragraph',
+    'previous' => 'Previous',
+    'next' => 'Next',
+    'volet' => 'Part',
+    'rubrique' => 'Section',
     'linked_programs' => 'Related programs',
 
     'impact_intro' => 'The concrete results of our work in the field, measured year after year.',
     'testimonials_subtitle' => 'What the people and communities supported by TUBAWWIRI have to say.',
 
     'consulting_intro' => "TBW Consulting is the consulting, expertise and organizational support arm of the TUBAWWIRI ecosystem. It advises organizations, supports institutions and businesses, and offers solutions adapted to local realities.",
+    'consulting_services_title' => 'Our services',
     'consulting_services' => [
         'Organizational diagnostics',
         'Advisory for institutions and businesses',
@@ -60,6 +65,9 @@ return [
     'field_indicateurs' => 'Indicators',
     'field_partenaires_souhaites' => 'Desired partners',
     'field_duree' => 'Duration',
+    'field_probleme' => 'Problem identified',
+    'field_public_concerne' => 'Target audience',
+    'become_partner_program_question' => 'Want to become a partner for this program?',
     'field_domaine' => 'Area',
 
     'become_partner_domain' => 'Become a partner for this area',
@@ -69,6 +77,7 @@ return [
 
     'engagement_title' => "The Tribe Engagement Path",
     'engagement_subtitle' => "Six ways to get involved with TUBAWWIRI, based on your availability and talents.",
+    'votre_demande' => 'Your request',
     'role_benevole_label' => 'TUBAWWIRI Volunteer',
     'role_benevole_desc' => 'Takes part in activities occasionally or regularly.',
     'role_membre_label' => 'Tribe Member',

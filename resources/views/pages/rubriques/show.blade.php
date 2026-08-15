@@ -1,0 +1,70 @@
+@extends('layouts.app')
+
+@section('title', $item['name'] . ' — ' . __('rubriques.title') . ' — Fondation TUBAWWIRI (TBW)')
+@section('meta_description', $item['pitch'])
+
+@section('content')
+    @php
+        $locale = app()->getLocale();
+        $urlFor = fn (int $n) => route('rubriques.show', [$locale, $n]);
+    @endphp
+
+    <section class="min-h-[70vh] flex flex-col items-center justify-center px-4 py-16 reveal">
+        <div class="w-full max-w-5xl">
+            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em] text-center mb-2">Fondation TUBAWWIRI (TBW)</p>
+            <h1 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E] text-center mb-10">
+                {{ __('rubriques.title') }}
+            </h1>
+
+            <div class="relative flex items-center gap-3 sm:gap-5">
+                <a href="{{ $urlFor(max($position - 1, 1)) }}" aria-label="{{ __('pages.previous') }}"
+                   class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position <= 1 ? 'opacity-30 pointer-events-none' : '' }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </a>
+
+                <div class="relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[440px] p-8 md:p-14">
+                    <img src="{{ asset('images/rubriques/' . $item['image']) }}" alt=""
+                         class="absolute inset-0 w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
+
+                    <div class="relative z-10 max-w-lg">
+                        <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
+                            {{ __('pages.rubrique') }} {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
+                        </p>
+                        <h2 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E] mt-4 leading-snug">
+                            {{ $item['name'] }}
+                        </h2>
+                        @if (!empty($item['subtitle']))
+                            <p class="text-sm italic text-[#6B2A28] mt-2">{{ $item['subtitle'] }}</p>
+                        @endif
+                        <div class="w-12 h-[3px] bg-[#C99A3E] mt-4 mb-4"></div>
+                        <p class="text-[#4a453c] leading-relaxed">{{ $item['pitch'] }}</p>
+                    </div>
+                </div>
+
+                <a href="{{ $urlFor(min($position + 1, $total)) }}" aria-label="{{ __('pages.next') }}"
+                   class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position >= $total ? 'opacity-30 pointer-events-none' : '' }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="flex sm:hidden items-center justify-between mt-5">
+                <a href="{{ $urlFor(max($position - 1, 1)) }}" class="text-xs font-bold uppercase tracking-wider text-[#C99A3E] {{ $position <= 1 ? 'opacity-30 pointer-events-none' : '' }}">← {{ __('pages.previous') }}</a>
+                <a href="{{ $urlFor(min($position + 1, $total)) }}" class="text-xs font-bold uppercase tracking-wider text-[#C99A3E] {{ $position >= $total ? 'opacity-30 pointer-events-none' : '' }}">{{ __('pages.next') }} →</a>
+            </div>
+
+            <div class="flex items-center justify-center flex-wrap gap-2 mt-7">
+                @for ($n = 1; $n <= $total; $n++)
+                    <a href="{{ $urlFor($n) }}" aria-label="{{ $n }}/{{ $total }}"
+                       class="w-2.5 h-2.5 rounded-full transition {{ $n === $position ? 'bg-[#C99A3E]' : 'bg-[#d8cfb8] hover:bg-[#C99A3E]/50' }}"></a>
+                @endfor
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="{{ route('rubriques.index', $locale) }}" class="text-xs font-bold uppercase tracking-wider text-[#6B2A28] border-b border-[#6B2A28] pb-0.5">
+                    {{ __('rubriques.title') }} →
+                </a>
+            </div>
+        </div>
+    </section>
+@endsection

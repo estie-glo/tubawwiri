@@ -17,12 +17,17 @@ return [
     'share' => 'Partager',
     'read_more' => 'En savoir plus',
     'scroll_next' => 'Paragraphe suivant',
+    'previous' => 'Précédent',
+    'next' => 'Suivant',
+    'volet' => 'Volet',
+    'rubrique' => 'Rubrique',
     'linked_programs' => 'Programmes liés',
 
     'impact_intro' => 'Les résultats concrets de notre action sur le terrain, mesurés année après année.',
     'testimonials_subtitle' => 'Ce que disent les personnes et communautés accompagnées par TUBAWWIRI.',
 
     'consulting_intro' => "TBW Consulting est le pôle de conseil, d'expertise et d'accompagnement organisationnel de l'écosystème TUBAWWIRI. Il conseille les organisations, accompagne les institutions et les entreprises, et propose des solutions adaptées aux réalités locales.",
+    'consulting_services_title' => 'Nos services',
     'consulting_services' => [
         'Diagnostics organisationnels',
         'Conseil aux institutions et entreprises',
@@ -60,6 +65,9 @@ return [
     'field_indicateurs' => 'Indicateurs',
     'field_partenaires_souhaites' => 'Partenaires souhaités',
     'field_duree' => 'Durée',
+    'field_probleme' => 'Problème identifié',
+    'field_public_concerne' => 'Public concerné',
+    'become_partner_program_question' => 'Vous souhaitez devenir partenaire de ce programme ?',
     'field_domaine' => 'Domaine',
 
     'become_partner_domain' => 'Devenir partenaire de ce domaine',
@@ -69,6 +77,7 @@ return [
 
     'engagement_title' => "Le Parcours d'engagement dans la Tribu",
     'engagement_subtitle' => "Six façons de s'engager aux côtés de TUBAWWIRI, selon votre disponibilité et vos talents.",
+    'votre_demande' => 'Votre demande',
     'role_benevole_label' => 'Bénévole TUBAWWIRI',
     'role_benevole_desc' => 'Participe ponctuellement ou régulièrement aux activités.',
     'role_membre_label' => 'Membre de la Tribu',

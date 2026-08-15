@@ -51,7 +51,9 @@ return [
     'telephone_optionnel' => 'Phone (optional)',
 
     'nous_ecrire' => 'Write to us',
+    'nous_ecrire_desc' => 'A question, a suggestion or a message? We are listening.',
     'devenir_partenaire' => 'Become a partner',
+    'devenir_partenaire_desc' => 'Want to collaborate with us? Fill in this form and we will get back to you quickly.',
     'demander_devis' => 'Request a quote',
     'sinscrire_formation' => 'Enroll in this training',
 
@@ -75,7 +77,8 @@ return [
     'newsletter_subtitle' => 'Get our news and calls to action.',
     'newsletter_submit' => 'Subscribe',
     'newsletter_success' => 'Thank you! Your newsletter subscription is confirmed.',
-    'newsletter_unsubscribe_link' => 'Unsubscribe',
+    'newsletter_privacy_note' => 'We respect your privacy. You can',
+    'newsletter_unsubscribe_link' => 'unsubscribe at any time.',
     'newsletter_unsubscribe_title' => 'Newsletter unsubscribe',
     'newsletter_unsubscribe_intro' => 'Enter your email address to stop receiving our news.',
     'newsletter_unsubscribe_submit' => 'Unsubscribe',

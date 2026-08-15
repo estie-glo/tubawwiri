@@ -51,7 +51,9 @@ return [
     'telephone_optionnel' => 'Téléphone (optionnel)',
 
     'nous_ecrire' => 'Nous écrire',
+    'nous_ecrire_desc' => 'Une question, une suggestion ou un message ? Nous sommes à votre écoute.',
     'devenir_partenaire' => 'Devenir partenaire',
+    'devenir_partenaire_desc' => 'Vous souhaitez collaborer avec nous ? Remplissez ce formulaire, nous vous répondrons rapidement.',
     'demander_devis' => 'Demander un devis',
     'sinscrire_formation' => 'S\'inscrire à cette formation',
 
@@ -75,7 +77,8 @@ return [
     'newsletter_subtitle' => 'Recevez nos actualités et nos appels à mobilisation.',
     'newsletter_submit' => 'S\'inscrire',
     'newsletter_success' => 'Merci ! Votre inscription à la newsletter est confirmée.',
-    'newsletter_unsubscribe_link' => 'Se désabonner',
+    'newsletter_privacy_note' => 'Nous respectons votre vie privée. Vous pouvez vous',
+    'newsletter_unsubscribe_link' => 'désabonner à tout moment.',
     'newsletter_unsubscribe_title' => 'Désabonnement newsletter',
     'newsletter_unsubscribe_intro' => 'Indiquez votre adresse email pour ne plus recevoir nos actualités.',
     'newsletter_unsubscribe_submit' => 'Se désabonner',

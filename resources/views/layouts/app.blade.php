@@ -44,7 +44,7 @@
         }
         .btn-tbw {
             position: relative;
-            clip-path: polygon(13px 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%, 0 13px);
+            border-radius: 999px;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
         }
         .btn-tbw:hover {
@@ -59,6 +59,7 @@
             width: 100%;
             background: #fff;
             border: 1px solid #e2d8c4;
+            border-radius: 1.25rem;
             padding: 0.7rem 0.9rem;
             font-size: 0.9rem;
             outline: none;
@@ -131,6 +132,8 @@
         }
         .content-card {
             scroll-snap-align: start;
+            border-radius: 1.5rem;
+            overflow: hidden;
         }
         .scroll-arrow-btn {
             transition: transform 0.2s ease, background-color 0.2s ease;
@@ -230,12 +233,12 @@
                         {{ __('site.nav.more') }}
                         <svg class="nav-chevron w-3 h-3 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="nav-panel absolute right-0 top-full mt-3 w-60 bg-[#F3EDE0] border border-[#e4dac6] shadow-xl p-2 z-50">
+                    <div class="nav-panel absolute right-0 top-full mt-3 w-60 bg-[#F3EDE0] border border-[#e4dac6] shadow-xl rounded-3xl p-2 z-50">
                         <p class="px-3 pt-1.5 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">{{ __('site.nav.more') }}</p>
                         @foreach ($moreNav as $link)
                             @php $isActive = request()->routeIs($link['route']); @endphp
                             <a href="{{ route($link['route'], $locale) }}"
-                               class="block px-3 py-2.5 text-[11px] border-l-2 transition {{ $isActive ? 'border-[#C99A3E] bg-white text-[#6B2A28]' : 'border-transparent hover:bg-white hover:text-[#C99A3E] hover:border-[#C99A3E]' }}">
+                               class="block px-3 py-2.5 text-[11px] rounded-xl border-l-2 transition {{ $isActive ? 'border-[#C99A3E] bg-white text-[#6B2A28]' : 'border-transparent hover:bg-white hover:text-[#C99A3E] hover:border-[#C99A3E]' }}">
                                 {{ $link['label'] }}
                             </a>
                         @endforeach
@@ -283,7 +286,7 @@
 
     @if (session('success'))
         <div id="flash-message" class="max-w-4xl mx-auto mt-6 px-4">
-            <div class="flex items-start gap-4 bg-white border-l-[3px] border-[#123D2E] px-5 py-4 shadow-sm">
+            <div class="flex items-start gap-4 bg-white border-l-[3px] border-[#123D2E] rounded-2xl px-5 py-4 shadow-sm">
                 <div class="shrink-0 w-8 h-8 rounded-full bg-[#123D2E] text-white flex items-center justify-center text-sm font-bold mt-0.5">✓</div>
                 <div class="flex-1">
                     <p class="text-xs font-bold text-[#123D2E] uppercase tracking-widest">{{ __('forms.flash_title') }}</p>
@@ -320,22 +323,29 @@
         <div class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
             <div>
                 <img src="{{ asset('images/logo-emblem.png') }}" alt="Fondation TUBAWWIRI" class="h-14 w-auto object-contain mb-4 brightness-110">
-                <p class="text-sm text-[#8fae9d] italic font-display">{{ __('site.tagline') }}</p>
-                <p class="text-xs text-[#8fae9d] mt-4 leading-relaxed">{{ __('site.mission_short') }}</p>
+                <p class="text-xs text-[#8fae9d] leading-relaxed">{{ __('site.mission_short') }}</p>
+                <div class="mt-4 flex items-center gap-2.5 border border-white/15 rounded-full px-4 py-2.5 w-fit">
+                    <svg class="w-4 h-4 text-[#C99A3E] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21v-9m0 0c0-4.5-3-7-7-7 0 4.5 2.5 7 7 7Zm0 0c0-4.5 3-7 7-7 0 4.5-2.5 7-7 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <p class="text-sm text-[#8fae9d] italic font-display">{{ __('site.tagline') }}</p>
+                </div>
             </div>
             <div>
-                <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">{{ __('site.footer.links') }}</p>
+                <p class="font-semibold text-white text-xs uppercase tracking-wider">{{ __('site.footer.links') }}</p>
+                <div class="w-8 h-[2px] bg-[#C99A3E] mt-2 mb-4"></div>
                 <ul class="text-sm">
                     @foreach ([
-                        ['route' => 'about', 'label' => __('site.nav.about')],
-                        ['route' => 'approach', 'label' => __('site.nav.approach')],
-                        ['route' => 'programs.index', 'label' => __('site.nav.programs')],
-                        ['route' => 'academy.index', 'label' => __('site.nav.academy')],
-                        ['route' => 'contact.index', 'label' => __('site.nav.contact')],
+                        ['route' => 'about', 'label' => __('site.nav.about'), 'icon' => '<circle cx="12" cy="8" r="3.3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'],
+                        ['route' => 'approach', 'label' => __('site.nav.approach'), 'icon' => '<path d="M9 4c-2 2-2.5 4.5-1.5 7-2 .5-3.5 2-4 4 2.5 1 5-.5 6-2.5 1 2.5 3.5 4 6 3.5-1-2-3-3-4.5-3 2-2 2-4.5.5-7-1 2-2.5 2.5-3.5 1.5-.5-1.5 0-2.5 1-3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>'],
+                        ['route' => 'programs.index', 'label' => __('site.nav.programs'), 'icon' => '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'],
+                        ['route' => 'academy.index', 'label' => __('site.nav.academy'), 'icon' => '<path d="M12 4 2 8l10 4 10-4-10-4Zm-7 6.5V16c0 1.5 3 3.5 7 3.5s7-2 7-3.5v-5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'],
+                        ['route' => 'contact.index', 'label' => __('site.nav.contact'), 'icon' => '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-13Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 6 12 12l7.5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'],
                     ] as $link)
                         <li class="border-b border-white/10">
                             <a href="{{ route($link['route'], $locale) }}" class="group flex items-center justify-between py-2.5 hover:text-[#C99A3E] transition">
-                                <span>{{ $link['label'] }}</span>
+                                <span class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $link['icon'] !!}</svg>
+                                    {{ $link['label'] }}
+                                </span>
                                 <span class="text-[#C99A3E] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition">→</span>
                             </a>
                         </li>
@@ -343,12 +353,13 @@
                 </ul>
             </div>
             <div>
-                <p class="font-semibold text-white text-xs uppercase tracking-wider mb-4">{{ __('site.footer.follow_us') }}</p>
+                <p class="font-semibold text-white text-xs uppercase tracking-wider">{{ __('site.footer.follow_us') }}</p>
+                <div class="w-8 h-[2px] bg-[#C99A3E] mt-2 mb-4"></div>
                 <div class="flex flex-wrap gap-2.5">
                     @foreach ($socialIcons as $key => $svgPath)
                         @if (!empty($social[$key]))
                             <a href="{{ $social[$key] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $socialLabels[$key] }}"
-                               class="hover-lift w-10 h-10 flex items-center justify-center border border-white/15 text-white/90 hover:bg-[#C99A3E] hover:text-[#123D2E] hover:border-[#C99A3E] transition">
+                               class="hover-lift w-10 h-10 rounded-xl flex items-center justify-center border border-white/15 text-white/90 hover:bg-[#C99A3E] hover:text-[#123D2E] hover:border-[#C99A3E] transition">
                                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">{!! $svgPath !!}</svg>
                             </a>
                         @endif
@@ -365,7 +376,7 @@
                     </a>
                 </div>
             </div>
-            <div class="border border-white/15 p-5">
+            <div class="border border-white/15 rounded-3xl p-5">
                 <div class="flex items-center gap-2 mb-3">
                     <svg class="w-4 h-4 text-[#C99A3E]" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 7 8.5 6 8.5-6"/></svg>
                     <p class="font-semibold text-white text-xs uppercase tracking-wider">{{ __('forms.newsletter_title') }}</p>
@@ -378,12 +389,18 @@
                         <input type="text" name="website" id="website_newsletter" tabindex="-1" autocomplete="off">
                     </div>
                     <input type="email" name="email" required placeholder="email@exemple.com"
-                           class="w-full bg-[#0f3226] border border-[#1c4d3a] focus:border-[#C99A3E] outline-none px-3 py-2.5 text-sm text-white placeholder:text-[#8fae9d]">
+                           class="w-full bg-[#0f3226] border border-[#1c4d3a] focus:border-[#C99A3E] outline-none rounded-full px-4 py-2.5 text-sm text-white placeholder:text-[#8fae9d]">
                     <button type="submit" class="btn-tbw w-full bg-[#C99A3E] hover:bg-[#b3872f] text-[#123D2E] text-xs font-bold uppercase tracking-wider py-2.5">
                         {{ __('forms.newsletter_submit') }}
                     </button>
                 </form>
-                <a href="{{ route('newsletter.unsubscribe.form', $locale) }}" class="text-xs text-[#8fae9d] hover:text-[#C99A3E] mt-3 inline-block">{{ __('forms.newsletter_unsubscribe_link') }}</a>
+                <div class="flex items-start gap-2 mt-3">
+                    <svg class="w-3.5 h-3.5 text-[#C99A3E] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10-1.3-1-2.6-1.9-4-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    <p class="text-xs text-[#8fae9d] leading-snug">
+                        {{ __('forms.newsletter_privacy_note') }}
+                        <a href="{{ route('newsletter.unsubscribe.form', $locale) }}" class="hover:text-[#C99A3E] underline">{{ __('forms.newsletter_unsubscribe_link') }}</a>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="border-t border-[#1c4d3a] text-center text-xs text-[#8fae9d] py-4">

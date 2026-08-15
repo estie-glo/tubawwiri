@@ -41,25 +41,41 @@ Route::prefix('{locale}')
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
         // 2. Qui sommes-nous / 3. Notre approche -> pages institutionnelles génériques
+        // Chaque paragraphe/cadre est une vraie page (1 cadre = 1 URL), avec
+        // navigation précédent/suivant — voir CLAUDE.md 3.12.5.
         Route::get('/qui-sommes-nous', [PageController::class, 'show'])
             ->defaults('slug', 'qui-sommes-nous')->name('about');
+        Route::get('/qui-sommes-nous/{position}', [PageController::class, 'show'])
+            ->defaults('slug', 'qui-sommes-nous')->whereNumber('position')->name('about.show');
 
         Route::get('/notre-approche', [PageController::class, 'show'])
             ->defaults('slug', 'notre-approche')->name('approach');
+        Route::get('/notre-approche/{position}', [PageController::class, 'show'])
+            ->defaults('slug', 'notre-approche')->whereNumber('position')->name('approach.show');
 
         Route::get('/rubriques', [RubriqueController::class, 'index'])->name('rubriques.index');
+        Route::get('/rubriques/{position}', [RubriqueController::class, 'show'])
+            ->whereNumber('position')->name('rubriques.show');
 
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
+        Route::get('/bibliographie-fondatrice/{position}', [FounderController::class, 'index'])
+            ->whereNumber('position')->name('founder.show');
 
-        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'index'])->name('architecture.index');
+        Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'show'])->name('architecture.index');
+        Route::get('/architecture-ecosysteme/{position}', [ArchitectureController::class, 'show'])
+            ->whereNumber('position')->name('architecture.show');
 
         // 4. Domaines d'action
         Route::get('/domaines-action', [ActionDomainController::class, 'index'])->name('action-domains.index');
         Route::get('/domaines-action/{actionDomain}', [ActionDomainController::class, 'show'])->name('action-domains.show');
+        Route::get('/domaines-action/{actionDomain}/{position}', [ActionDomainController::class, 'show'])
+            ->whereNumber('position')->name('action-domains.show.field');
 
         // 5. Programmes
         Route::get('/programmes', [ProgramController::class, 'index'])->name('programs.index');
         Route::get('/programmes/{program}', [ProgramController::class, 'show'])->name('programs.show');
+        Route::get('/programmes/{program}/{position}', [ProgramController::class, 'show'])
+            ->whereNumber('position')->name('programs.show.field');
 
         // 6. Observatoire Africain de la Résilience
         Route::get('/observatoire', [ObservatoryController::class, 'index'])->name('observatory.index');
