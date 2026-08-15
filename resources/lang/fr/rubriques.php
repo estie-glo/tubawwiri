@@ -3,6 +3,7 @@
 return [
     'title' => 'Nos rubriques',
     'intro' => "Les dix rubriques officielles de l'écosystème TUBAWWIRI (TBW) — elles structurent la Fondation, TBW Academy, TBW Consulting, les programmes, les campagnes et le site.",
+    'voir_plus' => 'Voir plus',
     'items' => [
         [
             'name' => 'TUBAWWIRI Africa Watch',

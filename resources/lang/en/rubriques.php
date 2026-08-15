@@ -3,6 +3,7 @@
 return [
     'title' => 'Our sections',
     'intro' => 'The ten official sections of the TUBAWWIRI (TBW) ecosystem — they structure the Foundation, TBW Academy, TBW Consulting, programs, campaigns and the website.',
+    'voir_plus' => 'See more',
     'items' => [
         [
             'name' => 'TUBAWWIRI Africa Watch',
