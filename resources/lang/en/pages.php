@@ -3,6 +3,8 @@
 return [
     'domains_intro' => "Community mental health, human resilience, positive parenting, child protection, female leadership, community development.",
     'programs_intro' => 'Resilient Families, Resilient Schools, Resilient Communities, TESIMAMA Challenge, TOLAMUKE Challenge, TELUMIERE Challenge, TBW Parents...',
+    'programs_impact_title' => 'Together for lasting impact',
+    'programs_impact_desc' => "Our programs are complementary and reach every member of the community. Every action counts toward a more resilient, more united future.",
     'observatory_intro' => 'Analyses, notes, reports, statistics, barometers and research on human resilience in Africa.',
     'resources_intro' => 'Guides, publications, reports, practical tools, podcasts, videos, infographics and downloadable documents.',
     'search_resources' => 'Search for a resource...',

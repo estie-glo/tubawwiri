@@ -3,6 +3,8 @@
 return [
     'domains_intro' => "Santé mentale communautaire, résilience humaine, parentalité positive, protection de l'enfant, leadership féminin, développement communautaire.",
     'programs_intro' => 'Familles résilientes, Écoles résilientes, Communautés résilientes, Défi TESIMAMA, Défi TOLAMUKE, Défi TELUMIERE, Parents TBW...',
+    'programs_impact_title' => 'Ensemble pour un impact durable',
+    'programs_impact_desc' => "Nos programmes sont complémentaires et s'adressent à tous les acteurs de la communauté. Chaque action compte pour bâtir un avenir plus résilient et plus solidaire.",
     'observatory_intro' => 'Analyses, notes, rapports, statistiques, baromètres et recherches sur la résilience humaine en Afrique.',
     'resources_intro' => 'Guides, publications, rapports, outils pratiques, podcasts, vidéos, infographies et documents téléchargeables.',
     'search_resources' => 'Rechercher une ressource...',

@@ -227,6 +227,7 @@ $programs = [
         'defis_3t' => ['tesimama'],
         'partenaires_souhaites_fr' => "Structures culturelles, associations de mémoire et de patrimoine.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-tesimama.jpg',
     ],
     [
         'slug' => 'defi-tolamuke',
@@ -243,6 +244,7 @@ $programs = [
         'defis_3t' => ['tolamuke'],
         'partenaires_souhaites_fr' => "TBW Academy, formateurs partenaires.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-tolamuke.jpg',
     ],
     [
         'slug' => 'defi-telumiere',
@@ -259,6 +261,7 @@ $programs = [
         'defis_3t' => ['telumiere'],
         'partenaires_souhaites_fr' => "Associations locales, collectivités, entreprises partenaires.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-telumiere.jpg',
     ],
     [
         'slug' => 'parents-tbw',
@@ -275,6 +278,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Centres de santé, écoles, associations de parents.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/parents-tbw.jpg',
     ],
 ];
 
