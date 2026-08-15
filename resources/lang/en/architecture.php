@@ -21,6 +21,11 @@ return [
             'html' => "<p>The 3T Doctrine is inspired by the CAVAMIS Method.</p><p><strong>TESIMAMA</strong> — Our roots: reconnecting with one's identity, history, values, family, culture and inner resources.</p><p><strong>TOLAMUKE</strong> — Our awakening: developing awareness, knowledge, skills, discernment and agency.</p><p><strong>TELUMIERE</strong> — Our light: putting one's abilities, experience and talents at the service of oneself, one's family and the community.</p><p>Path: reconnect → awaken → act and shine.</p>",
         ],
         [
+            'name' => 'The three branches of the ecosystem',
+            'lead' => 'Complementary and interdependent',
+            'html' => "<p>The TUBAWWIRI (TBW) ecosystem rests on three complementary, interdependent branches, united around a single identity:</p><ul><li>The <strong>TUBAWWIRI Foundation</strong> — the social, community and institutional heart</li><li><strong>TBW Academy</strong> — the training and knowledge-sharing branch</li><li><strong>TBW Consulting</strong> — the advisory and organizational-support branch</li></ul>",
+        ],
+        [
             'name' => 'Principle of the 10 universal sections',
             'lead' => 'One shared framework across the whole ecosystem',
             'html' => "<p>The same ten sections structure the whole ecosystem:</p><ul><li>TUBAWWIRI Foundation</li><li>TBW Academy</li><li>TBW Consulting</li><li>Communications</li><li>Programs</li><li>Campaigns</li><li>Training</li><li>Studies</li><li>Services</li><li>The website</li></ul><p>No branch creates competing or parallel sections.</p>",
@@ -65,11 +70,6 @@ return [
             'lead' => 'Analyze, monitor and measure human resilience in Africa',
             'html' => "<ul><li>Analyses, reports and statistics</li><li>Thematic barometers and indicators</li><li>Monitoring, research and thematic studies</li><li>Inform decisions and inspire action</li></ul>",
             'link' => ['route' => 'observatory.index', 'label' => 'See the Observatory'],
-        ],
-        [
-            'name' => 'Architecture at a glance',
-            'lead' => 'The seven levels of the ecosystem, in one view',
-            'html' => "<p><strong>Level 1 — The vision</strong>: Our roots. Our awakening. Our light.</p><p><strong>Level 2 — The foundation</strong>: CAVAMIS Method</p><p><strong>Level 3 — The doctrine</strong>: TESIMAMA • TOLAMUKE • TELUMIERE</p><p><strong>Level 4 — The fields of action</strong>: the 10 universal sections</p><p><strong>Level 5 — The operational branches</strong>: Foundation · Academy · Consulting</p><p><strong>Level 6 — The means of action</strong>: programs, campaigns, training, support, advisory work, publications, studies, community challenges</p><p><strong>Level 7 — The impact</strong>: more aware individuals, better-protected children, better-supported families, more engaged women and men, more resilient communities, more humane institutions.</p>",
         ],
     ],
 ];

@@ -21,6 +21,11 @@ return [
             'html' => "<p>La Doctrine des 3T s'inspire de la Méthode CAVAMIS.</p><p><strong>TESIMAMA</strong> — Nos racines : se reconnecter à son identité, à son histoire, à ses valeurs, à sa famille, à sa culture et à ses ressources intérieures.</p><p><strong>TOLAMUKE</strong> — Notre éveil : développer sa conscience, ses connaissances, ses compétences, son discernement et son pouvoir d'agir.</p><p><strong>TELUMIÈRE</strong> — Notre lumière : mettre ses capacités, son expérience et ses talents au service de soi-même, de sa famille et de la communauté.</p><p>Parcours : se reconnecter → s'éveiller → agir et rayonner.</p>",
         ],
         [
+            'name' => "Les trois composantes de l'écosystème",
+            'lead' => 'Complémentaires et interdépendantes',
+            'html' => "<p>L'écosystème TUBAWWIRI (TBW) repose sur trois composantes complémentaires et interdépendantes, réunies autour d'une même identité :</p><ul><li>La <strong>Fondation TUBAWWIRI</strong> — le cœur social, communautaire et institutionnel</li><li><strong>TBW Academy</strong> — le pôle de formation et de transmission</li><li><strong>TBW Consulting</strong> — le pôle de conseil et d'accompagnement organisationnel</li></ul>",
+        ],
+        [
             'name' => 'Principe des 10 rubriques universelles',
             'lead' => 'Une même grille de lecture pour tout l\'écosystème',
             'html' => "<p>Les mêmes dix rubriques structurent l'ensemble de l'écosystème :</p><ul><li>La Fondation TUBAWWIRI</li><li>TBW Academy</li><li>TBW Consulting</li><li>La communication</li><li>Les programmes</li><li>Les campagnes</li><li>Les formations</li><li>Les études</li><li>Les services</li><li>Le site internet</li></ul><p>Aucune composante ne crée de rubriques concurrentes ou parallèles.</p>",
@@ -65,11 +70,6 @@ return [
             'lead' => 'Analyser, surveiller et mesurer la résilience humaine en Afrique',
             'html' => "<ul><li>Analyses, rapports et statistiques</li><li>Baromètres et indicateurs thématiques</li><li>Veilles, recherches et études thématiques</li><li>Éclairer les décisions et inspirer les actions</li></ul>",
             'link' => ['route' => 'observatory.index', 'label' => "Voir l'Observatoire"],
-        ],
-        [
-            'name' => 'Architecture synthétique',
-            'lead' => "Les sept niveaux de l'écosystème, en un coup d'œil",
-            'html' => "<p><strong>Niveau 1 — La vision</strong> : Nos racines. Notre éveil. Notre lumière.</p><p><strong>Niveau 2 — Le fondement</strong> : Méthode CAVAMIS</p><p><strong>Niveau 3 — La doctrine</strong> : TESIMAMA • TOLAMUKE • TELUMIÈRE</p><p><strong>Niveau 4 — Les domaines d'intervention</strong> : les 10 rubriques universelles</p><p><strong>Niveau 5 — Les composantes opérationnelles</strong> : Fondation · Academy · Consulting</p><p><strong>Niveau 6 — Les moyens d'action</strong> : programmes, campagnes, formations, accompagnements, conseils, publications, études, défis communautaires</p><p><strong>Niveau 7 — L'impact</strong> : personnes plus conscientes, enfants mieux protégés, familles mieux accompagnées, femmes et hommes davantage engagés, communautés plus résilientes, institutions plus humaines.</p>",
         ],
     ],
 ];

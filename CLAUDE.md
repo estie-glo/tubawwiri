@@ -1,23 +1,24 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer, session en cours (14/08/2026)** : la section 3 est
-**intégralement terminée** — 3.1 à 3.11 (fusionnées sur `develop`), et
-maintenant **3.12** aussi (deuxième vague de remarques de la Fondatrice,
-13-14/08/2026), traitée sur la branche `refonte-visuelle-remarques-v2`
-(non fusionnée à ce stade). Voir le détail des sous-sections 3.12.1 à 3.12.7
-ci-dessous pour ce qui a été fait et les quelques écarts/décisions
-documentés au fil du travail (contradictions entre remarques successives,
-mockups faisant foi sur des points où ils divergent du texte manuscrit,
-etc.). Reste identifié comme non traité : l'assignation d'une catégorie
-aux 2 articles Actualités existants (décision de contenu, pas de routage —
-voir 3.12.6), et toute image de fond que la Fondatrice n'a pas encore
-fournie pour une interface donnée (à lui demander au cas par cas plutôt
-qu'inventer, voir 3.12.6).
+**Par où commencer, session en cours (14/08/2026)** : la section 3 (3.1 à
+3.11 — refonte visuelle du site public) est **terminée et fusionnée sur
+`develop`**. La suite du travail porte sur la section **3.12**
+(deuxième vague de remarques de la Fondatrice, 13-14/08/2026), qui contient
+à la fois :
+- des **règles globales** (forme des boutons, forme des cadres, couleur
+  violette remplacée par du beige crème clair) à appliquer **rétroactivement**
+  sur tout ce qui a déjà été fait en 3.1–3.11, pas seulement sur ce qui reste ;
+- des **corrections précises** sur des pages déjà livrées (Architecture de
+  l'écosystème et Médias notamment, actuellement en défilement horizontal
+  dans une seule page — à refaire en vraies pages séparées avec navigation
+  précédent/suivant, voir 3.12.5) ;
+- des **images de référence "à copier conformément"** pour la plupart des
+  pages du site (voir 3.12.4).
 
-**Prochaine étape** : faire relire ce travail à la Fondatrice (idéalement
-via un déploiement de preview de la branche, ou en local), avant fusion sur
-`develop`. Ensuite seulement, section 4 (admin Filament), puis section 6,
-puis section 7.
+Lire la section 3.12 en entier avant de commencer, repérer ce qui doit être
+corrigé sur l'existant vs. ce qui reste à faire, puis travailler par petits
+commits séparés sur une branche dédiée à cette nouvelle vague de corrections.
+Ensuite seulement, section 4 (admin Filament), puis section 6, puis section 7.
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -251,39 +252,6 @@ sur 3.1–3.3), d'autres précis page par page avec des **images de référence
 aussi `remarquestreizeaouT2026/` (5 fichiers : 2 pages collées + 3 photos
 WhatsApp) pour le texte original si un doute d'interprétation se présente ici.
 
-**Statut (14/08/2026) : traité en intégralité sur la branche
-`refonte-visuelle-remarques-v2`, pas encore fusionné sur `develop`.**
-Points d'attention laissés volontairement en l'état, à trancher par la
-Fondatrice :
-- **3.12.3, doctrine 3T** : les images `symbole*.jpeg/png` (posters Canva
-  complets, beaucoup de texte) rendent mal une fois utilisées comme fond de
-  cadre — gardé le deuxième choix indiqué (`telumiere.jpeg`/`tolamuke.jpeg`/
-  `tesimama.jpeg`, déjà en place depuis une session précédente).
-- **3.12.4, Architecture (12 volets)** : le mockup
-  `interfacearchitecturedelecosystemetbw.png` ne montre que 11 volets sur les
-  12 annoncés ; le 12e ("Architecture synthétique") a été repris du document
-  source officiel (`docs-source/architecture TUBAWWIRI (TBW).docx`, section
-  12) à défaut d'exemple visuel — à confirmer.
-- **3.12.4, TBW Academy (liste)** : `exempleinterfacetbwacademy.png` montre
-  par erreur les cartes "Domaines d'action" plutôt que des formations —
-  probable confusion de fichier, non suivi à la lettre.
-- **Contradiction résolue entre 3.12.3 (note manuscrite) et 3.12.4
-  (mockups)** : la note manuscrite demandait l'image "femme à la lance" en
-  bandeau photo sur Contact/Faire un don/Nous rejoindre ; les mockups dédiés
-  de ces trois pages ("à copier conformément") montrent tous un simple
-  en-tête titre+intro sans photo. Les mockups ont eu priorité — bandeau
-  retiré sur ces trois pages, l'image reste utilisée ailleurs (carte
-  "Rejoindre le mouvement" de l'accueil).
-- **3.12.6, Actualités** : le routage/filtrage par catégorie fonctionne
-  (vérifié) mais les 2 articles existants n'ont toujours pas de catégorie
-  assignée — écart de contenu déjà documenté plus bas (section "Revue
-  Actualités vs CDC"), pas un bug de routage.
-- **Images de fond manquantes** (3.12.6) : pour toute interface où aucun
-  exemple ni aucune image nommée dans `imagestubawwiri/` ne couvrait le cas,
-  les photos génériques déjà en place (`community/*.jpg`) ont été
-  conservées plutôt que d'en inventer une — à revoir avec la Fondatrice si
-  elle souhaite fournir des images dédiées.
-
 #### 3.12.1 Règles globales (à appliquer partout, y compris sur le travail déjà fait en 3.1–3.3)
 
 - **Forme des boutons** : la forme actuelle ne convient toujours pas.
@@ -379,14 +347,29 @@ restent ceux du design system en section 2) comme cible exacte :
   réels du contenu source (`docs-source/Biographie_Ngapout_Nana_Fadimatou_TUBAWWIRI-3.docx`),
   pas en supposant un nombre fixe (voir 3.12.5).
 - **Architecture de l'écosystème TBW** (`interfacearchitecturedelecosystemetbw.png`) :
-  confirme et précise 3.7 — exactement **12 cartes/pages**, une par élément
-  (Identité centrale, Fondement conceptuel/CAVAMIS, Les trois composantes,
-  Principe des 10 rubriques, Fondation TUBAWWIRI, TBW Academy, TBW Consulting,
-  Communication, Campagnes, Ressources, Observatoire Africain de la
-  Résilience, + 1 élément supplémentaire à confirmer dans le document source
-  pour arriver à 12), numérotées "Volet 0X/12", flèches précédent/suivant,
-  photo ou schéma en fond selon la carte. Contenu texte détaillé :
+  confirme et précise 3.7 — **liste des 12 éléments confirmée le 15/08 (grille
+  4 colonnes × 3 lignes dans le mockup, pas 3×4)**, dans l'ordre exact :
+  1. Identité centrale — 2. Fondement conceptuel – La Méthode CAVAMIS —
+  3. Doctrine des 3T — 4. Les trois composantes de l'écosystème —
+  5. Principe des 10 rubriques universelles — 6. Fondation TUBAWWIRI —
+  7. TBW Academy — 8. TBW Consulting — 9. Communication — 10. Campagnes —
+  11. Ressources — 12. Observatoire Africain de la Résilience.
+  Numérotées "Volet 0X/12", flèches précédent/suivant, photo ou schéma en
+  fond selon la carte. Contenu texte détaillé :
   `docs-source/architecture TUBAWWIRI (TBW).docx` (déjà référencé en 3.7).
+  **Le point d'incertitude précédent (12e élément non identifié) est résolu
+  — les 12 pages peuvent être finalisées avec cette liste, plus besoin de
+  deviner.** **Précision du 15/08 : "copie conforme" veut dire ici copie
+  visuelle exacte, y compris les images/schémas de chaque carte du mockup**
+  (le baobab pour Identité centrale, le diagramme circulaire CAVAMIS, le
+  diagramme des trois composantes, le schéma des 10 rubriques, les photos
+  pour Fondation TUBAWWIRI/TBW Academy/TBW Consulting, la photo micro pour
+  Communication, la photo poings levés pour Campagnes, la photo ordinateur/
+  bureau pour Ressources, la carte Afrique pour l'Observatoire) — pas
+  seulement la structure et le texte. Reproduire chaque page en s'appuyant
+  sur ces visuels précis, quitte à regénérer des images équivalentes si les
+  fichiers sources exacts du mockup ne sont pas disponibles séparément dans
+  `imagestubawwiri/`.
 - **Pied de page** (`exemplepieddepage.jpeg`) : confirme et précise le point
   footer de 3.1 — 4 colonnes (logo+description+citation, liens rapides avec
   icônes et chevrons, réseaux sociaux en icônes rondes + contact, carte
@@ -472,6 +455,11 @@ défiler du contenu à l'intérieur d'une seule URL. Le principe est **1 cadre =
 - **Liens de la rubrique Actualités** : chaque lien doit mener vers une page
   listant les publications correspondant au thème du lien (pas une page
   vide/statique) — confirme et précise 3.10.
+- **Mockup `exempleinterfacetbwacademy.png` — corrigé par la Fondatrice le
+  15/08**, remplacé par une version cohérente (bandeau + contenu correspondent
+  bien à TBW Academy maintenant). Le problème signalé ci-dessus est résolu,
+  utiliser le fichier tel quel comme référence "à copier conformément"
+  comme les autres.
 
 #### 3.12.7 Preuve visuelle de l'écart actuel sur "Notre approche"
 
@@ -501,6 +489,13 @@ fonctionnel mais visuellement "par défaut" (thème Filament standard, juste la
 couleur primaire changée en `#123D2E`). Objectif : un rendu **"style Canva"** —
 soigné, chaleureux, avec du caractère — cohérent avec l'identité du site public,
 mais rester dans les codes d'un vrai back-office (lisible, dense, pro).
+
+**Note (15/08)** : les catégories de la rubrique Actualités existent déjà côté
+code mais sont vides (aucun article publié) — ce n'est pas un bug, juste un
+manque de contenu. La Fondatrice a choisi de **traiter la publication de
+contenu (articles, activités) après avoir terminé ce chantier admin**, une
+fois l'interface de publication elle-même bien finalisée — pas la peine d'y
+revenir avant.
 
 Pistes concrètes :
 - Créer un thème Filament personnalisé (`php artisan make:filament-theme` ou
@@ -702,9 +697,10 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
 ## 7. Ordre de priorité (mis à jour 14/08/2026)
 
 1. **Section 3** — Refonte visuelle du site public (remarques Fondatrice) —
-   **entièrement terminée** (3.1 à 3.12). 3.1-3.11 fusionnées sur `develop` ;
-   3.12 sur la branche `refonte-visuelle-remarques-v2`, en attente de
-   relecture par la Fondatrice avant fusion (voir tête de fichier).
+   priorité absolue. **3.1 à 3.11 sont terminées et fusionnées sur `develop`.
+   Il reste 3.12** (deuxième vague de remarques, règles globales à appliquer
+   rétroactivement + corrections précises + nouvelles pages, voir tête de
+   fichier).
 2. **Section 4** — Admin Filament (refonte visuelle) — chantier déjà en cours,
    à reprendre juste après la section 3.
 3. **Section 6** — Reste de la liste "à faire pour livrer".
