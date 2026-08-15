@@ -252,6 +252,29 @@ sur 3.1–3.3), d'autres précis page par page avec des **images de référence
 aussi `remarquestreizeaouT2026/` (5 fichiers : 2 pages collées + 3 photos
 WhatsApp) pour le texte original si un doute d'interprétation se présente ici.
 
+**Statut (15/08/2026) : traité en intégralité, y compris les deux
+clarifications du 15/08 (liste des 12 volets Architecture + visuels fidèles
+au mockup, mockup TBW Academy corrigé), sur la branche
+`refonte-visuelle-remarques-v2`, pas encore fusionné sur `develop`.**
+Détails d'implémentation utiles pour la suite :
+- **Architecture, visuels des 12 volets** : photo "Identité centrale"
+  recadrée depuis `imagestubawwiri/WhatsApp Image 2026-08-11 at
+  12.52.35.jpeg` (élagage du texte Canva) →
+  `public/images/architecture/identite-baobab.jpg`. Les 4 diagrammes
+  (CAVAMIS, Doctrine des 3T, Les trois composantes, Principe des 10
+  rubriques) sont générés en SVG via le nouveau composant
+  `<x-radial-diagram>` plutôt qu'en images statiques (fichiers sources
+  exacts introuvables séparément dans `imagestubawwiri/`). Communication/
+  Campagnes/Ressources/Observatoire : grande icône thématique sur fond
+  dégradé, même logique faute de photo source dédiée.
+- **TBW Academy, liste des formations** : confirmé non-erroné — les
+  intitulés de formation reprennent volontairement les mêmes noms que les
+  domaines d'action (cohérent avec le principe des 10 rubriques
+  universelles). Reste un écart de **contenu** (pas de rendu) : seules 4
+  formations existent en base sur les 5 attendues par le mockup
+  (« Résilience humaine » manquante) — à créer via l'admin quand la
+  Fondatrice aura le contenu réel (pas inventé ici).
+
 #### 3.12.1 Règles globales (à appliquer partout, y compris sur le travail déjà fait en 3.1–3.3)
 
 - **Forme des boutons** : la forme actuelle ne convient toujours pas.
