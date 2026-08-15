@@ -535,12 +535,18 @@ Pistes concrètes :
   TBW plutôt que les couleurs Filament par défaut (rouge/bleu/vert génériques).
 - Formulaires admin : vérifier la cohérence visuelle, grouper les champs
   logiquement (déjà fait pour Program via `Fieldset`, à généraliser).
-- Générer si besoin d'autres visuels de fond via Canva (même méthode que pour
-  le login : `Canva:generate-design` avec `design_type: desktop_wallpaper`,
-  palette `#123D2E`/`#C99A3E`/`#6B2A28`/`#3B2560`, style organique/épuré, PUIS
-  exporter en PNG et demander à l'utilisatrice de télécharger le fichier
-  elle-même — aucun accès direct aux fichiers Canva exportés n'est possible
-  depuis l'environnement).
+- Générer si besoin d'autres visuels via Canva (même méthode que pour le
+  login : `generate-design` avec `design_type: desktop_wallpaper` pour des
+  photos/fonds, palette `#123D2E`/`#C99A3E`/`#6B2A28`/`#3B2560`, style
+  organique/épuré). **Correction (15/08) : le téléchargement direct de
+  l'export est possible depuis l'environnement**, vérifié empiriquement —
+  `export-design` renvoie une URL S3 présignée (`export-download.canva.com`,
+  pas d'authentification interactive) que `curl` télécharge directement sur
+  le disque du projet, sans intervention manuelle de l'utilisatrice. La note
+  précédente affirmant le contraire était fausse. Attention : les fichiers
+  exportés arrivent en PNG même avec une extension `.jpg` demandée —
+  repasser par `convert fichier.jpg -quality 88 fichier.jpg` (ImageMagick)
+  pour obtenir un vrai JPEG si le nom de fichier promet un `.jpg`.
 
 **Piège rencontré à éviter** : le mode sombre automatique de Filament peut
 rendre le texte illisible sur fond personnalisé (texte sombre sur fond sombre).
