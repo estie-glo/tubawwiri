@@ -22,6 +22,7 @@ return [
     'previous' => 'Précédent',
     'next' => 'Suivant',
     'volet' => 'Volet',
+    'photo_pending' => 'Photo à venir',
     'rubrique' => 'Rubrique',
     'linked_programs' => 'Programmes liés',
 
