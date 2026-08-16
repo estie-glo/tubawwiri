@@ -15,6 +15,7 @@ return [
     'programs_impact_title' => 'Ensemble pour un impact durable',
     'programs_impact_desc' => "Nos programmes sont complémentaires et s'adressent à tous les acteurs de la communauté. Chaque action compte pour bâtir un avenir plus résilient et plus solidaire.",
     'observatory_intro' => 'Analyses, notes, rapports, statistiques, baromètres et recherches sur la résilience humaine en Afrique.',
+    'observatory_more' => "Voir plus d'analyses",
     'resources_intro' => 'Guides, publications, rapports, outils pratiques, podcasts, vidéos, infographies et documents téléchargeables.',
     'search_resources' => 'Rechercher une ressource...',
     'all_categories' => 'Toutes les catégories',
