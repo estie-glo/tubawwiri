@@ -74,7 +74,7 @@
                         'virement' => '<path d="M4 10.5 12 4l8 6.5M5.5 10.5V19M18.5 10.5V19M9 19v-4.5h6V19M4 19h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
                     ];
                 @endphp
-                <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                     @foreach ([
                         'mtn_momo' => __('forms.paiement_momo'),
                         'orange_money' => __('forms.paiement_orange'),
@@ -94,7 +94,7 @@
 
             <div>
                 <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-3">{{ __('forms.type_don') }} <span class="text-[#C99A3E]">*</span></label>
-                <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                     @foreach ([
                         'ponctuel' => __('forms.don_ponctuel'),
                         'mensuel' => __('forms.don_mensuel'),
