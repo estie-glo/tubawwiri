@@ -109,10 +109,18 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+        @keyframes ambient-drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, 1.5%) rotate(2deg); }
+        }
+        .ambient-bg-motif {
+            animation: ambient-drift 26s ease-in-out infinite;
+        }
         @media (prefers-reduced-motion: reduce) {
             .hero-kenburns { animation: none; }
             .reveal { opacity: 1; transform: none; }
             .marquee-track { animation: none; }
+            .ambient-bg-motif { animation: none; }
         }
         .content-scroll-viewport {
             overflow-x: auto;

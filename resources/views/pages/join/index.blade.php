@@ -3,10 +3,11 @@
 @section('title', __('site.nav.join') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 pt-16 pb-10 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.join') }}</h1>
-        <p class="text-[#4a453c] leading-relaxed max-w-2xl">{{ __('pages.engagement_subtitle') }}</p>
+    <section class="relative overflow-hidden max-w-7xl mx-auto px-4 pt-16 pb-10 reveal">
+        <x-ambient-bg />
+        <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
+        <h1 class="relative font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.join') }}</h1>
+        <p class="relative text-[#4a453c] leading-relaxed max-w-2xl">{{ __('pages.engagement_subtitle') }}</p>
     </section>
 
     <section class="max-w-7xl mx-auto px-4 pb-20 grid lg:grid-cols-2 gap-10 reveal">

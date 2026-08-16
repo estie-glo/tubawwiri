@@ -11,7 +11,7 @@
     {{-- ===== FORMULAIRES ===== --}}
     <section class="max-w-7xl mx-auto px-4 pt-16 pb-8 grid lg:grid-cols-2 gap-8 reveal">
         <div class="relative bg-white border border-[#eadfca] rounded-3xl p-8 overflow-hidden">
-            <svg class="absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <svg class="ambient-bg-motif absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
                 <path d="M90 10C60 10 30 30 20 70M90 10C70 40 55 55 30 62M90 10C75 25 68 35 60 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 <ellipse cx="55" cy="25" rx="7" ry="3" transform="rotate(35 55 25)" fill="currentColor"/>
                 <ellipse cx="40" cy="42" rx="7" ry="3" transform="rotate(45 40 42)" fill="currentColor"/>
@@ -77,7 +77,7 @@
         </div>
 
         <div class="relative bg-white border border-[#eadfca] rounded-3xl p-8 overflow-hidden">
-            <svg class="absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <svg class="ambient-bg-motif absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
                 <path d="M90 10C60 10 30 30 20 70M90 10C70 40 55 55 30 62M90 10C75 25 68 35 60 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 <ellipse cx="55" cy="25" rx="7" ry="3" transform="rotate(35 55 25)" fill="currentColor"/>
                 <ellipse cx="40" cy="42" rx="7" ry="3" transform="rotate(45 40 42)" fill="currentColor"/>
