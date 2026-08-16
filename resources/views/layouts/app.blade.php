@@ -435,5 +435,20 @@
             });
         })();
     </script>
+    <script>
+        (function () {
+            document.addEventListener('keydown', function (e) {
+                if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+                var tag = (document.activeElement && document.activeElement.tagName) || '';
+                if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) || (document.activeElement && document.activeElement.isContentEditable)) return;
+                var targetId = e.key === 'ArrowLeft' ? 'page-nav-prev' : e.key === 'ArrowRight' ? 'page-nav-next' : null;
+                if (!targetId) return;
+                var link = document.getElementById(targetId);
+                if (!link || link.classList.contains('pointer-events-none')) return;
+                e.preventDefault();
+                link.click();
+            });
+        })();
+    </script>
 </body>
 </html>
