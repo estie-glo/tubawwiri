@@ -69,6 +69,13 @@ return [
     'no_videos' => 'Aucune vidéo pour le moment.',
     'no_press' => 'Aucun communiqué pour le moment.',
     'no_press_kit' => 'Aucun document de presse disponible pour le moment.',
+    'see_all' => 'Voir tout',
+    'photos_count' => ':count photo|:count photos',
+    'videos_count' => ':count vidéo|:count vidéos',
+    'communiques_count' => ':count communiqué|:count communiqués',
+    'press_kit_count' => ':count ressource|:count ressources',
+    'press_kit_access' => "Accédez à nos ressources presse (logos, dossiers de presse, rapports, etc.).",
+    'press_kit_download_all' => 'Télécharger tout le kit presse',
 
     'field_enjeux' => 'Enjeux',
     'field_objectifs' => 'Objectifs',

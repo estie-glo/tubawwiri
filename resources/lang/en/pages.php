@@ -69,6 +69,13 @@ return [
     'no_videos' => 'No videos yet.',
     'no_press' => 'No press releases yet.',
     'no_press_kit' => 'No press kit documents available yet.',
+    'see_all' => 'See all',
+    'photos_count' => ':count photo|:count photos',
+    'videos_count' => ':count video|:count videos',
+    'communiques_count' => ':count press release|:count press releases',
+    'press_kit_count' => ':count resource|:count resources',
+    'press_kit_access' => 'Access our press resources (logos, press kits, reports, etc.).',
+    'press_kit_download_all' => 'Download the full press kit',
 
     'field_enjeux' => 'Key issues',
     'field_objectifs' => 'Objectives',
