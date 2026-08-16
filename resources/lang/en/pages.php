@@ -17,6 +17,7 @@ return [
     'observatory_intro' => 'Analyses, notes, reports, statistics, barometers and research on human resilience in Africa.',
     'observatory_more' => 'See more analyses',
     'resources_intro' => 'Guides, publications, reports, practical tools, podcasts, videos, infographics and downloadable documents.',
+    'resources_more' => 'See more resources',
     'search_resources' => 'Search for a resource...',
     'all_categories' => 'All categories',
     'filter' => 'Filter',
