@@ -227,6 +227,7 @@ $programs = [
         'defis_3t' => ['tesimama'],
         'partenaires_souhaites_fr' => "Structures culturelles, associations de mémoire et de patrimoine.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-tesimama.jpg',
     ],
     [
         'slug' => 'defi-tolamuke',
@@ -243,6 +244,7 @@ $programs = [
         'defis_3t' => ['tolamuke'],
         'partenaires_souhaites_fr' => "TBW Academy, formateurs partenaires.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-tolamuke.jpg',
     ],
     [
         'slug' => 'defi-telumiere',
@@ -259,6 +261,7 @@ $programs = [
         'defis_3t' => ['telumiere'],
         'partenaires_souhaites_fr' => "Associations locales, collectivités, entreprises partenaires.",
         'duree' => 'Parcours individuel',
+        'cover_image' => 'programs/defi-telumiere.jpg',
     ],
     [
         'slug' => 'parents-tbw',
@@ -275,6 +278,7 @@ $programs = [
         'defis_3t' => ['tesimama', 'tolamuke', 'telumiere'],
         'partenaires_souhaites_fr' => "Centres de santé, écoles, associations de parents.",
         'duree' => 'Programme continu',
+        'cover_image' => 'programs/parents-tbw.jpg',
     ],
 ];
 
@@ -432,6 +436,7 @@ foreach ($categories as $name) {
                 'mode' => 'en_ligne',
                 'duree' => '4 semaines',
                 'price' => 15000,
+                'cover_image' => 'domains/sante-mentale-communautaire.jpg',
             ],
             [
                 'slug' => 'parentalite-positive-academy',
@@ -443,6 +448,7 @@ foreach ($categories as $name) {
                 'mode' => 'presentiel',
                 'duree' => '3 semaines',
                 'price' => 12000,
+                'cover_image' => 'domains/parentalite-positive.jpg',
             ],
             [
                 'slug' => 'leadership-feminin-academy',
@@ -454,6 +460,7 @@ foreach ($categories as $name) {
                 'mode' => 'en_ligne',
                 'duree' => '6 semaines',
                 'price' => 20000,
+                'cover_image' => 'domains/leadership-feminin.jpg',
             ],
             [
                 'slug' => 'protection-de-lenfant-academy',
@@ -463,8 +470,21 @@ foreach ($categories as $name) {
                 'description_en' => 'Practical benchmarks to prevent and respond to child protection risks.',
                 'level' => 'intermediaire',
                 'mode' => 'en_ligne',
+                'cover_image' => 'domains/protection-de-lenfant.jpg',
                 'duree' => '5 semaines',
                 'price' => 18000,
+            ],
+            [
+                'slug' => 'resilience-humaine-academy',
+                'title_fr' => 'Résilience humaine',
+                'title_en' => 'Human resilience',
+                'description_fr' => 'Bases de la résilience communautaire : comprendre les chocs, mobiliser les ressources locales, accompagner le relèvement.',
+                'description_en' => 'Community resilience fundamentals: understanding shocks, mobilizing local resources, supporting recovery.',
+                'level' => 'debutant',
+                'mode' => 'en_ligne',
+                'cover_image' => 'domains/resilience-humaine.jpg',
+                'duree' => '4 semaines',
+                'price' => 15000,
             ],
         ];
 

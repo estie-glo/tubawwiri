@@ -3,10 +3,11 @@
 @section('title', __('site.nav.donate') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-3xl mx-auto px-4 pt-16 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.donate') }}</h1>
-        <p class="text-[#4a453c] mt-3 max-w-xl leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
+    <section class="relative overflow-hidden max-w-3xl mx-auto px-4 pt-16 reveal">
+        <x-ambient-bg />
+        <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
+        <h1 class="relative font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.donate') }}</h1>
+        <p class="relative text-[#4a453c] mt-3 max-w-xl leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
     </section>
 
     <section class="max-w-3xl mx-auto px-4 py-10 reveal">
@@ -74,7 +75,7 @@
                         'virement' => '<path d="M4 10.5 12 4l8 6.5M5.5 10.5V19M18.5 10.5V19M9 19v-4.5h6V19M4 19h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
                     ];
                 @endphp
-                <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                     @foreach ([
                         'mtn_momo' => __('forms.paiement_momo'),
                         'orange_money' => __('forms.paiement_orange'),
@@ -94,7 +95,7 @@
 
             <div>
                 <label class="block text-xs font-bold uppercase tracking-widest text-[#6B2A28] mb-3">{{ __('forms.type_don') }} <span class="text-[#C99A3E]">*</span></label>
-                <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                     @foreach ([
                         'ponctuel' => __('forms.don_ponctuel'),
                         'mensuel' => __('forms.don_mensuel'),

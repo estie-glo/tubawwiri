@@ -59,28 +59,35 @@
         $rubriquesNames = ['Africa Watch', 'Allô Parentalité', "Voix de l'Enfant", 'Au Féminin', 'Au Masculin', 'Mémoire', 'Le Message', 'La Question', 'Campagnes', 'Voix TBW'];
         $rubriqueDot = '<circle cx="12" cy="12" r="3.5" fill="currentColor"/>';
 
-        $bgPhotos = ['family.jpg', 'sunset.jpg', 'statue.jpg'];
+        // Icônes qui composent le graphique "carte d'Afrique" du volet Observatoire
+        $africaIcons = [
+            ['label' => 'Analyses', 'icon' => '<rect x="4" y="12" width="3.5" height="8" fill="currentColor"/><rect x="10.25" y="7" width="3.5" height="13" fill="currentColor"/><rect x="16.5" y="4" width="3.5" height="16" fill="currentColor"/>'],
+            ['label' => 'Baromètres', 'icon' => '<circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 13 16 9M9 4h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'],
+            ['label' => 'Recherches', 'icon' => '<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.3 15.3 21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'],
+            ['label' => 'Population', 'icon' => '<circle cx="8" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.7 19c.6-3 2.7-4.8 5.3-4.8s4.7 1.8 5.3 4.8M10.7 19c.6-3 2.7-4.8 5.3-4.8s4.7 1.8 5.3 4.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'],
+        ];
+
         $visuals = [
-            1 => ['type' => 'photo', 'src' => asset('images/architecture/identite-baobab.jpg')],
+            1 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/identite-baobab.jpg')],
             2 => ['type' => 'diagram', 'diagram' => 'cavamis'],
             3 => ['type' => 'diagram', 'diagram' => 'doctrine3t'],
             4 => ['type' => 'diagram', 'diagram' => 'composantes'],
             5 => ['type' => 'diagram', 'diagram' => 'rubriques'],
-            6 => ['type' => 'photo', 'src' => asset('images/community/family.jpg')],
-            7 => ['type' => 'photo', 'src' => asset('images/community/sunset.jpg')],
-            8 => ['type' => 'photo', 'src' => asset('images/community/statue.jpg')],
-            9 => ['type' => 'icon', 'icon' => $icons[7]],
-            10 => ['type' => 'icon', 'icon' => $icons[8] ?? $icons[0]],
-            11 => ['type' => 'icon', 'icon' => $icons[8]],
-            12 => ['type' => 'icon', 'icon' => $icons[9]],
+            6 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/fondation-tubawwiri.jpg')],
+            // 7 (TBW Academy), 8 (TBW Consulting), 9 (Communication), 10 (Campagnes),
+            // 11 (Ressources) : photos du mockup pas encore disponibles — quota Canva
+            // atteint pendant cette session. Ne pas approximer avec une image qui ne
+            // correspond pas (femme+enfants, coucher de soleil, statue...) : conservées
+            // en fond neutre le temps de régénérer les bonnes photos. Voir CLAUDE.md.
+            7 => ['type' => 'pending', 'side' => 'right'],
+            8 => ['type' => 'pending', 'side' => 'right'],
+            9 => ['type' => 'pending', 'side' => 'left'],
+            10 => ['type' => 'pending', 'side' => 'left'],
+            11 => ['type' => 'pending', 'side' => 'left'],
+            12 => ['type' => 'africa'],
         ];
-        // Correction des index d'icônes dédiées Communication/Campagnes/Ressources/Observatoire
-        $visuals[9]['icon'] = '<path d="M9 3h6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm3 0v12" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><rect x="9" y="3" width="6" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
-        $visuals[10]['icon'] = '<rect x="7" y="8" width="10" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="10" y="15" width="4" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a1 1 0 1 1 2 0v2M12 8V5.5a1 1 0 1 1 2 0V8M15 8.5V6.5a1 1 0 1 1 2 0V9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
-        $visuals[11]['icon'] = '<rect x="4" y="5" width="16" height="10" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 18h20l-2-3H4l-2 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
-        $visuals[12]['icon'] = '<path d="M12 21s6-5.5 6-11a6 6 0 1 0-12 0c0 5.5 6 11 6 11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/>';
 
-        $visual = $visuals[$position] ?? ['type' => 'photo', 'src' => asset('images/community/' . $bgPhotos[($position - 1) % count($bgPhotos)])];
+        $visual = $visuals[$position] ?? ['type' => 'pending', 'side' => 'right'];
     @endphp
 
     <section class="min-h-[70vh] flex flex-col items-center justify-center px-4 py-16 reveal">
@@ -91,7 +98,7 @@
             </h1>
 
             <div class="relative flex items-center gap-3 sm:gap-5">
-                <a href="{{ $urlFor(max($position - 1, 1)) }}" aria-label="{{ __('pages.previous') }}"
+                <a href="{{ $urlFor(max($position - 1, 1)) }}" id="page-nav-prev" aria-label="{{ __('pages.previous') }}"
                    class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position <= 1 ? 'opacity-30 pointer-events-none' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 </a>
@@ -100,18 +107,42 @@
                     @if ($visual['type'] === 'photo')
                         <div class="absolute inset-0 p-8 md:p-14">
                             <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-90">
-                            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r {{ ($visual['side'] ?? 'right') === 'left' ? 'from-white/10 via-white/75 to-white' : 'from-white via-white/75 to-white/10' }}"></div>
                         </div>
                     @endif
 
-                    @if ($visual['type'] === 'icon')
+                    @if ($visual['type'] === 'pending')
+                        @php $pSide = $visual['side'] ?? 'right'; @endphp
+                        <div class="absolute inset-y-0 {{ $pSide === 'left' ? 'left-0' : 'right-0' }} w-full md:w-1/2 bg-[#F3EDE0] flex flex-col items-center justify-center gap-2 overflow-hidden">
+                            <img src="{{ asset('images/architecture/identite-baobab.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10">
+                            <svg class="w-16 h-16 text-[#C99A3E]/40 relative z-10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 16.5 8.5 12l3 3L20 7.5M20 7.5V12M20 7.5h-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="relative z-10 text-[10px] font-bold uppercase tracking-widest text-[#6B2A28]/60">{{ __('pages.photo_pending') }}</span>
+                        </div>
+                        <div class="absolute inset-0 md:w-1/2 {{ $pSide === 'left' ? 'md:left-1/2 bg-gradient-to-l' : 'bg-gradient-to-r' }} from-white via-white/85 to-transparent"></div>
+                    @endif
+
+                    @if ($visual['type'] === 'africa')
                         <div class="absolute inset-y-0 right-0 w-full md:w-1/2 bg-gradient-to-br from-[#123D2E] to-[#0b261c] flex items-center justify-center">
-                            <svg class="w-28 h-28 text-[#C99A3E]/70" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $visual['icon'] !!}</svg>
+                            <div class="relative w-56 h-56">
+                                <svg viewBox="0 0 200 220" class="w-full h-full text-[#C99A3E]/80" fill="currentColor" aria-hidden="true">
+                                    <path d="M96 6c14 0 22 9 34 12 10 3 22 0 28 9 5 8 0 18 6 25 7 8 20 10 22 21 2 10-9 16-10 26-1 11 9 18 6 29-3 10-16 12-20 22-3 9 3 19-4 27-6 8-19 6-27 12-7 6-9 18-18 21-9 3-17-6-27-6s-17 10-27 7c-9-3-10-15-18-21-8-6-21-4-27-12-7-8 0-18-3-27-4-10-17-12-20-22-3-11 7-18 6-29-1-11-12-13-10-26 2-11 15-13 22-21 6-7 1-17 6-25 6-9 18-6 28-9 12-3 20-12 34-12Z"/>
+                                </svg>
+                                @foreach ($africaIcons as $i => $node)
+                                    @php
+                                        $angle = -90 + $i * (360 / count($africaIcons));
+                                        $x = 50 + 42 * cos(deg2rad($angle));
+                                        $y = 50 + 42 * sin(deg2rad($angle));
+                                    @endphp
+                                    <div class="absolute w-9 h-9 rounded-full bg-[#F6F1E4] border border-[#C99A3E] flex items-center justify-center shadow" style="left: {{ $x }}%; top: {{ $y }}%; transform: translate(-50%, -50%);" title="{{ $node['label'] }}">
+                                        <svg class="w-4 h-4 text-[#123D2E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $node['icon'] !!}</svg>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                         <div class="absolute inset-0 md:w-1/2 bg-gradient-to-r from-white via-white/85 to-transparent"></div>
                     @endif
 
-                    <div class="relative z-10 max-w-lg p-8 md:p-14 {{ $visual['type'] === 'diagram' ? 'md:pr-4' : '' }}">
+                    <div class="relative z-10 max-w-lg p-8 md:p-14 {{ $visual['type'] === 'diagram' ? 'md:pr-4' : '' }} {{ ($visual['side'] ?? null) === 'left' ? 'md:ml-auto' : '' }}">
                         <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
                             {{ __('pages.volet') }} {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
                         </p>
@@ -155,7 +186,7 @@
                     @endif
                 </div>
 
-                <a href="{{ $urlFor(min($position + 1, $total)) }}" aria-label="{{ __('pages.next') }}"
+                <a href="{{ $urlFor(min($position + 1, $total)) }}" id="page-nav-next" aria-label="{{ __('pages.next') }}"
                    class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position >= $total ? 'opacity-30 pointer-events-none' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </a>

@@ -16,7 +16,17 @@ class AcademyController extends Controller
 
     public function index()
     {
-        $trainings = Training::where('is_published', true)->get();
+        $order = [
+            'sante-mentale-communautaire',
+            'resilience-humaine-academy',
+            'parentalite-positive-academy',
+            'protection-de-lenfant-academy',
+            'leadership-feminin-academy',
+        ];
+
+        $trainings = Training::where('is_published', true)
+            ->orderByRaw('FIELD(slug, ' . implode(',', array_fill(0, count($order), '?')) . ')', $order)
+            ->get();
 
         return view('pages.academy.index', compact('trainings'));
     }

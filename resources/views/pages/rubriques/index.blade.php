@@ -28,7 +28,7 @@
                             <h2 class="font-display font-semibold text-[#123D2E] leading-snug">{{ $item['name'] }}</h2>
                             <p class="text-sm text-[#6F6759] mt-2 leading-relaxed flex-1 line-clamp-4">{{ $item['pitch'] }}</p>
                             <span class="text-xs font-bold uppercase tracking-wider text-[#C99A3E] mt-4 group-hover:text-[#6B2A28] transition">
-                                {{ __('pages.read_more') }} →
+                                {{ __('rubriques.voir_plus') }} →
                             </span>
                         </div>
                     </a>

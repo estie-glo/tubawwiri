@@ -3,10 +3,11 @@
 @section('title', __('site.nav.join') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 pt-16 pb-10 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.join') }}</h1>
-        <p class="text-[#4a453c] leading-relaxed max-w-2xl">{{ __('pages.engagement_subtitle') }}</p>
+    <section class="relative overflow-hidden max-w-7xl mx-auto px-4 pt-16 pb-10 reveal">
+        <x-ambient-bg />
+        <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
+        <h1 class="relative font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2 mb-4">{{ __('site.nav.join') }}</h1>
+        <p class="relative text-[#4a453c] leading-relaxed max-w-2xl">{{ __('pages.engagement_subtitle') }}</p>
     </section>
 
     <section class="max-w-7xl mx-auto px-4 pb-20 grid lg:grid-cols-2 gap-10 reveal">
@@ -32,7 +33,7 @@
                 ];
             @endphp
 
-            <div class="grid sm:grid-cols-2 gap-4">
+            <div class="grid sm:grid-cols-3 gap-4">
                 @foreach ($roles as $i => $role)
                     <div class="reveal bg-white border border-[#eadfca] rounded-2xl p-5 hover-lift" style="transition-delay: {{ ($i % 4) * 80 }}ms">
                         <div class="w-9 h-9 rounded-full bg-[#123D2E] flex items-center justify-center">

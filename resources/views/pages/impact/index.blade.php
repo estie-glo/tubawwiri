@@ -54,6 +54,17 @@
                             </div>
                         </div>
                     @endforeach
+
+                    @if ($testimonials->count() <= 2)
+                        <div class="relative bg-[#F3EDE0] rounded-2xl overflow-hidden hidden md:block">
+                            <svg class="absolute -bottom-4 -right-4 w-40 h-40 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                                <path d="M90 90C60 90 30 70 20 30M90 90C70 60 55 45 30 38M90 90C75 75 68 65 60 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <ellipse cx="55" cy="75" rx="7" ry="3" transform="rotate(-35 55 75)" fill="currentColor"/>
+                                <ellipse cx="40" cy="58" rx="7" ry="3" transform="rotate(-45 40 58)" fill="currentColor"/>
+                                <ellipse cx="28" cy="42" rx="6" ry="3" transform="rotate(-55 28 42)" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endif

@@ -1,24 +1,19 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer, session en cours (14/08/2026)** : la section 3 (3.1 à
-3.11 — refonte visuelle du site public) est **terminée et fusionnée sur
-`develop`**. La suite du travail porte sur la section **3.12**
-(deuxième vague de remarques de la Fondatrice, 13-14/08/2026), qui contient
-à la fois :
-- des **règles globales** (forme des boutons, forme des cadres, couleur
-  violette remplacée par du beige crème clair) à appliquer **rétroactivement**
-  sur tout ce qui a déjà été fait en 3.1–3.11, pas seulement sur ce qui reste ;
-- des **corrections précises** sur des pages déjà livrées (Architecture de
-  l'écosystème et Médias notamment, actuellement en défilement horizontal
-  dans une seule page — à refaire en vraies pages séparées avec navigation
-  précédent/suivant, voir 3.12.5) ;
-- des **images de référence "à copier conformément"** pour la plupart des
-  pages du site (voir 3.12.4).
-
-Lire la section 3.12 en entier avant de commencer, repérer ce qui doit être
-corrigé sur l'existant vs. ce qui reste à faire, puis travailler par petits
-commits séparés sur une branche dédiée à cette nouvelle vague de corrections.
-Ensuite seulement, section 4 (admin Filament), puis section 6, puis section 7.
+**Par où commencer, session en cours (16/08/2026)** : la section 3 (3.1 à
+3.12 — refonte visuelle du site public) est **terminée**, y compris la
+comparaison stricte mockup par mockup demandée le 16/08 (voir 3.13
+ci-dessous pour le détail page par page), sur la branche
+`refonte-visuelle-comparaison-stricte` (pas encore fusionnée sur `develop`).
+Il reste un seul point bloqué : **Architecture, volets 7 à 11** (TBW Academy,
+TBW Consulting, Communication, Campagnes, Ressources) attendent encore leur
+vraie photo — le quota de génération Canva a été atteint en session et n'est
+toujours pas revenu (dernier essai le 16/08, encore refusé) ; ces volets
+affichent un panneau neutre "Photo à venir" en attendant plutôt qu'une image
+approximative, voir 3.13. **Nouvelle session : retester `generate-design`
+en premier ; si le quota est revenu, terminer ces 5 photos + regénérer un
+visuel carte d'Afrique propre pour l'Observatoire si besoin, sinon
+passer directement à la section 4 (admin Filament).**
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -505,6 +500,144 @@ et Observatoire (et d'autres) en comparant au CDC complet
 listés ci-dessus, faire une relecture comparative CDC ↔ site avant de considérer
 le chantier 3 terminé.
 
+### 3.13 Troisième vague : comparaison stricte mockup par mockup (16/08/2026)
+
+Consigne explicite de la Fondatrice, à prendre au sens strict : "copie
+conforme" veut dire **identique** au mockup — mêmes images, même placement,
+même contenu visuel, pas juste une structure proche. Consigne appliquée page
+par page à tout ce qui a été livré en 3.1–3.12, plus les nouvelles demandes
+manuscrites de `remarquesquizeaout2026/` (transcrites ci-dessous). Travail
+fait sur la branche `refonte-visuelle-comparaison-stricte` (base `develop`).
+
+**Écarts trouvés et corrigés, page par page** :
+- **Programmes** : refonte complète de la carte programme (icône à cheval
+  sur la photo/le texte, variante large pour Parents TBW) + panneau "impact"
+  en 8e case ; 7 photos manquantes générées via Canva (voir méthode
+  ci-dessous) et versées dans `storage/app/public/programs/`.
+- **Bibliographie** : colonne photo secondaire + logo manquante dans le
+  corps de texte (mockup en 2 colonnes, rendu précédent en 1 seule).
+- **Architecture** : volet 6 (Fondation TUBAWWIRI) avait une photo
+  générique — remplacée par la vraie photo générée
+  (`public/images/architecture/fondation-tubawwiri.jpg`). Volet 12
+  (Observatoire) : remplace l'icône générique par un vrai graphique
+  "carte d'Afrique" en SVG (silhouette + 4 badges thématiques en cercle).
+  **Volets 7 à 11 (TBW Academy, TBW Consulting, Communication, Campagnes,
+  Ressources) restent bloqués** : quota Canva atteint dès la 8e génération de
+  la session, jamais revenu depuis malgré plusieurs nouveaux essais — ces
+  volets affichent un panneau neutre "Photo à venir" (FR/EN) plutôt qu'une
+  photo de communauté générique qui ne correspondrait pas au mockup
+  (consigne explicite de la Fondatrice : dire clairement plutôt
+  qu'approximer). Support ajouté dans la vue pour une photo à gauche OU à
+  droite du texte, nécessaire pour ces volets dont le mockup place la photo
+  côté gauche.
+- **Rubriques** : CTA "En savoir plus" renommé "Voir plus" pour coller au
+  mockup — le reste (grille 5 colonnes, photos recadrées, badges) était déjà
+  conforme.
+- **Domaines d'action (index)** : ajout du défilement horizontal +
+  flèches + pagination par points + lien "En savoir plus" + section
+  "La méthode CAVAMIS" (5 piliers) en pied de page, absents du rendu
+  précédent (simple grille statique). Fiche détail et bloc accueil déjà
+  conformes.
+- **Observatoire** : ajout du panneau décoratif "carte d'Afrique" qui comble
+  la 3e colonne (2 analyses en base = 2 cartes + 1 panneau, comme le mockup)
+  et du bouton "Voir plus d'analyses".
+- **Ressources** : bouton "Voir plus de ressources" manquant en pied de
+  section, ajouté.
+- **TBW Academy** : le mockup montre 5 modules calqués sur les 5 premiers
+  domaines d'action, avec les mêmes photos. Il manquait le module
+  "Résilience humaine" (créé) et les 4 modules existants n'avaient pas de
+  photo de couverture (réutilisation des photos des domaines
+  correspondants) ; ordre d'affichage forcé par slug dans
+  `AcademyController::index()` pour matcher l'ordre du mockup (l'ordre
+  d'insertion en base ne suffisait pas). Page détail déjà conforme.
+- **TBW Consulting** : déjà conforme, aucun changement.
+- **Actualités** : bouton "Voir plus d'actualités" manquant, ajouté.
+- **Contact** : le mockup n'a pas de bandeau de titre séparé — la page
+  démarre directement sur les 2 cartes de formulaire, avec une décoration
+  végétale discrète dans leur coin. Bandeau "Contact" en trop retiré.
+- **Faire un don** : les pastilles "Moyen de paiement" et "Type de don"
+  étaient en grille 2×2, le mockup les montre sur une seule ligne de 4 —
+  corrigé (`sm:grid-cols-4`).
+- **Nous rejoindre** : grille des 6 rôles en 2×3, mockup en 3×2 — corrigé.
+- **Nos impacts** : panneau décoratif ajouté pour combler la grille
+  témoignages (2 témoignages en base = 2 cartes + 1 panneau, comme le
+  mockup).
+- **Médias** : refonte complète — le rendu précédent utilisait le pattern
+  "1 cadre = défilement horizontal plein écran" hérité de 3.11, mais le
+  mockup montre en réalité les 4 catégories côte à côte dans une grille à 4
+  colonnes avec aperçu compact (photo/vidéo principale + vignettes, liste
+  des 3 premiers documents), compteur en pied de carte, et une barre d'appel
+  à l'action "Télécharger tout le kit presse" en bas de section.
+- **Pied de page** : déjà conforme (fait en 3.12), vérifié sans changement.
+- **Accueil, méthode CAVAMIS** : nouveau mockup fourni le 15-16/08
+  (`exemplemethodecavamissurlapageaccueil.png`), différent de ce qui avait
+  été fait en 3.12 — grille fixe 4+3 (pas de réorganisation libre), description
+  sous chaque titre (ajoutée en FR/EN, absente avant), filigrane
+  soleil/arbre avec texte arqué "TESIMAMA • TOLAMUKE • TELUMIÈRE" (approximation
+  SVG, pas de fichier source séparé pour le texte arqué), filigrane racines,
+  bouton pilule "NOTRE APPROCHE →".
+- **Accueil, Domaines d'action** : ajout d'un défilement automatique
+  (auto-scroll toutes les 3.5s, boucle, pause au survol/touch, respecte
+  `prefers-reduced-motion`) — la Fondatrice demandait de l'animation plutôt
+  qu'un simple défilement manuel à la flèche.
+- **Accueil, Doctrine des 3T** : **cause du "souci de cadrage" identifiée** —
+  les images lion/léopard/rapace (déjà recadrées depuis les symboles
+  TESIMAMA/TOLAMUKE/TELUMIÈRE en 3.12) ont un fond **noir plein**, ce qui
+  laisse de gros vides noirs disgracieux une fois `object-cover` dans les
+  cartes 480px. Corrigé en détourant le fond noir (clé d'alpha sur la
+  luminosité, script Python/PIL) et en le recomposant sur le vert forêt de
+  la charte (`#123D2E`) au lieu du noir — se fond naturellement dans le
+  design plutôt que de trancher. Animation ajoutée : les 3 cartes utilisent
+  la classe `reveal` individuellement avec un délai croissant (0/220/440ms)
+  pour apparaître l'une après l'autre. Au passage, l'accent violet clair
+  `#9b7fd1` resté sur la carte TELUMIÈRE (repéré en marge de 3.13) a été
+  remplacé par l'or de la charte comme les deux autres cartes.
+- **Navigation clavier** : ajout d'un gestionnaire clavier global
+  (`resources/views/layouts/app.blade.php`) qui déclenche les liens
+  précédent/suivant (`id="page-nav-prev"`/`"page-nav-next"`, ajoutés sur
+  Qui sommes-nous, Notre approche, Bibliographie, Architecture, Rubriques,
+  Domaines d'action et Programmes détail via le composant partagé
+  `field-page`) sur ArrowLeft/ArrowRight, sauf focus dans un champ de
+  formulaire ou lien désactivé (première/dernière page).
+- **Couleur violette en fond** : re-vérifiée exhaustivement sur tout le
+  site public (`grep` sur `3B2560`, teintes violettes/purple) — **aucune
+  n'existe en aplat de fond**, seulement la barre dégradée de 3px en haut de
+  chaque page (accent ponctuel rare, explicitement toléré par la Fondatrice)
+  et une variable CSS `--tbw-violet` jamais utilisée. Le seul vrai écart
+  trouvé (accent `#9b7fd1` sur la carte TELUMIÈRE) a été corrigé au passage
+  ci-dessus.
+- **Animation sur les pages sans photo** : Contact, Faire un don et Nous
+  rejoindre n'ont pas de bandeau photo (par design, conforme à leurs
+  mockups) — ajout d'un motif décoratif très discret (cercles concentriques
+  / racines, ~5% d'opacité) qui dérive lentement en boucle via CSS
+  (`<x-ambient-bg>`, respecte `prefers-reduced-motion`).
+
+**Méthode de génération de photos manquantes (Canva)** : `generate-design`
+(design_type `desktop_wallpaper`, query = description photographique pure,
+"aucun texte/logo/superposition") → `create-design-from-candidate` →
+`export-design` (format png) → `curl` direct sur l'URL S3 présignée
+retournée (pas d'authentification requise, contrairement à une note
+précédente maintenant corrigée). Les fichiers exportés sont du vrai PNG même
+si nommés `.jpg` — repasser par `convert fichier.jpg -quality 88 fichier.jpg`
+(ImageMagick) pour obtenir un vrai JPEG. **Quota de génération limité** —
+atteint après 8 générations dans cette session (15-16/08), pas revenu au
+16/08 malgré plusieurs nouveaux essais espacés dans le temps ; à retester en
+priorité en début de prochaine session avant de conclure qu'il faut
+approximer ou attendre encore.
+
+**Piège d'environnement rencontré, à connaître pour toute session future** :
+`php artisan serve` sert les assets depuis `public/build/` (le manifest Vite
+compilé) **seulement si `public/hot` n'existe pas**. Si un `npm run dev`
+d'une session précédente a laissé ce fichier, chaque page essaie de charger
+son CSS/JS depuis `http://127.0.0.1:5173` (serveur Vite mort) et **tout le
+site tourne sans le moindre style Tailwind** — layout complètement cassé,
+qui peut se lire à tort comme un bug de responsive/overflow réel. Symptôme
+observé : boutons/liens qui se chevauchent, grilles qui ne se forment pas,
+header qui déborde. Réflexe en début de session : `rm -f public/hot` si
+présent, et **toujours `npm run build` après toute modification de classes
+Tailwind avant de faire une capture d'écran de vérification** (`php artisan
+serve` ne recompile jamais tout seul).
+
 ## 4. CHANTIER PRIORITAIRE N°2 — Admin Filament : le rendre beau et dynamique
 
 **À traiter une fois le chantier 3 terminé.** L'admin Filament est actuellement
@@ -535,12 +668,18 @@ Pistes concrètes :
   TBW plutôt que les couleurs Filament par défaut (rouge/bleu/vert génériques).
 - Formulaires admin : vérifier la cohérence visuelle, grouper les champs
   logiquement (déjà fait pour Program via `Fieldset`, à généraliser).
-- Générer si besoin d'autres visuels de fond via Canva (même méthode que pour
-  le login : `Canva:generate-design` avec `design_type: desktop_wallpaper`,
-  palette `#123D2E`/`#C99A3E`/`#6B2A28`/`#3B2560`, style organique/épuré, PUIS
-  exporter en PNG et demander à l'utilisatrice de télécharger le fichier
-  elle-même — aucun accès direct aux fichiers Canva exportés n'est possible
-  depuis l'environnement).
+- Générer si besoin d'autres visuels via Canva (même méthode que pour le
+  login : `generate-design` avec `design_type: desktop_wallpaper` pour des
+  photos/fonds, palette `#123D2E`/`#C99A3E`/`#6B2A28`/`#3B2560`, style
+  organique/épuré). **Correction (15/08) : le téléchargement direct de
+  l'export est possible depuis l'environnement**, vérifié empiriquement —
+  `export-design` renvoie une URL S3 présignée (`export-download.canva.com`,
+  pas d'authentification interactive) que `curl` télécharge directement sur
+  le disque du projet, sans intervention manuelle de l'utilisatrice. La note
+  précédente affirmant le contraire était fausse. Attention : les fichiers
+  exportés arrivent en PNG même avec une extension `.jpg` demandée —
+  repasser par `convert fichier.jpg -quality 88 fichier.jpg` (ImageMagick)
+  pour obtenir un vrai JPEG si le nom de fichier promet un `.jpg`.
 
 **Piège rencontré à éviter** : le mode sombre automatique de Filament peut
 rendre le texte illisible sur fond personnalisé (texte sombre sur fond sombre).
@@ -717,13 +856,13 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       la mauvaise occurrence plus tard — à nettoyer en gardant une seule
       ligne par clé.
 
-## 7. Ordre de priorité (mis à jour 14/08/2026)
+## 7. Ordre de priorité (mis à jour 16/08/2026)
 
 1. **Section 3** — Refonte visuelle du site public (remarques Fondatrice) —
-   priorité absolue. **3.1 à 3.11 sont terminées et fusionnées sur `develop`.
-   Il reste 3.12** (deuxième vague de remarques, règles globales à appliquer
-   rétroactivement + corrections précises + nouvelles pages, voir tête de
-   fichier).
+   priorité absolue. **3.1 à 3.13 sont terminées** sur la branche
+   `refonte-visuelle-comparaison-stricte` (pas encore mergée sur `develop`).
+   Seul reste ouvert : 5 photos manquantes sur la page Architecture
+   (volets 7-11), bloquées par le quota Canva — voir tête de fichier et 3.13.
 2. **Section 4** — Admin Filament (refonte visuelle) — chantier déjà en cours,
    à reprendre juste après la section 3.
 3. **Section 6** — Reste de la liste "à faire pour livrer".

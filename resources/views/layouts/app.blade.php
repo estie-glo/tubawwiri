@@ -109,10 +109,18 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+        @keyframes ambient-drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, 1.5%) rotate(2deg); }
+        }
+        .ambient-bg-motif {
+            animation: ambient-drift 26s ease-in-out infinite;
+        }
         @media (prefers-reduced-motion: reduce) {
             .hero-kenburns { animation: none; }
             .reveal { opacity: 1; transform: none; }
             .marquee-track { animation: none; }
+            .ambient-bg-motif { animation: none; }
         }
         .content-scroll-viewport {
             overflow-x: auto;
@@ -432,6 +440,21 @@
                 toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
                 iconOpen.classList.toggle('hidden', open);
                 iconClose.classList.toggle('hidden', !open);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            document.addEventListener('keydown', function (e) {
+                if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+                var tag = (document.activeElement && document.activeElement.tagName) || '';
+                if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) || (document.activeElement && document.activeElement.isContentEditable)) return;
+                var targetId = e.key === 'ArrowLeft' ? 'page-nav-prev' : e.key === 'ArrowRight' ? 'page-nav-next' : null;
+                if (!targetId) return;
+                var link = document.getElementById(targetId);
+                if (!link || link.classList.contains('pointer-events-none')) return;
+                e.preventDefault();
+                link.click();
             });
         })();
     </script>
