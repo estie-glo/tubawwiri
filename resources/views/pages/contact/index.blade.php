@@ -8,15 +8,16 @@
         $mapsQuery = urlencode($c['maps_query'] ?? 'Cameroun');
     @endphp
 
-    <section class="max-w-7xl mx-auto px-4 pt-16 pb-6 reveal">
-        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.contact') }}</h1>
-    </section>
-
     {{-- ===== FORMULAIRES ===== --}}
-    <section class="max-w-7xl mx-auto px-4 pb-8 grid lg:grid-cols-2 gap-8 reveal">
-        <div class="bg-white border border-[#eadfca] rounded-3xl p-8">
-            <div class="flex items-center gap-4 mb-6">
+    <section class="max-w-7xl mx-auto px-4 pt-16 pb-8 grid lg:grid-cols-2 gap-8 reveal">
+        <div class="relative bg-white border border-[#eadfca] rounded-3xl p-8 overflow-hidden">
+            <svg class="absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <path d="M90 10C60 10 30 30 20 70M90 10C70 40 55 55 30 62M90 10C75 25 68 35 60 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="55" cy="25" rx="7" ry="3" transform="rotate(35 55 25)" fill="currentColor"/>
+                <ellipse cx="40" cy="42" rx="7" ry="3" transform="rotate(45 40 42)" fill="currentColor"/>
+                <ellipse cx="28" cy="58" rx="6" ry="3" transform="rotate(55 28 58)" fill="currentColor"/>
+            </svg>
+            <div class="relative flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-[#123D2E] flex items-center justify-center shrink-0">
                     <svg class="w-5 h-5 text-[#C99A3E]" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.556-4.03 8.25-9 8.25a9.76 9.76 0 0 1-2.555-.337L3 21l1.395-3.72C3.512 16.126 3 14.633 3 13.05 3 8.494 7.03 4.8 12 4.8s9 3.694 9 7.2Z"/></svg>
                 </div>
@@ -75,8 +76,14 @@
             </form>
         </div>
 
-        <div class="bg-white border border-[#eadfca] rounded-3xl p-8">
-            <div class="flex items-center gap-4 mb-6">
+        <div class="relative bg-white border border-[#eadfca] rounded-3xl p-8 overflow-hidden">
+            <svg class="absolute -top-4 -right-4 w-28 h-28 text-[#6B2A28]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <path d="M90 10C60 10 30 30 20 70M90 10C70 40 55 55 30 62M90 10C75 25 68 35 60 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="55" cy="25" rx="7" ry="3" transform="rotate(35 55 25)" fill="currentColor"/>
+                <ellipse cx="40" cy="42" rx="7" ry="3" transform="rotate(45 40 42)" fill="currentColor"/>
+                <ellipse cx="28" cy="58" rx="6" ry="3" transform="rotate(55 28 58)" fill="currentColor"/>
+            </svg>
+            <div class="relative flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-[#6B2A28] flex items-center justify-center shrink-0">
                     <svg class="w-5 h-5 text-[#C99A3E]" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.09 9.09 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.94 11.94 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
                 </div>
