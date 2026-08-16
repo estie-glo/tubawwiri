@@ -169,11 +169,11 @@
                     $doctrineSteps = [
                         ['name' => 'TESIMAMA', 'text' => __('site.home.tesimama'), 'photo' => 'tesimama.jpg', 'accent' => '#C99A3E'],
                         ['name' => 'TOLAMUKE', 'text' => __('site.home.tolamuke'), 'photo' => 'tolamuke.jpg', 'accent' => '#C99A3E'],
-                        ['name' => 'TELUMIERE', 'text' => __('site.home.telumiere'), 'photo' => 'telumiere.jpg', 'accent' => '#9b7fd1'],
+                        ['name' => 'TELUMIERE', 'text' => __('site.home.telumiere'), 'photo' => 'telumiere.jpg', 'accent' => '#C99A3E'],
                     ];
                 @endphp
                 @foreach ($doctrineSteps as $step)
-                    <div class="group relative h-[480px] overflow-hidden rounded-3xl hover-lift">
+                    <div class="reveal group relative h-[480px] overflow-hidden rounded-3xl hover-lift" style="transition-delay: {{ ($loop->index) * 220 }}ms">
                         <img src="{{ asset('images/doctrine/' . $step['photo']) }}" alt=""
                              class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/92 via-[#123D2E]/45 to-transparent"></div>
