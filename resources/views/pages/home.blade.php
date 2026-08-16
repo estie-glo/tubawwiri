@@ -73,6 +73,33 @@
                 </button>
             </div>
         </div>
+        <script>
+            (function () {
+                var track = document.getElementById('scroll-domains');
+                if (!track) return;
+                var timer = null;
+                function tick() {
+                    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+                    if (atEnd) {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        track.scrollBy({ left: 260, behavior: 'smooth' });
+                    }
+                }
+                function start() {
+                    if (timer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    timer = setInterval(tick, 3500);
+                }
+                function stop() {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                track.addEventListener('mouseenter', stop);
+                track.addEventListener('mouseleave', start);
+                track.addEventListener('touchstart', stop, { passive: true });
+                start();
+            })();
+        </script>
     </section>
 
     {{-- ===== CAVAMIS ===== --}}
