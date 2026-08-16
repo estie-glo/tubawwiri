@@ -32,7 +32,7 @@
                 ];
             @endphp
 
-            <div class="grid sm:grid-cols-2 gap-4">
+            <div class="grid sm:grid-cols-3 gap-4">
                 @foreach ($roles as $i => $role)
                     <div class="reveal bg-white border border-[#eadfca] rounded-2xl p-5 hover-lift" style="transition-delay: {{ ($i % 4) * 80 }}ms">
                         <div class="w-9 h-9 rounded-full bg-[#123D2E] flex items-center justify-center">
