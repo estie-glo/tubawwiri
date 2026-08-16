@@ -24,6 +24,7 @@ return [
     'open_link' => 'Open link',
     'no_resources' => 'No resources found.',
     'no_news' => 'No articles published yet.',
+    'news_more' => 'See more news',
     'no_reports' => 'No reports published yet.',
     'download' => 'Download',
     'all' => 'All',

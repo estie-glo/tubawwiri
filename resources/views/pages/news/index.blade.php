@@ -46,6 +46,15 @@
             @endforelse
         </div>
 
-        <div class="mt-10">{{ $articles->links() }}</div>
+        @if ($articles->hasPages())
+            <div class="mt-10">{{ $articles->links() }}</div>
+        @endif
+
+        <div class="flex justify-center mt-10">
+            <a href="{{ route('news.index', app()->getLocale()) }}"
+               class="btn-tbw inline-flex border border-[#C99A3E] text-[#6B2A28] hover:bg-[#C99A3E] hover:text-[#123D2E] px-7 py-3 text-xs font-bold uppercase tracking-wider">
+                {{ __('pages.news_more') }}
+            </a>
+        </div>
     </section>
 @endsection

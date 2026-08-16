@@ -24,6 +24,7 @@ return [
     'open_link' => 'Voir le lien',
     'no_resources' => 'Aucune ressource trouvée.',
     'no_news' => 'Aucun article publié pour le moment.',
+    'news_more' => "Voir plus d'actualités",
     'no_reports' => 'Aucun rapport publié pour le moment.',
     'download' => 'Télécharger',
     'all' => 'Toutes',
