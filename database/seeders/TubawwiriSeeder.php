@@ -436,6 +436,7 @@ foreach ($categories as $name) {
                 'mode' => 'en_ligne',
                 'duree' => '4 semaines',
                 'price' => 15000,
+                'cover_image' => 'domains/sante-mentale-communautaire.jpg',
             ],
             [
                 'slug' => 'parentalite-positive-academy',
@@ -447,6 +448,7 @@ foreach ($categories as $name) {
                 'mode' => 'presentiel',
                 'duree' => '3 semaines',
                 'price' => 12000,
+                'cover_image' => 'domains/parentalite-positive.jpg',
             ],
             [
                 'slug' => 'leadership-feminin-academy',
@@ -458,6 +460,7 @@ foreach ($categories as $name) {
                 'mode' => 'en_ligne',
                 'duree' => '6 semaines',
                 'price' => 20000,
+                'cover_image' => 'domains/leadership-feminin.jpg',
             ],
             [
                 'slug' => 'protection-de-lenfant-academy',
@@ -467,8 +470,21 @@ foreach ($categories as $name) {
                 'description_en' => 'Practical benchmarks to prevent and respond to child protection risks.',
                 'level' => 'intermediaire',
                 'mode' => 'en_ligne',
+                'cover_image' => 'domains/protection-de-lenfant.jpg',
                 'duree' => '5 semaines',
                 'price' => 18000,
+            ],
+            [
+                'slug' => 'resilience-humaine-academy',
+                'title_fr' => 'Résilience humaine',
+                'title_en' => 'Human resilience',
+                'description_fr' => 'Bases de la résilience communautaire : comprendre les chocs, mobiliser les ressources locales, accompagner le relèvement.',
+                'description_en' => 'Community resilience fundamentals: understanding shocks, mobilizing local resources, supporting recovery.',
+                'level' => 'debutant',
+                'mode' => 'en_ligne',
+                'cover_image' => 'domains/resilience-humaine.jpg',
+                'duree' => '4 semaines',
+                'price' => 15000,
             ],
         ];
 
