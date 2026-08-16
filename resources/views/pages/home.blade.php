@@ -88,28 +88,45 @@
         ];
     @endphp
     <section class="relative overflow-hidden bg-[#123D2E] text-white py-20 reveal">
-        <div class="absolute inset-y-0 right-0 w-1/2 opacity-15 hidden md:block"
-             style="background-image: url('{{ asset('images/logo-mark.png') }}'); background-size: contain; background-repeat: no-repeat; background-position: right center;"></div>
-        <div class="relative max-w-7xl mx-auto px-4">
-            <div class="max-w-2xl">
-                <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Méthodologie</p>
-                <h3 class="font-display text-3xl font-semibold mt-2">{{ __('site.home.method_title') }}</h3>
-                <p class="text-sm text-[#C99A3E] italic mt-2">{{ __('site.home.method_acronym') }}</p>
-                <p class="text-sm text-[#8fae9d] mt-3 leading-relaxed">{{ __('site.home.method_subtitle') }}</p>
-            </div>
+        {{-- Filigrane soleil/arbre + texte arqué "TESIMAMA TOLAMUKE TELUMIERE" --}}
+        <svg class="absolute -top-10 right-0 w-[420px] h-[420px] text-[#C99A3E]/10 pointer-events-none hidden lg:block" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+            <path id="cavamis-arc" d="M 30 130 A 70 70 0 1 1 170 130" fill="none" stroke="none"/>
+            <text font-size="9" letter-spacing="2" fill="currentColor" font-weight="600">
+                <textPath href="#cavamis-arc" startOffset="50%" text-anchor="middle">TESIMAMA • TOLAMUKE • TELUMIÈRE</textPath>
+            </text>
+            <g stroke="currentColor" stroke-width="2">
+                <path d="M100 100 100 20M100 100 137 27M100 100 165 55M100 100 178 92M100 100 100 180M100 100 63 173M100 100 35 145M100 100 22 108M100 100 137 173M100 100 63 27"/>
+            </g>
+            <circle cx="100" cy="100" r="22" stroke="currentColor" stroke-width="2"/>
+            <path d="M100 122v34M100 122c-10-8-14-18-10-30M100 122c10-8 14-18 10-30M90 156h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="absolute -bottom-16 -left-10 w-64 h-64 text-[#C99A3E]/10 pointer-events-none hidden lg:block" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 10v40M50 50c-15 5-25 18-28 40M50 50c-8 10-12 22-11 42M50 50c8 10 12 22 11 42M50 50c15 5 25 18 28 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+        <div class="relative max-w-7xl mx-auto px-4">
+            <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Méthodologie</p>
+            <div class="w-10 h-[2px] bg-[#C99A3E] mt-3"></div>
+            <h3 class="font-display text-3xl md:text-4xl font-semibold mt-3">{{ __('site.home.method_title') }}</h3>
+            <p class="text-sm text-[#C99A3E] italic mt-3">{{ __('site.home.method_acronym') }}</p>
+            <p class="text-sm text-[#8fae9d] mt-2 leading-relaxed">{{ __('site.home.method_subtitle') }}</p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
                 @foreach ($cavamisPillars as $pillar)
                     <div class="hover-lift border border-white/15 bg-white/[0.03] rounded-2xl p-5">
-                        <svg class="w-6 h-6 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $pillar['icon'] !!}</svg>
-                        <p class="text-sm font-semibold text-white mt-3 leading-snug">{{ __('site.home.' . $pillar['key']) }}</p>
+                        <div class="w-11 h-11 rounded-full bg-[#0b261c] border border-[#C99A3E]/30 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $pillar['icon'] !!}</svg>
+                        </div>
+                        <p class="font-display font-semibold text-white mt-4 leading-snug">{{ __('site.home.' . $pillar['key']) }}</p>
+                        <div class="w-8 h-[2px] bg-[#C99A3E]/60 mt-2 mb-2"></div>
+                        <p class="text-xs text-[#8fae9d] leading-relaxed">{{ __('site.home.' . $pillar['key'] . '_desc') }}</p>
                     </div>
                 @endforeach
             </div>
 
             <a href="{{ route('approach', app()->getLocale()) }}"
-               class="btn-tbw inline-flex mt-10 border border-[#C99A3E] text-[#C99A3E] hover:bg-[#C99A3E] hover:text-[#123D2E] px-6 py-3 text-xs font-bold uppercase tracking-wider">
-                {{ __('site.nav.approach') }}
+               class="btn-tbw inline-flex items-center gap-2 mt-10 border border-[#C99A3E] text-[#C99A3E] hover:bg-[#C99A3E] hover:text-[#123D2E] px-6 py-3 text-xs font-bold uppercase tracking-wider">
+                {{ __('site.nav.approach') }} →
             </a>
         </div>
     </section>
