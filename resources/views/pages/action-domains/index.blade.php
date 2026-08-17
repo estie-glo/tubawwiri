@@ -47,13 +47,21 @@
                 </svg>
             </button>
         </div>
+
+        <div class="flex items-center justify-center gap-2 mt-6">
+            @foreach ($actionDomains as $i => $domain)
+                <button type="button" aria-label="{{ $i + 1 }}/{{ $actionDomains->count() }}"
+                        onclick="document.getElementById('scroll-domains').scrollTo({left: {{ $i * 250 }}, behavior: 'smooth'})"
+                        class="w-2.5 h-2.5 rounded-full transition {{ $i === 0 ? 'bg-[#C99A3E]' : 'bg-[#d8cfb8] hover:bg-[#C99A3E]/50' }}"></button>
+            @endforeach
+        </div>
     </section>
 
     <section id="methode-cavamis" class="relative bg-[#123D2E] py-16 overflow-hidden reveal">
-        <svg class="absolute -right-10 top-1/2 -translate-y-1/2 w-[420px] h-[420px] text-[#C99A3E]/10 pointer-events-none" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 50 50 5M50 50 71 12M50 50 88 29M50 50 95 50M50 50 5 50M50 50 29 12M50 50 12 29M50 50 71 88M50 50 12 71" stroke="currentColor" stroke-width="2"/>
-            <circle cx="50" cy="50" r="16" stroke="currentColor" stroke-width="2"/>
-        </svg>
+        <img src="{{ asset('images/logo-mark.png') }}" alt=""
+             class="ambient-bg-motif absolute -right-16 top-1/2 -translate-y-1/2 w-[460px] h-auto opacity-[0.07] pointer-events-none hidden lg:block"
+             style="filter: invert(1) brightness(1.7) contrast(0.9);"
+             aria-hidden="true">
 
         <div class="relative z-10 max-w-7xl mx-auto px-4">
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">{{ __('pages.domains_cavamis_kicker') }}</p>

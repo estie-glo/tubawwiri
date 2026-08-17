@@ -64,13 +64,28 @@
                         @endforeach
                     </div>
                 </div>
+                <button type="button" aria-label="{{ __('pages.previous') }}"
+                        onclick="document.getElementById('scroll-domains').scrollBy({left: -260, behavior: 'smooth'})"
+                        class="scroll-arrow-btn hidden md:flex absolute -left-4 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-white text-[#C99A3E] items-center justify-center shadow-lg z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
                 <button type="button" aria-label="{{ __('pages.scroll_next') }}"
                         onclick="document.getElementById('scroll-domains').scrollBy({left: 260, behavior: 'smooth'})"
-                        class="scroll-arrow-btn hidden md:flex absolute -right-4 top-[45%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#C99A3E] text-[#123D2E] items-center justify-center shadow-lg z-20">
+                        class="scroll-arrow-btn hidden md:flex absolute -right-4 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#C99A3E] text-[#123D2E] items-center justify-center shadow-lg z-20">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                     </svg>
                 </button>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 mt-6">
+                @foreach ($domainList as $i => $domain)
+                    <button type="button" aria-label="{{ $i + 1 }}/{{ $domainList->count() }}"
+                            onclick="document.getElementById('scroll-domains').scrollTo({left: {{ $i * 250 }}, behavior: 'smooth'})"
+                            class="w-2.5 h-2.5 rounded-full transition {{ $i === 0 ? 'bg-[#C99A3E]' : 'bg-[#d8cfb8] hover:bg-[#C99A3E]/50' }}"></button>
+                @endforeach
             </div>
         </div>
         <script>
@@ -115,21 +130,11 @@
         ];
     @endphp
     <section class="relative overflow-hidden bg-[#123D2E] text-white py-20 reveal">
-        {{-- Filigrane soleil/arbre + texte arqué "TESIMAMA TOLAMUKE TELUMIERE" --}}
-        <svg class="absolute -top-10 right-0 w-[420px] h-[420px] text-[#C99A3E]/10 pointer-events-none hidden lg:block" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-            <path id="cavamis-arc" d="M 30 130 A 70 70 0 1 1 170 130" fill="none" stroke="none"/>
-            <text font-size="9" letter-spacing="2" fill="currentColor" font-weight="600">
-                <textPath href="#cavamis-arc" startOffset="50%" text-anchor="middle">TESIMAMA • TOLAMUKE • TELUMIÈRE</textPath>
-            </text>
-            <g stroke="currentColor" stroke-width="2">
-                <path d="M100 100 100 20M100 100 137 27M100 100 165 55M100 100 178 92M100 100 100 180M100 100 63 173M100 100 35 145M100 100 22 108M100 100 137 173M100 100 63 27"/>
-            </g>
-            <circle cx="100" cy="100" r="22" stroke="currentColor" stroke-width="2"/>
-            <path d="M100 122v34M100 122c-10-8-14-18-10-30M100 122c10-8 14-18 10-30M90 156h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <svg class="absolute -bottom-16 -left-10 w-64 h-64 text-[#C99A3E]/10 pointer-events-none hidden lg:block" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M50 10v40M50 50c-15 5-25 18-28 40M50 50c-8 10-12 22-11 42M50 50c8 10 12 22 11 42M50 50c15 5 25 18 28 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        {{-- Filigrane du vrai logo (arbre + soleil + texte arqué + racines) --}}
+        <img src="{{ asset('images/logo-mark.png') }}" alt=""
+             class="ambient-bg-motif absolute -top-24 -right-16 w-[560px] md:w-[720px] h-auto opacity-[0.07] pointer-events-none hidden lg:block"
+             style="filter: invert(1) brightness(1.7) contrast(0.9);"
+             aria-hidden="true">
 
         <div class="relative max-w-7xl mx-auto px-4">
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Méthodologie</p>
@@ -175,7 +180,7 @@
                 @foreach ($doctrineSteps as $step)
                     <div class="reveal group relative h-[480px] overflow-hidden rounded-3xl hover-lift" style="transition-delay: {{ ($loop->index) * 220 }}ms">
                         <img src="{{ asset('images/doctrine/' . $step['photo']) }}" alt=""
-                             class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="absolute inset-0 w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/92 via-[#123D2E]/45 to-transparent"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 border-l-2" style="border-color: {{ $step['accent'] }};">
                             <p class="font-display text-2xl italic text-white">{{ $step['name'] }}</p>
