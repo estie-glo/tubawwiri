@@ -192,7 +192,7 @@
 
     <link rel="icon" href="{{ asset('images/logo-mark.png') }}">
 </head>
-<body class="font-body text-[var(--tbw-ink)] bg-[var(--tbw-sand)] flex flex-col min-h-screen">
+<body class="font-body text-[var(--tbw-ink)] bg-[var(--tbw-sand)] flex flex-col">
     @php
         $social = config('tubawwiri.social');
         $contact = config('tubawwiri.contact');
@@ -320,7 +320,7 @@
         </div>
     @endif
 
-    <main class="flex-1 flex flex-col [&>*:last-child]:flex-1">
+    <main>
         @yield('content')
     </main>
 
