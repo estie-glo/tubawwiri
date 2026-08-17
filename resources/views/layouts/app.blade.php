@@ -128,6 +128,15 @@
             scrollbar-width: thin;
             scrollbar-color: #C99A3E transparent;
             -webkit-overflow-scrolling: touch;
+            cursor: grab;
+        }
+        .content-scroll-viewport.is-dragging {
+            cursor: grabbing;
+            scroll-snap-type: none;
+            user-select: none;
+        }
+        .page-swipe-card {
+            touch-action: pan-y;
         }
         .content-scroll-viewport::-webkit-scrollbar {
             height: 6px;
@@ -456,6 +465,95 @@
                 e.preventDefault();
                 link.click();
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            document.querySelectorAll('.content-scroll-viewport').forEach(function (el) {
+                var isDown = false, startX = 0, startScroll = 0, moved = 0;
+                el.addEventListener('mousedown', function (e) {
+                    isDown = true;
+                    moved = 0;
+                    startX = e.pageX;
+                    startScroll = el.scrollLeft;
+                    el.classList.add('is-dragging');
+                });
+                window.addEventListener('mousemove', function (e) {
+                    if (!isDown) return;
+                    var dx = e.pageX - startX;
+                    moved = Math.max(moved, Math.abs(dx));
+                    el.scrollLeft = startScroll - dx;
+                });
+                function endDrag() {
+                    if (!isDown) return;
+                    isDown = false;
+                    el.classList.remove('is-dragging');
+                    if (moved > 6) {
+                        var suppress = function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            el.removeEventListener('click', suppress, true);
+                        };
+                        el.addEventListener('click', suppress, true);
+                    }
+                }
+                window.addEventListener('mouseup', endDrag);
+                el.addEventListener('mouseleave', function () { if (isDown) endDrag(); });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var card = document.querySelector('.page-swipe-card');
+            if (!card) return;
+            var prev = document.getElementById('page-nav-prev');
+            var next = document.getElementById('page-nav-next');
+
+            function go(link) {
+                if (!link || link.classList.contains('pointer-events-none')) return;
+                link.click();
+            }
+
+            var startX = null, dragging = false;
+            function dragStart(x, target) {
+                if (target.closest && target.closest('a, button, input, textarea, select')) { startX = null; return; }
+                startX = x;
+                dragging = true;
+            }
+            function dragEnd(x) {
+                if (!dragging || startX === null) { dragging = false; return; }
+                var delta = x - startX;
+                dragging = false;
+                startX = null;
+                if (Math.abs(delta) > 80) {
+                    delta < 0 ? go(next) : go(prev);
+                }
+            }
+            card.addEventListener('mousedown', function (e) { dragStart(e.pageX, e.target); });
+            window.addEventListener('mouseup', function (e) { dragEnd(e.pageX); });
+            card.addEventListener('touchstart', function (e) { dragStart(e.touches[0].pageX, e.target); }, { passive: true });
+            card.addEventListener('touchend', function (e) { dragEnd(e.changedTouches[0].pageX); }, { passive: true });
+
+            var timer = null;
+            function tick() {
+                if (next && !next.classList.contains('pointer-events-none')) {
+                    next.click();
+                } else if (prev && prev.dataset.firstUrl) {
+                    window.location = prev.dataset.firstUrl;
+                }
+            }
+            function start() {
+                if (timer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                timer = setInterval(tick, 7500);
+            }
+            function stop() {
+                clearInterval(timer);
+                timer = null;
+            }
+            card.addEventListener('mouseenter', stop);
+            card.addEventListener('mouseleave', start);
+            card.addEventListener('touchstart', stop, { passive: true });
+            start();
         })();
     </script>
 </body>

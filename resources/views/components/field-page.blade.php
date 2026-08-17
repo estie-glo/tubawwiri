@@ -7,6 +7,7 @@
     'total',
     'urlFor',
     'photoUrl' => null,
+    'photoSoft' => false,
 ])
 
 <section class="min-h-[65vh] flex flex-col items-center justify-center px-4 py-16 reveal">
@@ -15,13 +16,18 @@
         <h1 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E] text-center mb-10">{{ $pageTitle }}</h1>
 
         <div class="relative flex items-center gap-3 sm:gap-5">
-            <a href="{{ $urlFor(max($position - 1, 1)) }}" id="page-nav-prev" aria-label="{{ __('pages.previous') }}"
+            <a href="{{ $urlFor(max($position - 1, 1)) }}" id="page-nav-prev" aria-label="{{ __('pages.previous') }}" data-first-url="{{ $urlFor(1) }}"
                class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position <= 1 ? 'opacity-30 pointer-events-none' : '' }}">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
             </a>
 
-            <div class="relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[380px] p-8 md:p-14">
-                @if ($photoUrl)
+            <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[380px] p-8 md:p-14">
+                @if ($photoUrl && $photoSoft)
+                    {{-- Source basse résolution : fond flouté (dissimule le manque de netteté) + vignette non agrandie --}}
+                    <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40 blur-xl scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/20"></div>
+                    <img src="{{ $photoUrl }}" alt="" class="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 w-[280px] max-h-[70%] object-cover rounded-2xl shadow-lg">
+                @elseif ($photoUrl)
                     <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
                 @endif
