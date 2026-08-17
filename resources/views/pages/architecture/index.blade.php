@@ -106,7 +106,7 @@
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[440px] {{ $visual['type'] === 'diagram' ? 'grid md:grid-cols-2 items-center' : '' }}">
                     @if ($visual['type'] === 'photo')
                         <div class="absolute inset-0 p-8 md:p-14">
-                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-90">
+                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90">
                             <div class="absolute inset-0 bg-gradient-to-r {{ ($visual['side'] ?? 'right') === 'left' ? 'from-white/10 via-white/75 to-white' : 'from-white via-white/75 to-white/10' }}"></div>
                         </div>
                     @endif

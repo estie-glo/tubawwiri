@@ -24,7 +24,7 @@
 
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[440px] p-8 md:p-14">
                     <img src="{{ asset('images/rubriques/' . $item['image']) }}" alt=""
-                         class="absolute inset-0 w-full h-full object-cover opacity-90">
+                         class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
 
                     <div class="relative z-10 max-w-lg">

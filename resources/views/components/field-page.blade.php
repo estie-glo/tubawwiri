@@ -24,11 +24,11 @@
             <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[380px] p-8 md:p-14">
                 @if ($photoUrl && $photoSoft)
                     {{-- Source basse résolution : fond flouté (dissimule le manque de netteté) + vignette non agrandie --}}
-                    <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40 blur-xl scale-110">
+                    <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-40 blur-xl">
                     <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/20"></div>
                     <img src="{{ $photoUrl }}" alt="" class="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 w-[280px] max-h-[70%] object-cover rounded-2xl shadow-lg">
                 @elseif ($photoUrl)
-                    <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-90">
+                    <img src="{{ $photoUrl }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
                 @endif
 

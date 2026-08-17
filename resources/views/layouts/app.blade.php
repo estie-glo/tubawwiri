@@ -86,11 +86,11 @@
             transform: rotate(180deg);
         }
         .hero-kenburns {
-            animation: kenburns 22s ease-in-out infinite alternate;
+            animation: kenburns 12s ease-in-out infinite alternate;
         }
         @keyframes kenburns {
-            from { transform: scale(1); }
-            to { transform: scale(1.08); }
+            from { transform: scale(1) translate(0, 0); }
+            to { transform: scale(1.18) translate(-1%, -1%); }
         }
         .marquee-viewport {
             overflow: hidden;

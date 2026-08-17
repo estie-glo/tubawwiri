@@ -57,7 +57,7 @@
 
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[420px] p-8 md:p-14">
                     <img src="{{ asset('images/community/' . $photo) }}" alt=""
-                         class="absolute inset-0 w-full h-full object-cover {{ $isWatermark ? 'opacity-[0.08]' : 'opacity-90' }}">
+                         class="absolute inset-0 w-full h-full object-cover hero-kenburns {{ $isWatermark ? 'opacity-[0.08]' : 'opacity-90' }}">
                     @unless ($isWatermark)
                         <div class="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/10"></div>
                     @endunless

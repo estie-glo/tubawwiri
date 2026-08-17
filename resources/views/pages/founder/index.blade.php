@@ -17,7 +17,7 @@
 
     <section class="relative min-h-[32vh] flex items-end overflow-hidden">
         <img src="{{ asset('images/founder/portrait-hero.jpg') }}" alt="{{ __('founder.name') }}"
-             class="absolute inset-0 w-full h-full object-cover" style="object-position: 60% 20%;">
+             class="absolute inset-0 w-full h-full object-cover hero-kenburns" style="object-position: 60% 20%;">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0b261c]/95 via-[#123D2E]/70 to-[#123D2E]/20"></div>
 
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pb-10 pt-28">
