@@ -138,6 +138,12 @@
         .page-swipe-card {
             touch-action: pan-y;
         }
+        .page-swipe-card img,
+        .content-scroll-viewport img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            -webkit-touch-callout: none;
+        }
         .content-scroll-viewport::-webkit-scrollbar {
             height: 6px;
         }
@@ -314,7 +320,7 @@
         </div>
     @endif
 
-    <main class="flex-1">
+    <main class="flex-1 flex flex-col [&>*:last-child]:flex-1">
         @yield('content')
     </main>
 
@@ -464,6 +470,13 @@
                 if (!link || link.classList.contains('pointer-events-none')) return;
                 e.preventDefault();
                 link.click();
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            document.querySelectorAll('.content-scroll-viewport img, .page-swipe-card img').forEach(function (img) {
+                img.setAttribute('draggable', 'false');
             });
         })();
     </script>
