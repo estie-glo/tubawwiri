@@ -25,7 +25,8 @@
         :position="$position"
         :total="$total"
         :url-for="$urlFor"
-        :photo-url="$actionDomain->cover_image ? asset('storage/' . $actionDomain->cover_image) : null">
+        :photo-url="$actionDomain->cover_image ? asset('storage/' . $actionDomain->cover_image) : null"
+        :photo-soft="true">
         {!! $field['html'] !!}
 
         @if ($position >= $total)
