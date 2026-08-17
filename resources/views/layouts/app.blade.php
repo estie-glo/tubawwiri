@@ -342,7 +342,8 @@
     @endphp
 
     <footer id="site-footer" class="bg-[#123D2E] text-[#cfe0d5] mt-0">
-        <div class="h-2 root-divider opacity-40"></div>
+        <div class="h-[3px] bg-[#C99A3E]"></div>
+        <div class="h-2 root-divider opacity-70"></div>
         <div class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
             <div>
                 <img src="{{ asset('images/logo-emblem.png') }}" alt="Fondation TUBAWWIRI" class="h-14 w-auto object-contain mb-4 brightness-110">
