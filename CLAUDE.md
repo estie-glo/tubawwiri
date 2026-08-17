@@ -752,6 +752,60 @@ vrai test navigateur (clavier + glisser souris + autoplay en conditions
 réelles) dès que l'extension est disponible, avant de considérer 3.14
 définitivement clos.**
 
+**Suite immédiate (17/08/2026, même jour)** : la Fondatrice a retesté et
+remonté 3 bugs réels, confirmés cette fois avec de vraies captures d'écran
+Chrome headless (`google-chrome --headless --screenshot`, l'extension
+navigateur restant indisponible) plutôt que par simple lecture de code —
+**leçon retenue : toujours capturer une vraie image avant de déclarer un
+correctif "vérifié", un `curl` qui renvoie 200 ne prouve rien sur le rendu
+visuel.** Piège méthodologique rencontré au passage : une fenêtre headless
+avec une hauteur artificiellement énorme (ex. 3200px) fait exploser les
+sections en `min-h-[..vh]` et peut faire croire à un bug qui n'existe pas
+à une hauteur d'écran réaliste (900-1000px) — toujours comparer aux deux
+tailles avant de conclure.
+
+- **Écart vide entre la fin d'une page courte et le pied de page**
+  ("le pied de page a un problème, je vois méthode CAVAMIS là-bas pourtant
+  ça ne devrait pas") — confirmé par capture : le pattern sticky-footer
+  (`body` en `min-h-screen flex flex-col`, `<main class="flex-1">`) laisse
+  un vide couleur crème (fond du `body`) entre la dernière section d'une
+  page plus courte que la fenêtre et le pied de page, visible notamment sur
+  Domaines d'action (juste après la méthode CAVAMIS). Corrigé dans
+  `layouts/app.blade.php` : `<main>` a maintenant
+  `class="flex-1 flex flex-col [&>*:last-child]:flex-1"` — c'est la
+  dernière section de la page elle-même qui s'étire pour combler l'espace
+  restant, avec son propre fond, au lieu du crème du body.
+- **Glisser à la souris qui ne fonctionnait pas sur Qui sommes-nous et
+  Rubriques** ("je ne peux pas scroller en glissant avec ma souris, juste
+  la flèche") — cause : les `<img>` de fond occupent presque toute la carte
+  `.page-swipe-card`, et le comportement par défaut du navigateur est de
+  démarrer un glisser-déposer natif de l'image dès qu'on clique dessus et
+  bouge la souris, ce qui empêche l'événement `mouseup` de se déclencher
+  normalement et casse la détection de glissement en JS. Corrigé avec
+  `draggable="false"` posé en JS sur toutes les images des zones
+  `.page-swipe-card`/`.content-scroll-viewport` au chargement, plus
+  `-webkit-user-drag: none` en CSS.
+- **Page Programmes sans aucune image de fond ni animation** ("les images
+  en arrière-plan non plus, les images animées en arrière-plan non plus")
+  — vérifié : contrairement à toutes les autres pages listing (Domaines
+  d'action, TBW Academy, Observatoire, Centre de ressources, Actualités,
+  Nos impacts, Médias, TBW Consulting), la page Programmes n'avait tout
+  simplement **jamais eu** de bandeau `<x-page-hero>` (photo + effet Ken
+  Burns), malgré la demande d'origine (3.5) et malgré le lot "Bryan" noté
+  comme terminé en section 8 — écart réel, pas juste un ressenti. Ajouté
+  avec la clé de traduction `pages.programs_intro` (déjà présente, jamais
+  utilisée). **À vérifier si d'autres pages du lot Bryan (Observatoire,
+  Domaines d'action, Nos impacts) ont des écarts similaires non détectés
+  faute de test visuel réel — seule Programmes a été vérifiée par capture
+  d'écran cette fois.**
+- **Photos manquantes bloquées par le quota Canva (Architecture volets
+  7-11, et accessoirement les photos Domaines d'action en plus haute
+  résolution)** : la Fondatrice a proposé de les faire générer par ChatGPT
+  ou de chercher de vraies photos elle-même. Descriptions transmises en
+  conversation (pas de fichier séparé) — **à reconsigner ici sous forme de
+  liste si elle fournit les fichiers dans une session future**, pour que le
+  prochain remplacement (`public/images/architecture/*.jpg`) soit direct.
+
 ## 4. CHANTIER PRIORITAIRE N°2 — Admin Filament : le rendre beau et dynamique
 
 **À traiter une fois le chantier 3 terminé.** L'admin Filament est actuellement
