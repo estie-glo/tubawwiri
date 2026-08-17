@@ -60,6 +60,8 @@ Route::prefix('{locale}')
         Route::get('/bibliographie-fondatrice', [FounderController::class, 'index'])->name('founder.index');
         Route::get('/bibliographie-fondatrice/{position}', [FounderController::class, 'index'])
             ->whereNumber('position')->name('founder.show');
+        // Aperçu temporaire Option A (page unique) — à retirer une fois le choix fait, voir CLAUDE.md 3.14
+        Route::get('/bibliographie-fondatrice-apercu', [FounderController::class, 'apercu'])->name('founder.apercu');
 
         Route::get('/architecture-ecosysteme', [ArchitectureController::class, 'show'])->name('architecture.index');
         Route::get('/architecture-ecosysteme/{position}', [ArchitectureController::class, 'show'])
