@@ -27,7 +27,10 @@ RUN mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cac
 
 EXPOSE 8080
 
-# Render fournit le port via la variable $PORT — on migre la base puis on lance le serveur
+# Render fournit le port via la variable $PORT — on migre, on seed (idempotent,
+# updateOrCreate partout, donc sans danger à chaque redémarrage) puis on lance le serveur
 CMD php artisan config:cache && \
     php artisan migrate --force && \
+    php artisan db:seed --class=TubawwiriSeeder --force && \
+    php artisan db:seed --class=TeamAccountsSeeder --force && \
     php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
