@@ -15,9 +15,9 @@
         ];
     @endphp
 
-    <section class="relative min-h-[52vh] flex items-end overflow-hidden">
+    <section class="relative min-h-[32vh] flex items-end overflow-hidden">
         <img src="{{ asset('images/founder/portrait-hero.jpg') }}" alt="{{ __('founder.name') }}"
-             class="absolute inset-0 w-full h-full object-cover" style="object-position: 60% 20%;">
+             class="absolute inset-0 w-full h-full object-cover hero-kenburns" style="object-position: 60% 20%;">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0b261c]/95 via-[#123D2E]/70 to-[#123D2E]/20"></div>
 
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pb-10 pt-28">
@@ -42,15 +42,15 @@
         </div>
     </section>
 
-    <section class="min-h-[60vh] flex flex-col items-center justify-center px-4 py-16 reveal">
+    <section class="flex flex-col items-center justify-center px-4 py-16 reveal">
         <div class="w-full max-w-5xl">
             <div class="relative flex items-center gap-3 sm:gap-5">
-                <a href="{{ $urlFor(max($position - 1, 1)) }}" id="page-nav-prev" aria-label="{{ __('pages.previous') }}"
+                <a href="{{ $urlFor(max($position - 1, 1)) }}" id="page-nav-prev" aria-label="{{ __('pages.previous') }}" data-first-url="{{ $urlFor(1) }}"
                    class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition {{ $position <= 1 ? 'opacity-30 pointer-events-none' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 </a>
 
-                <div class="relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[360px] p-8 md:p-14 grid md:grid-cols-[1.4fr,1fr] gap-8 items-start">
+                <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14 grid md:grid-cols-[1.5fr,1fr] gap-8 items-start">
                     <div>
                         <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
                             {{ __('founder.name') }} · {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
@@ -70,12 +70,8 @@
                         @endif
                     </div>
 
-                    <div class="hidden md:flex flex-col gap-4">
-                        <div class="rounded-2xl overflow-hidden aspect-[4/5]">
-                            <img src="{{ asset('images/founder/portrait-hero.jpg') }}" alt="{{ __('founder.name') }}"
-                                 class="w-full h-full object-cover" style="object-position: 60% 20%;">
-                        </div>
-                        <div class="bg-[#F6F1E4] rounded-2xl p-5 flex items-center gap-3">
+                    <div class="hidden md:block bg-[#F6F1E4] rounded-2xl p-5 self-start">
+                        <div class="flex items-center gap-3">
                             <img src="{{ asset('images/logo-mark.png') }}" alt="TUBAWWIRI" class="h-10 w-10 object-contain shrink-0">
                             <div>
                                 <p class="font-display font-semibold text-[#123D2E] text-sm leading-tight">Fondation TUBAWWIRI (TBW)</p>

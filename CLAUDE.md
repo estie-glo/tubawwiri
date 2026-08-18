@@ -1,19 +1,32 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer, session en cours (16/08/2026)** : la section 3 (3.1 à
-3.12 — refonte visuelle du site public) est **terminée**, y compris la
-comparaison stricte mockup par mockup demandée le 16/08 (voir 3.13
-ci-dessous pour le détail page par page), sur la branche
-`refonte-visuelle-comparaison-stricte` (pas encore fusionnée sur `develop`).
-Il reste un seul point bloqué : **Architecture, volets 7 à 11** (TBW Academy,
-TBW Consulting, Communication, Campagnes, Ressources) attendent encore leur
-vraie photo — le quota de génération Canva a été atteint en session et n'est
-toujours pas revenu (dernier essai le 16/08, encore refusé) ; ces volets
-affichent un panneau neutre "Photo à venir" en attendant plutôt qu'une image
-approximative, voir 3.13. **Nouvelle session : retester `generate-design`
-en premier ; si le quota est revenu, terminer ces 5 photos + regénérer un
-visuel carte d'Afrique propre pour l'Observatoire si besoin, sinon
-passer directement à la section 4 (admin Filament).**
+**Par où commencer, session en cours (17/08/2026)** : la section 3 (3.1 à
+3.13 — refonte visuelle du site public) est **terminée**, y compris la 4e
+vague de remarques dictées du 16-17/08 (voir 3.14 ci-dessous), sur la branche
+`refonte-visuelle-remarques-v3` (base `refonte-visuelle-comparaison-stricte`,
+elle-même déjà fusionnée sur `develop` via la PR #8 — la note précédente
+disant "pas encore fusionnée" était obsolète). `refonte-visuelle-remarques-v3`
+pas encore fusionnée.
+
+Deux points restent ouverts :
+1. **Architecture, volets 7 à 11** (TBW Academy, TBW Consulting,
+   Communication, Campagnes, Ressources) attendent encore leur vraie photo —
+   quota Canva retesté le 17/08, **toujours bloqué** (3 essais au total
+   maintenant : 15/08, 16/08, 17/08, toujours refusé). Panneau neutre
+   "Photo à venir" conservé en attendant. **Nouvelle session : retester
+   `generate-design` en premier ; si le quota est revenu, terminer ces 5
+   photos + regénérer les 6 photos de Domaines d'action en plus haute
+   résolution (voir 3.14), sinon passer directement à la section 4 (admin
+   Filament).**
+2. **Bibliographie de la Fondatrice — décision en attente** : deux versions
+   construites en parallèle pour comparaison visuelle (voir 3.14) —
+   `/bibliographie-fondatrice` (Option B, 4 pages corrigées) et
+   `/bibliographie-fondatrice-apercu` (Option A, page unique façon mockup,
+   temporaire). **Donner les deux liens à la Fondatrice ; une fois son choix
+   fait, supprimer l'option non retenue** (route `founder.apercu` + vue
+   `apercu-unique.blade.php` si Option B gagne ; sinon retirer
+   `founder.show`/`{position}` et le mécanisme page-swipe-card/autoplay sur
+   cette page si Option A gagne).
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -638,6 +651,161 @@ présent, et **toujours `npm run build` après toute modification de classes
 Tailwind avant de faire une capture d'écran de vérification** (`php artisan
 serve` ne recompile jamais tout seul).
 
+### 3.14 Quatrième vague : remarques dictées du 16-17/08/2026
+
+Nouveau lot de remarques dictées (non ponctuées) après la comparaison
+stricte de 3.13. Traité sur la branche `refonte-visuelle-remarques-v3`
+(base `develop`, qui contient déjà 3.13 via la PR #8).
+
+**Corrigé** :
+- **Médias, bouton "Télécharger tout le kit presse"** : coupait sur deux
+  lignes (aucun bouton du site n'avait `whitespace-nowrap` — celui-ci a le
+  plus long libellé). Ajout de `whitespace-nowrap` + padding/texte
+  responsive.
+- **CAVAMIS (accueil) et méthode CAVAMIS (page Domaines d'action)** : "pas
+  le logo, l'arbre n'est pas bien fait" — les deux SVG dessinés à la main
+  (déjà signalés comme approximatifs en 3.13) ont été remplacés par le vrai
+  logo de marque `public/images/logo-mark.png` (fond transparent confirmé
+  via PIL malgré un rendu blanc à l'aperçu) en filigrane, avec un filtre
+  CSS (`invert(1) brightness(1.7) contrast(0.9)`) pour qu'il se lise en
+  clair sur le fond vert forêt, opacité ~0.07, animation douce
+  `ambient-bg-motif` déjà existante (répond aussi à la remarque sur
+  l'animation des pages sans photo, voir plus bas).
+- **Carrousel Domaines d'action (accueil)** : il manquait la flèche
+  gauche/précédent (bug de parité — seule la page Domaines d'action l'avait)
+  et la pagination par points ; les deux ajoutés, conformes au mockup
+  `exempleinterfacenosdomainesactionsurpagedaccueil.png`.
+- **Doctrine des 3T, l'aigle (et le lion/léopard) coupés** : cause
+  identifiée — `object-cover` centré sur des photos très hautes (têtes des
+  3 animaux dans le tiers supérieur de l'image) rognait le haut dans des
+  cartes `h-[480px]` plus larges que hautes. Corrigé avec `object-top` sur
+  les 3 images ; vérifié par simulation de recadrage (script Python/PIL) que
+  les 3 visages restent entiers.
+- **Glisser à la souris** ("scroller ... en glissant juste sur la souris") :
+  ajouté en plus du défilement tactile natif déjà présent, sur (a) tous les
+  carrousels `.content-scroll-viewport` (domaines, academy…) et (b) les
+  pages "1 cadre = 1 page" (glisser > 80px déclenche précédent/suivant),
+  via une classe commune `page-swipe-card` posée sur le même bloc carte
+  dupliqué dans `field-page.blade.php`, `institutional.blade.php`,
+  `architecture/index.blade.php`, `rubriques/show.blade.php` (et
+  `founder/index.blade.php`, voir Bibliographie ci-dessous). Script
+  générique unique dans `layouts/app.blade.php`, à côté du gestionnaire
+  clavier existant.
+- **Défilement automatique façon PowerPoint** sur les pages "1 cadre = 1
+  page" (Notre approche, Qui sommes-nous, Bibliographie citées
+  explicitement — étendu aux 7 pages de la famille pour la cohérence,
+  le mécanisme `#page-nav-next` étant déjà uniforme partout) : boucle
+  toutes les ~7,5s, revient à la page 1 après la dernière (pas d'arrêt
+  sec), pause au survol/touch, respecte `prefers-reduced-motion`. Attribut
+  `data-first-url` posé sur `#page-nav-prev` dans chaque page pour boucler
+  proprement sans sélecteur fragile.
+- **Domaines d'action, photos floues sur les pages détail** : cause
+  confirmée — les photos de `storage/app/public/domains/*.jpg` sont
+  réellement basse résolution (701×561 ou moins, 470×430 pour
+  `leadership-feminin.jpg`, et le fichier source dans `imagestubawwiri/`
+  n'est pas plus grand), étirées en plein cadre sur les pages détail. Les
+  photos Programmes (1920×1080) n'ont pas ce problème. Quota Canva retesté
+  en priorité (voir ci-dessous) : toujours bloqué, donc fallback CSS
+  appliqué uniquement aux Domaines d'action — fond flouté (`blur-xl`) +
+  vignette de taille raisonnable non agrandie, via un nouveau prop
+  `photo-soft` sur `field-page.blade.php` (désactivé par défaut, donc les
+  pages Programmes qui partagent le même composant ne sont pas affectées).
+- **Retest quota Canva (Architecture volets 7-11 + Domaines d'action HD)** :
+  retesté en tout début de session comme demandé — **toujours refusé**
+  (3e essai, après le 15/08 et le 16/08). Rien de plus à faire tant que le
+  quota n'est pas revenu ; ne pas approximer avec des photos qui ne
+  correspondent pas au sujet (déjà la consigne de la Fondatrice).
+
+**Construit pour décision (pas encore tranché)** :
+- **Bibliographie de la Fondatrice** : la Fondatrice n'aime pas le rendu
+  paginé actuel ("tu as mis la photo tellement grande que pour lire il faut
+  scroller vers le bas pourtant le texte n'est pas long") mais a demandé de
+  construire les deux options plutôt que trancher à l'aveugle :
+  - **Option A** (nouvelle, temporaire) — `/bibliographie-fondatrice-apercu`
+    (route `founder.apercu`, vue `pages/founder/apercu-unique.blade.php`) :
+    page unique, copie conforme du mockup `exemplepagebibliographie.png`
+    (hero modéré, bandeau de 3 qualifications, corps en 2 colonnes — texte
+    courant + une seule photo/logo, citation en bas), sans flèches ni
+    pagination.
+  - **Option B** (existante) — `/bibliographie-fondatrice` reste paginée (4
+    pages, une par paragraphe) mais corrigée : suppression de la 2e
+    occurrence de la photo dans le corps (le hero suffit), hauteurs
+    minimales forcées réduites (`min-h-[52vh]`→`min-h-[32vh]` sur le hero,
+    `min-h-[60vh]` retiré du corps) pour que le scroll ne soit plus imposé
+    à un paragraphe de 40-65 mots ; profite du glisser-souris et de
+    l'autoplay ajoutés dans cette même session.
+  - **Donner les deux liens (FR/EN) à la Fondatrice pour comparaison
+    visuelle. Une fois le choix fait : supprimer l'option non retenue**
+    (voir tête de fichier) — ne pas laisser les deux cohabiter
+    indéfiniment, l'aperçu est explicitement temporaire.
+
+**Méthode de vérification utilisée cette session** (l'extension navigateur
+Claude in Chrome n'était pas connectée, donc pas de test visuel live) :
+`curl` sur chaque route touchée (FR + EN) pour confirmer un code 200 et
+l'absence de trace d'erreur Blade/PHP dans la réponse, `grep` sur le HTML
+retourné pour confirmer la présence des classes/attributs attendus
+(`whitespace-nowrap`, `page-swipe-card`, `logo-mark.png`, `blur-xl` sur les
+domaines mais pas sur les programmes…), et simulation de recadrage
+`object-position` via un script Python/PIL pour vérifier visuellement le
+correctif de la Doctrine des 3T avant de l'appliquer. **À refaire avec un
+vrai test navigateur (clavier + glisser souris + autoplay en conditions
+réelles) dès que l'extension est disponible, avant de considérer 3.14
+définitivement clos.**
+
+**Suite immédiate (17/08/2026, même jour)** : la Fondatrice a retesté et
+remonté 3 bugs réels, confirmés cette fois avec de vraies captures d'écran
+Chrome headless (`google-chrome --headless --screenshot`, l'extension
+navigateur restant indisponible) plutôt que par simple lecture de code —
+**leçon retenue : toujours capturer une vraie image avant de déclarer un
+correctif "vérifié", un `curl` qui renvoie 200 ne prouve rien sur le rendu
+visuel.** Piège méthodologique rencontré au passage : une fenêtre headless
+avec une hauteur artificiellement énorme (ex. 3200px) fait exploser les
+sections en `min-h-[..vh]` et peut faire croire à un bug qui n'existe pas
+à une hauteur d'écran réaliste (900-1000px) — toujours comparer aux deux
+tailles avant de conclure.
+
+- **Écart vide entre la fin d'une page courte et le pied de page**
+  ("le pied de page a un problème, je vois méthode CAVAMIS là-bas pourtant
+  ça ne devrait pas") — confirmé par capture : le pattern sticky-footer
+  (`body` en `min-h-screen flex flex-col`, `<main class="flex-1">`) laisse
+  un vide couleur crème (fond du `body`) entre la dernière section d'une
+  page plus courte que la fenêtre et le pied de page, visible notamment sur
+  Domaines d'action (juste après la méthode CAVAMIS). Corrigé dans
+  `layouts/app.blade.php` : `<main>` a maintenant
+  `class="flex-1 flex flex-col [&>*:last-child]:flex-1"` — c'est la
+  dernière section de la page elle-même qui s'étire pour combler l'espace
+  restant, avec son propre fond, au lieu du crème du body.
+- **Glisser à la souris qui ne fonctionnait pas sur Qui sommes-nous et
+  Rubriques** ("je ne peux pas scroller en glissant avec ma souris, juste
+  la flèche") — cause : les `<img>` de fond occupent presque toute la carte
+  `.page-swipe-card`, et le comportement par défaut du navigateur est de
+  démarrer un glisser-déposer natif de l'image dès qu'on clique dessus et
+  bouge la souris, ce qui empêche l'événement `mouseup` de se déclencher
+  normalement et casse la détection de glissement en JS. Corrigé avec
+  `draggable="false"` posé en JS sur toutes les images des zones
+  `.page-swipe-card`/`.content-scroll-viewport` au chargement, plus
+  `-webkit-user-drag: none` en CSS.
+- **Page Programmes sans aucune image de fond ni animation** ("les images
+  en arrière-plan non plus, les images animées en arrière-plan non plus")
+  — vérifié : contrairement à toutes les autres pages listing (Domaines
+  d'action, TBW Academy, Observatoire, Centre de ressources, Actualités,
+  Nos impacts, Médias, TBW Consulting), la page Programmes n'avait tout
+  simplement **jamais eu** de bandeau `<x-page-hero>` (photo + effet Ken
+  Burns), malgré la demande d'origine (3.5) et malgré le lot "Bryan" noté
+  comme terminé en section 8 — écart réel, pas juste un ressenti. Ajouté
+  avec la clé de traduction `pages.programs_intro` (déjà présente, jamais
+  utilisée). **À vérifier si d'autres pages du lot Bryan (Observatoire,
+  Domaines d'action, Nos impacts) ont des écarts similaires non détectés
+  faute de test visuel réel — seule Programmes a été vérifiée par capture
+  d'écran cette fois.**
+- **Photos manquantes bloquées par le quota Canva (Architecture volets
+  7-11, et accessoirement les photos Domaines d'action en plus haute
+  résolution)** : la Fondatrice a proposé de les faire générer par ChatGPT
+  ou de chercher de vraies photos elle-même. Descriptions transmises en
+  conversation (pas de fichier séparé) — **à reconsigner ici sous forme de
+  liste si elle fournit les fichiers dans une session future**, pour que le
+  prochain remplacement (`public/images/architecture/*.jpg`) soit direct.
+
 ## 4. CHANTIER PRIORITAIRE N°2 — Admin Filament : le rendre beau et dynamique
 
 **À traiter une fois le chantier 3 terminé.** L'admin Filament est actuellement
@@ -856,13 +1024,16 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
       la mauvaise occurrence plus tard — à nettoyer en gardant une seule
       ligne par clé.
 
-## 7. Ordre de priorité (mis à jour 16/08/2026)
+## 7. Ordre de priorité (mis à jour 17/08/2026)
 
 1. **Section 3** — Refonte visuelle du site public (remarques Fondatrice) —
-   priorité absolue. **3.1 à 3.13 sont terminées** sur la branche
-   `refonte-visuelle-comparaison-stricte` (pas encore mergée sur `develop`).
-   Seul reste ouvert : 5 photos manquantes sur la page Architecture
-   (volets 7-11), bloquées par le quota Canva — voir tête de fichier et 3.13.
+   priorité absolue. **3.1 à 3.14 sont terminées** sur la branche
+   `refonte-visuelle-remarques-v3` (base `develop`, pas encore mergée).
+   Reste ouvert : 5 photos manquantes sur la page Architecture (volets
+   7-11) + photos Domaines d'action en plus haute résolution, bloquées par
+   le quota Canva — voir tête de fichier et 3.14 ; et la décision finale sur
+   la Bibliographie (Option A page unique vs Option B paginée), les deux
+   étant construites et prêtes à comparer — voir tête de fichier et 3.14.
 2. **Section 4** — Admin Filament (refonte visuelle) — chantier déjà en cours,
    à reprendre juste après la section 3.
 3. **Section 6** — Reste de la liste "à faire pour livrer".

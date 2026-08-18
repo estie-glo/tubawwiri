@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Render (et Cloudflare devant) terminent le HTTPS et transmettent en HTTP
+        // en interne : sans ça, Laravel génère des URLs d'assets en http:// et le
+        // navigateur bloque le CSS/JS comme contenu mixte sur une page https.
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
     'setlocale' => \App\Http\Middleware\SetLocale::class,
 ]);

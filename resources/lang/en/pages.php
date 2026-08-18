@@ -2,15 +2,6 @@
 
 return [
     'domains_intro' => "Community mental health, human resilience, positive parenting, child protection, female leadership, community development.",
-    'domains_cavamis_kicker' => 'Methodology',
-    'domains_cavamis_title' => 'The CAVAMIS Method',
-    'domains_cavamis_lead' => 'Conseils – Astuces de Vie pour Amis',
-    'domains_cavamis_desc' => "A methodology for support and human transformation.",
-    'domains_cavamis_ecoute_desc' => 'Active, caring listening to human realities.',
-    'domains_cavamis_conseil_desc' => 'Practical advice adapted to each situation.',
-    'domains_cavamis_sensibilisation_desc' => 'Raising awareness to open minds and spark change.',
-    'domains_cavamis_motivation_desc' => 'Motivating and encouraging people and communities.',
-    'domains_cavamis_action_desc' => "Taking action for a lasting, measurable impact.",
     'programs_intro' => 'Resilient Families, Resilient Schools, Resilient Communities, TESIMAMA Challenge, TOLAMUKE Challenge, TELUMIERE Challenge, TBW Parents...',
     'programs_impact_title' => 'Together for lasting impact',
     'programs_impact_desc' => "Our programs are complementary and reach every member of the community. Every action counts toward a more resilient, more united future.",

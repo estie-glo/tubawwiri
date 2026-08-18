@@ -178,7 +178,7 @@
                     <p class="text-sm text-[#123D2E] font-medium">{{ __('pages.press_kit_access') }}</p>
                 </div>
                 <a href="#kit-presse"
-                   class="btn-tbw shrink-0 inline-flex items-center gap-2 bg-[#123D2E] hover:bg-[#0d2e22] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider">
+                   class="btn-tbw shrink-0 inline-flex items-center gap-2 whitespace-nowrap bg-[#123D2E] hover:bg-[#0d2e22] text-white px-4 sm:px-6 py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                     {{ __('pages.press_kit_download_all') }}
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $downloadIcon !!}</svg>
                 </a>
