@@ -28,9 +28,12 @@ RUN mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cac
 EXPOSE 8080
 
 # Render fournit le port via la variable $PORT — on migre, on seed (idempotent,
-# updateOrCreate partout, donc sans danger à chaque redémarrage) puis on lance le serveur
+# updateOrCreate partout, donc sans danger à chaque redémarrage) puis on lance le serveur.
+# migrate/seed sont non-bloquants (|| true) : si Aiven (base gratuite qui peut
+# s'endormir/redémarrer indépendamment de Render) est temporairement injoignable,
+# le site démarre quand même plutôt que de rester bloqué sans jamais ouvrir le port.
 CMD php artisan config:cache && \
-    php artisan migrate --force && \
-    php artisan db:seed --class=TubawwiriSeeder --force && \
-    php artisan db:seed --class=TeamAccountsSeeder --force && \
+    (php artisan migrate --force || true) && \
+    (php artisan db:seed --class=TubawwiriSeeder --force || true) && \
+    (php artisan db:seed --class=TeamAccountsSeeder --force || true) && \
     php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
