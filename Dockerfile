@@ -33,6 +33,7 @@ EXPOSE 8080
 # s'endormir/redémarrer indépendamment de Render) est temporairement injoignable,
 # le site démarre quand même plutôt que de rester bloqué sans jamais ouvrir le port.
 CMD php artisan config:cache && \
+    (php artisan storage:link || true) && \
     (php artisan migrate --force || true) && \
     (php artisan db:seed --class=TubawwiriSeeder --force || true) && \
     (php artisan db:seed --class=TeamAccountsSeeder --force || true) && \
