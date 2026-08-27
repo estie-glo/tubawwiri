@@ -50,7 +50,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 </a>
 
-                <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14 grid md:grid-cols-[1.5fr,1fr] gap-8 items-start">
+                <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14 grid md:grid-cols-[1.5fr_1fr] gap-8 items-start">
                     <div>
                         <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
                             {{ __('founder.name') }} · {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}

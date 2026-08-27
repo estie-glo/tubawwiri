@@ -42,7 +42,7 @@
 
     <section class="px-4 py-16 reveal">
         <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-[1.5fr,1fr] gap-10 items-start">
+            <div class="grid md:grid-cols-[1.5fr_1fr] gap-10 items-start">
                 <div class="space-y-4 text-[#4a453c] leading-relaxed text-base">
                     @foreach ($paragraphs as $paragraph)
                         <p>{{ $paragraph }}</p>
