@@ -1122,8 +1122,19 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
 - Committer par petits blocs cohérents (`feat: ...`, `fix: ...`, `style: ...`),
   jamais un gros commit fourre-tout — l'équipe a eu des soucis de travail perdu
   faute de commits réguliers, ne pas reproduire.
-- **Après chaque bloc de travail terminé et testé** : `git add`, `git commit`,
-  `git push origin develop` — ne pas accumuler plusieurs chantiers non poussés.
+- **RÈGLE ADOPTÉE LE 27/08/2026 — ne plus jamais pousser directement sur
+  `develop`.** Pour tout nouveau bloc de travail : créer une branche dédiée
+  depuis `develop` (`git checkout -b <nom-descriptif>`), y committer, la
+  pousser, puis ouvrir une Pull Request vers `develop` (`gh pr create`) —
+  même pour des correctifs petits ou urgents (déploiement, docs...). Ne pas
+  accumuler plusieurs chantiers non poussés pour autant : pousser la branche
+  et ouvrir la PR dès qu'un bloc cohérent est terminé et testé, comme avant,
+  juste plus jamais directement sur `develop`. **Remarque pour l'historique**
+  : plusieurs commits du 26-27/08/2026 (fixes de déploiement Render/Aiven,
+  correctif Bibliographie, mises à jour de doc — voir sections 3.15 et 10)
+  ont été poussés directement sur `develop` avant l'adoption de cette règle,
+  laissés tels quels par décision explicite de l'utilisatrice plutôt que de
+  réécrire l'historique de la branche.
 - Ne jamais casser le design system ci-dessus en "simplifiant" vers des
   couleurs/polices par défaut.
 - Toujours tester visuellement après une modification de layout ou de thème
