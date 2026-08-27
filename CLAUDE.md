@@ -1,14 +1,19 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
 **Par où commencer, session en cours (27/08/2026)** : la section 3 (3.1 à
-3.14 — refonte visuelle du site public) est **terminée** et **fusionnée sur
+3.15 — refonte visuelle du site public) est **terminée** et **fusionnée sur
 `develop`** (branche `refonte-visuelle-remarques-v3`, mergée via la PR #10 le
 26/08 — la note précédente disant "pas encore fusionnée" était obsolète).
-Depuis, deux commits directement sur `develop` (`b09f057`, `10f249d`, 26/08)
-ont corrigé des bugs réels du **déploiement de test Render**, sans lien avec
-la refonte visuelle — voir la nouvelle section 10 pour l'état complet et les
-pièges connus **avant de retoucher au Dockerfile ou de diagnostiquer un
-souci sur le lien de test**.
+Un audit indépendant du 27/08 (section 3.15) a vérifié dans le vrai code —
+pas dans les cases [x] de ce fichier — que 3.1 à 3.14 sont réellement
+implémentées : **verdict très largement conforme**, un seul bug réel trouvé
+et corrigé (Bibliographie, mise en page 2 colonnes cassée par une syntaxe
+Tailwind invalide). Par ailleurs, quatre commits directement sur `develop`
+(`b09f057`, `10f249d`, `1009389`, `007da2b`, 26-27/08) ont corrigé des bugs
+réels de **déploiement/build** (Render, Aiven, CSS Filament incomplet), sans
+lien avec les remarques de la Fondatrice — voir la nouvelle section 10 pour
+l'état complet et les pièges connus **avant de retoucher au Dockerfile ou de
+diagnostiquer un souci sur le lien de test**.
 
 Trois points restent ouverts :
 1. **Architecture, volets 7 à 11** (TBW Academy, TBW Consulting,
@@ -775,11 +780,14 @@ tailles avant de conclure.
   (`body` en `min-h-screen flex flex-col`, `<main class="flex-1">`) laisse
   un vide couleur crème (fond du `body`) entre la dernière section d'une
   page plus courte que la fenêtre et le pied de page, visible notamment sur
-  Domaines d'action (juste après la méthode CAVAMIS). Corrigé dans
-  `layouts/app.blade.php` : `<main>` a maintenant
-  `class="flex-1 flex flex-col [&>*:last-child]:flex-1"` — c'est la
-  dernière section de la page elle-même qui s'étire pour combler l'espace
-  restant, avec son propre fond, au lieu du crème du body.
+  Domaines d'action (juste après la méthode CAVAMIS). **Correction
+  documentée ici initialement (`<main class="flex-1 flex flex-col
+  [&>*:last-child]:flex-1">`) mais remplacée le jour même par un commit
+  suivant (`e3980f5`) qui a identifié que ce pattern sticky-footer était
+  lui-même la cause racine du bug** — retiré entièrement au profit d'un
+  `<main>` simple sans contrainte de hauteur forcée (vérifié dans
+  `layouts/app.blade.php:323` lors de l'audit du 27/08 : c'est bien l'état
+  actuel, cette note était restée obsolète jusqu'ici).
 - **Glisser à la souris qui ne fonctionnait pas sur Qui sommes-nous et
   Rubriques** ("je ne peux pas scroller en glissant avec ma souris, juste
   la flèche") — cause : les `<img>` de fond occupent presque toute la carte
@@ -810,6 +818,40 @@ tailles avant de conclure.
   conversation (pas de fichier séparé) — **à reconsigner ici sous forme de
   liste si elle fournit les fichiers dans une session future**, pour que le
   prochain remplacement (`public/images/architecture/*.jpg`) soit direct.
+
+### 3.15 Audit indépendant du 27/08/2026 (vérification code, pas juste relecture des cases [x])
+
+Demande explicite : vérifier dans le vrai code, pas dans ce fichier, que
+3.1–3.14 sont réellement faites, et que la charte de design (section 2 +
+règles transverses 3.12.1) est respectée. Fait via grep/lecture de code +
+captures d'écran réelles (`google-chrome --headless`, serveur local — pas
+l'extension navigateur, indisponible). **Verdict : très largement conforme**
+(boutons pilule, cadres à coins très arrondis, aucun violet en aplat de
+fond, images storage bien servies, navigation clavier/glisser-souris/
+autoplay tous vérifiés fonctionnels dans le code). Deux écarts trouvés :
+
+1. **Bug réel, corrigé** : les deux pages Bibliographie
+  (`/bibliographie-fondatrice` et `/bibliographie-fondatrice-apercu`)
+  n'affichaient jamais leur 2e colonne (photo/logo à côté du texte) —
+  `grid-cols-[1.5fr,1fr]` est une syntaxe Tailwind **invalide** (virgule au
+  lieu d'un underscore dans une valeur arbitraire multi-tokens), le CSS
+  généré était silencieusement ignoré par le navigateur. La correction
+  documentée plus haut en 3.14 ("colonne photo secondaire... corrigé")
+  n'avait donc en réalité jamais fonctionné. Corrigé (`grid-cols-[1.5fr_1fr]`)
+  dans `founder/index.blade.php` et `founder/apercu-unique.blade.php` —
+  commit `1009389` sur `develop`. **Important pour le point 2 encore ouvert
+  en tête de fichier (décision Bibliographie Option A vs B)** : ce bug
+  faussait la comparaison visuelle entre les deux options tant qu'il n'était
+  pas corrigé — si la Fondatrice a déjà vu les deux pages avant le 27/08,
+  ça vaut le coup de lui remontrer les deux maintenant que l'effet "2
+  colonnes" du mockup s'affiche enfin.
+2. **Bug de build découvert au passage, corrigé** : le CSS compilé pour le
+  déploiement Docker a toujours manqué ~30-40% de ses classes (celles
+  utilisées dans les vues vendor, notamment tout l'admin Filament — voir
+  section 10 pour le détail technique et le correctif). Sans lien direct
+  avec les remarques de la Fondatrice (qui ne portent que sur le site
+  public), mais explique en partie pourquoi l'admin "a l'air par défaut"
+  (section 4) au-delà du simple manque de personnalisation.
 
 ## 4. CHANTIER PRIORITAIRE N°2 — Admin Filament : le rendre beau et dynamique
 
@@ -1174,9 +1216,40 @@ juste une fois), il faudra remplacer `php artisan serve` par un vrai serveur
 concurrent (nginx + PHP-FPM, ou équivalent) dans le `Dockerfile` — pas fait
 faute de nécessité confirmée à ce stade.
 
-### 10.3 État du `Dockerfile` actuel (`develop`, commit `10f249d`)
+### 10.3 Bug de build trouvé le 27/08/2026 : CSS Filament incomplet en déploiement
+
+`resources/css/app.css` force Tailwind à scanner aussi
+`storage/framework/views/*.php` (le cache Blade compilé), en plus des
+sources habituelles — nécessaire car Tailwind v4 respecte les règles
+`.gitignore` pour sa détection automatique de fichiers sources, et `vendor/`
+(donc les vues des packages comme Filament, Choices.js...) en fait partie :
+sans ce `@source` forcé, ces classes seraient invisibles pour Tailwind.
+**Mais ce dossier est toujours vide sur un checkout Docker neuf** tant
+qu'aucune page n'a été visitée pour déclencher la compilation Blade — donc
+le `RUN npm run build` du `Dockerfile`, exécuté juste après un `git clone`
+frais, a toujours généré un CSS **amputé d'environ 30-40% de ses classes**
+(vérifié par diff : ~579 classes manquantes, quasi toutes liées à l'admin
+Filament — couleurs `amber`/`rose`/`emerald`/`blue`, `choices__inner`,
+animations `animate-pulse`/`animate-spin`, etc.). Le site public n'est pas
+touché (ses classes viennent directement des fichiers `.blade.php` sources,
+toujours bien scannés). Corrigé en ajoutant `RUN php artisan view:cache`
+juste avant `RUN npm run build` — précompile toutes les vues (y compris
+vendor) d'abord. Vérifié que `view:cache` fonctionne sans `.env` ni
+variables d'environnement (pas de dépendance DB). Commit `007da2b` sur
+`develop`. **Conséquence pour la section 4 (admin Filament)** : une partie
+du rendu "par défaut" de l'admin observé jusqu'ici pouvait être ce bug de
+build plutôt qu'un simple manque de personnalisation — à garder en tête en
+reprenant ce chantier, le vrai delta de travail restant pourrait être plus
+petit que prévu.
+
+### 10.4 État du `Dockerfile` actuel (`develop`, commit `007da2b`)
 
 ```
+RUN composer install --no-dev --optimize-autoloader
+RUN npm install
+RUN php artisan view:cache
+RUN npm run build
+...
 CMD php artisan config:cache && \
     (php artisan storage:link || true) && \
     (php artisan migrate --force || true) && \
