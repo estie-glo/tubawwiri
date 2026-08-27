@@ -75,15 +75,14 @@
             5 => ['type' => 'diagram', 'diagram' => 'rubriques'],
             6 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/fondation-tubawwiri.jpg')],
             // 7 (TBW Academy), 8 (TBW Consulting), 9 (Communication), 10 (Campagnes),
-            // 11 (Ressources) : photos du mockup pas encore disponibles — quota Canva
-            // atteint pendant cette session. Ne pas approximer avec une image qui ne
-            // correspond pas (femme+enfants, coucher de soleil, statue...) : conservées
-            // en fond neutre le temps de régénérer les bonnes photos. Voir CLAUDE.md.
-            7 => ['type' => 'pending', 'side' => 'right'],
-            8 => ['type' => 'pending', 'side' => 'right'],
-            9 => ['type' => 'pending', 'side' => 'left'],
-            10 => ['type' => 'pending', 'side' => 'left'],
-            11 => ['type' => 'pending', 'side' => 'left'],
+            // 11 (Ressources) : quota Canva resté bloqué après 4 essais (15, 16, 17,
+            // 27/08) — photos libres de droits (Pexels, sans attribution requise)
+            // choisies pour correspondre au thème de chaque volet, voir CLAUDE.md 3.14.
+            7 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-academy.jpg')],
+            8 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-consulting.jpg')],
+            9 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/communication.jpg')],
+            10 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/campagnes.jpg')],
+            11 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/ressources.jpg')],
             12 => ['type' => 'africa'],
         ];
 
