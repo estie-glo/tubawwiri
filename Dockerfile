@@ -17,9 +17,20 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 WORKDIR /app
 COPY . .
 
-# Installer les dépendances PHP et JS, compiler les assets
+# Installer les dépendances PHP et JS
 RUN composer install --no-dev --optimize-autoloader
-RUN npm install && npm run build
+RUN npm install
+
+# Précompiler les vues Blade AVANT de builder le CSS : Tailwind scanne aussi
+# storage/framework/views/*.php (voir resources/css/app.css, @source) pour
+# détecter les classes utilisées dans les vues des packages vendor (Filament
+# notamment) qui ne sont pas scannées autrement. Sans cette étape, ce dossier
+# est vide sur un checkout neuf et le CSS généré manque des centaines de
+# classes utilisées par l'admin Filament (couleurs, Choices.js, animations).
+# Fonctionne sans .env/variables d'env (vérifié) — ne touche pas la base.
+RUN php artisan view:cache
+
+RUN npm run build
 
 # Créer les dossiers de stockage si besoin et donner les permissions
 RUN mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cache \
