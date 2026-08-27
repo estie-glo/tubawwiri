@@ -81,7 +81,7 @@
             7 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-academy.jpg')],
             8 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-consulting.jpg')],
             9 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/communication.jpg')],
-            10 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/campagnes.jpg')],
+            10 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/campagnes.jpg'), 'position' => 'top'],
             11 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/ressources.jpg')],
             12 => ['type' => 'africa'],
         ];
@@ -105,7 +105,7 @@
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[440px] {{ $visual['type'] === 'diagram' ? 'grid md:grid-cols-2 items-center' : '' }}">
                     @if ($visual['type'] === 'photo')
                         <div class="absolute inset-0 p-8 md:p-14">
-                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90">
+                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90" style="object-position: {{ $visual['position'] ?? 'center' }};">
                             <div class="absolute inset-0 bg-gradient-to-r {{ ($visual['side'] ?? 'right') === 'left' ? 'from-white/10 via-white/75 to-white' : 'from-white via-white/75 to-white/10' }}"></div>
                         </div>
                     @endif
