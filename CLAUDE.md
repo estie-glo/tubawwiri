@@ -1,14 +1,16 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer, session en cours (17/08/2026)** : la section 3 (3.1 à
-3.13 — refonte visuelle du site public) est **terminée**, y compris la 4e
-vague de remarques dictées du 16-17/08 (voir 3.14 ci-dessous), sur la branche
-`refonte-visuelle-remarques-v3` (base `refonte-visuelle-comparaison-stricte`,
-elle-même déjà fusionnée sur `develop` via la PR #8 — la note précédente
-disant "pas encore fusionnée" était obsolète). `refonte-visuelle-remarques-v3`
-pas encore fusionnée.
+**Par où commencer, session en cours (27/08/2026)** : la section 3 (3.1 à
+3.14 — refonte visuelle du site public) est **terminée** et **fusionnée sur
+`develop`** (branche `refonte-visuelle-remarques-v3`, mergée via la PR #10 le
+26/08 — la note précédente disant "pas encore fusionnée" était obsolète).
+Depuis, deux commits directement sur `develop` (`b09f057`, `10f249d`, 26/08)
+ont corrigé des bugs réels du **déploiement de test Render**, sans lien avec
+la refonte visuelle — voir la nouvelle section 10 pour l'état complet et les
+pièges connus **avant de retoucher au Dockerfile ou de diagnostiquer un
+souci sur le lien de test**.
 
-Deux points restent ouverts :
+Trois points restent ouverts :
 1. **Architecture, volets 7 à 11** (TBW Academy, TBW Consulting,
    Communication, Campagnes, Ressources) attendent encore leur vraie photo —
    quota Canva retesté le 17/08, **toujours bloqué** (3 essais au total
@@ -27,6 +29,9 @@ Deux points restent ouverts :
    `apercu-unique.blade.php` si Option B gagne ; sinon retirer
    `founder.show`/`{position}` et le mécanisme page-swipe-card/autoplay sur
    cette page si Option A gagne).
+3. **Lien de test Render peut sembler "en panne" au début de chaque
+   session** — ce n'est presque toujours pas un vrai bug : voir la
+   check-list de la section 10.1 avant de commencer un diagnostic.
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -1085,3 +1090,102 @@ vérification en base (2026-08-06), cette note était partiellement obsolète :
 - En cas de doute sur une donnée manquante ou une correspondance image/rubrique
   non vérifiée (voir section 3.4), le signaler clairement plutôt que d'inventer
   une solution silencieuse.
+
+## 10. Déploiement de test (Render + Aiven) — état et pièges connus
+
+Lien de test partagé avec la Fondatrice pour retours : **https://tubawwiri.onrender.com**
+(pas l'hébergement définitif — ça reste `tubawwiri.org` sur Hostinger plus
+tard, voir section 7). Procédure de mise en place complète :
+`INSTRUCTIONS_DEPLOIEMENT_TEST.md` à la racine du projet (désormais suivi par
+git, voir section 10.3).
+
+### 10.1 Check-list avant de diagnostiquer "le site est en panne"
+
+Le lien peut sembler cassé en début de session sans qu'il y ait de vrai bug —
+**deux causes bénignes à éliminer avant toute investigation** :
+
+1. **Render (plan gratuit) met le service en veille après 15 min sans
+   visite.** Le premier appel après une pause peut renvoyer un `503` avec
+   l'en-tête `x-render-routing: hibernate-wake-error`, ou simplement ne
+   répondre à aucune requête pendant 60-90s (parfois plus) le temps du
+   réveil. **Toujours réessayer avec un délai généreux (`curl --max-time
+   150` ou plus) avant de conclure à une panne.**
+2. **Aiven (base MySQL gratuite) se met hors tension automatiquement après
+   une période d'inactivité, indépendamment de Render.** Symptôme : le site
+   ne répond jamais du tout (le conteneur Render boucle sans jamais ouvrir
+   son port, car migrate ne peut pas joindre la base — voir 10.2). Aller sur
+   https://console.aiven.io → service `mysql-877b421` → si le statut affiche
+   **"Powered off"**, cliquer sur le bouton d'allumage. Ça prend 1-2 minutes.
+   Il n'y a pas de solution permanente sans passer au plan payant Aiven
+   (5$/mois, visible sur leur propre dashboard) — **à chaque session de
+   test, s'attendre à devoir rallumer Aiven à la main.**
+
+Un redéploiement (`Manual Deploy` sur Render) relance tout le build
+(`composer install`, `npm install && npm run build`) — sur le plan gratuit
+ça peut prendre plusieurs minutes, pas juste un redémarrage instantané.
+
+### 10.2 Bugs réels trouvés et corrigés (session du 26/08/2026)
+
+Trois bugs distincts diagnostiqués par curl direct sur le lien de test
+(l'extension navigateur n'était pas disponible pendant cette session) :
+
+1. **CSS bloqué comme contenu mixte http/https** — déjà corrigé en amont
+   (commit `79274ee`, avant cette session) : sans `trustProxies`, Laravel
+   générait les URLs d'assets en `http://` derrière le proxy Render/
+   Cloudflare qui termine le HTTPS ; le navigateur bloquait le CSS/JS. Fix
+   dans `bootstrap/app.php` (`$middleware->trustProxies(at: '*')`). Toujours
+   en place et vérifié fonctionnel cette session (liens `<link>`/`<script>`
+   bien en `https://` sur `/fr` et `/en`).
+2. **Le conteneur ne démarrait jamais si la base était injoignable au
+   boot** — la chaîne `CMD` du `Dockerfile` était entièrement bloquante :
+   `config:cache && migrate --force && seed && seed && serve`. Si `migrate`
+   échoue (base Aiven éteinte, voir 10.1), tout s'arrête net et
+   `php artisan serve` n'est **jamais** atteint — donc le port n'est jamais
+   ouvert, Render voit un échec de réveil permanent
+   (`hibernate-wake-error` en boucle) et **le site entier devient
+   inaccessible** (pas juste les pages liées à la base — tout, y compris le
+   CSS, d'où la confusion initiale "le style ne s'applique pas"). Corrigé en
+   rendant `migrate`/les deux `db:seed` non-bloquants (`|| true`) — commit
+   `b09f057` sur `develop`. Le serveur démarre maintenant même si la base a
+   un souci temporaire (les pages qui en dépendent afficheront une erreur,
+   mais le reste du site reste accessible).
+3. **`public/storage` (symlink vers `storage/app/public`) n'était jamais
+   créé dans le conteneur** — `php artisan storage:link` n'était appelé nulle
+   part (ni au build, ni au runtime). Résultat : toutes les URLs
+   `asset('storage/...')` (photos de couverture des Domaines d'action et des
+   Programmes, via `domain-card.blade.php`/`program-card.blade.php` et les
+   pages détail) renvoyaient `404` — cadres visuellement vides sur le site
+   déployé alors que les fichiers existaient bien dans l'image Docker (14
+   fichiers trackés dans `storage/app/public/domains/` et
+   `storage/app/public/programs/`, copiés au build). Corrigé en ajoutant
+   `php artisan storage:link` (non-bloquant lui aussi) dans la chaîne `CMD` —
+   commit `10f249d` sur `develop`. Vérifié : les 14 images renvoient `200`
+   après ce correctif.
+
+**Limitation connue, pas encore corrigée** : le `Dockerfile` lance
+`php artisan serve` (serveur de développement intégré à PHP), qui traite les
+requêtes **une par une, pas en parallèle**. Un `502 Bad Gateway` ponctuel a
+été observé une fois pendant cette session (disparu au réessai immédiat) —
+cause probable : plusieurs requêtes simultanées (HTML + CSS + JS + images
+d'une même page) saturent le serveur mono-thread. Le `Dockerfile` assume
+explicitement ce compromis dans son commentaire d'en-tête ("simple, pas
+optimisé production"). **Si des `502` reviennent de façon régulière** (pas
+juste une fois), il faudra remplacer `php artisan serve` par un vrai serveur
+concurrent (nginx + PHP-FPM, ou équivalent) dans le `Dockerfile` — pas fait
+faute de nécessité confirmée à ce stade.
+
+### 10.3 État du `Dockerfile` actuel (`develop`, commit `10f249d`)
+
+```
+CMD php artisan config:cache && \
+    (php artisan storage:link || true) && \
+    (php artisan migrate --force || true) && \
+    (php artisan db:seed --class=TubawwiriSeeder --force || true) && \
+    (php artisan db:seed --class=TeamAccountsSeeder --force || true) && \
+    php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+```
+
+`INSTRUCTIONS_DEPLOIEMENT_TEST.md` (procédure complète de mise en place
+Render + Aiven depuis zéro) est maintenant suivi par git — ne plus le
+laisser en fichier non tracké, il faisait partie des `?? ` de `git status`
+avant cette session, risque de perte s'il n'était que local.
