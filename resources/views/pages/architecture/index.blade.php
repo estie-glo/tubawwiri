@@ -75,15 +75,14 @@
             5 => ['type' => 'diagram', 'diagram' => 'rubriques'],
             6 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/fondation-tubawwiri.jpg')],
             // 7 (TBW Academy), 8 (TBW Consulting), 9 (Communication), 10 (Campagnes),
-            // 11 (Ressources) : photos du mockup pas encore disponibles — quota Canva
-            // atteint pendant cette session. Ne pas approximer avec une image qui ne
-            // correspond pas (femme+enfants, coucher de soleil, statue...) : conservées
-            // en fond neutre le temps de régénérer les bonnes photos. Voir CLAUDE.md.
-            7 => ['type' => 'pending', 'side' => 'right'],
-            8 => ['type' => 'pending', 'side' => 'right'],
-            9 => ['type' => 'pending', 'side' => 'left'],
-            10 => ['type' => 'pending', 'side' => 'left'],
-            11 => ['type' => 'pending', 'side' => 'left'],
+            // 11 (Ressources) : quota Canva resté bloqué après 4 essais (15, 16, 17,
+            // 27/08) — photos libres de droits (Pexels, sans attribution requise)
+            // choisies pour correspondre au thème de chaque volet, voir CLAUDE.md 3.14.
+            7 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-academy.jpg')],
+            8 => ['type' => 'photo', 'side' => 'right', 'src' => asset('images/architecture/tbw-consulting.jpg')],
+            9 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/communication.jpg')],
+            10 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/campagnes.jpg'), 'position' => 'top'],
+            11 => ['type' => 'photo', 'side' => 'left', 'src' => asset('images/architecture/ressources.jpg')],
             12 => ['type' => 'africa'],
         ];
 
@@ -106,7 +105,7 @@
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm min-h-[440px] {{ $visual['type'] === 'diagram' ? 'grid md:grid-cols-2 items-center' : '' }}">
                     @if ($visual['type'] === 'photo')
                         <div class="absolute inset-0 p-8 md:p-14">
-                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90">
+                            <img src="{{ $visual['src'] }}" alt="" class="absolute inset-0 w-full h-full object-cover hero-kenburns opacity-90" style="object-position: {{ $visual['position'] ?? 'center' }};">
                             <div class="absolute inset-0 bg-gradient-to-r {{ ($visual['side'] ?? 'right') === 'left' ? 'from-white/10 via-white/75 to-white' : 'from-white via-white/75 to-white/10' }}"></div>
                         </div>
                     @endif
@@ -122,11 +121,11 @@
                     @endif
 
                     @if ($visual['type'] === 'africa')
-                        <div class="absolute inset-y-0 right-0 w-full md:w-1/2 bg-gradient-to-br from-[#123D2E] to-[#0b261c] flex items-center justify-center">
+                        <div class="absolute inset-y-0 right-0 w-full md:w-1/2 overflow-hidden">
+                            <img src="{{ asset('images/architecture/observatoire-carte-afrique.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-br from-[#123D2E]/75 to-[#0b261c]/60"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
                             <div class="relative w-56 h-56">
-                                <svg viewBox="0 0 200 220" class="w-full h-full text-[#C99A3E]/80" fill="currentColor" aria-hidden="true">
-                                    <path d="M96 6c14 0 22 9 34 12 10 3 22 0 28 9 5 8 0 18 6 25 7 8 20 10 22 21 2 10-9 16-10 26-1 11 9 18 6 29-3 10-16 12-20 22-3 9 3 19-4 27-6 8-19 6-27 12-7 6-9 18-18 21-9 3-17-6-27-6s-17 10-27 7c-9-3-10-15-18-21-8-6-21-4-27-12-7-8 0-18-3-27-4-10-17-12-20-22-3-11 7-18 6-29-1-11-12-13-10-26 2-11 15-13 22-21 6-7 1-17 6-25 6-9 18-6 28-9 12-3 20-12 34-12Z"/>
-                                </svg>
                                 @foreach ($africaIcons as $i => $node)
                                     @php
                                         $angle = -90 + $i * (360 / count($africaIcons));
@@ -137,6 +136,7 @@
                                         <svg class="w-4 h-4 text-[#123D2E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $node['icon'] !!}</svg>
                                     </div>
                                 @endforeach
+                            </div>
                             </div>
                         </div>
                         <div class="absolute inset-0 md:w-1/2 bg-gradient-to-r from-white via-white/85 to-transparent"></div>
