@@ -3,11 +3,11 @@
 @section('title', __('site.nav.donate') . ' — Fondation TUBAWWIRI (TBW)')
 
 @section('content')
-    <section class="relative overflow-hidden max-w-3xl mx-auto px-4 pt-16 reveal">
-        <x-ambient-bg />
+    <section class="relative overflow-hidden max-w-3xl mx-auto px-4 pt-16 pb-10 rounded-b-[2.5rem] reveal">
+        <x-video-bg src="{{ asset('videos/donation-bg.mp4') }}" poster="{{ asset('images/video-posters/donation.jpg') }}" />
         <p class="relative text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Fondation TUBAWWIRI (TBW)</p>
-        <h1 class="relative font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.nav.donate') }}</h1>
-        <p class="relative text-[#4a453c] mt-3 max-w-xl leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
+        <h1 class="relative font-display text-3xl md:text-4xl font-semibold text-white mt-2">{{ __('site.nav.donate') }}</h1>
+        <p class="relative text-white/85 mt-3 max-w-xl leading-relaxed">{{ __('site.home.join_subtitle') }}</p>
     </section>
 
     <section class="max-w-3xl mx-auto px-4 py-10 reveal">
