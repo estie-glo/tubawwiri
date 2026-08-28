@@ -7,7 +7,7 @@
 
     {{-- ===== HERO FULL-BLEED ===== --}}
     <section class="relative min-h-[88vh] flex items-end overflow-hidden">
-        <img src="{{ asset('images/banner-tubawwiri-corrige.png') }}"
+        <img src="{{ asset('images/banner-tubawwiri.jpg') }}"
              alt="Fondation TUBAWWIRI"
              class="absolute inset-0 w-full h-full object-cover hero-kenburns">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0b261c]/92 via-[#123D2E]/78 to-[#123D2E]/35"></div>
