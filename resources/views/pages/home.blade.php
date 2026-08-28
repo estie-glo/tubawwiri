@@ -164,33 +164,133 @@
     </section>
 
     {{-- ===== DOCTRINE DES 3T ===== --}}
+    {{-- Diaporama séquentiel (une image à la fois, façon PowerPoint) sur demande
+         explicite de la Fondatrice (28/08/2026) — remplace l'ancienne grille de
+         3 cartes simultanées. Images : symboletesimama/tolamuke/telumiere (les
+         mêmes posters, en version haute résolution "Symbole du défi X.jpeg" —
+         490x630 dans la version demandée, 1254x1254 dans cette variante, même
+         visuel, juste plus net une fois recadré en grand format). --}}
     <section class="bg-[#F3EDE0] py-20 reveal">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-4xl mx-auto px-4">
             <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.25em]">Doctrine</p>
             <h3 class="font-display text-3xl md:text-4xl font-semibold text-[#123D2E] mt-2">{{ __('site.home.doctrine_title') }}</h3>
 
-            <div class="grid md:grid-cols-3 gap-5 mt-10">
-                @php
-                    $doctrineSteps = [
-                        ['name' => 'TESIMAMA', 'text' => __('site.home.tesimama'), 'photo' => 'tesimama.jpg', 'accent' => '#C99A3E'],
-                        ['name' => 'TOLAMUKE', 'text' => __('site.home.tolamuke'), 'photo' => 'tolamuke.jpg', 'accent' => '#C99A3E'],
-                        ['name' => 'TELUMIERE', 'text' => __('site.home.telumiere'), 'photo' => 'telumiere.jpg', 'accent' => '#C99A3E'],
-                    ];
-                @endphp
-                @foreach ($doctrineSteps as $step)
-                    <div class="reveal group relative h-[480px] overflow-hidden rounded-3xl hover-lift" style="transition-delay: {{ ($loop->index) * 220 }}ms">
-                        <img src="{{ asset('images/doctrine/' . $step['photo']) }}" alt=""
-                             class="absolute inset-0 w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/92 via-[#123D2E]/45 to-transparent"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 border-l-2" style="border-color: {{ $step['accent'] }};">
-                            <p class="font-display text-2xl italic text-white">{{ $step['name'] }}</p>
-                            <p class="text-white/80 text-sm mt-1">{{ $step['text'] }}</p>
+            @php
+                $doctrineSteps = [
+                    ['name' => 'TESIMAMA', 'text' => __('site.home.tesimama'), 'photo' => 'tesimama-symbole.jpg'],
+                    ['name' => 'TOLAMUKE', 'text' => __('site.home.tolamuke'), 'photo' => 'tolamuke-symbole.jpg'],
+                    ['name' => 'TELUMIERE', 'text' => __('site.home.telumiere'), 'photo' => 'telumiere-symbole.jpg'],
+                ];
+            @endphp
+
+            <div class="relative mt-10 flex items-center gap-3 sm:gap-5">
+                <button type="button" aria-label="{{ __('pages.previous') }}" data-doctrine-prev
+                        class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white shadow-md items-center justify-center text-[#C99A3E] hover:bg-[#C99A3E] hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+
+                <div id="doctrine-slideshow" class="doctrine-slideshow relative flex-1 h-[520px] rounded-3xl overflow-hidden shadow-sm" data-autoplay-ms="4200">
+                    @foreach ($doctrineSteps as $i => $step)
+                        <div class="doctrine-slide absolute inset-0 {{ $i === 0 ? 'is-active' : '' }}" data-index="{{ $i }}">
+                            <img src="{{ asset('images/doctrine/' . $step['photo']) }}" alt=""
+                                 class="absolute inset-0 w-full h-full object-cover object-top">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b261c]/92 via-[#123D2E]/40 to-transparent"></div>
+                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8 border-l-2 border-[#C99A3E]">
+                                <p class="font-display text-3xl italic text-white">{{ $step['name'] }}</p>
+                                <p class="text-white/80 text-sm mt-1 max-w-md">{{ $step['text'] }}</p>
+                            </div>
+                            <p class="absolute top-5 right-5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#C99A3E]">0{{ $i + 1 }} / {{ count($doctrineSteps) }}</p>
                         </div>
-                        <p class="absolute top-4 right-4 text-[11px] font-bold uppercase tracking-[0.2em]" style="color: {{ $step['accent'] }};">0{{ $loop->iteration }}</p>
-                    </div>
+                    @endforeach
+                </div>
+
+                <button type="button" aria-label="{{ __('pages.next') }}" data-doctrine-next
+                        class="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#C99A3E] shadow-md items-center justify-center text-[#123D2E] hover:bg-[#b3872f] transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <div class="flex sm:hidden items-center justify-between mt-4">
+                <button type="button" data-doctrine-prev class="text-xs font-bold uppercase tracking-wider text-[#C99A3E]">← {{ __('pages.previous') }}</button>
+                <button type="button" data-doctrine-next class="text-xs font-bold uppercase tracking-wider text-[#C99A3E]">{{ __('pages.next') }} →</button>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 mt-6" data-doctrine-dots>
+                @foreach ($doctrineSteps as $i => $step)
+                    <button type="button" aria-label="{{ $i + 1 }}/{{ count($doctrineSteps) }}" data-doctrine-dot="{{ $i }}"
+                            class="w-2.5 h-2.5 rounded-full transition {{ $i === 0 ? 'bg-[#C99A3E]' : 'bg-[#d8cfb8] hover:bg-[#C99A3E]/50' }}"></button>
                 @endforeach
             </div>
         </div>
+
+        <style>
+            .doctrine-slide { opacity: 0; transition: opacity 0.8s ease; pointer-events: none; touch-action: pan-y; }
+            .doctrine-slide.is-active { opacity: 1; pointer-events: auto; }
+            .doctrine-slide img { -webkit-user-drag: none; user-drag: none; }
+        </style>
+        <script>
+            (function () {
+                var root = document.getElementById('doctrine-slideshow');
+                if (!root) return;
+                var section = root.closest('section');
+                var slides = root.querySelectorAll('.doctrine-slide');
+                var dots = section.querySelectorAll('[data-doctrine-dot]');
+                var total = slides.length;
+                var current = 0;
+                var timer = null;
+                var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function show(index) {
+                    current = (index + total) % total;
+                    slides.forEach(function (slide, i) {
+                        slide.classList.toggle('is-active', i === current);
+                    });
+                    dots.forEach(function (dot, i) {
+                        dot.classList.toggle('bg-[#C99A3E]', i === current);
+                        dot.classList.toggle('bg-[#d8cfb8]', i !== current);
+                    });
+                }
+                function next() { show(current + 1); }
+                function prev() { show(current - 1); }
+
+                function start() {
+                    if (timer || reduceMotion) return;
+                    timer = setInterval(next, parseInt(root.dataset.autoplayMs, 10) || 4200);
+                }
+                function stop() {
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+                section.querySelectorAll('[data-doctrine-prev]').forEach(function (btn) { btn.addEventListener('click', function () { prev(); stop(); start(); }); });
+                section.querySelectorAll('[data-doctrine-next]').forEach(function (btn) { btn.addEventListener('click', function () { next(); stop(); start(); }); });
+                dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); stop(); start(); }); });
+
+                root.addEventListener('mouseenter', stop);
+                root.addEventListener('mouseleave', start);
+
+                // Glisser à la souris/au doigt — gauche = suivant, droite = précédent
+                var startX = 0, dragging = false;
+                root.addEventListener('mousedown', function (e) { dragging = true; startX = e.pageX; stop(); });
+                root.addEventListener('touchstart', function (e) { dragging = true; startX = e.touches[0].pageX; stop(); }, { passive: true });
+                window.addEventListener('mouseup', function (e) {
+                    if (!dragging) return;
+                    dragging = false;
+                    var delta = e.pageX - startX;
+                    if (Math.abs(delta) > 80) { delta < 0 ? next() : prev(); }
+                    start();
+                });
+                root.addEventListener('touchend', function (e) {
+                    if (!dragging) return;
+                    dragging = false;
+                    var delta = e.changedTouches[0].pageX - startX;
+                    if (Math.abs(delta) > 80) { delta < 0 ? next() : prev(); }
+                    start();
+                }, { passive: true });
+
+                start();
+            })();
+        </script>
     </section>
 
     {{-- ===== ACTUALITÉS + IMPACT + REJOINDRE ===== --}}
