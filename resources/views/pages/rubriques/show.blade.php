@@ -29,7 +29,7 @@
 
                     <div class="relative z-10 max-w-lg">
                         <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
-                            {{ __('pages.rubrique') }} {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
+                            {{ __('pages.rubrique') }} {{ str_pad($position, 2, '0', STR_PAD_LEFT) }}
                         </p>
                         <h2 class="font-display text-2xl md:text-3xl font-semibold text-[#123D2E] mt-4 leading-snug">
                             {{ $item['name'] }}

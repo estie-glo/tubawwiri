@@ -26,16 +26,4 @@ class FounderController extends Controller
             'total' => $total,
         ]);
     }
-
-    /**
-     * Aperçu temporaire — Option A (page unique, copie conforme du mockup
-     * exemplepagebibliographie.png), à comparer avec l'Option B (4 pages
-     * paginées) pour que la Fondatrice tranche. À retirer une fois le choix fait.
-     */
-    public function apercu()
-    {
-        return view('pages.founder.apercu-unique', [
-            'paragraphs' => __('founder.paragraphs'),
-        ]);
-    }
 }

@@ -50,10 +50,10 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 </a>
 
-                <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14 grid md:grid-cols-[1.5fr_1fr] gap-8 items-start">
-                    <div>
+                <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14">
+                    <div class="max-w-2xl">
                         <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.2em]">
-                            {{ __('founder.name') }} · {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
+                            {{ __('founder.name') }}
                         </p>
                         <div class="w-12 h-[3px] bg-[#C99A3E] mt-4 mb-5"></div>
                         <p class="text-[#4a453c] leading-relaxed text-base md:text-lg">{!! $paragraph !!}</p>
@@ -68,16 +68,6 @@
                                 </div>
                             </div>
                         @endif
-                    </div>
-
-                    <div class="hidden md:block bg-[#F6F1E4] rounded-2xl p-5 self-start">
-                        <div class="flex items-center gap-3">
-                            <img src="{{ asset('images/logo-mark.png') }}" alt="TUBAWWIRI" class="h-10 w-10 object-contain shrink-0">
-                            <div>
-                                <p class="font-display font-semibold text-[#123D2E] text-sm leading-tight">Fondation TUBAWWIRI (TBW)</p>
-                                <p class="text-[10px] text-[#6B2A28] uppercase tracking-widest">{{ __('site.tagline') }}</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

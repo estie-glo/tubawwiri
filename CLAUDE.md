@@ -1,42 +1,43 @@
 # Fondation TUBAWWIRI (TBW) — Contexte projet pour Claude Code
 
-**Par où commencer, session en cours (27/08/2026)** : la section 3 (3.1 à
+**Par où commencer, session en cours (28/08/2026)** : la section 3 (3.1 à
 3.15 — refonte visuelle du site public) est **terminée** et **fusionnée sur
 `develop`** (branche `refonte-visuelle-remarques-v3`, mergée via la PR #10 le
-26/08 — la note précédente disant "pas encore fusionnée" était obsolète).
-Un audit indépendant du 27/08 (section 3.15) a vérifié dans le vrai code —
-pas dans les cases [x] de ce fichier — que 3.1 à 3.14 sont réellement
+26/08). Un audit indépendant du 27/08 (section 3.15) a vérifié dans le vrai
+code — pas dans les cases [x] de ce fichier — que 3.1 à 3.14 sont réellement
 implémentées : **verdict très largement conforme**, un seul bug réel trouvé
 et corrigé (Bibliographie, mise en page 2 colonnes cassée par une syntaxe
-Tailwind invalide). Par ailleurs, quatre commits directement sur `develop`
-(`b09f057`, `10f249d`, `1009389`, `007da2b`, 26-27/08) ont corrigé des bugs
-réels de **déploiement/build** (Render, Aiven, CSS Filament incomplet), sans
-lien avec les remarques de la Fondatrice — voir la nouvelle section 10 pour
-l'état complet et les pièges connus **avant de retoucher au Dockerfile ou de
-diagnostiquer un souci sur le lien de test**.
+Tailwind invalide). Quatre commits directement sur `develop`
+(`b09f057`, `10f249d`, `1009389`, `007da2b`, 26-27/08, avant l'adoption de la
+règle branche+PR ci-dessous) ont aussi corrigé des bugs réels de
+**déploiement/build** (Render, Aiven, CSS Filament incomplet), sans lien avec
+les remarques de la Fondatrice — voir section 10 pour l'état complet et les
+pièges connus avant de retoucher au Dockerfile.
 
-Trois points restent ouverts :
-1. **Architecture, volets 7 à 11** (TBW Academy, TBW Consulting,
-   Communication, Campagnes, Ressources) attendent encore leur vraie photo —
-   quota Canva retesté le 17/08, **toujours bloqué** (3 essais au total
-   maintenant : 15/08, 16/08, 17/08, toujours refusé). Panneau neutre
-   "Photo à venir" conservé en attendant. **Nouvelle session : retester
-   `generate-design` en premier ; si le quota est revenu, terminer ces 5
-   photos + regénérer les 6 photos de Domaines d'action en plus haute
-   résolution (voir 3.14), sinon passer directement à la section 4 (admin
-   Filament).**
-2. **Bibliographie de la Fondatrice — décision en attente** : deux versions
-   construites en parallèle pour comparaison visuelle (voir 3.14) —
-   `/bibliographie-fondatrice` (Option B, 4 pages corrigées) et
-   `/bibliographie-fondatrice-apercu` (Option A, page unique façon mockup,
-   temporaire). **Donner les deux liens à la Fondatrice ; une fois son choix
-   fait, supprimer l'option non retenue** (route `founder.apercu` + vue
-   `apercu-unique.blade.php` si Option B gagne ; sinon retirer
-   `founder.show`/`{position}` et le mécanisme page-swipe-card/autoplay sur
-   cette page si Option A gagne).
-3. **Lien de test Render peut sembler "en panne" au début de chaque
-   session** — ce n'est presque toujours pas un vrai bug : voir la
-   check-list de la section 10.1 avant de commencer un diagnostic.
+Les deux points ouverts précédents sont maintenant réglés (28/08/2026) :
+1. **Architecture, volets 7 à 11** : quota Canva resté bloqué après 4 essais
+   (15, 16, 17, 27/08) — remplacés par des photos libres de droits (Pexels)
+   choisies par thème, plus la carte physique de l'Afrique en fond du volet
+   Observatoire (vraie carte, pas un aplat de couleur — demande explicite de
+   la Fondatrice). Sur la branche `photos-architecture-volets-7-11`, **PR #12
+   toujours ouverte**, en attente de validation visuelle avant merge.
+2. **Bibliographie de la Fondatrice — décision prise** : la Fondatrice a
+   choisi l'**Option B** (`/bibliographie-fondatrice`, 4 pages paginées).
+   L'Option A (`/bibliographie-fondatrice-apercu`, route `founder.apercu`,
+   vue `apercu-unique.blade.php`) a été supprimée. Sur la branche
+   `style-police-dm-sans-bibliographie`, **PR #13 toujours ouverte** (contient
+   aussi : police DM Sans partout, mots-clés en gras sur la Bibliographie,
+   suppression du compteur "XX / YY" sur toutes les pages paginées — voir
+   section 2 pour le détail des deux derniers points).
+
+**Lien de test Render peut sembler "en panne" au début de chaque session** —
+ce n'est presque toujours pas un vrai bug : voir la check-list de la section
+10.1 avant de commencer un diagnostic.
+
+**Règle de travail (adoptée le 27/08/2026)** : toujours une branche dédiée +
+PR vers `develop`, jamais de push direct — voir section 9. Les PR #12 et #13
+mentionnées ci-dessus sont l'état normal du travail en cours, pas une
+anomalie à corriger.
 
 Lis ce fichier en entier avant de modifier quoi que ce soit. Il donne le contexte
 complet du projet, la charte de design à respecter, et la liste précise de ce
@@ -109,6 +110,17 @@ rayonner la lumière." Doctrine des 3T : TESIMAMA (nos racines) — TOLAMUKE (no
   sur l'accueil (`public/images/banner-tubawwiri.jpeg`, effet Ken Burns via
   classe `hero-kenburns`) et sur le login admin
   (`public/images/bg-tubawwiri.png`, voir `AdminPanelProvider.php`).
+- **Pas de compteur "XX / YY" (position/total) sur les pages "1 cadre = 1
+  page"** (retiré le 28/08/2026 sur demande explicite de la Fondatrice, qui
+  n'aimait pas ce rendu — ex. "04 / 04"). Les points de pagination en bas de
+  page suffisent comme repère visuel. Un numéro seul (sans le total, ex.
+  "Volet 07", "Rubrique 03") reste acceptable — c'est uniquement le format
+  ratio "X / Y" qui est à éviter. Concerne `institutional.blade.php`,
+  `architecture/index.blade.php`, `founder/index.blade.php`,
+  `rubriques/show.blade.php`, `components/field-page.blade.php`. Les badges
+  numérotés simples des cartes d'index (`domain-card.blade.php`,
+  `training-card.blade.php`, `rubriques/index.blade.php`) ne sont pas
+  concernés, ce n'est pas le même motif.
 
 ## 3. CHANTIER PRIORITAIRE N°1 — Refonte visuelle du site public (remarques Fondatrice, 11/08/2026)
 
