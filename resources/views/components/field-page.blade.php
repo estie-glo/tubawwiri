@@ -34,7 +34,7 @@
 
                 <div class="relative z-10 max-w-lg">
                     <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
-                        {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
+                        {{ str_pad($position, 2, '0', STR_PAD_LEFT) }}
                     </p>
                     <div class="w-14 h-14 rounded-full bg-[#123D2E] border-2 border-[#C99A3E] flex items-center justify-center mt-4">
                         <svg class="w-6 h-6 text-[#C99A3E]" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $icon !!}</svg>

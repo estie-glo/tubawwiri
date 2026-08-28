@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -24,7 +24,7 @@
         }
         a { text-decoration: none; }
         .font-display { font-family: 'Fraunces', Georgia, serif; }
-        .font-body { font-family: 'Manrope', system-ui, sans-serif; }
+        .font-body { font-family: 'DM Sans', system-ui, sans-serif; }
         .root-divider {
             background-image: radial-gradient(circle, #C99A3E 1.4px, transparent 1.4px);
             background-size: 10px 10px;
