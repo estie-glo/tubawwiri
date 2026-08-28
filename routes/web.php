@@ -119,6 +119,7 @@ Route::prefix('{locale}')
 
         // 14. Médias
         Route::get('/medias', [MediaController::class, 'index'])->name('media.index');
+        Route::get('/medias/kit-presse.zip', [MediaController::class, 'downloadPressKit'])->name('media.press-kit.download');
 
         // 16. Contact
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

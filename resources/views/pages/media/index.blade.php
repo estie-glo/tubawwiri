@@ -11,6 +11,7 @@
         $megaphoneIcon = '<path d="M3 10v4h3l5 4V6L6 10H3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path stroke-linecap="round" d="M16 9a4 4 0 0 1 0 6"/>';
         $documentIcon = '<path d="M6 3.5h9l3 3V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path stroke-linecap="round" d="M9 12h6M9 15.5h6"/>';
         $downloadIcon = '<path d="M12 4v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17.5V19a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
+        $presseAvecFichier = $presse->contains(fn ($item) => $item->file_path);
     @endphp
 
     <section class="max-w-7xl mx-auto px-4 py-16 reveal">
@@ -171,13 +172,13 @@
             </div>
         </div>
 
-        @if ($presse->isNotEmpty())
+        @if ($presseAvecFichier)
             <div class="mt-6 border-t-2 border-[#C99A3E] bg-white rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <svg class="w-6 h-6 text-[#C99A3E] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $downloadIcon !!}</svg>
                     <p class="text-sm text-[#123D2E] font-medium">{{ __('pages.press_kit_access') }}</p>
                 </div>
-                <a href="#kit-presse"
+                <a href="{{ route('media.press-kit.download') }}"
                    class="btn-tbw shrink-0 inline-flex items-center gap-2 whitespace-nowrap bg-[#123D2E] hover:bg-[#0d2e22] text-white px-4 sm:px-6 py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
                     {{ __('pages.press_kit_download_all') }}
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">{!! $downloadIcon !!}</svg>
