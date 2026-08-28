@@ -444,6 +444,7 @@
     @endif
 
     <script src="{{ asset('js/reveal.js') }}"></script>
+    <script src="{{ asset('js/video-bg.js') }}"></script>
     <script>
         (function () {
             var toggle = document.getElementById('mobile-menu-toggle');

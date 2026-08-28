@@ -8,6 +8,16 @@
         $mapsQuery = urlencode($c['maps_query'] ?? 'Cameroun');
     @endphp
 
+    {{-- Fond vidéo très discret (pas de bandeau de titre sur cette page, conforme
+         au mockup — voir 3.13 — donc traitement en fond fixe atténué plutôt qu'un
+         hero comme sur Nous rejoindre/Faire un don). --}}
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+        <video class="video-bg-el absolute inset-0 w-full h-full object-cover opacity-[0.08]" autoplay muted loop playsinline
+               poster="{{ asset('images/video-posters/contact.jpg') }}" preload="metadata">
+            <source src="{{ asset('videos/contact-bg.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
     {{-- ===== FORMULAIRES ===== --}}
     <section class="max-w-7xl mx-auto px-4 pt-16 pb-8 grid lg:grid-cols-2 gap-8 reveal">
         <div class="relative bg-white border border-[#eadfca] rounded-3xl p-8 overflow-hidden">
