@@ -52,11 +52,11 @@
 
                 <div class="page-swipe-card relative flex-1 bg-white rounded-[2.5rem] overflow-hidden shadow-sm p-8 md:p-14 grid md:grid-cols-[1.5fr_1fr] gap-8 items-start">
                     <div>
-                        <p class="text-xs font-bold text-[#C99A3E] tracking-[0.2em]">
+                        <p class="text-xs font-bold text-[#C99A3E] uppercase tracking-[0.2em]">
                             {{ __('founder.name') }} · {{ str_pad($position, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($total, 2, '0', STR_PAD_LEFT) }}
                         </p>
                         <div class="w-12 h-[3px] bg-[#C99A3E] mt-4 mb-5"></div>
-                        <p class="text-[#4a453c] leading-relaxed text-base md:text-lg">{{ $paragraph }}</p>
+                        <p class="text-[#4a453c] leading-relaxed text-base md:text-lg">{!! $paragraph !!}</p>
 
                         @if ($position >= $total)
                             <div class="mt-8 border-t-2 border-[#C99A3E] bg-[#F6F1E4] rounded-2xl p-6 flex items-start gap-4">

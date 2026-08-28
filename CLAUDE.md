@@ -94,8 +94,8 @@ rayonner la lumière." Doctrine des 3T : TESIMAMA (nos racines) — TOLAMUKE (no
 ### Typographie
 - Titres : classe `font-display` (police Fraunces, chargée via Google Fonts dans
   le layout). `font-semibold`/`font-medium`, jamais `font-bold` brut.
-- Texte courant : classe `font-body` (Manrope — changée depuis Work Sans par un
-  précédent passage de Cursor, garder Manrope).
+- Texte courant : classe `font-body` (DM Sans — changée depuis Manrope le
+  28/08/2026 sur demande explicite de la Fondatrice, garder DM Sans).
 
 ### Règles de mise en page (site public)
 - Pas de `rounded-xl`/`rounded-2xl` généreux, sauf logo (cercle) et inputs.
